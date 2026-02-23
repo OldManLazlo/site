@@ -32,20 +32,9 @@
         <span class="icon">✅</span>
         <h1>Заявка принята!</h1>
         <p>Спасибо! Мы уже формируем ваш доступ к платформе. <br>В ближайшее время с вами свяжется менеджер или придет уведомление.</p>
-        <a href="/" class="btn" onclick="goBack(event)">Вернуться на сайт</a>
-
-<script>
-function goBack(e) {
-  e.preventDefault();
-
-  if (document.referrer && document.referrer.includes(window.location.origin)) {
-    history.back();
-  } else {
-    window.location.href = "/";
-  }
-}
-</script>
+        <a href="/" class="btn">Вернуться на сайт</a>
     </div>
 </body>
 </html>
+
 
