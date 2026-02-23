@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Academy | Интенсив 14 дней</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: #5e29e5;
+            --primary-gradient: linear-gradient(135deg, #7b40f2 0%, #5e29e5 100%);
+            --bg-body: #ffffff;
+            --bg-gray: #f9f9fb;
+            --text-dark: #130938;
+            --text-gray: #6b6b85;
+            --card-shadow: 0 12px 32px rgba(22, 10, 60, 0.06);
+            --radius: 24px;
+        }
+
+        body { margin: 0; font-family: 'Inter', sans-serif; background-color: var(--bg-body); color: var(--text-dark); line-height: 1.5; }
+        * { box-sizing: border-box; }
+
+        /* --- HEADER --- */
+        header { position: absolute; top: 0; left: 0; width: 100%; padding: 20px 0; z-index: 10; }
+        .nav { display: flex; justify-content: center; gap: 30px; }
+        .nav a { color: rgba(255, 255, 255, 0.9); text-decoration: none; font-weight: 600; font-size: 14px; transition: 0.2s; }
+        .nav a:hover { color: #fff; }
+
+        /* --- HERO (ФИОЛЕТОВЫЙ БЛОК) --- */
+        .hero {
+            background: var(--primary-gradient);
+            color: #fff;
+            padding: 120px 20px 80px; /* Компактные отступы */
+            text-align: center;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Декор на фоне */
+        .hero-icon { position: absolute; font-size: 60px; opacity: 0.15; animation: float 6s infinite ease-in-out; }
+        .icon-1 { top: 20%; left: 10%; transform: rotate(-15deg); }
+        .icon-2 { bottom: 20%; right: 10%; transform: rotate(15deg); animation-delay: 1s; }
+        @keyframes float { 0%, 100% { transform: translateY(0) rotate(var(--r)); } 50% { transform: translateY(-15px) rotate(var(--r)); } }
+
+        .container { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; padding: 0 20px; }
+        
+        .badge { background: rgba(255,255,255,0.2); padding: 6px 14px; border-radius: 50px; font-size: 13px; font-weight: 600; display: inline-block; margin-bottom: 20px; backdrop-filter: blur(5px); }
+        
+        h1 { font-family: 'Manrope', sans-serif; font-size: clamp(36px, 5vw, 64px); line-height: 1.1; margin: 0 0 20px 0; font-weight: 800; }
+        .hero p { font-size: 18px; max-width: 650px; margin: 0 auto 30px; opacity: 0.95; }
+
+        .btn-white { background: #fff; color: var(--primary-purple); padding: 18px 40px; border-radius: 12px; font-weight: 700; font-size: 16px; border: none; cursor: pointer; text-decoration: none; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: 0.2s; display: inline-block; }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+
+        /* --- СЕКЦИИ (КОМПАКТНЫЕ) --- */
+        section { padding: 40px 0; }
+        h2 { font-family: 'Manrope', sans-serif; font-size: 36px; text-align: center; margin-bottom: 30px; color: var(--text-dark); }
+
+        /* --- КАРТОЧКИ --- */
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 24px; box-shadow: var(--card-shadow); text-align: center; border: 1px solid rgba(0,0,0,0.03); transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card-icon { width: 50px; height: 50px; background: #f0ebfa; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 20px; }
+        .card h3 { font-size: 18px; margin: 0 0 10px 0; font-weight: 700; }
+        .card p { font-size: 14px; color: var(--text-gray); margin: 0; }
+
+        /* --- ПРОГРАММА --- */
+        .bg-gray { background: var(--bg-gray); }
+        .prog-item { background: #fff; padding: 20px 30px; border-radius: 20px; margin-bottom: 15px; display: flex; gap: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); align-items: flex-start; }
+        .day-tag { background: var(--primary-purple); color: #fff; padding: 5px 12px; border-radius: 8px; font-weight: 700; font-size: 13px; white-space: nowrap; }
+        .prog-text h4 { margin: 0 0 5px 0; font-size: 17px; }
+        .prog-text p { margin: 0; font-size: 14px; color: var(--text-gray); }
+        
+        .btn-purple { background: var(--primary-purple); color: #fff; padding: 16px 36px; border-radius: 12px; font-weight: 700; font-size: 16px; border: none; cursor: pointer; margin-top: 20px; }
+
+        /* --- ЭКСПЕРТ --- */
+        .expert-box { background: #fff; border-radius: 24px; padding: 40px; box-shadow: var(--card-shadow); display: flex; gap: 40px; align-items: center; }
+        .expert-info ul { padding: 0; list-style: none; }
+        .expert-info li { padding-left: 25px; position: relative; margin-bottom: 10px; font-size: 14px; color: var(--text-gray); }
+        .expert-info li::before { content: '✓'; position: absolute; left: 0; color: var(--primary-purple); font-weight: bold; }
+        .expert-img { width: 150px; height: 150px; background: #f0ebfa; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 60px; flex-shrink: 0; }
+
+        /* --- FAQ --- */
+        .faq-item { background: #fff; border: 1px solid #eee; padding: 20px; border-radius: 16px; margin-bottom: 10px; }
+        .faq-item h4 { margin: 0 0 5px 0; font-size: 16px; }
+        .faq-item p { margin: 0; font-size: 14px; color: var(--text-gray); }
+
+        /* --- FOOTER --- */
+        footer { background: var(--text-dark); color: rgba(255,255,255,0.6); padding: 40px 0; font-size: 12px; text-align: center; }
+        .footer-link { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); }
+
+        /* --- MODAL --- */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(19,9,56,0.7); backdrop-filter: blur(5px); z-index: 999; justify-content: center; align-items: center; }
+        .modal-content { background: #fff; padding: 40px; border-radius: 24px; width: 90%; max-width: 400px; position: relative; text-align: center; }
+        .close { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #999; }
+        input { width: 100%; padding: 14px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 10px; background: #f9f9fb; font-size: 16px; }
+
+        @media (max-width: 768px) {
+            .grid-3 { grid-template-columns: 1fr; }
+            .expert-box { flex-direction: column; text-align: center; }
+            .expert-info li { text-align: left; }
+            .prog-item { flex-direction: column; gap: 10px; }
+            .nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav">
+        <a href="#for-whom">Для кого</a>
+        <a href="#program">Программа</a>
+        <a href="#expert">Эксперты</a>
+        <a href="#faq">FAQ</a>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-icon icon-1" style="--r: -15deg">🪙</div>
+    <div class="hero-icon icon-2" style="--r: 15deg">🛡️</div>
+    <div class="container">
+        <span class="badge">Education Platform 2026</span>
+        <h1>Твой безопасный вход <br>в криптоиндустрию <br>за 14 дней</h1>
+        <p>Бесплатный интенсив для тех, кто хочет разобраться в Web3, защитить свои активы и научиться анализировать рынок с нуля.</p>
+        <button class="btn-white" onclick="openModal()">Забронировать место бесплатно</button>
+    </div>
+</section>
+
+<section id="for-whom">
+    <div class="container">
+        <h2>Кому подходит этот курс?</h2>
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-icon">🐣</div>
+                <h3>Полный ноль</h3>
+                <p>Хотите разобраться без «умных» слов и лишнего шума. Сделаем теорию понятной даже ребенку.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">👀</div>
+                <h3>Осторожный новичок</h3>
+                <p>Боитесь сделать первую транзакцию и ошибиться. Мы научим проводить операции безопасно.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🧠</div>
+                <h3>Искатель системы</h3>
+                <p>Смотрели ролики на YouTube, но в голове «каша». Мы дадим пошаговый план обучения на 14 дней.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="program" class="bg-gray">
+    <div class="container">
+        <h2>Программа обучения</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="prog-item">
+                <div class="day-tag">Урок 1-2</div>
+                <div class="prog-text"><h4>Фундамент и Логика</h4><p>Блокчейн «на пальцах», терминология, транзакции и комиссии.</p></div>
+            </div>
+            <div class="prog-item">
+                <div class="day-tag">Урок 3-4</div>
+                <div class="prog-text"><h4>Биржи и Финансы</h4><p>Регистрация, защита аккаунта (2FA), покупка и вывод средств.</p></div>
+            </div>
+            <div class="prog-item">
+                <div class="day-tag">Урок 5-6</div>
+                <div class="prog-text"><h4>Безопасность и Хранение</h4><p>Холодные и горячие кошельки, сид-фразы, защита от фишинга.</p></div>
+            </div>
+            <div class="prog-item">
+                <div class="day-tag">Урок 7-8</div>
+                <div class="prog-text"><h4>Риск-менеджмент</h4><p>Типовые ошибки новичков, разбор реальных ситуаций и план действий.</p></div>
+            </div>
+            <div style="text-align: center;">
+                <button class="btn-purple" onclick="openModal()">Получить доступ к материалам</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="expert">
+    <div class="container">
+        <div class="expert-box">
+            <div class="expert-info" style="flex: 1;">
+                <h2 style="text-align: left; margin-bottom: 20px;">Кто ведет курс?</h2>
+                <h3 style="margin-top: 0; color: var(--primary-purple);">Команда Crypto Academy</h3>
+                <ul>
+                    <li>Практический опыт работы с криптоинструментами с 2014 года.</li>
+                    <li>Собственная методика обучения «от простого к сложному».</li>
+                    <li>Помогли более 5 000 учеников совершить первую безопасную сделку.</li>
+                    <li>Фокус на кибербезопасности и сохранении капитала.</li>
+                </ul>
+            </div>
+            <div class="expert-img">🎓</div>
+        </div>
+    </div>
+</section>
+
+<section id="faq" class="bg-gray">
+    <div class="container">
+        <h2>Частые вопросы</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item"><h4>Нужен ли опыт?</h4><p>Нет. Курс рассчитан на новичков. Всё объясняем с нуля.</p></div>
+            <div class="faq-item"><h4>Что если мало времени?</h4><p>Уроки в записи. Проходите в своем темпе.</p></div>
+            <div class="faq-item"><h4>Будет ли поддержка?</h4><p>Да, куратор отвечает на вопросы в чате 14 дней.</p></div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p><strong>АНО ДПО «Учебный центр «Хекслет»</strong><br>ОГРН 1247700712390 | ИНН 7736364948<br>г. Москва, пр-кт Вернадского, д. 29</p>
+        <p>Email: info@learncraft.com | Тел: +79871889943</p>
+        <p style="margin-top: 20px;">
+            <a href="privacy.html" class="footer-link">Политика конфиденциальности</a>
+        </p>
+        <p style="opacity: 0.5; font-size: 11px; margin-top: 20px;">Информация носит образовательный характер и не является инвест-рекомендацией. 18+</p>
+    </div>
+</footer>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3 style="margin-top: 0;">Начать обучение</h3>
+        <p style="color: #666; font-size: 14px; margin-bottom: 20px;">Введите данные для получения доступа</p>
+        <form onsubmit="submitForm(event)">
+            <input type="text" placeholder="Ваше имя" required>
+            <input type="tel" placeholder="+7 (___) ___-__-__" required>
+            <button type="submit" class="btn-purple" style="width: 100%;">Записаться</button>
+        </form>
+        <p style="font-size: 11px; color: #999; margin-top: 15px;">Нажимая кнопку, вы соглашаетесь с <a href="privacy.html" style="color: #5e29e5;">политикой конфиденциальности</a></p>
+    </div>
+</div>
+
+<script>
+    function openModal() { document.getElementById('modal').style.display = 'flex'; }
+    function closeModal() { document.getElementById('modal').style.display = 'none'; }
+    
+    // Имитация отправки формы и переход на Спасибо
+    function submitForm(e) {
+        e.preventDefault();
+        window.location.href = 'thanks.html';
+    }
+    
+    window.onclick = function(e) { if(e.target == document.getElementById('modal')) closeModal(); }
+</script>
+
+</body>
+</html>
