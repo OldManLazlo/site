@@ -301,17 +301,54 @@
         </div>
     </div>
 
-    <script>
-        function openModal() { document.getElementById('modal').style.display = 'flex'; }
-        function closeModal() { document.getElementById('modal').style.display = 'none'; }
-        function submitForm(event) {
-            event.preventDefault();
-            window.location.href = "/thanks/";
-        }
-        window.onclick = function(e) { if(e.target == document.getElementById('modal')) closeModal(); }
-    </script>
+   <script>
+    function openModal() {
+        document.getElementById('modal').style.display = 'flex';
+    }
 
-</body>
-</html>
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+
+    async function submitForm(event) {
+        event.preventDefault();
+
+        const form = event.target;
+        const name = form.querySelector('input[type="text"]').value.trim();
+        const phone = form.querySelector('input[type="tel"]').value.trim();
+
+        const webhookUrl = "https://hook.eu2.make.com/4zwo6knvsf1wy6hvek345dabvlmxj5tn";
+
+        try {
+            const response = await fetch(webhookUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: name,
+                    phone: phone,
+                    page: window.location.href,
+                    time: new Date().toISOString()
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error("Ошибка отправки");
+            }
+
+            window.location.href = "/thanks/";
+        } catch (error) {
+            alert("Не удалось отправить заявку. Попробуйте ещё раз.");
+            console.error(error);
+        }
+    }
+
+    window.onclick = function(e) {
+        if (e.target == document.getElementById('modal')) {
+            closeModal();
+        }
+    }
+</script>
 
 
