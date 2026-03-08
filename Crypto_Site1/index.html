@@ -283,31 +283,23 @@
                 © Blockchain Academy Pro 2026
             </div>
         </div>
-    </footer>
-
-    <div class="modal-overlay" id="modal">
-        <div class="modal-card">
-            <span class="close-btn" onclick="closeModal()">×</span>
-            <h3 style="margin-top: 0; color: var(--text-dark); font-weight: 800;">Начать обучение</h3>
-            <p style="color: var(--text-gray); margin-bottom: 25px; font-size: 14px;">Заполните форму, чтобы получить доступ к первому уроку</p>
-            <form onsubmit="submitForm(event)">
-                <input type="text" placeholder="Ваше имя" required>
-                <input type="tel" placeholder="+7 (___) ___-__-__" required>
-                <button class="btn-purple-full">Записаться</button>
-            </form>
-            <p style="font-size: 12px; color: var(--text-gray); margin-top: 20px;">Нажимая кнопку, вы соглашаетесь с <a href="/policy/" style="color: var(--primary-purple);">политикой конфиденциальности</a></p>
+    <footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <strong>ООО «АДИ ГРУПП»</strong>
+                <p>ОГРН: 1127746620275 | ИНН: 7743861027</p>
+                <p>125438, г. Москва, Автомоторная ул., д. 4а стр. 21, пом. 6п</p>
+            </div>
+            <div style="text-align: right;">
+                <p>Телефон: +7 913 875-41-20</p>
+                <p>Email: hello@adi-group.ru</p>
+                <a href="/policy/">Политика конфиденциальности</a>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 30px; opacity: 0.5;">
+            "Информация на сайте носит образовательный характер и не является инвестиционной рекомендацией"<br>
+            © Blockchain Academy Pro 2026
         </div>
     </div>
-
-    <script>
-        function openModal() { document.getElementById('modal').style.display = 'flex'; }
-        function closeModal() { document.getElementById('modal').style.display = 'none'; }
-        function submitForm(event) {
-            event.preventDefault();
-            window.location.href = "/thanks/";
-        }
-        window.onclick = function(e) { if(e.target == document.getElementById('modal')) closeModal(); }
-    </script>
-
-</body>
-</html>
+</footer>
