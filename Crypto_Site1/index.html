@@ -287,5 +287,31 @@
         </div>
     </div>
 </footer>
+<div class="modal-overlay" id="modal">
+        <div class="modal-card">
+            <span class="close-btn" onclick="closeModal()">×</span>
+            <h3 style="margin-top: 0; color: var(--text-dark); font-weight: 800;">Начать обучение</h3>
+            <p style="color: var(--text-gray); margin-bottom: 25px; font-size: 14px;">Заполните форму, чтобы получить доступ к первому уроку</p>
+            <form onsubmit="submitForm(event)">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="tel" placeholder="+7 (___) ___-__-__" required>
+                <button class="btn-purple-full">Записаться</button>
+            </form>
+            <p style="font-size: 12px; color: var(--text-gray); margin-top: 20px;">Нажимая кнопку, вы соглашаетесь с <a href="/policy/" style="color: var(--primary-purple);">политикой конфиденциальности</a></p>
+        </div>
+    </div>
+
+    <script>
+        function openModal() { document.getElementById('modal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('modal').style.display = 'none'; }
+        function submitForm(event) {
+            event.preventDefault();
+            window.location.href = "/thanks/";
+        }
+        window.onclick = function(e) { if(e.target == document.getElementById('modal')) closeModal(); }
+    </script>
+
+</body>
+</html>
 
 
