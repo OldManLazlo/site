@@ -7,9 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
-        tailwind.config = {
-            theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], } } }
-        }
+        tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], } } } }
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -18,7 +16,6 @@
 </head>
 <body class="text-slate-300 font-sans selection:bg-indigo-500/30 overflow-x-hidden relative min-h-screen flex items-center justify-center">
 
-    <!-- ФОНОВЫЕ ЭФФЕКТЫ -->
     <div class="fixed inset-0 z-0 pointer-events-none">
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
         <div class="absolute top-1/4 left-1/4 w-[50%] h-[50%] bg-indigo-500/20 blur-[120px] rounded-full"></div>
@@ -31,7 +28,6 @@
             <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-cyan-400/5 rounded-[2.5rem] transform -rotate-2 blur-sm"></div>
             
             <div class="relative bg-[#0F172A]/80 backdrop-blur-xl border border-white/10 p-10 md:p-14 rounded-[2.5rem] shadow-2xl text-center">
-                <!-- Иконка успеха -->
                 <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-indigo-500/20 to-cyan-400/20 border border-white/10 flex items-center justify-center mb-8 shadow-[0_0_30px_-5px_rgba(99,102,241,0.4)]">
                     <i data-lucide="check" class="w-10 h-10 text-cyan-400"></i>
                 </div>
@@ -66,17 +62,16 @@
                     <span>Звонок может поступить в течение 24 часов. Пожалуйста, убедитесь, что ваш телефон включён.</span>
                 </div>
 
-                <a href="index.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white text-[#0B1121] font-semibold text-base hover:bg-slate-200 transition-all shadow-[0_0_30px_-5px_rgba(255,255,255,0.3)]">
+                <!-- ИСПРАВЛЕНО: Прямая ссылка на корень / -->
+                <a href="/" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white text-[#0B1121] font-semibold text-base hover:bg-slate-200 transition-all shadow-[0_0_30px_-5px_rgba(255,255,255,0.3)]">
                     <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                    Вернуться на главную
+                    Вернуться на сайт
                 </a>
             </div>
         </div>
 
     </main>
 
-    <script>
-        lucide.createIcons();
-    </script>
+    <script> lucide.createIcons(); </script>
 </body>
 </html>
