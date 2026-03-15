@@ -5,13 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Education Center - Бесплатное обучение по криптовалютам</title>
     
-    <!-- Подключение Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Подключение иконок Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Кастомные стили и настройки Tailwind -->
     <script>
         tailwind.config = {
             theme: {
@@ -44,7 +40,6 @@
             animation: shimmer 3s infinite linear;
         }
 
-        /* Утилита для скрытия скроллбара, если нужно */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -62,14 +57,12 @@
 </head>
 <body class="text-slate-300 font-sans selection:bg-indigo-500/30 overflow-x-hidden relative">
 
-    <!-- ФОНОВЫЕ ЭФФЕКТЫ -->
     <div class="fixed inset-0 z-0 pointer-events-none">
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
         <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-500/20 blur-[120px] rounded-full"></div>
         <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-cyan-500/20 blur-[120px] rounded-full"></div>
     </div>
 
-    <!-- 1. HEADER -->
     <header id="header" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-6">
         <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
             <div class="flex items-center gap-2 cursor-pointer" onclick="scrollToSection('hero')">
@@ -79,7 +72,6 @@
                 <span class="text-white font-medium text-lg tracking-wide">Education Center</span>
             </div>
 
-            <!-- Десктопное меню -->
             <nav class="hidden md:flex items-center gap-8">
                 <button onclick="scrollToSection('program')" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Программа</button>
                 <button onclick="scrollToSection('process')" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Как проходит обучение</button>
@@ -94,14 +86,12 @@
                 </button>
             </div>
 
-            <!-- Мобильная кнопка -->
             <button id="mobile-menu-btn" class="md:hidden text-slate-300" onclick="toggleMobileMenu()">
                 <i data-lucide="menu" id="menu-icon"></i>
                 <i data-lucide="x" id="close-icon" class="hidden"></i>
             </button>
         </div>
 
-        <!-- Мобильное меню -->
         <div id="mobile-menu" class="absolute top-full left-0 w-full bg-[#0B1121]/95 backdrop-blur-xl border-b border-transparent transition-all duration-300 overflow-hidden md:hidden max-h-0 py-0">
             <div class="flex flex-col px-6 gap-4">
                 <button onclick="scrollToSection('program')" class="text-left text-base font-medium text-slate-300 hover:text-white py-2">Программа</button>
@@ -118,7 +108,6 @@
 
     <main class="relative z-10">
         
-        <!-- 2. HERO SECTION -->
         <section id="hero" class="pt-32 pb-20 md:pt-40 md:pb-32 container mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center gap-16 min-h-[90vh]">
             <div class="w-full lg:w-1/2 flex flex-col gap-6 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
                 <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 w-fit">
@@ -157,7 +146,8 @@
                     
                     <h3 class="text-2xl font-medium text-white mb-6">Заявка на обучение</h3>
                     
-                    <form class="flex flex-col gap-4" action="thanks.html">
+                    <!-- ИСПРАВЛЕНО: action ведет на /thanks/ -->
+                    <form class="flex flex-col gap-4" action="/thanks/">
                         <div class="flex flex-col gap-1.5">
                             <label class="text-sm font-medium text-slate-400 pl-1">Имя</label>
                             <input type="text" placeholder="Введите ваше имя" class="w-full bg-white/5 border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-4 py-3.5 text-white placeholder-slate-400 outline-none transition-all" required />
@@ -186,7 +176,6 @@
             </div>
         </section>
 
-        <!-- 3. SECTION “ПОЧЕМУ ВАЖНО ПОНИМАТЬ ОСНОВЫ” -->
         <section class="py-24 relative">
             <div class="container mx-auto px-6 md:px-12">
                 <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 bg-white/[0.03] border border-white/5 p-8 md:p-12 rounded-[2.5rem] relative overflow-hidden animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
@@ -216,7 +205,6 @@
             </div>
         </section>
 
-        <!-- 4. SECTION “ЧТО ВХОДИТ В ОБУЧЕНИЕ” -->
         <section id="program" class="py-24 relative">
             <div class="container mx-auto px-6 md:px-12">
                 <div class="text-center max-w-2xl mx-auto mb-16 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
@@ -229,7 +217,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Cards -->
                     <div class="group p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-indigo-500/30 transition-all duration-300 animate-on-scroll opacity-0 translate-y-10" style="transition-delay: 0ms;">
                         <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-indigo-500/50 transition-all duration-300 text-indigo-400">
                             <i data-lucide="cpu" class="w-6 h-6"></i>
@@ -282,7 +269,6 @@
             </div>
         </section>
 
-        <!-- 5. SECTION “КАК ПРОХОДИТ ОБУЧЕНИЕ” -->
         <section id="process" class="py-24 relative overflow-hidden">
             <div class="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
             
@@ -331,7 +317,6 @@
             </div>
         </section>
 
-        <!-- 6. SECTION “КОМАНДА” -->
         <section id="team" class="py-24 relative">
             <div class="container mx-auto px-6 md:px-12">
                 <div class="flex flex-col lg:flex-row items-center gap-16">
@@ -380,7 +365,6 @@
             </div>
         </section>
 
-        <!-- 7. SECTION FAQ -->
         <section id="faq" class="py-24 relative bg-white/[0.02] border-y border-white/5">
             <div class="container mx-auto px-6 md:px-12 max-w-4xl">
                 <div class="text-center mb-16 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
@@ -445,7 +429,6 @@
             </div>
         </section>
 
-        <!-- 8. FINAL CTA SECTION -->
         <section id="cta-form" class="py-32 relative">
             <div class="container mx-auto px-6 md:px-12">
                 <div class="max-w-4xl mx-auto relative p-8 md:p-16 rounded-[2.5rem] overflow-hidden border border-white/10 text-center animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
@@ -462,7 +445,8 @@
                             Оставьте заявку, чтобы получить доступ к обучению и начать знакомство с криптовалютами.
                         </p>
 
-                        <form class="w-full max-w-sm flex flex-col gap-4" action="thanks.html">
+                        <!-- ИСПРАВЛЕНО: action ведет на /thanks/ -->
+                        <form class="w-full max-w-sm flex flex-col gap-4" action="/thanks/">
                             <input type="text" placeholder="Имя" class="w-full bg-white/5 border border-white/10 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 rounded-xl px-4 py-4 text-white placeholder-slate-400 outline-none transition-all text-center" required />
                             <input type="tel" placeholder="+7 (999) 000-00-00" class="w-full bg-white/5 border border-white/10 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 rounded-xl px-4 py-4 text-white placeholder-slate-400 outline-none transition-all text-center" required />
                             
@@ -511,12 +495,14 @@
                             </button>
                         </li>
                         <li>
-                            <a href="privacy.html" class="text-slate-400 hover:text-white transition-colors text-sm font-light">
+                            <!-- ИСПРАВЛЕНО: ведет на /policy/ -->
+                            <a href="/policy/" class="text-slate-400 hover:text-white transition-colors text-sm font-light">
                                 Политика конфиденциальности
                             </a>
                         </li>
                         <li>
-                            <a href="terms.html" class="text-slate-400 hover:text-white transition-colors text-sm font-light">
+                            <!-- ИСПРАВЛЕНО: ведет на /terms/ -->
+                            <a href="/terms/" class="text-slate-400 hover:text-white transition-colors text-sm font-light">
                                 Пользовательское соглашение
                             </a>
                         </li>
@@ -548,20 +534,14 @@
         </div>
     </footer>
 
-    <!-- Скрипты логики -->
     <script>
-        // Инициализация иконок
         lucide.createIcons();
-
-        // Текущий год в футере
         document.getElementById('copyright-year').innerHTML = `&copy; ${new Date().getFullYear()} Education Center. Все права защищены.`;
 
-        // Плавный скролл
         function scrollToSection(id) {
             const el = document.getElementById(id);
             if (el) {
                 el.scrollIntoView({ behavior: 'smooth' });
-                // Закрываем моб. меню если оно было открыто
                 const menu = document.getElementById('mobile-menu');
                 if (menu && menu.classList.contains('max-h-[400px]')) {
                     toggleMobileMenu();
@@ -569,7 +549,6 @@
             }
         }
 
-        // Логика шапки (прозрачность при скролле)
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 20) {
@@ -581,7 +560,6 @@
             }
         });
 
-        // Мобильное меню
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             const menuIcon = document.getElementById('menu-icon');
@@ -597,7 +575,6 @@
             closeIcon.classList.toggle('hidden');
         }
 
-        // Анимация при скролле
         document.addEventListener('DOMContentLoaded', () => {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
@@ -614,7 +591,6 @@
             });
         });
 
-        // FAQ Аккордеон
         function toggleFaq(index) {
             const containers = document.querySelectorAll('.faq-container');
             const contents = document.querySelectorAll('.faq-content');
@@ -622,7 +598,6 @@
 
             contents.forEach((content, i) => {
                 if (i === index) {
-                    // Открываем кликнутый
                     const isClosed = content.classList.contains('max-h-0');
                     if (isClosed) {
                         content.classList.remove('max-h-0', 'opacity-0');
@@ -631,7 +606,6 @@
                         containers[i].classList.add('bg-white/[0.06]', 'border-indigo-500/30');
                         containers[i].classList.remove('bg-[#0B1121]');
                     } else {
-                        // Закрываем, если он уже открыт
                         content.classList.add('max-h-0', 'opacity-0');
                         content.classList.remove('max-h-40', 'opacity-100', 'pb-5');
                         icons[i].classList.remove('rotate-180', 'text-indigo-400');
@@ -639,7 +613,6 @@
                         containers[i].classList.add('bg-[#0B1121]');
                     }
                 } else {
-                    // Закрываем остальные
                     content.classList.add('max-h-0', 'opacity-0');
                     content.classList.remove('max-h-40', 'opacity-100', 'pb-5');
                     icons[i].classList.remove('rotate-180', 'text-indigo-400');
