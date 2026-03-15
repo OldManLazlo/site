@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Center - Бесплатное обучение по криптовалютам</title>
+    
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Подключение иконок Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Кастомные стили и настройки Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'spin-slow': 'spin 10s linear infinite',
+                        'spin-reverse-slow': 'spin 15s linear infinite reverse',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B1121;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .animate-shimmer {
+            animation: shimmer 3s infinite linear;
+        }
+
+        /* Утилита для скрытия скроллбара, если нужно */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B1121;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="text-slate-300 font-sans selection:bg-indigo-500/30 overflow-x-hidden relative">
+
+    <!-- ФОНОВЫЕ ЭФФЕКТЫ -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-500/20 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-cyan-500/20 blur-[120px] rounded-full"></div>
+    </div>
+
+    <!-- 1. HEADER -->
+    <header id="header" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-6">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="scrollToSection('hero')">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center">
+                    <div class="w-3 h-3 bg-[#0B1121] rounded-sm"></div>
+                </div>
+                <span class="text-white font-medium text-lg tracking-wide">Education Center</span>
+            </div>
+
+            <!-- Десктопное меню -->
+            <nav class="hidden md:flex items-center gap-8">
+                <button onclick="scrollToSection('program')" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Программа</button>
+                <button onclick="scrollToSection('process')" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Как проходит обучение</button>
+                <button onclick="scrollToSection('team')" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Команда</button>
+                <button onclick="scrollToSection('faq')" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">FAQ</button>
+                <button onclick="scrollToSection('contacts')" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Контакты</button>
+            </nav>
+
+            <div class="hidden md:block">
+                <button onclick="scrollToSection('cta-form')" class="px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm font-medium transition-all hover:shadow-[0_0_20px_-5px_rgba(99,102,241,0.4)]">
+                    Начать обучение
+                </button>
+            </div>
+
+            <!-- Мобильная кнопка -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-300" onclick="toggleMobileMenu()">
+                <i data-lucide="menu" id="menu-icon"></i>
+                <i data-lucide="x" id="close-icon" class="hidden"></i>
+            </button>
+        </div>
+
+        <!-- Мобильное меню -->
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-[#0B1121]/95 backdrop-blur-xl border-b border-transparent transition-all duration-300 overflow-hidden md:hidden max-h-0 py-0">
+            <div class="flex flex-col px-6 gap-4">
+                <button onclick="scrollToSection('program')" class="text-left text-base font-medium text-slate-300 hover:text-white py-2">Программа</button>
+                <button onclick="scrollToSection('process')" class="text-left text-base font-medium text-slate-300 hover:text-white py-2">Как проходит обучение</button>
+                <button onclick="scrollToSection('team')" class="text-left text-base font-medium text-slate-300 hover:text-white py-2">Команда</button>
+                <button onclick="scrollToSection('faq')" class="text-left text-base font-medium text-slate-300 hover:text-white py-2">FAQ</button>
+                <button onclick="scrollToSection('contacts')" class="text-left text-base font-medium text-slate-300 hover:text-white py-2">Контакты</button>
+                <button onclick="scrollToSection('cta-form')" class="mt-2 w-full px-5 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 text-white font-medium">
+                    Начать обучение
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+        
+        <!-- 2. HERO SECTION -->
+        <section id="hero" class="pt-32 pb-20 md:pt-40 md:pb-32 container mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center gap-16 min-h-[90vh]">
+            <div class="w-full lg:w-1/2 flex flex-col gap-6 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 w-fit">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                    <span class="text-xs font-medium text-indigo-300 uppercase tracking-wider">Бесплатный курс</span>
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-tight tracking-tight">
+                    Бесплатное двухнедельное обучение по криптовалютам
+                </h1>
+                
+                <p class="text-xl text-slate-300 font-light leading-relaxed">
+                    8 уроков для тех, кто хочет разобраться в криптовалютах с нуля и понять основы работы крипторынка.
+                </p>
+                
+                <p class="text-base text-slate-400 leading-relaxed">
+                    За 2 недели вы изучите базовые принципы криптовалют, устройство блокчейна, основы безопасности и работу с криптокошельками.
+                </p>
+
+                <div class="pt-4 flex flex-col sm:flex-row gap-4 items-center">
+                    <button onclick="scrollToSection('cta-form')" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white text-[#0B1121] font-semibold text-base hover:bg-slate-200 transition-all shadow-[0_0_30px_-5px_rgba(255,255,255,0.3)] flex items-center justify-center gap-2">
+                        Начать бесплатное обучение
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+                <p class="text-sm text-slate-500">
+                    Оставьте заявку — с вами свяжется специалист, ответит на вопросы и поможет начать обучение.
+                </p>
+            </div>
+
+            <div class="w-full lg:w-1/2 relative lg:pl-10 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 delay-200 ease-out">
+                <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-cyan-400/5 rounded-3xl transform rotate-3 blur-sm"></div>
+                
+                <div class="relative bg-[#0F172A]/80 backdrop-blur-xl border border-white/10 p-8 md:p-10 rounded-3xl shadow-2xl">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-cyan-400 rounded-t-3xl"></div>
+                    
+                    <h3 class="text-2xl font-medium text-white mb-6">Заявка на обучение</h3>
+                    
+                    <form class="flex flex-col gap-4" action="thanks.html">
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-sm font-medium text-slate-400 pl-1">Имя</label>
+                            <input type="text" placeholder="Введите ваше имя" class="w-full bg-white/5 border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-4 py-3.5 text-white placeholder-slate-400 outline-none transition-all" required />
+                        </div>
+                        
+                        <div class="flex flex-col gap-1.5 mb-2">
+                            <label class="text-sm font-medium text-slate-400 pl-1">Телефон</label>
+                            <input type="tel" placeholder="+7 (999) 000-00-00" class="w-full bg-white/5 border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-4 py-3.5 text-white placeholder-slate-400 outline-none transition-all" required />
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 text-white font-medium text-base hover:from-indigo-500 hover:to-indigo-400 transition-all shadow-[0_0_20px_-5px_rgba(99,102,241,0.4)]">
+                            Отправить заявку
+                        </button>
+                    </form>
+                    
+                    <div class="mt-5 flex items-start gap-3">
+                        <i data-lucide="lock" class="w-4 h-4 text-slate-500 shrink-0 mt-0.5"></i>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Без обязательств. Специалист свяжется с вами в рабочее время.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="absolute -right-6 top-1/4 w-24 h-24 bg-indigo-500/20 rounded-2xl blur-xl animate-pulse"></div>
+                <div class="absolute -left-6 bottom-1/4 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl"></div>
+            </div>
+        </section>
+
+        <!-- 3. SECTION “ПОЧЕМУ ВАЖНО ПОНИМАТЬ ОСНОВЫ” -->
+        <section class="py-24 relative">
+            <div class="container mx-auto px-6 md:px-12">
+                <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 bg-white/[0.03] border border-white/5 p-8 md:p-12 rounded-[2.5rem] relative overflow-hidden animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-[80px]"></div>
+                    
+                    <div class="w-full md:w-1/3 flex justify-center">
+                        <div class="relative w-40 h-40">
+                            <div class="absolute inset-0 border border-indigo-500/30 rounded-full animate-spin-slow"></div>
+                            <div class="absolute inset-2 border border-cyan-400/20 rounded-full animate-spin-reverse-slow"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i data-lucide="network" class="w-12 h-12 text-indigo-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full md:w-2/3 flex flex-col gap-6 relative z-10">
+                        <h2 class="text-3xl md:text-4xl font-semibold text-white tracking-tight">
+                            Почему важно понимать основы криптовалют
+                        </h2>
+                        <div class="w-12 h-1 bg-gradient-to-r from-indigo-500 to-cyan-400 rounded-full"></div>
+                        <div class="space-y-4 text-slate-300 text-base md:text-lg leading-relaxed font-light">
+                            <p>Криптовалюты и технология блокчейн уже стали частью современной цифровой среды. Но для большинства людей эта тема до сих пор остаётся сложной и запутанной.</p>
+                            <p>Бесплатное двухнедельное обучение помогает последовательно разобраться в базовых понятиях, понять, как устроен крипторынок, и получить понятную основу для дальнейшего изучения темы.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SECTION “ЧТО ВХОДИТ В ОБУЧЕНИЕ” -->
+        <section id="program" class="py-24 relative">
+            <div class="container mx-auto px-6 md:px-12">
+                <div class="text-center max-w-2xl mx-auto mb-16 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
+                    <h2 class="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-6">
+                        Что разбирается в 8 уроках
+                    </h2>
+                    <p class="text-slate-300 text-lg font-light leading-relaxed">
+                        Программа состоит из 8 уроков, которые последовательно знакомят с ключевыми темами и помогают сформировать целостное понимание криптовалют.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Cards -->
+                    <div class="group p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-indigo-500/30 transition-all duration-300 animate-on-scroll opacity-0 translate-y-10" style="transition-delay: 0ms;">
+                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-indigo-500/50 transition-all duration-300 text-indigo-400">
+                            <i data-lucide="cpu" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-white text-base font-medium leading-snug">Что такое криптовалюта и блокчейн</h4>
+                    </div>
+                    <div class="group p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-indigo-500/30 transition-all duration-300 animate-on-scroll opacity-0 translate-y-10" style="transition-delay: 100ms;">
+                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-indigo-500/50 transition-all duration-300 text-indigo-400">
+                            <i data-lucide="network" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-white text-base font-medium leading-snug">Как устроен крипторынок</h4>
+                    </div>
+                    <div class="group p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-indigo-500/30 transition-all duration-300 animate-on-scroll opacity-0 translate-y-10" style="transition-delay: 200ms;">
+                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-indigo-500/50 transition-all duration-300 text-indigo-400">
+                            <i data-lucide="layers" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-white text-base font-medium leading-snug">Основные виды криптовалют</h4>
+                    </div>
+                    <div class="group p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-indigo-500/30 transition-all duration-300 animate-on-scroll opacity-0 translate-y-10" style="transition-delay: 300ms;">
+                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-indigo-500/50 transition-all duration-300 text-indigo-400">
+                            <i data-lucide="wallet" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-white text-base font-medium leading-snug">Как работают криптокошельки</h4>
+                    </div>
+                    <div class="group p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-indigo-500/30 transition-all duration-300 animate-on-scroll opacity-0 translate-y-10" style="transition-delay: 400ms;">
+                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-indigo-500/50 transition-all duration-300 text-indigo-400">
+                            <i data-lucide="shield" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-white text-base font-medium leading-snug">Основы безопасности</h4>
+                    </div>
+                    <div class="group p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-indigo-500/30 transition-all duration-300 animate-on-scroll opacity-0 translate-y-10" style="transition-delay: 500ms;">
+                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-indigo-500/50 transition-all duration-300 text-indigo-400">
+                            <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-white text-base font-medium leading-snug">Переводы и проверка транзакций</h4>
+                    </div>
+                    <div class="group p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-indigo-500/30 transition-all duration-300 animate-on-scroll opacity-0 translate-y-10" style="transition-delay: 600ms;">
+                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-indigo-500/50 transition-all duration-300 text-indigo-400">
+                            <i data-lucide="search" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-white text-base font-medium leading-snug">Базовые принципы анализа проектов</h4>
+                    </div>
+                    <div class="group p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-indigo-500/30 transition-all duration-300 animate-on-scroll opacity-0 translate-y-10" style="transition-delay: 700ms;">
+                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-indigo-500/50 transition-all duration-300 text-indigo-400">
+                            <i data-lucide="alert-circle" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-white text-base font-medium leading-snug">Частые ошибки новичков</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. SECTION “КАК ПРОХОДИТ ОБУЧЕНИЕ” -->
+        <section id="process" class="py-24 relative overflow-hidden">
+            <div class="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+            
+            <div class="container mx-auto px-6 md:px-12 relative z-10">
+                <div class="max-w-3xl mb-16 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
+                    <h2 class="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-6">
+                        Как проходит обучение
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 relative">
+                    <div class="hidden md:block absolute top-8 left-[16%] right-[16%] h-[2px] bg-white/5 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/50 to-cyan-400/50 w-full animate-shimmer"></div>
+                    </div>
+
+                    <div class="relative pt-4 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out" style="transition-delay: 0ms;">
+                        <div class="w-16 h-16 rounded-2xl bg-[#0F172A] border border-white/10 flex items-center justify-center text-xl font-bold text-white relative z-10 mx-auto md:mx-0 shadow-[0_0_20px_-5px_rgba(0,0,0,0.5)]">
+                            01
+                        </div>
+                        <div class="mt-8 text-center md:text-left">
+                            <h4 class="text-xl font-medium text-white mb-3">Заявка и контакт</h4>
+                            <p class="text-slate-300 font-light leading-relaxed text-sm md:text-base">После заявки с вами связывается специалист, отвечает на организационные вопросы и помогает начать обучение.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative pt-4 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out" style="transition-delay: 200ms;">
+                        <div class="w-16 h-16 rounded-2xl bg-[#0F172A] border border-white/10 flex items-center justify-center text-xl font-bold text-white relative z-10 mx-auto md:mx-0 shadow-[0_0_20px_-5px_rgba(0,0,0,0.5)]">
+                            02
+                        </div>
+                        <div class="mt-8 text-center md:text-left">
+                            <h4 class="text-xl font-medium text-white mb-3">Доступ к материалам</h4>
+                            <p class="text-slate-300 font-light leading-relaxed text-sm md:text-base">Вы получаете доступ к материалам и проходите 8 уроков в удобном темпе.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative pt-4 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out" style="transition-delay: 400ms;">
+                        <div class="w-16 h-16 rounded-2xl bg-[#0F172A] border border-white/10 flex items-center justify-center text-xl font-bold text-white relative z-10 mx-auto md:mx-0 shadow-[0_0_20px_-5px_rgba(0,0,0,0.5)]">
+                            03
+                        </div>
+                        <div class="mt-8 text-center md:text-left">
+                            <h4 class="text-xl font-medium text-white mb-3">Комфортный темп</h4>
+                            <p class="text-slate-300 font-light leading-relaxed text-sm md:text-base">Обычно на один урок требуется около 20–30 минут. Обучение можно проходить в удобное время, без жёсткого расписания.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. SECTION “КОМАНДА” -->
+        <section id="team" class="py-24 relative">
+            <div class="container mx-auto px-6 md:px-12">
+                <div class="flex flex-col lg:flex-row items-center gap-16">
+                    
+                    <div class="w-full lg:w-1/2 relative animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-4 pt-10">
+                                <div class="aspect-[4/5] rounded-2xl bg-white/[0.03] border border-white/10 relative overflow-hidden group shadow-lg flex flex-col items-center justify-center backdrop-blur-sm hover:border-indigo-500/30 transition-all duration-500">
+                                    <div class="absolute inset-0 bg-gradient-to-b from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    <i data-lucide="cpu" class="w-12 h-12 text-indigo-400 mb-4 group-hover:scale-110 transition-transform duration-500"></i>
+                                    <div class="text-white font-medium text-center">Методология</div>
+                                    <div class="text-slate-400 text-xs mt-1">Эксперты рынка</div>
+                                </div>
+                                <div class="aspect-square rounded-2xl bg-white/[0.03] border border-white/10 relative overflow-hidden group shadow-lg flex items-center justify-center backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-500">
+                                    <div class="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    <i data-lucide="layers" class="w-10 h-10 text-cyan-500/50 group-hover:text-cyan-400 transition-colors duration-500"></i>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="aspect-square rounded-2xl bg-white/[0.03] border border-white/10 relative overflow-hidden group shadow-lg flex items-center justify-center backdrop-blur-sm hover:border-indigo-500/30 transition-all duration-500">
+                                    <div class="absolute inset-0 bg-gradient-to-bl from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    <i data-lucide="network" class="w-10 h-10 text-indigo-500/50 group-hover:text-indigo-400 transition-colors duration-500"></i>
+                                </div>
+                                <div class="aspect-[4/5] rounded-2xl bg-white/[0.03] border border-white/10 relative overflow-hidden group shadow-lg flex flex-col items-center justify-center backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-500">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    <i data-lucide="shield" class="w-12 h-12 text-cyan-400 mb-4 group-hover:scale-110 transition-transform duration-500"></i>
+                                    <div class="text-white font-medium text-center">Кураторство</div>
+                                    <div class="text-slate-400 text-xs mt-1">Поддержка 24/7</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full lg:w-1/2 flex flex-col gap-6 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 delay-200 ease-out">
+                        <h2 class="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-2">
+                            Кто подготовил обучение
+                        </h2>
+                        <div class="space-y-5 text-slate-300 text-lg font-light leading-relaxed">
+                            <p>Программа подготовлена командой специалистов, которые изучают криптовалюты, технологию блокчейн и цифровые активы.</p>
+                            <p>Наша задача — объяснить сложные темы простым языком и помочь новичкам спокойно разобраться в базовых принципах работы крипторынка.</p>
+                            <p>Материалы обучения собраны так, чтобы даже человек без опыта смог постепенно погрузиться в тему и понять её без перегруза сложными терминами.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. SECTION FAQ -->
+        <section id="faq" class="py-24 relative bg-white/[0.02] border-y border-white/5">
+            <div class="container mx-auto px-6 md:px-12 max-w-4xl">
+                <div class="text-center mb-16 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
+                    <h2 class="text-3xl md:text-4xl font-semibold text-white tracking-tight">
+                        Часто задаваемые вопросы
+                    </h2>
+                </div>
+
+                <div class="space-y-3 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
+                    
+                    <div class="faq-container border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 bg-[#0B1121] hover:bg-white/[0.04]">
+                        <button onclick="toggleFaq(0)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
+                            <span class="font-medium text-white text-base md:text-lg pr-4">Сколько стоит обучение?</span>
+                            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-300 shrink-0"></i>
+                        </button>
+                        <div class="faq-content px-6 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
+                            <p class="text-slate-300 font-light leading-relaxed text-sm md:text-base">Обучение предоставляется бесплатно.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-container border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 bg-[#0B1121] hover:bg-white/[0.04]">
+                        <button onclick="toggleFaq(1)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
+                            <span class="font-medium text-white text-base md:text-lg pr-4">Нужен ли опыт?</span>
+                            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-300 shrink-0"></i>
+                        </button>
+                        <div class="faq-content px-6 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
+                            <p class="text-slate-300 font-light leading-relaxed text-sm md:text-base">Нет, программа рассчитана на тех, кто только начинает разбираться в теме.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-container border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 bg-[#0B1121] hover:bg-white/[0.04]">
+                        <button onclick="toggleFaq(2)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
+                            <span class="font-medium text-white text-base md:text-lg pr-4">Почему после заявки звонит специалист?</span>
+                            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-300 shrink-0"></i>
+                        </button>
+                        <div class="faq-content px-6 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
+                            <p class="text-slate-300 font-light leading-relaxed text-sm md:text-base">Чтобы ответить на вопросы, уточнить детали и помочь вам спокойно начать обучение.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-container border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 bg-[#0B1121] hover:bg-white/[0.04]">
+                        <button onclick="toggleFaq(3)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
+                            <span class="font-medium text-white text-base md:text-lg pr-4">Сколько времени занимает обучение?</span>
+                            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-300 shrink-0"></i>
+                        </button>
+                        <div class="faq-content px-6 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
+                            <p class="text-slate-300 font-light leading-relaxed text-sm md:text-base">Программа рассчитана на 2 недели и включает 8 уроков. В среднем на один урок уходит 20–30 минут.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-container border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 bg-[#0B1121] hover:bg-white/[0.04]">
+                        <button onclick="toggleFaq(4)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
+                            <span class="font-medium text-white text-base md:text-lg pr-4">Можно ли проходить уроки в удобное время?</span>
+                            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-300 shrink-0"></i>
+                        </button>
+                        <div class="faq-content px-6 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
+                            <p class="text-slate-300 font-light leading-relaxed text-sm md:text-base">Да, обучение можно проходить в комфортном темпе.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. FINAL CTA SECTION -->
+        <section id="cta-form" class="py-32 relative">
+            <div class="container mx-auto px-6 md:px-12">
+                <div class="max-w-4xl mx-auto relative p-8 md:p-16 rounded-[2.5rem] overflow-hidden border border-white/10 text-center animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
+                    
+                    <div class="absolute inset-0 bg-gradient-to-b from-[#0F172A] to-[#0B1121]"></div>
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[600px] bg-indigo-600/10 blur-[100px] rounded-full"></div>
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-50"></div>
+
+                    <div class="relative z-10 flex flex-col items-center">
+                        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-white tracking-tight mb-6 leading-tight">
+                            Начните бесплатное <br class="hidden md:block"/>двухнедельное обучение
+                        </h2>
+                        <p class="text-slate-300 text-lg font-light mb-10 max-w-xl">
+                            Оставьте заявку, чтобы получить доступ к обучению и начать знакомство с криптовалютами.
+                        </p>
+
+                        <form class="w-full max-w-sm flex flex-col gap-4" action="thanks.html">
+                            <input type="text" placeholder="Имя" class="w-full bg-white/5 border border-white/10 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 rounded-xl px-4 py-4 text-white placeholder-slate-400 outline-none transition-all text-center" required />
+                            <input type="tel" placeholder="+7 (999) 000-00-00" class="w-full bg-white/5 border border-white/10 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 rounded-xl px-4 py-4 text-white placeholder-slate-400 outline-none transition-all text-center" required />
+                            
+                            <button type="submit" class="w-full mt-2 py-4 rounded-xl bg-white text-[#0B1121] font-semibold text-base hover:bg-slate-200 transition-all shadow-[0_0_30px_-5px_rgba(255,255,255,0.2)]">
+                                Получить доступ к обучению
+                            </button>
+                            
+                            <p class="text-xs text-slate-500 mt-2">
+                                Количество мест на текущий набор ограничено.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 9. FOOTER -->
+    <footer id="contacts" class="border-t border-white/5 bg-[#0B1121] pt-16 pb-8 relative z-10">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-6 h-6 rounded bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center">
+                            <div class="w-2 h-2 bg-[#0B1121] rounded-sm"></div>
+                        </div>
+                        <span class="text-white font-medium text-lg">Education Center</span>
+                    </div>
+                    <p class="text-slate-400 text-sm font-light max-w-xs leading-relaxed">
+                        Образовательная платформа для комфортного старта и изучения базовых принципов крипторынка.
+                    </p>
+                </div>
+                
+                <div>
+                    <h5 class="text-white font-medium mb-5 text-sm uppercase tracking-wider">Навигация</h5>
+                    <ul class="space-y-3">
+                        <li>
+                            <button onclick="scrollToSection('program')" class="text-slate-400 hover:text-white transition-colors text-sm font-light text-left">
+                                Программа
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="scrollToSection('faq')" class="text-slate-400 hover:text-white transition-colors text-sm font-light text-left">
+                                FAQ
+                            </button>
+                        </li>
+                        <li>
+                            <a href="privacy.html" class="text-slate-400 hover:text-white transition-colors text-sm font-light">
+                                Политика конфиденциальности
+                            </a>
+                        </li>
+                        <li>
+                            <a href="terms.html" class="text-slate-400 hover:text-white transition-colors text-sm font-light">
+                                Пользовательское соглашение
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="text-white font-medium mb-5 text-sm uppercase tracking-wider">Контакты</h5>
+                    <ul class="space-y-3">
+                        <li><span class="text-slate-400 text-sm font-light">crypto.edu@list.ru</span></li>
+                        <li><span class="text-slate-400 text-sm font-light">+7 (967) 519-73-53</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-white/5 flex flex-col items-center text-center">
+                <p class="text-xs text-slate-500 font-light max-w-3xl leading-relaxed mb-4">
+                    Материалы обучения носят исключительно образовательный характер и не являются индивидуальной инвестиционной рекомендацией.
+                </p>
+                <div class="text-xs text-slate-600 space-y-1">
+                    <p>ИП Куценко Н.О. | ИНН 860408700802 | ОГРНИП 320665800111086</p>
+                    <p>Адрес: г. Екатеринбург, ул. Татищева, д. 90, кв. 73</p>
+                    <p>Лицензия Л035-01277-66/00193426 выдана Министерством образования и молодежной политики Свердловской области 17.08.2021 г.</p>
+                </div>
+                <p class="text-xs text-slate-700 mt-6" id="copyright-year">
+                    &copy; 2026 Education Center. Все права защищены.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипты логики -->
+    <script>
+        // Инициализация иконок
+        lucide.createIcons();
+
+        // Текущий год в футере
+        document.getElementById('copyright-year').innerHTML = `&copy; ${new Date().getFullYear()} Education Center. Все права защищены.`;
+
+        // Плавный скролл
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+                // Закрываем моб. меню если оно было открыто
+                const menu = document.getElementById('mobile-menu');
+                if (menu && menu.classList.contains('max-h-[400px]')) {
+                    toggleMobileMenu();
+                }
+            }
+        }
+
+        // Логика шапки (прозрачность при скролле)
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('bg-[#0B1121]/80', 'backdrop-blur-lg', 'border-b', 'border-white/5', 'py-4');
+                header.classList.remove('bg-transparent', 'py-6');
+            } else {
+                header.classList.remove('bg-[#0B1121]/80', 'backdrop-blur-lg', 'border-b', 'border-white/5', 'py-4');
+                header.classList.add('bg-transparent', 'py-6');
+            }
+        });
+
+        // Мобильное меню
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            menu.classList.toggle('max-h-[400px]');
+            menu.classList.toggle('py-4');
+            menu.classList.toggle('max-h-0');
+            menu.classList.toggle('py-0');
+            menu.classList.toggle('border-transparent');
+            
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        }
+
+        // Анимация при скролле
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+
+        // FAQ Аккордеон
+        function toggleFaq(index) {
+            const containers = document.querySelectorAll('.faq-container');
+            const contents = document.querySelectorAll('.faq-content');
+            const icons = document.querySelectorAll('.faq-icon');
+
+            contents.forEach((content, i) => {
+                if (i === index) {
+                    // Открываем кликнутый
+                    const isClosed = content.classList.contains('max-h-0');
+                    if (isClosed) {
+                        content.classList.remove('max-h-0', 'opacity-0');
+                        content.classList.add('max-h-40', 'opacity-100', 'pb-5');
+                        icons[i].classList.add('rotate-180', 'text-indigo-400');
+                        containers[i].classList.add('bg-white/[0.06]', 'border-indigo-500/30');
+                        containers[i].classList.remove('bg-[#0B1121]');
+                    } else {
+                        // Закрываем, если он уже открыт
+                        content.classList.add('max-h-0', 'opacity-0');
+                        content.classList.remove('max-h-40', 'opacity-100', 'pb-5');
+                        icons[i].classList.remove('rotate-180', 'text-indigo-400');
+                        containers[i].classList.remove('bg-white/[0.06]', 'border-indigo-500/30');
+                        containers[i].classList.add('bg-[#0B1121]');
+                    }
+                } else {
+                    // Закрываем остальные
+                    content.classList.add('max-h-0', 'opacity-0');
+                    content.classList.remove('max-h-40', 'opacity-100', 'pb-5');
+                    icons[i].classList.remove('rotate-180', 'text-indigo-400');
+                    containers[i].classList.remove('bg-white/[0.06]', 'border-indigo-500/30');
+                    containers[i].classList.add('bg-[#0B1121]');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
