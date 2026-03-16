@@ -5,22 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crypto Academy | Интенсив</title>
     <link rel="icon" href="/assets/favicon.png" type="image/png">
-<link rel="shortcut icon" href="/assets/favicon.png" type="image/png">
-<link rel="apple-touch-icon" href="/assets/favicon.png">
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107712377', 'ym');
 
-    ym(107712377, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/107712377" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107712377', 'ym');
+
+        ym(107712377, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/107712377" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
     <style>
         :root {
             --primary-purple: #6C63FF; 
@@ -137,12 +139,11 @@
         .expert-text li { position: relative; padding-left: 30px; margin-bottom: 12px; color: var(--text-dark); font-size: 15px; }
         .expert-text li::before { content: '✦'; position: absolute; left: 0; color: var(--accent-blue); font-weight: bold; font-size: 16px; }
         
-        /* Железобетонный тег <img> для команды (iOS 100% покажет) */
         .expert-photo {
             flex-shrink: 0; width: 280px; height: 280px;
             border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.08);
             object-fit: cover; display: block;
-            background-color: #f0f0ff; /* Заглушка на долю секунды, пока грузится фото */
+            background-color: #f0f0ff;
         }
 
         /* --- FAQ --- */
@@ -150,6 +151,65 @@
         .faq-item:hover { border-color: rgba(108, 99, 255, 0.3); box-shadow: 0 5px 15px rgba(108, 99, 255, 0.05); }
         .faq-item h4 { margin: 0 0 8px 0; font-size: 16px; color: var(--text-dark); font-weight: 700; }
         .faq-item p { margin: 0; color: var(--text-gray); font-size: 14px; }
+
+        /* --- ДОП. CTA БЛОК --- */
+        .final-cta {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .final-cta-card {
+            max-width: 820px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--card-shadow);
+            padding: 42px 32px;
+            text-align: center;
+            border: 1px solid rgba(108, 99, 255, 0.08);
+        }
+
+        .final-cta-card h3 {
+            font-family: 'Manrope', sans-serif;
+            font-size: clamp(24px, 3vw, 34px);
+            font-weight: 800;
+            margin: 0 0 14px 0;
+            color: var(--text-dark);
+        }
+
+        .final-cta-card p {
+            margin: 0 auto 24px;
+            max-width: 560px;
+            color: var(--text-gray);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .btn-purple-outline {
+            display: inline-block;
+            background: var(--primary-purple);
+            color: #fff;
+            padding: 18px 40px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.25);
+            transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-purple-outline:hover {
+            transform: translateY(-3px);
+            background: var(--primary-purple-hover);
+            box-shadow: 0 15px 35px rgba(108, 99, 255, 0.35);
+        }
+
+        .final-cta-note {
+            font-size: 12px;
+            color: var(--text-gray);
+            margin-top: 16px;
+        }
 
         /* --- FOOTER --- */
         footer { background: #1a1a2e; color: rgba(255,255,255,0.7); padding: 50px 0; font-size: 13px; margin-top: 40px; }
@@ -191,6 +251,10 @@
                 padding: 0 10px;
             }
             .nav a { font-size: 13px; }
+
+            .final-cta-card {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
@@ -262,9 +326,9 @@
                     </ul>
                 </div>
                 <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-     alt="Команда экспертов"
-     class="expert-photo"
-     referrerpolicy="no-referrer">
+                     alt="Команда экспертов"
+                     class="expert-photo"
+                     referrerpolicy="no-referrer">
             </div>
         </div>
     </section>
@@ -280,27 +344,40 @@
         </div>
     </section>
 
+    <section class="final-cta">
+        <div class="container">
+            <div class="final-cta-card">
+                <h3>Готовы начать обучение?</h3>
+                <p>Оставьте заявку и получите доступ к материалам курса. Подходит для тех, кто хочет спокойно разобраться в криптовалютах с нуля.</p>
+                <button class="btn-purple-outline" onclick="openModal()">Получить доступ к курсу</button>
+                <div class="final-cta-note">
+                    Нажимая кнопку, вы соглашаетесь с <a href="/policy/" style="color: var(--primary-purple); text-decoration: none; border-bottom: 1px solid rgba(108, 99, 255, 0.35);">политикой конфиденциальности</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div>
-                <strong>ООО «АДИ ГРУПП»</strong>
-                <p>ОГРН: 1127746620275 | ИНН: 7743861027</p>
-                <p>125438, г. Москва, Автомоторная ул., д. 4а стр. 21, пом. 6п</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <strong>ООО «АДИ ГРУПП»</strong>
+                    <p>ОГРН: 1127746620275 | ИНН: 7743861027</p>
+                    <p>125438, г. Москва, Автомоторная ул., д. 4а стр. 21, пом. 6п</p>
+                </div>
+                <div style="text-align: right;">
+                    <p>Email: hello@adi-group.ru</p>
+                    <a href="/policy/">Политика конфиденциальности</a>
+                </div>
             </div>
-            <div style="text-align: right;">
-                
-                <p>Email: hello@adi-group.ru</p>
-                <a href="/policy/">Политика конфиденциальности</a>
+            <div style="text-align: center; margin-top: 30px; opacity: 0.5;">
+                "Информация на сайте носит образовательный характер и не является инвестиционной рекомендацией"<br>
+                © Blockchain Academy Pro 2026
             </div>
         </div>
-        <div style="text-align: center; margin-top: 30px; opacity: 0.5;">
-            "Информация на сайте носит образовательный характер и не является инвестиционной рекомендацией"<br>
-            © Blockchain Academy Pro 2026
-        </div>
-    </div>
-</footer>
-<div class="modal-overlay" id="modal">
+    </footer>
+
+    <div class="modal-overlay" id="modal">
         <div class="modal-card">
             <span class="close-btn" onclick="closeModal()">×</span>
             <h3 style="margin-top: 0; color: var(--text-dark); font-weight: 800;">Начать обучение</h3>
@@ -314,54 +391,54 @@
         </div>
     </div>
 
-   <script>
-    function openModal() {
-        document.getElementById('modal').style.display = 'flex';
-    }
+    <script>
+        function openModal() {
+            document.getElementById('modal').style.display = 'flex';
+        }
 
-    function closeModal() {
-        document.getElementById('modal').style.display = 'none';
-    }
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
 
-    async function submitForm(event) {
-        event.preventDefault();
+        async function submitForm(event) {
+            event.preventDefault();
 
-        const form = event.target;
-        const name = form.querySelector('input[type="text"]').value.trim();
-        const phone = form.querySelector('input[type="tel"]').value.trim();
+            const form = event.target;
+            const name = form.querySelector('input[type="text"]').value.trim();
+            const phone = form.querySelector('input[type="tel"]').value.trim();
 
-        const webhookUrl = "https://hook.eu2.make.com/4zwo6knvsf1wy6hvek345dabvlmxj5tn";
+            const webhookUrl = "https://hook.eu2.make.com/4zwo6knvsf1wy6hvek345dabvlmxj5tn";
 
-        try {
-            const response = await fetch(webhookUrl, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    name: name,
-                    phone: phone,
-                    page: window.location.href,
-                    time: new Date().toISOString()
-                })
-            });
+            try {
+                const response = await fetch(webhookUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        phone: phone,
+                        page: window.location.href,
+                        time: new Date().toISOString()
+                    })
+                });
 
-            if (!response.ok) {
-                throw new Error("Ошибка отправки");
+                if (!response.ok) {
+                    throw new Error("Ошибка отправки");
+                }
+
+                window.location.href = "/thanks/";
+            } catch (error) {
+                alert("Не удалось отправить заявку. Попробуйте ещё раз.");
+                console.error(error);
             }
-
-            window.location.href = "/thanks/";
-        } catch (error) {
-            alert("Не удалось отправить заявку. Попробуйте ещё раз.");
-            console.error(error);
         }
-    }
 
-    window.onclick = function(e) {
-        if (e.target == document.getElementById('modal')) {
-            closeModal();
+        window.onclick = function(e) {
+            if (e.target == document.getElementById('modal')) {
+                closeModal();
+            }
         }
-    }
-</script>
-
-
+    </script>
+</body>
+</html>
