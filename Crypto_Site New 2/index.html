@@ -3,661 +3,849 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Education Center - Бесплатное обучение по криптовалютам</title>
+    <title>Разберись в криптовалютах за 2 недели | Digital Learning</title>
 
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="shortcut icon" href="favicon.png">
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                    animation: {
-                        'spin-slow': 'spin 10s linear infinite',
-                        'spin-reverse-slow': 'spin 15s linear infinite reverse',
-                    }
-                }
-            }
-        }
-    </script>
-    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        /* === PREMIUM LIGHT EDTECH / FINTECH STYLE === */
+        :root {
+            --primary: #2563EB; /* Насыщенный синий */
+            --primary-hover: #1D4ED8; /* Глубокий синий для ховера */
+            --accent: #0EA5E9; /* Мягкий голубой / Cyan */
+            --bg-main: #F4F7FB; /* Благородный светло-серо-голубой для чередования */
+            --bg-white: #FFFFFF; /* Чистый белый */
+            --bg-card: #FFFFFF;
+            --text-heading: #0F172A; /* Глубокий темно-синий (почти черный) */
+            --text-main: #334155; /* Мягкий темно-серый / slate */
+            --text-muted: #64748B; /* Вторичный серо-голубой */
+            --border: #E2E8F0; /* Легкие рамки */
+            --border-highlight: #BFDBFE; /* Акцентные голубые рамки */
+            
+            /* Дорогие мягкие тени */
+            --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.02);
+            --shadow-card: 0 10px 30px -10px rgba(15, 23, 42, 0.05), 0 4px 6px -2px rgba(15, 23, 42, 0.02);
+            --shadow-card-hover: 0 20px 40px -10px rgba(37, 99, 235, 0.08), 0 0 0 1px rgba(37, 99, 235, 0.05);
+            --shadow-form: 0 25px 50px -12px rgba(15, 23, 42, 0.1), 0 0 0 1px rgba(226, 232, 240, 0.5);
+            
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --section-pad: 80px; 
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0B1121;
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-white);
+            color: var(--text-main); 
+            line-height: 1.6; 
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        .animate-shimmer {
-            animation: shimmer 3s infinite linear;
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-main); }
+        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 10; }
+
+        /* Очень деликатные воздушные фоновые пятна */
+        .bg-mesh {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none;
+            background-color: transparent;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(37, 99, 235, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 90% 30%, rgba(14, 165, 233, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 40% 80%, rgba(37, 99, 235, 0.02) 0%, transparent 50%);
+            filter: blur(30px);
         }
 
-        ::-webkit-scrollbar {
-            width: 8px;
+        /* Универсальные классы */
+        .flex { display: flex; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .text-center { text-align: center; }
+        .w-full { width: 100%; }
+
+        /* Градиентный текст для заголовка */
+        .text-gradient {
+            background: linear-gradient(90deg, #1E3A8A 0%, #2563EB 50%, #0EA5E9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
         }
-        ::-webkit-scrollbar-track {
-            background: #0B1121;
+
+        /* Кнопки (Более выразительные, градиент глубокий синий -> голубой) */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            background: linear-gradient(90deg, #1E3A8A 0%, #2563EB 50%, #0EA5E9 100%);
+            background-size: 200% auto;
+            color: #FFFFFF; padding: 16px 32px; border-radius: 12px;
+            font-weight: 600; font-size: 16px; border: none; cursor: pointer;
+            transition: var(--transition); text-decoration: none; position: relative;
+            box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.3), 0 4px 8px -2px rgba(37, 99, 235, 0.2);
+            white-space: nowrap;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 4px;
+        .btn:hover { 
+            transform: translateY(-2px); 
+            background-position: right center;
+            box-shadow: 0 12px 25px -4px rgba(37, 99, 235, 0.45), 0 6px 12px -2px rgba(37, 99, 235, 0.3); 
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #334155;
+        .btn-glow { animation: none; } /* Убираем неон, оставляем солидную тень */
+
+        /* Header */
+        header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 15px 0; transition: var(--transition); background: transparent; }
+        header.scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); box-shadow: 0 2px 10px rgba(15,23,42,0.03); }
+        
+        .header-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: nowrap; gap: 16px; }
+        
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer; flex-shrink: 0; }
+        .logo-box { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; justify-content: center; align-items: center; color: white; box-shadow: 0 4px 10px rgba(37,99,235,0.2);}
+        .logo-text { font-size: 19px; font-weight: 800; color: var(--text-heading); letter-spacing: -0.5px; white-space: nowrap; }
+        
+        nav { display: none; gap: 24px; flex-shrink: 1; overflow: hidden; }
+        @media (min-width: 1024px) { nav { display: flex; } }
+        .nav-link { color: var(--text-muted); text-decoration: none; font-size: 15px; font-weight: 500; transition: var(--transition); background: none; border: none; cursor: pointer; white-space: nowrap;}
+        .nav-link:hover { color: var(--primary); }
+
+        .header-btn-wrap { flex-shrink: 0; display: none; }
+        @media (min-width: 1024px) { .header-btn-wrap { display: block; } }
+
+        .menu-btn { display: block; background: none; border: none; cursor: pointer; color: var(--text-heading); flex-shrink: 0; }
+        @media (min-width: 1024px) { .menu-btn { display: none; } }
+
+        .mobile-menu { position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-white); max-height: 0; overflow: hidden; transition: var(--transition); box-shadow: 0 10px 15px -3px rgba(15,23,42,0.05); }
+        .mobile-menu.open { max-height: 400px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .mobile-link { display: block; padding: 12px 24px; color: var(--text-heading); font-weight: 500; text-align: left; background: none; border: none; width: 100%; }
+
+        /* Чередование фонов секций */
+        .section-bg-alt { background-color: var(--bg-main); border-top: 1px solid #F1F5F9; border-bottom: 1px solid #F1F5F9; }
+        .section-bg-white { background-color: var(--bg-white); }
+
+        /* Hero Section - Переработан на более контрастный, но светлый */
+        .hero { 
+            padding: 150px 0 80px; 
+            position: relative; 
+            background: linear-gradient(135deg, #F0F7FF 0%, #E0F2FE 50%, #E1F8FA 100%); 
+            overflow: hidden;
         }
+        .hero::before {
+            content: ''; position: absolute; top: -20%; left: -10%; width: 70%; height: 70%;
+            background: radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 60%);
+            z-index: 0; pointer-events: none;
+        }
+        .hero::after {
+            content: ''; position: absolute; bottom: -20%; right: -10%; width: 70%; height: 70%;
+            background: radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 60%);
+            z-index: 0; pointer-events: none;
+        }
+        .hero-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; position: relative; z-index: 2;}
+        @media (min-width: 1024px) { .hero-grid { grid-template-columns: 1.15fr 0.85fr; gap: 60px;} }
+        
+        .badge {
+            display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px;
+            background: #FFFFFF; border: 1px solid rgba(37, 99, 235, 0.15);
+            border-radius: 100px; font-size: 13px; font-weight: 600; color: var(--primary); 
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.05);
+        }
+        .hero-title { font-size: 38px; font-weight: 800; line-height: 1.15; margin-bottom: 20px; letter-spacing: -1px; color: var(--text-heading);}
+        @media (min-width: 768px) { .hero-title { font-size: 52px; } }
+        .hero-subtitle { font-size: 18px; color: var(--text-main); margin-bottom: 32px; font-weight: 400; max-width: 90%; line-height: 1.6;}
+        
+        .hero-bullets { margin-bottom: 32px; display: flex; flex-direction: column; gap: 14px; }
+        .hero-bullet { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--text-main); font-weight: 500;}
+        .hero-bullet svg { flex-shrink: 0; color: var(--primary); margin-top: 2px; }
+
+        .hero-actions { margin-top: 10px; }
+        .hero-subtext { font-size: 13px; color: var(--text-muted); margin-top: 14px; text-align: left; }
+
+        /* Форма в Hero (Дорогая, выделяющаяся карточка) */
+        .desktop-form { position: relative; z-index: 2; }
+        .form-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: 24px; padding: 40px; 
+            box-shadow: 0 0 40px rgba(14, 165, 233, 0.08), 0 25px 50px -12px rgba(15, 23, 42, 0.15); 
+            position: relative; overflow: hidden;
+            transform: translateY(0);
+        }
+        .form-card::before { 
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; 
+            background: linear-gradient(90deg, #0EA5E9, #2563EB, #1E3A8A); 
+        }
+        .form-title { font-size: 24px; font-weight: 700; margin-bottom: 24px; color: var(--text-heading); text-align: center;}
+        
+        .input-group { margin-bottom: 16px; text-align: left; }
+        .input-label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 8px; font-weight: 600; }
+        .input-field {
+            width: 100%; padding: 14px 18px; border-radius: 12px;
+            background: #F8FAFC; border: 1px solid #CBD5E1;
+            color: var(--text-heading); font-size: 15px; outline: none; transition: var(--transition);
+            box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.02);
+        }
+        .input-field::placeholder { color: #94A3B8; }
+        .input-field:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1), inset 0 2px 4px rgba(15, 23, 42, 0.02); background: var(--bg-white);}
+        .input-error { color: #EF4444; font-size: 12px; margin-top: 6px; display: none; }
+        .form-disclaimer { font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-top: 12px;}
+        .form-disclaimer a { color: var(--primary); text-decoration: underline; }
+
+        .desktop-form { display: none; }
+        @media (min-width: 1024px) { .desktop-form { display: block; } }
+
+        /* Секции общие */
+        .section { padding: var(--section-pad) 0; position: relative; }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-title { font-size: 32px; font-weight: 800; color: var(--text-heading); margin-bottom: 16px; letter-spacing: -0.5px;}
+        .section-subtitle { font-size: 18px; color: var(--text-muted); max-width: 700px; margin: 0 auto; font-weight: 400; line-height: 1.6;}
+
+        /* Карточки (Мягкие, многослойные) */
+        .target-card, .lesson-card, .result-item, .step-item, .team-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow-card);
+            position: relative;
+            z-index: 2;
+            transition: var(--transition);
+        }
+        .target-card:hover, .lesson-card:hover, .team-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-highlight);
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        /* Карточки "Для кого" с верхним цветовым акцентом */
+        .target-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+        @media (min-width: 768px) { .target-grid { grid-template-columns: repeat(3, 1fr); } }
+        .target-card { padding: 32px 24px; border-top: 3px solid transparent; }
+        .target-card:hover { border-top-color: var(--primary); }
+        .target-icon { width: 50px; height: 50px; background: linear-gradient(135deg, #EFF6FF, #E0F2FE); border: 1px solid #DBEAFE; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: var(--primary); margin-bottom: 20px; box-shadow: 0 4px 10px rgba(37,99,235,0.05);}
+        .target-title { font-size: 20px; font-weight: 700; color: var(--text-heading); margin-bottom: 12px; }
+        .target-desc { font-size: 15px; color: var(--text-main); margin-bottom: 20px; }
+        .target-result { font-size: 14px; color: var(--primary); font-weight: 600; padding-top: 16px; border-top: 1px solid var(--border); }
+
+        /* Программа */
+        .program-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 768px) { .program-grid { grid-template-columns: repeat(2, 1fr); } }
+        .lesson-card { display: flex; gap: 20px; padding: 24px; overflow: hidden;}
+        .lesson-num { font-size: 40px; font-weight: 900; color: rgba(37, 99, 235, 0.08); line-height: 0.8; margin-top: 4px; font-family: sans-serif;}
+        .lesson-info h4 { font-size: 17px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px; }
+        .lesson-info p { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+        /* Результаты */
+        .results-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 768px) { .results-grid { grid-template-columns: repeat(2, 1fr); } }
+        .result-item { display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: linear-gradient(145deg, #FFFFFF, #F8FAFC); }
+        .result-item svg { color: var(--primary); flex-shrink: 0; width: 28px; height: 28px; background: #EFF6FF; border-radius: 50%; padding: 4px;}
+        .result-item p { font-size: 15px; color: var(--text-main); }
+
+        /* Формат обучения */
+        .steps-wrapper { max-width: 900px; margin: 0 auto; position: relative;}
+        .step-item { display: flex; align-items: flex-start; gap: 24px; margin-bottom: 24px; padding: 28px; }
+        .step-icon { width: 50px; height: 50px; flex-shrink: 0; background: linear-gradient(135deg, #EFF6FF, #E0F2FE); border: 1px solid #BFDBFE; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: 800; font-size: 20px; box-shadow: 0 4px 10px rgba(37,99,235,0.05);}
+        .step-content h4 { font-size: 19px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px; }
+        .step-content p { color: var(--text-main); font-size: 15px; }
+
+        /* Команда / Авторы */
+        .team-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
+        @media (min-width: 1024px) { .team-grid { grid-template-columns: 1fr 1fr; gap: 80px; } }
+        .team-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .team-card { padding: 32px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; aspect-ratio: 4/5; }
+        .team-card-icon { width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; background: linear-gradient(135deg, #EFF6FF, #E0F2FE); border: 1px solid #DBEAFE; border-radius: 50%; color: var(--primary); box-shadow: 0 4px 10px rgba(37,99,235,0.05);}
+        .team-card-icon svg { width: 28px; height: 28px; }
+        .team-card-title { font-size: 17px; font-weight: 700; color: var(--text-heading); margin-bottom: 6px; }
+        .team-card-desc { font-size: 13px; color: var(--text-muted); font-weight: 500;}
+        .team-text-block h2 { text-align: left; margin-bottom: 24px; color: var(--text-heading);}
+        .team-text-block p { color: var(--text-main); font-size: 16px; margin-bottom: 20px; line-height: 1.7; }
+        
+        .mid-cta { text-align: center; margin-top: 40px; }
+
+        /* FAQ (Аккордеон) */
+        .faq-item { background: var(--bg-white); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 12px; overflow: hidden; transition: var(--transition); box-shadow: var(--shadow-sm);}
+        .faq-btn { width: 100%; padding: 22px 24px; display: flex; justify-content: space-between; align-items: center; background: none; border: none; cursor: pointer; font-size: 16px; font-weight: 600; color: var(--text-heading); text-align: left; }
+        .faq-content { max-height: 0; padding: 0 24px; opacity: 0; transition: var(--transition); color: var(--text-main); font-size: 15px;}
+        .faq-item.open { border-color: var(--border-highlight); background: #F8FAFC; box-shadow: var(--shadow-card-hover);}
+        .faq-item.open .faq-content { max-height: 200px; padding: 0 24px 24px; opacity: 1; }
+        .faq-item.open .faq-icon { transform: rotate(180deg); color: var(--primary); }
+
+        /* Bottom CTA */
+        .cta-section { padding: 60px 0 80px; text-align: center; position: relative; background: linear-gradient(180deg, var(--bg-main) 0%, #E0E7FF 100%); border-top: 1px solid var(--border);} 
+        .cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60%; height: 80%; background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 60%); filter: blur(50px); z-index: 0; pointer-events: none;}
+        .cta-container { max-width: 500px; margin: 0 auto; position: relative; z-index: 10; }
+
+        /* Footer */
+        footer { background: #F8FAFC; padding: 60px 0 30px; font-size: 14px; border-top: 1px solid #E2E8F0; position: relative; z-index: 10;}
+        .footer-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin-bottom: 40px; }
+        @media (min-width: 768px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
+        .footer-title { color: var(--text-heading); font-weight: 700; margin-bottom: 20px; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;}
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a, .footer-links button { color: var(--text-muted); text-decoration: none; background: none; border: none; cursor: pointer; font-size: 14px; transition: var(--transition); font-weight: 500;}
+        .footer-links a:hover, .footer-links button:hover { color: var(--primary); }
+        .footer-bottom { border-top: 1px solid #E2E8F0; padding-top: 24px; text-align: center; color: var(--text-muted); font-size: 13px;}
+
+        /* Animations */
+        .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
     </style>
     
     <!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108128757', 'ym');
-
-    ym(108128757, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/108128757" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-    
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108128757', 'ym');
+        ym(108128757, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/108128757" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 </head>
-<body class="text-slate-300 font-sans selection:bg-indigo-500/30 overflow-x-hidden relative">
+<body>
 
-    <div class="fixed inset-0 z-0 pointer-events-none">
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-500/20 blur-[120px] rounded-full"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-cyan-500/20 blur-[120px] rounded-full"></div>
-    </div>
+    <div class="bg-mesh"></div>
+    <div class="grid-pattern"></div>
 
-    <header id="header" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-6">
-        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
-            <div class="flex items-center gap-2 cursor-pointer" onclick="scrollToSection('hero')">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center">
-                    <div class="w-3 h-3 bg-[#0B1121] rounded-sm"></div>
+    <svg style="display: none;">
+        <!-- Общие иконки -->
+        <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+        <symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+        <symbol id="icon-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></symbol>
+        <symbol id="icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></symbol>
+        <symbol id="icon-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+        <symbol id="icon-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+        <symbol id="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+        <symbol id="icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></symbol>
+        <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+        <symbol id="icon-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></symbol>
+        <symbol id="icon-book-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+        <symbol id="icon-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+        <symbol id="icon-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></symbol>
+        <symbol id="icon-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+    </svg>
+
+    <header id="header">
+        <div class="container header-inner">
+            <div class="logo" onclick="scrollToSection('hero')">
+                <div class="logo-box">
+                    <svg width="18" height="18" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
                 </div>
-                <span class="text-white font-medium text-lg tracking-wide">Education Center</span>
+                <span class="logo-text">Digital Learning</span>
             </div>
 
-            <nav class="hidden md:flex items-center gap-8">
-                <button onclick="scrollToSection('program')" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Программа</button>
-                <button onclick="scrollToSection('process')" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Как проходит обучение</button>
-                <button onclick="scrollToSection('team')" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Команда</button>
-                <button onclick="scrollToSection('faq')" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">FAQ</button>
-                <button onclick="scrollToSection('contacts')" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Контакты</button>
+            <nav>
+                <button onclick="scrollToSection('audience')" class="nav-link">Для кого</button>
+                <button onclick="scrollToSection('program')" class="nav-link">Программа</button>
+                <button onclick="scrollToSection('results')" class="nav-link">Результаты</button>
+                <button onclick="scrollToSection('team')" class="nav-link">Авторы</button>
+                <button onclick="scrollToSection('faq')" class="nav-link">Ответы</button>
             </nav>
 
-            <div class="hidden md:block">
-                <button onclick="scrollToSection('cta-form')" class="px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm font-medium transition-all hover:shadow-[0_0_20px_-5px_rgba(99,102,241,0.4)]">
-                    Начать обучение
+            <div class="header-btn-wrap">
+                <button onclick="scrollToSection('cta-form')" class="btn btn-glow" style="padding: 10px 24px; font-size: 15px;" id="desktop-nav-btn">
+                    Записаться
                 </button>
             </div>
 
-            <button id="mobile-menu-btn" class="md:hidden text-slate-300" onclick="toggleMobileMenu()">
-                <i data-lucide="menu" id="menu-icon"></i>
-                <i data-lucide="x" id="close-icon" class="hidden"></i>
+            <button class="menu-btn" onclick="toggleMobileMenu()">
+                <svg id="icon-menu-svg" width="24" height="24"><use href="#icon-menu"/></svg>
+                <svg id="icon-x-svg" width="24" height="24" style="display:none;"><use href="#icon-x"/></svg>
             </button>
         </div>
 
-        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-[#0B1121]/95 backdrop-blur-xl border-b border-transparent transition-all duration-300 overflow-hidden md:hidden max-h-0 py-0">
-            <div class="flex flex-col px-6 gap-4">
-                <button onclick="scrollToSection('program')" class="text-left text-base font-medium text-slate-300 hover:text-white py-2">Программа</button>
-                <button onclick="scrollToSection('process')" class="text-left text-base font-medium text-slate-300 hover:text-white py-2">Как проходит обучение</button>
-                <button onclick="scrollToSection('team')" class="text-left text-base font-medium text-slate-300 hover:text-white py-2">Команда</button>
-                <button onclick="scrollToSection('faq')" class="text-left text-base font-medium text-slate-300 hover:text-white py-2">FAQ</button>
-                <button onclick="scrollToSection('contacts')" class="text-left text-base font-medium text-slate-300 hover:text-white py-2">Контакты</button>
-                <button onclick="scrollToSection('cta-form')" class="mt-2 w-full px-5 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 text-white font-medium">
-                    Начать обучение
-                </button>
+        <div class="mobile-menu" id="mobile-menu">
+            <button onclick="scrollToSection('audience')" class="mobile-link">Для кого этот курс</button>
+            <button onclick="scrollToSection('program')" class="mobile-link">Программа (8 уроков)</button>
+            <button onclick="scrollToSection('results')" class="mobile-link">Что вы получите</button>
+            <button onclick="scrollToSection('team')" class="mobile-link">Кто подготовил обучение</button>
+            <button onclick="scrollToSection('faq')" class="mobile-link">Вопросы и ответы</button>
+            <div style="padding: 0 24px; margin-top: 10px;">
+                <button onclick="scrollToSection('cta-form')" class="btn w-full btn-glow">Начать обучение</button>
             </div>
         </div>
     </header>
 
-    <main class="relative z-10">
-        
-        <section id="hero" class="pt-24 pb-12 md:pt-32 md:pb-16 container mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center gap-8 md:gap-10 min-h-[80vh]">
-            <div class="w-full lg:w-1/2 flex flex-col gap-6 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 w-fit">
-                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                    <span class="text-xs font-medium text-indigo-300 uppercase tracking-wider">Бесплатный курс</span>
-                </div>
-                
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-tight tracking-tight">
-                    Бесплатное двухнедельное обучение по криптовалютам
-                </h1>
-                
-                <p class="text-xl text-slate-300 font-light leading-relaxed">
-                    8 уроков для тех, кто хочет разобраться в криптовалютах с нуля и понять основы работы крипторынка.
-                </p>
-                
-                <p class="text-base text-slate-400 leading-relaxed">
-                    За 2 недели вы изучите базовые принципы криптовалют, устройство блокчейна, основы безопасности и работу с криптокошельками.
-                </p>
-
-                <div class="pt-4 flex flex-col sm:flex-row gap-4 items-center">
-                    <button onclick="scrollToSection('cta-form')" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white text-[#0B1121] font-semibold text-base hover:bg-slate-200 transition-all shadow-[0_0_30px_-5px_rgba(255,255,255,0.3)] flex items-center justify-center gap-2">
-                        Начать бесплатное обучение
-                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </button>
-                </div>
-                <p class="text-sm text-slate-500">
-                    Оставьте заявку — с вами свяжется специалист, ответит на вопросы и поможет начать обучение.
-                </p>
-            </div>
-
-            <div class="hidden lg:block w-full lg:w-1/2 relative lg:pl-10 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 delay-200 ease-out">
-                <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-cyan-400/5 rounded-3xl transform rotate-3 blur-sm"></div>
-                
-                <div class="relative bg-[#0F172A]/80 backdrop-blur-xl border border-white/10 p-8 md:p-10 rounded-3xl shadow-2xl">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-cyan-400 rounded-t-3xl"></div>
+    <main>
+        <!-- HERO -->
+        <section id="hero" class="hero">
+            <div class="container hero-grid">
+                <div class="fade-up">
+                    <div class="badge">
+                        <svg width="14" height="14"><use href="#icon-play"/></svg>
+                        Бесплатный 2-недельный курс
+                    </div>
+                    <h1 class="hero-title"><span class="text-gradient">Разберись в криптовалютах</span> за 2 недели: базовый курс для новичков</h1>
+                    <p class="hero-subtitle">Без сложной терминологии, с примерами и пошаговыми инструкциями: от создания кошелька до первой безопасной покупки.</p>
                     
-                    <h3 class="text-2xl font-medium text-white mb-6">Заявка на обучение</h3>
-                    
-                    <form class="flex flex-col gap-4" action="/thanks/">
-                        <div class="flex flex-col gap-1.5">
-                            <label class="text-sm font-medium text-slate-400 pl-1">Имя</label>
-                            <input type="text" placeholder="Введите ваше имя" class="w-full bg-white/5 border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-4 py-3.5 text-white placeholder-slate-400 outline-none transition-all" required />
+                    <div class="hero-bullets">
+                        <div class="hero-bullet">
+                            <svg width="20" height="20"><use href="#icon-check-circle"/></svg>
+                            <span>Поймёшь, как устроены цифровые активы и технология блокчейн</span>
                         </div>
+                        <div class="hero-bullet">
+                            <svg width="20" height="20"><use href="#icon-check-circle"/></svg>
+                            <span>Настроишь кошелёк и научишься его надежно защищать</span>
+                        </div>
+                        <div class="hero-bullet">
+                            <svg width="20" height="20"><use href="#icon-check-circle"/></svg>
+                            <span>Сделаешь первые шаги без хаоса и случайных ошибок</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <!-- Кнопка №1 -->
+                        <button onclick="scrollToSection('cta-form')" class="btn btn-glow w-full md:w-auto">
+                            Начать бесплатное обучение
+                        </button>
+                        <p class="hero-subtext">Старт — сразу после регистрации. Никаких скрытых платежей.</p>
+                    </div>
+                </div>
+
+                <div class="desktop-form fade-up" style="transition-delay: 0.2s;">
+                    <div class="form-card">
+                        <h3 class="form-title">Регистрация на курс</h3>
                         
-                        <div class="flex flex-col gap-1.5 mb-2">
-                            <label class="text-sm font-medium text-slate-400 pl-1">Телефон</label>
-                            <input type="tel" placeholder="+7 (999) 000-00-00" class="w-full bg-white/5 border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-4 py-3.5 text-white placeholder-slate-400 outline-none transition-all" required />
-                        </div>
-
-                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 text-white font-medium text-base hover:from-indigo-500 hover:to-indigo-400 transition-all shadow-[0_0_20px_-5px_rgba(99,102,241,0.4)]">
-                            Отправить заявку
-                        </button>
-                        
-                        <p class="text-[10px] text-slate-500 text-center leading-tight mt-1">
-                            Нажимая кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с <a href="/policy/" class="underline hover:text-slate-300 transition-colors">Политикой конфиденциальности</a>.
-                        </p>
-                    </form>
-                    
-                    <div class="mt-5 flex items-start gap-3">
-                        <i data-lucide="lock" class="w-4 h-4 text-slate-500 shrink-0 mt-0.5"></i>
-                        <p class="text-xs text-slate-500 leading-relaxed">
-                            Без обязательств. Специалист свяжется с вами в рабочее время.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="absolute -right-6 top-1/4 w-24 h-24 bg-indigo-500/20 rounded-2xl blur-xl animate-pulse"></div>
-                <div class="absolute -left-6 bottom-1/4 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl"></div>
-            </div>
-        </section>
-
-        <section class="py-14 md:py-16 relative">
-            <div class="container mx-auto px-6 md:px-12">
-                <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-10 bg-white/[0.03] border border-white/5 p-8 md:p-12 rounded-[2.5rem] relative overflow-hidden animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-[80px]"></div>
-                    
-                    <div class="w-full md:w-1/3 flex justify-center">
-                        <div class="relative w-40 h-40">
-                            <div class="absolute inset-0 border border-indigo-500/30 rounded-full animate-spin-slow"></div>
-                            <div class="absolute inset-2 border border-cyan-400/20 rounded-full animate-spin-reverse-slow"></div>
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <i data-lucide="network" class="w-12 h-12 text-indigo-400"></i>
+                        <form onsubmit="return validateForm(event, this)" action="/thanks/">
+                            <div class="input-group">
+                                <label class="input-label">Ваше имя</label>
+                                <input type="text" name="name" class="input-field" placeholder="Например, Иван" required>
+                                <div class="input-error">Введите имя (без цифр, минимум 2 буквы)</div>
                             </div>
-                        </div>
-                    </div>
-                    
-                    <div class="w-full md:w-2/3 flex flex-col gap-6 relative z-10">
-                        <h2 class="text-3xl md:text-4xl font-semibold text-white tracking-tight">
-                            Почему важно понимать основы криптовалют
-                        </h2>
-                        <div class="w-12 h-1 bg-gradient-to-r from-indigo-500 to-cyan-400 rounded-full"></div>
-                        <div class="space-y-4 text-slate-300 text-base md:text-lg leading-relaxed font-light">
-                            <p>Криптовалюты и технология блокчейн уже стали частью современной цифровой среды. Но для большинства людей эта тема до сих пор остаётся сложной и запутанной.</p>
-                            <p>Бесплатное двухнедельное обучение помогает последовательно разобраться в базовых понятиях, понять, как устроен крипторынок, и получить понятную основу для дальнейшего изучения темы.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="program" class="py-14 md:py-16 relative">
-            <div class="container mx-auto px-6 md:px-12">
-                <div class="text-center max-w-2xl mx-auto mb-10 md:mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
-                    <h2 class="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-6">
-                        Что разбирается в 8 уроках
-                    </h2>
-                    <p class="text-slate-300 text-lg font-light leading-relaxed">
-                        Программа состоит из 8 уроков, которые последовательно знакомят с ключевыми темами и помогают сформировать целостное понимание криптовалют.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="group p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-indigo-500/30 transition-all duration-300 animate-on-scroll opacity-0 translate-y-10" style="transition-delay: 0ms;">
-                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-indigo-500/50 transition-all duration-300 text-indigo-400">
-                            <i data-lucide="cpu" class="w-6 h-6"></i>
-                        </div>
-                        <h4 class="text-white text-base font-medium leading-snug">Что такое криптовалюта и блокчейн</h4>
-                    </div>
-                    <div class="group p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-indigo-500/30 transition-all duration-300 animate-on-scroll opacity-0 translate-y-10" style="transition-delay: 100ms;">
-                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-indigo-500/50 transition-all duration-300 text-indigo-400">
-                            <i data-lucide="network" class="w-6 h-6"></i>
-                        </div>
-                        <h4 class="text-white text-base font-medium leading-snug">Как устроен крипторынок</h4>
-                    </div>
-                    <div class="group p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-indigo-500/30 transition-all duration-300 animate-on-scroll opacity-0 translate-y-10" style="transition-delay: 200ms;">
-                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-indigo-500/50 transition-all duration-300 text-indigo-400">
-                            <i data-lucide="layers" class="w-6 h-6"></i>
-                        </div>
-                        <h4 class="text-white text-base font-medium leading-snug">Основные виды криптовалют</h4>
-                    </div>
-                    <div class="group p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-indigo-500/30 transition-all duration-300 animate-on-scroll opacity-0 translate-y-10" style="transition-delay: 300ms;">
-                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-indigo-500/50 transition-all duration-300 text-indigo-400">
-                            <i data-lucide="wallet" class="w-6 h-6"></i>
-                        </div>
-                        <h4 class="text-white text-base font-medium leading-snug">Как работают криптокошельки</h4>
-                    </div>
-                    <div class="group p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-indigo-500/30 transition-all duration-300 animate-on-scroll opacity-0 translate-y-10" style="transition-delay: 400ms;">
-                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-indigo-500/50 transition-all duration-300 text-indigo-400">
-                            <i data-lucide="shield" class="w-6 h-6"></i>
-                        </div>
-                        <h4 class="text-white text-base font-medium leading-snug">Основы безопасности</h4>
-                    </div>
-                    <div class="group p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-indigo-500/30 transition-all duration-300 animate-on-scroll opacity-0 translate-y-10" style="transition-delay: 500ms;">
-                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-indigo-500/50 transition-all duration-300 text-indigo-400">
-                            <i data-lucide="check-circle-2" class="w-6 h-6"></i>
-                        </div>
-                        <h4 class="text-white text-base font-medium leading-snug">Переводы и проверка транзакций</h4>
-                    </div>
-                    <div class="group p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-indigo-500/30 transition-all duration-300 animate-on-scroll opacity-0 translate-y-10" style="transition-delay: 600ms;">
-                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-indigo-500/50 transition-all duration-300 text-indigo-400">
-                            <i data-lucide="search" class="w-6 h-6"></i>
-                        </div>
-                        <h4 class="text-white text-base font-medium leading-snug">Базовые принципы анализа проектов</h4>
-                    </div>
-                    <div class="group p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-indigo-500/30 transition-all duration-300 animate-on-scroll opacity-0 translate-y-10" style="transition-delay: 700ms;">
-                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-indigo-500/50 transition-all duration-300 text-indigo-400">
-                            <i data-lucide="alert-circle" class="w-6 h-6"></i>
-                        </div>
-                        <h4 class="text-white text-base font-medium leading-snug">Частые ошибки новичков</h4>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="process" class="py-14 md:py-16 relative overflow-hidden">
-            <div class="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
-            
-            <div class="container mx-auto px-6 md:px-12 relative z-10">
-                <div class="max-w-3xl mb-10 md:mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
-                    <h2 class="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-6">
-                        Как проходит обучение
-                    </h2>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-                    <div class="hidden md:block absolute top-8 left-[16%] right-[16%] h-[2px] bg-white/5 overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/50 to-cyan-400/50 w-full animate-shimmer"></div>
-                    </div>
-
-                    <div class="relative pt-4 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out" style="transition-delay: 0ms;">
-                        <div class="w-16 h-16 rounded-2xl bg-[#0F172A] border border-white/10 flex items-center justify-center text-xl font-bold text-white relative z-10 mx-auto md:mx-0 shadow-[0_0_20px_-5px_rgba(0,0,0,0.5)]">
-                            01
-                        </div>
-                        <div class="mt-8 text-center md:text-left">
-                            <h4 class="text-xl font-medium text-white mb-3">Заявка и контакт</h4>
-                            <p class="text-slate-300 font-light leading-relaxed text-sm md:text-base">После заявки с вами связывается специалист, отвечает на организационные вопросы и помогает начать обучение.</p>
-                        </div>
-                    </div>
-
-                    <div class="relative pt-4 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out" style="transition-delay: 200ms;">
-                        <div class="w-16 h-16 rounded-2xl bg-[#0F172A] border border-white/10 flex items-center justify-center text-xl font-bold text-white relative z-10 mx-auto md:mx-0 shadow-[0_0_20px_-5px_rgba(0,0,0,0.5)]">
-                            02
-                        </div>
-                        <div class="mt-8 text-center md:text-left">
-                            <h4 class="text-xl font-medium text-white mb-3">Доступ к материалам</h4>
-                            <p class="text-slate-300 font-light leading-relaxed text-sm md:text-base">Вы получаете доступ к материалам и проходите 8 уроков в удобном темпе.</p>
-                        </div>
-                    </div>
-
-                    <div class="relative pt-4 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out" style="transition-delay: 400ms;">
-                        <div class="w-16 h-16 rounded-2xl bg-[#0F172A] border border-white/10 flex items-center justify-center text-xl font-bold text-white relative z-10 mx-auto md:mx-0 shadow-[0_0_20px_-5px_rgba(0,0,0,0.5)]">
-                            03
-                        </div>
-                        <div class="mt-8 text-center md:text-left">
-                            <h4 class="text-xl font-medium text-white mb-3">Комфортный темп</h4>
-                            <p class="text-slate-300 font-light leading-relaxed text-sm md:text-base">Обычно на один урок требуется около 20–30 минут. Обучение можно проходить в удобное время, без жёсткого расписания.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="pt-2 pb-12 md:pt-4 md:pb-14 relative">
-            <div class="container mx-auto px-6 md:px-12 flex justify-center">
-                <button onclick="scrollToSection('cta-form')" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white text-[#0B1121] font-semibold text-base hover:bg-slate-200 transition-all shadow-[0_0_30px_-5px_rgba(255,255,255,0.3)] flex items-center justify-center gap-2">
-                    Начать бесплатное обучение
-                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </button>
-            </div>
-        </section>
-
-        <section id="team" class="py-14 md:py-16 relative">
-            <div class="container mx-auto px-6 md:px-12">
-                <div class="flex flex-col lg:flex-row items-center gap-8 md:gap-10">
-                    
-                    <div class="w-full lg:w-1/2 relative animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="space-y-4 pt-10">
-                                <div class="aspect-[4/5] rounded-2xl bg-white/[0.03] border border-white/10 relative overflow-hidden group shadow-lg flex flex-col items-center justify-center backdrop-blur-sm hover:border-indigo-500/30 transition-all duration-500">
-                                    <div class="absolute inset-0 bg-gradient-to-b from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <i data-lucide="cpu" class="w-12 h-12 text-indigo-400 mb-4 group-hover:scale-110 transition-transform duration-500"></i>
-                                    <div class="text-white font-medium text-center">Методология</div>
-                                    <div class="text-slate-400 text-xs mt-1">Эксперты рынка</div>
-                                </div>
-                                <div class="aspect-square rounded-2xl bg-white/[0.03] border border-white/10 relative overflow-hidden group shadow-lg flex items-center justify-center backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-500">
-                                    <div class="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <i data-lucide="layers" class="w-10 h-10 text-cyan-500/50 group-hover:text-cyan-400 transition-colors duration-500"></i>
-                                </div>
+                            
+                            <div class="input-group">
+                                <label class="input-label">Номер телефона</label>
+                                <input type="tel" name="phone" class="input-field" placeholder="+7 (999) 000-00-00" required>
+                                <div class="input-error">Введите корректный номер (от 10 цифр)</div>
                             </div>
-                            <div class="space-y-4">
-                                <div class="aspect-square rounded-2xl bg-white/[0.03] border border-white/10 relative overflow-hidden group shadow-lg flex items-center justify-center backdrop-blur-sm hover:border-indigo-500/30 transition-all duration-500">
-                                    <div class="absolute inset-0 bg-gradient-to-bl from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <i data-lucide="network" class="w-10 h-10 text-indigo-500/50 group-hover:text-indigo-400 transition-colors duration-500"></i>
-                                </div>
-                                <div class="aspect-[4/5] rounded-2xl bg-white/[0.03] border border-white/10 relative overflow-hidden group shadow-lg flex flex-col items-center justify-center backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-500">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <i data-lucide="shield" class="w-12 h-12 text-cyan-400 mb-4 group-hover:scale-110 transition-transform duration-500"></i>
-                                    <div class="text-white font-medium text-center">Кураторство</div>
-                                    <div class="text-slate-400 text-xs mt-1">Поддержка 24/7</div>
-                                </div>
+
+                            <button type="submit" class="btn btn-glow w-full" style="margin-top: 10px;">Получить доступ</button>
+                            
+                            <div style="display: flex; align-items: flex-start; gap: 8px; margin-top: 14px;">
+                                <svg width="14" height="14" style="color: #94A3B8; flex-shrink: 0; margin-top: 2px;"><use href="#icon-lock"/></svg>
+                                <p class="form-disclaimer" style="text-align: left;">
+                                    Оставляя заявку, вы соглашаетесь с <a href="/policy/">Политикой конфиденциальности</a>.
+                                </p>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="w-full lg:w-1/2 flex flex-col gap-6 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 delay-200 ease-out">
-                        <h2 class="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-2">
-                            Кто подготовил обучение
-                        </h2>
-                        <div class="space-y-5 text-slate-300 text-lg font-light leading-relaxed">
-                            <p>Этот курс создали практики, которые сами прошли путь входа в крипторынок и понимают, какие сложности возникают у новичков.</p>
-                            <p>Обучение построено так, чтобы вы не просто изучали теорию, а начали видеть логику рынка, понимать свои действия и принимать решения осознанно.</p>
-                            <p>Материалы выстроены так, чтобы вы постепенно разобрались в теме, начали ориентироваться в рынке и чувствовали уверенность в своих действиях.</p>
-                            <p>Вы не просто получите информацию — вы начнёте понимать, как устроена эта сфера и как в ней действовать без хаоса и догадок.</p>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </section>
-
-        <section id="faq" class="py-14 md:py-16 relative bg-white/[0.02] border-y border-white/5">
-            <div class="container mx-auto px-6 md:px-12 max-w-4xl">
-                <div class="text-center mb-10 md:mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
-                    <h2 class="text-3xl md:text-4xl font-semibold text-white tracking-tight">
-                        Часто задаваемые вопросы
-                    </h2>
-                </div>
-
-                <div class="space-y-3 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
-                    
-                    <div class="faq-container border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 bg-[#0B1121] hover:bg-white/[0.04]">
-                        <button onclick="toggleFaq(0)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
-                            <span class="font-medium text-white text-base md:text-lg pr-4">Сколько стоит обучение?</span>
-                            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-300 shrink-0"></i>
-                        </button>
-                        <div class="faq-content px-6 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
-                            <p class="text-slate-300 font-light leading-relaxed text-sm md:text-base">Обучение предоставляется бесплатно.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-container border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 bg-[#0B1121] hover:bg-white/[0.04]">
-                        <button onclick="toggleFaq(1)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
-                            <span class="font-medium text-white text-base md:text-lg pr-4">Нужен ли опыт?</span>
-                            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-300 shrink-0"></i>
-                        </button>
-                        <div class="faq-content px-6 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
-                            <p class="text-slate-300 font-light leading-relaxed text-sm md:text-base">Нет, программа рассчитана на тех, кто только начинает разбираться в теме.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-container border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 bg-[#0B1121] hover:bg-white/[0.04]">
-                        <button onclick="toggleFaq(2)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
-                            <span class="font-medium text-white text-base md:text-lg pr-4">Почему после заявки звонит специалист?</span>
-                            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-300 shrink-0"></i>
-                        </button>
-                        <div class="faq-content px-6 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
-                            <p class="text-slate-300 font-light leading-relaxed text-sm md:text-base">Чтобы ответить на вопросы, уточнить детали и помочь вам спокойно начать обучение.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-container border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 bg-[#0B1121] hover:bg-white/[0.04]">
-                        <button onclick="toggleFaq(3)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
-                            <span class="font-medium text-white text-base md:text-lg pr-4">Сколько времени занимает обучение?</span>
-                            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-300 shrink-0"></i>
-                        </button>
-                        <div class="faq-content px-6 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
-                            <p class="text-slate-300 font-light leading-relaxed text-sm md:text-base">Программа рассчитана на 2 недели и включает 8 уроков. В среднем на один урок уходит 20–30 минут.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-container border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 bg-[#0B1121] hover:bg-white/[0.04]">
-                        <button onclick="toggleFaq(4)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
-                            <span class="font-medium text-white text-base md:text-lg pr-4">Можно ли проходить уроки в удобное время?</span>
-                            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-300 shrink-0"></i>
-                        </button>
-                        <div class="faq-content px-6 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
-                            <p class="text-slate-300 font-light leading-relaxed text-sm md:text-base">Да, обучение можно проходить в комфортном темпе.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section id="cta-form" class="py-16 md:py-20 relative">
-            <div class="container mx-auto px-6 md:px-12">
-                <div class="max-w-4xl mx-auto relative p-8 md:p-16 rounded-[2.5rem] overflow-hidden border border-white/10 text-center animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
-                    
-                    <div class="absolute inset-0 bg-gradient-to-b from-[#0F172A] to-[#0B1121]"></div>
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[600px] bg-indigo-600/10 blur-[100px] rounded-full"></div>
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-50"></div>
-
-                    <div class="relative z-10 flex flex-col items-center">
-                        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-white tracking-tight mb-6 leading-tight">
-                            Начните бесплатное <br class="hidden md:block"/>двухнедельное обучение
-                        </h2>
-                        <p class="text-slate-300 text-lg font-light mb-8 max-w-xl">
-                            Оставьте заявку, чтобы получить доступ к обучению и начать знакомство с криптовалютами.
-                        </p>
-
-                        <form class="w-full max-w-sm flex flex-col gap-4" action="/thanks/">
-                            <input type="text" placeholder="Имя" class="w-full bg-white/5 border border-white/10 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 rounded-xl px-4 py-4 text-white placeholder-slate-400 outline-none transition-all text-center" required />
-                            <input type="tel" placeholder="+7 (999) 000-00-00" class="w-full bg-white/5 border border-white/10 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 rounded-xl px-4 py-4 text-white placeholder-slate-400 outline-none transition-all text-center" required />
-                            
-                            <button type="submit" class="w-full mt-2 py-4 rounded-xl bg-white text-[#0B1121] font-semibold text-base hover:bg-slate-200 transition-all shadow-[0_0_30px_-5px_rgba(255,255,255,0.2)]">
-                                Получить доступ к обучению
-                            </button>
-                            
-                            <p class="text-[10px] text-slate-500 text-center leading-tight mt-1">
-                                Нажимая кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с <a href="/policy/" class="underline hover:text-slate-300 transition-colors">Политикой конфиденциальности</a>.
-                            </p>
-                            
-                            <p class="text-xs text-slate-500 mt-1">
-                                Количество мест на текущий набор ограничено.
-                            </p>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- TARGET AUDIENCE -->
+        <section id="audience" class="section section-bg-white">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2 class="section-title">Для кого этот курс</h2>
+                    <p class="section-subtitle">Мы адаптировали программу так, чтобы она была полезна на разных этапах старта.</p>
+                </div>
+                
+                <div class="target-grid fade-up">
+                    <div class="target-card">
+                        <div class="target-icon"><svg width="24" height="24"><use href="#icon-user"/></svg></div>
+                        <h3 class="target-title">Полный новичок</h3>
+                        <p class="target-desc">Вы хотите понять, что такое крипта, как это работает, но пугаетесь обилия непонятных терминов в интернете.</p>
+                        <div class="target-result">→ После курса: появится чёткая структура в голове</div>
+                    </div>
+                    <div class="target-card">
+                        <div class="target-icon"><svg width="24" height="24"><use href="#icon-shield"/></svg></div>
+                        <h3 class="target-title">Уже пробовали</h3>
+                        <p class="target-desc">Вы уже покупали активы, но боитесь за безопасность средств и не до конца понимаете, что делать с ними дальше.</p>
+                        <div class="target-result">→ После курса: закроете дыры в безопасности</div>
+                    </div>
+                    <div class="target-card">
+                        <div class="target-icon"><svg width="24" height="24"><use href="#icon-target"/></svg></div>
+                        <h3 class="target-title">Устали от хаоса</h3>
+                        <p class="target-desc">Смотрели десятки видео на YouTube, но вместо понимания получили "кашу" из обрывков информации и чужих мнений.</p>
+                        <div class="target-result">→ После курса: получите системный фундамент</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROGRAM -->
+        <section id="program" class="section section-bg-alt">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2 class="section-title">Что внутри: 8 уроков за 14 дней</h2>
+                    <p class="section-subtitle">Практическая выжимка знаний. Формула каждого урока: короткая теория + понятный результат.</p>
+                </div>
+
+                <div class="program-grid fade-up">
+                    <div class="lesson-card">
+                        <div class="lesson-num">1</div>
+                        <div class="lesson-info">
+                            <h4>Что такое криптовалюты и блокчейн</h4>
+                            <p>Поймёшь базовые термины, принципы работы сети и главные отличия от привычных фиатных денег.</p>
+                        </div>
+                    </div>
+                    <div class="lesson-card">
+                        <div class="lesson-num">2</div>
+                        <div class="lesson-info">
+                            <h4>Кошельки и инфраструктура</h4>
+                            <p>Узнаешь разницу между горячими и холодными кошельками. Настроишь свой первый криптокошелёк.</p>
+                        </div>
+                    </div>
+                    <div class="lesson-card">
+                        <div class="lesson-num">3</div>
+                        <div class="lesson-info">
+                            <h4>Основы безопасности</h4>
+                            <p>Включишь базовую защиту своих активов. Узнаешь, как безопасно хранить seed-фразу и пароли.</p>
+                        </div>
+                    </div>
+                    <div class="lesson-card">
+                        <div class="lesson-num">4</div>
+                        <div class="lesson-info">
+                            <h4>Биржи и их интерфейс</h4>
+                            <p>Освоишь интерфейс популярной биржи. Поймёшь, как заводить аккаунт и проходить верификацию.</p>
+                        </div>
+                    </div>
+                    <div class="lesson-card">
+                        <div class="lesson-num">5</div>
+                        <div class="lesson-info">
+                            <h4>Разбор популярных активов</h4>
+                            <p>Научишься отличать фундаментальные монеты от сомнительных токенов. Узнаешь, что такое стейблкоины.</p>
+                        </div>
+                    </div>
+                    <div class="lesson-card">
+                        <div class="lesson-num">6</div>
+                        <div class="lesson-info">
+                            <h4>Механика переводов и сетей</h4>
+                            <p>Сделаешь первый тестовый перевод. Поймешь, как выбирать правильную сеть, чтобы не потерять средства.</p>
+                        </div>
+                    </div>
+                    <div class="lesson-card">
+                        <div class="lesson-num">7</div>
+                        <div class="lesson-info">
+                            <h4>Базовый анализ проектов</h4>
+                            <p>Научишься использовать основные агрегаторы данных для проверки истории и надежности актива.</p>
+                        </div>
+                    </div>
+                    <div class="lesson-card">
+                        <div class="lesson-num">8</div>
+                        <div class="lesson-info">
+                            <h4>Ловушки и скам</h4>
+                            <p>Разберем типичные схемы мошенников. Научишься фильтровать скам и не влетать в очевидные пирамиды.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULTS -->
+        <section id="results" class="section section-bg-white">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2 class="section-title">Что ты будешь уметь через 2 недели</h2>
+                    <p class="section-subtitle">Фокус на практических и безопасных навыках работы с цифровыми активами.</p>
+                </div>
+
+                <div class="results-grid fade-up">
+                    <div class="result-item">
+                        <svg><use href="#icon-check-circle"/></svg>
+                        <p><strong>Понимать архитектуру рынка:</strong> как работает крипта, откуда берется ценность и где скрыты реальные риски.</p>
+                    </div>
+                    <div class="result-item">
+                        <svg><use href="#icon-check-circle"/></svg>
+                        <p><strong>Создавать и защищать кошельки:</strong> грамотно работать с ключами, seed-фразами и двухфакторной аутентификацией.</p>
+                    </div>
+                    <div class="result-item">
+                        <svg><use href="#icon-check-circle"/></svg>
+                        <p><strong>Совершать операции без суеты:</strong> делать покупки, переводы и обмены по понятному пошаговому плану.</p>
+                    </div>
+                    <div class="result-item">
+                        <svg><use href="#icon-check-circle"/></svg>
+                        <p><strong>Фильтровать мошенников:</strong> распознавать очевидные скам-схемы и защищать свои активы от кражи.</p>
+                    </div>
+                </div>
+
+                <!-- Кнопка №2 -->
+                <div class="mid-cta fade-up" style="margin-top: 40px;">
+                    <button onclick="scrollToSection('cta-form')" class="btn btn-glow">Записаться на 2-недельный курс</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESS (Как работает) -->
+        <section id="process" class="section section-bg-alt">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2 class="section-title">Как проходит обучение</h2>
+                </div>
+
+                <div class="steps-wrapper fade-up">
+                    <div class="step-item">
+                        <div class="step-icon">1</div>
+                        <div class="step-content">
+                            <h4>Доступ к материалам</h4>
+                            <p>Сразу после короткого звонка специалиста (для подтверждения) вы получаете доступ к обучающей платформе.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-icon">2</div>
+                        <div class="step-content">
+                            <h4>Видеоуроки в записи</h4>
+                            <p>8 компактных видео по 20–30 минут. Изучайте в своем темпе в любое удобное время, без привязки к жесткому расписанию.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-icon">3</div>
+                        <div class="step-content">
+                            <h4>Простые домашки и чат</h4>
+                            <p>Практические задания для закрепления (например, установить кошелек). Ответы на вопросы в поддерживающем чате.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEAM (Авторы курса) -->
+        <section id="team" class="section section-bg-white">
+            <div class="container team-grid">
+                <div class="team-cards fade-up">
+                    <!-- Левая колонка карточек -->
+                    <div style="display: flex; flex-direction: column; gap: 20px; padding-top: 40px;">
+                        <div class="team-card">
+                            <div class="team-card-icon"><svg><use href="#icon-book-open"/></svg></div>
+                            <div class="team-card-title">Учебная база</div>
+                            <div class="team-card-desc">Без лишней воды</div>
+                        </div>
+                        <div class="team-card" style="justify-content: center;">
+                            <div class="team-card-icon" style="margin: 0;"><svg><use href="#icon-award"/></svg></div>
+                        </div>
+                    </div>
+                    <!-- Правая колонка карточек -->
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <div class="team-card" style="justify-content: center;">
+                            <div class="team-card-icon" style="margin: 0;"><svg><use href="#icon-users"/></svg></div>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-card-icon"><svg><use href="#icon-message"/></svg></div>
+                            <div class="team-card-title">Сопровождение</div>
+                            <div class="team-card-desc">Ответы на вопросы</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-text-block fade-up" style="transition-delay: 0.2s;">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 24px;">Кто подготовил обучение</h2>
+                    <p>Над курсом работали специалисты с реальным опытом в сфере цифровых финансов, которые сами проходили путь новичка и отлично знают все подводные камни.</p>
+                    <p>Учебный процесс построен так, чтобы шаг за шагом перевести вас от базовых определений к уверенному пониманию рыночных механизмов.</p>
+                    <p>Мы убрали всю излишнюю перегруженность терминами, оставив только те практические знания, которые защитят вас от ошибок и помогут безопасно управлять своими средствами.</p>
+                    <p>Результат — сформированный навык и четкая инструкция к действию, без необходимости собирать информацию по крупицам в интернете.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="section section-bg-alt">
+            <div class="container" style="max-width: 800px;">
+                <h2 class="section-title fade-up text-center mb-10">Частые вопросы</h2>
+                <div class="fade-up">
+                    
+                    <div class="faq-item">
+                        <button class="faq-btn" onclick="toggleFaq(this)">Действительно ли обучение бесплатное? <svg class="faq-icon" width="20" height="20"><use href="#icon-chevron"/></svg></button>
+                        <div class="faq-content"><p>Да, этот 2-недельный базовый курс абсолютно бесплатный. Наша цель — дать новичкам качественный фундамент и уберечь от частых ошибок.</p></div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-btn" onclick="toggleFaq(this)">Нужно ли мне уже иметь крипту или стартовый капитал? <svg class="faq-icon" width="20" height="20"><use href="#icon-chevron"/></svg></button>
+                        <div class="faq-content"><p>Нет. Программа построена с абсолютного нуля. Вы начнете с теории и настройки пустых кошельков для безопасности.</p></div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-btn" onclick="toggleFaq(this)">Почему после заявки мне позвонят? <svg class="faq-icon" width="20" height="20"><use href="#icon-chevron"/></svg></button>
+                        <div class="faq-content"><p>Специалист свяжется, чтобы ответить на ваши вводные вопросы, убедиться, что вы получили доступ к урокам, и подсказать, с чего начать.</p></div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-btn" onclick="toggleFaq(this)">Сколько времени в день нужно уделять? <svg class="faq-icon" width="20" height="20"><use href="#icon-chevron"/></svg></button>
+                        <div class="faq-content"><p>Достаточно 20-30 минут в день. Вы сами выбираете время для просмотра коротких видеоуроков.</p></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- BOTTOM CTA -->
+        <section id="cta-form" class="cta-section section" style="padding-top: 50px;">
+            <div class="cta-glow"></div>
+            <div class="container cta-container">
+                <div class="fade-up">
+                    <h2 class="section-title" style="margin-bottom: 12px;">Начните обучение сегодня</h2>
+                    <p style="font-size: 17px; color: var(--text-main);">Заполните форму, чтобы закрепить место на курсе.</p>
+                </div>
+                
+                <div class="form-card fade-up" style="margin-top: 30px;">
+                    <form onsubmit="return validateForm(event, this)" action="/thanks/">
+                        <div class="input-group">
+                            <label class="input-label">Ваше имя</label>
+                            <input type="text" name="name" class="input-field" placeholder="Например, Иван" required>
+                            <div class="input-error">Введите имя (без цифр, минимум 2 буквы)</div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label class="input-label">Номер телефона</label>
+                            <input type="tel" name="phone" class="input-field" placeholder="+7 (999) 000-00-00" required>
+                            <div class="input-error">Введите корректный номер (от 10 цифр)</div>
+                        </div>
+
+                        <!-- Кнопка №3 -->
+                        <button type="submit" class="btn btn-glow w-full" style="margin-top: 10px;">Отправить заявку</button>
+                        
+                        <div style="display: flex; align-items: flex-start; gap: 8px; margin-top: 18px;">
+                            <svg width="14" height="14" style="color: #64748B; flex-shrink: 0; margin-top: 2px;"><use href="#icon-lock"/></svg>
+                            <p class="form-disclaimer" style="margin-top: 0; text-align: left;">
+                                Нажимая кнопку, вы соглашаетесь с <a href="/policy/">Политикой конфиденциальности</a> и обработкой данных.
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <footer id="contacts" class="border-t border-white/5 bg-[#0B1121] pt-10 pb-8 relative z-10">
-    <div class="container mx-auto px-6 md:px-12">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
-            <div class="lg:col-span-2">
-                <div class="flex items-center gap-2 mb-6">
-                    <div class="w-6 h-6 rounded bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center">
-                        <div class="w-2 h-2 bg-[#0B1121] rounded-sm"></div>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+                        <div class="logo-box" style="width: 26px; height: 26px; border-radius: 6px;"><svg width="14" height="14" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+                        <span style="color: var(--text-heading); font-weight: 700; font-size: 16px;">Digital Learning</span>
                     </div>
-                    <span class="text-white font-medium text-lg">Education Center</span>
+                    <p style="color: var(--text-muted); line-height: 1.6;">Образовательный проект, направленный на повышение цифровой грамотности населения.</p>
                 </div>
-                <p class="text-slate-400 text-sm font-light max-w-xs leading-relaxed">
-                    Образовательная платформа для комфортного старта и изучения базовых принципов крипторынка.
-                </p>
+                <div>
+                    <h5 class="footer-title">Информация</h5>
+                    <ul class="footer-links">
+                        <li><a href="/policy/">Политика конфиденциальности</a></li>
+                        <li><a href="/terms/">Пользовательское соглашение</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="footer-title">Контакты</h5>
+                    <ul class="footer-links">
+                        <li><span>crypto.education@list.ru</span></li>
+                        <li><span>+7 (967) 519-73-53</span></li>
+                    </ul>
+                </div>
             </div>
             
-            <div>
-                <h5 class="text-white font-medium mb-5 text-sm uppercase tracking-wider">Навигация</h5>
-                <ul class="space-y-3">
-                    <li>
-                        <button onclick="scrollToSection('program')" class="text-slate-400 hover:text-white transition-colors text-sm font-light text-left">
-                            Программа
-                        </button>
-                    </li>
-                    <li>
-                        <button onclick="scrollToSection('faq')" class="text-slate-400 hover:text-white transition-colors text-sm font-light text-left">
-                            FAQ
-                        </button>
-                    </li>
-                    <li>
-                        <a href="/policy/" class="text-slate-400 hover:text-white transition-colors text-sm font-light">
-                            Политика конфиденциальности
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/terms/" class="text-slate-400 hover:text-white transition-colors text-sm font-light">
-                            Пользовательское соглашение
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            
-            <div>
-                <h5 class="text-white font-medium mb-5 text-sm uppercase tracking-wider">Контакты</h5>
-                <ul class="space-y-3">
-                    <li><span class="text-slate-400 text-sm font-light">crypto.education@list.ru</span></li>
-                    <li><span class="text-slate-400 text-sm font-light">+7 (967) 519-73-53</span></li>
-                </ul>
+            <div class="footer-bottom">
+                <p style="margin-bottom: 12px;">Информация на сайте носит исключительно образовательный характер и не является индивидуальной инвестиционной рекомендацией.</p>
+                <p style="margin-bottom: 16px;">ИП Куценко Н.О. | ИНН 860408700802 | ОГРНИП 320665800111086<br>
+                Адрес: г. Екатеринбург, ул. Татищева, д. 90, кв. 73<br>
+                Лицензия Л035-01277-66/00193426 выдана Министерством образования Свердловской области 17.08.2021 г.</p>
+                <p>&copy; <span id="year"></span> Digital Learning. Все права защищены.</p>
             </div>
         </div>
-        
-        <div class="pt-8 border-t border-white/5 flex flex-col items-center text-center">
-            <p class="text-xs text-slate-500 font-light max-w-3xl leading-relaxed mb-4">
-                Материалы обучения носят исключительно образовательный характер и не являются индивидуальной инвестиционной рекомендацией.
-            </p>
-
-            <!-- ВОТ ЭТО Я ДОБАВИЛ (ключевой блок) -->
-            <p class="text-xs text-slate-500 font-light mb-3">
-                Education Center — образовательный проект ИП Куценко Н.О.
-            </p>
-
-            <div class="text-xs text-slate-600 space-y-1">
-                <p>ИП Куценко Н.О. | ИНН 860408700802 | ОГРНИП 320665800111086</p>
-                <p>Адрес: г. Екатеринбург, ул. Татищева, д. 90, кв. 73</p>
-                <p>Лицензия Л035-01277-66/00193426 выдана Министерством образования и молодежной политики Свердловской области 17.08.2021 г.</p>
-            </div>
-
-            <p class="text-xs text-slate-700 mt-6" id="copyright-year">
-                &copy; 2026 Education Center. Все права защищены.
-            </p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <script>
-        lucide.createIcons();
-        document.getElementById('copyright-year').innerHTML = `&copy; ${new Date().getFullYear()} Education Center. Все права защищены.`;
+        document.getElementById('year').textContent = new Date().getFullYear();
 
         function scrollToSection(id) {
             const el = document.getElementById(id);
             if (el) {
-                el.scrollIntoView({ behavior: 'smooth' });
+                const headerOffset = 70;
+                const elementPosition = el.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                
                 const menu = document.getElementById('mobile-menu');
-                if (menu && menu.classList.contains('max-h-[400px]')) {
-                    toggleMobileMenu();
-                }
+                if (menu.classList.contains('open')) toggleMobileMenu();
             }
         }
 
         const header = document.getElementById('header');
+        const desktopNavBtn = document.getElementById('desktop-nav-btn');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                header.classList.add('bg-[#0B1121]/80', 'backdrop-blur-lg', 'border-b', 'border-white/5', 'py-4');
-                header.classList.remove('bg-transparent', 'py-6');
+            if (window.scrollY > 30) {
+                header.classList.add('scrolled');
             } else {
-                header.classList.remove('bg-[#0B1121]/80', 'backdrop-blur-lg', 'border-b', 'border-white/5', 'py-4');
-                header.classList.add('bg-transparent', 'py-6');
+                header.classList.remove('scrolled');
             }
         });
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
-            const menuIcon = document.getElementById('menu-icon');
-            const closeIcon = document.getElementById('close-icon');
-            
-            menu.classList.toggle('max-h-[400px]');
-            menu.classList.toggle('py-4');
-            menu.classList.toggle('max-h-0');
-            menu.classList.toggle('py-0');
-            menu.classList.toggle('border-transparent');
-            
-            menuIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
+            const menuSvg = document.getElementById('icon-menu-svg');
+            const xSvg = document.getElementById('icon-x-svg');
+            menu.classList.toggle('open');
+            if (menu.classList.contains('open')) {
+                menuSvg.style.display = 'none';
+                xSvg.style.display = 'block';
+                header.classList.add('scrolled');
+            } else {
+                menuSvg.style.display = 'block';
+                xSvg.style.display = 'none';
+                if(window.scrollY <= 30) header.classList.remove('scrolled');
+            }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('opacity-100', 'translate-y-0');
-                        entry.target.classList.remove('opacity-0', 'translate-y-10');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            const allItems = document.querySelectorAll('.faq-item');
+            allItems.forEach(i => { if(i !== item) i.classList.remove('open'); });
+            item.classList.toggle('open');
+        }
 
-            document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-                observer.observe(el);
-            });
-        });
-
-        function toggleFaq(index) {
-            const containers = document.querySelectorAll('.faq-container');
-            const contents = document.querySelectorAll('.faq-content');
-            const icons = document.querySelectorAll('.faq-icon');
-
-            contents.forEach((content, i) => {
-                if (i === index) {
-                    const isClosed = content.classList.contains('max-h-0');
-                    if (isClosed) {
-                        content.classList.remove('max-h-0', 'opacity-0');
-                        content.classList.add('max-h-40', 'opacity-100', 'pb-5');
-                        icons[i].classList.add('rotate-180', 'text-indigo-400');
-                        containers[i].classList.add('bg-white/[0.06]', 'border-indigo-500/30');
-                        containers[i].classList.remove('bg-[#0B1121]');
-                    } else {
-                        content.classList.add('max-h-0', 'opacity-0');
-                        content.classList.remove('max-h-40', 'opacity-100', 'pb-5');
-                        icons[i].classList.remove('rotate-180', 'text-indigo-400');
-                        containers[i].classList.remove('bg-white/[0.06]', 'border-indigo-500/30');
-                        containers[i].classList.add('bg-[#0B1121]');
-                    }
-                } else {
-                    content.classList.add('max-h-0', 'opacity-0');
-                    content.classList.remove('max-h-40', 'opacity-100', 'pb-5');
-                    icons[i].classList.remove('rotate-180', 'text-indigo-400');
-                    containers[i].classList.remove('bg-white/[0.06]', 'border-indigo-500/30');
-                    containers[i].classList.add('bg-[#0B1121]');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        function validateForm(event, form) {
+            event.preventDefault();
+            
+            const nameInput = form.querySelector('input[name="name"]');
+            const phoneInput = form.querySelector('input[name="phone"]');
+            const nameError = nameInput.nextElementSibling;
+            const phoneError = phoneInput.nextElementSibling;
+            
+            let isValid = true;
+            
+            const nameRegex = /^[а-яА-ЯёЁa-zA-Z\s\-]{2,}$/;
+            if (!nameRegex.test(nameInput.value.trim())) {
+                nameInput.style.borderColor = '#EF4444';
+                nameError.style.display = 'block';
+                isValid = false;
+            } else {
+                nameInput.style.borderColor = '#E2E8F0';
+                nameError.style.display = 'none';
+            }
+
+            const phoneDigits = phoneInput.value.replace(/\D/g, '');
+            if (phoneDigits.length < 10 || phoneDigits.length > 15) {
+                phoneInput.style.borderColor = '#EF4444';
+                phoneError.style.display = 'block';
+                isValid = false;
+            } else {
+                phoneInput.style.borderColor = '#E2E8F0';
+                phoneError.style.display = 'none';
+            }
+
+            if (isValid) {
+                window.location.href = '/thanks/';
+            }
+            
+            return false;
         }
     </script>
 </body>
