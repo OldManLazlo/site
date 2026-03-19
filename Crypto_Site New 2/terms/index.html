@@ -25,12 +25,15 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #F4F7FB; }
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; }
         
-        /* Мягкие, образовательные тени */
-        .premium-shadow {
-            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(226, 232, 240, 0.8);
+        /* Глубокие мягкие тени для раздельных карточек */
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 4px 6px -2px rgba(15, 23, 42, 0.02);
         }
+        
+        /* Плавная прокрутка для якорей */
+        html { scroll-behavior: smooth; }
     </style>
     
     <!-- Yandex.Metrika counter -->
@@ -49,90 +52,136 @@
 </head>
 <body class="text-slate-700 font-sans selection:bg-blue-500/20 overflow-x-hidden relative min-h-screen flex flex-col">
 
-    <!-- Светлые деликатные фоновые эффекты -->
+    <!-- Уникальные фоновые паттерны -->
     <div class="fixed inset-0 z-0 pointer-events-none">
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_60%,transparent_100%)] opacity-30"></div>
-        <div class="absolute top-0 left-1/4 w-[40%] h-[40%] bg-blue-500/5 blur-[120px] rounded-full"></div>
-        <div class="absolute bottom-0 right-1/4 w-[40%] h-[40%] bg-sky-400/5 blur-[120px] rounded-full"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-40"></div>
+        <div class="absolute top-0 right-0 w-[60%] h-[50%] bg-blue-100/40 blur-[100px] rounded-bl-full"></div>
     </div>
 
-    <header class="w-full z-50 py-6 relative">
-        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
-            <!-- Прямая ссылка на корень / -->
+    <!-- Шапка -->
+    <header class="w-full z-50 py-5 relative bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center max-w-6xl">
             <a href="/" class="flex items-center gap-3 transition-transform hover:-translate-y-0.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-sky-500 flex items-center justify-center shadow-md">
-                    <svg width="16" height="16" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-sky-400 flex items-center justify-center shadow-md">
+                    <svg width="18" height="18" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
                 </div>
-                <span class="text-slate-900 font-bold text-lg tracking-tight hidden sm:block">Digital Learning</span>
+                <span class="text-slate-900 font-bold text-xl tracking-tight">Digital Learning</span>
             </a>
-            <!-- Прямая ссылка на корень / -->
-            <a href="/" class="px-5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold transition-all hover:shadow-md hover:-translate-y-0.5 flex items-center gap-2">
-                <i data-lucide="arrow-left" class="w-4 h-4"></i> На главную
+            <a href="/" class="px-5 py-2.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 text-sm font-semibold transition-all hover:bg-white hover:shadow hover:-translate-y-0.5 flex items-center gap-2">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> 
+                <span class="hidden sm:inline">Вернуться на сайт</span>
+                <span class="sm:hidden">Назад</span>
             </a>
         </div>
     </header>
 
-    <main class="relative z-10 flex-1 py-10 container mx-auto px-6 md:px-12">
+    <main class="relative z-10 flex-1 py-10 lg:py-16 container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         
-        <div class="max-w-4xl mx-auto relative mb-16">
-            <!-- Аккуратный фон под карточкой -->
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-100 to-sky-50 rounded-[2rem] transform rotate-1 blur-sm opacity-60"></div>
+        <!-- Заголовок страницы -->
+        <div class="mb-10 text-center md:text-left">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">Пользовательское соглашение</h1>
+            <p class="text-slate-500 text-lg max-w-2xl">Правила взаимодействия и условия использования образовательных материалов платформы.</p>
+        </div>
+
+        <!-- Новый структурный макет (Сайдбар + Раздельные карточки) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             
-            <div class="relative bg-white premium-shadow rounded-[2rem] p-8 md:p-14 overflow-hidden">
-                <!-- Верхняя градиентная полоска -->
-                <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-sky-400 via-blue-500 to-blue-700"></div>
+            <!-- Левая колонка: Навигация -->
+            <div class="hidden lg:block lg:col-span-4">
+                <div class="sticky top-28 bg-white rounded-2xl p-6 border border-slate-100 card-shadow">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Содержание</h3>
+                    <nav class="space-y-3">
+                        <a href="#section-1" class="block text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">1. Предмет документа</a>
+                        <a href="#section-2" class="block text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">2. Важное уведомление о рисках</a>
+                        <a href="#section-3" class="block text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">3. Обязанности сторон</a>
+                        <a href="#section-4" class="block text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">4. Внесение изменений</a>
+                        <a href="#section-5" class="block text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">5. Юридическая информация</a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Правая колонка: Контент -->
+            <div class="lg:col-span-8 space-y-6">
                 
-                <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-10 tracking-tight">Пользовательское соглашение</h1>
-                
-                <div class="space-y-8 text-slate-600 font-normal leading-relaxed text-[15px] md:text-base">
-                    <p class="text-lg text-slate-700">Настоящее Пользовательское соглашение (далее — Соглашение) регулирует отношения между ИП Куценко Н.О. (далее — Исполнитель) и пользователем сети Интернет (далее — Пользователь), возникающие при использовании сайта Digital Learning.</p>
+                <!-- Вводный текст -->
+                <div class="bg-white rounded-2xl p-6 md:p-8 border border-slate-100 card-shadow text-slate-600 leading-relaxed text-[15px] md:text-base">
+                    Данный документ определяет правила и условия взаимодействия между индивидуальным предпринимателем Куценко Н.О. (далее по тексту — Исполнителем) и посетителями (далее — Пользователями) образовательного веб-ресурса Digital Learning.
+                </div>
 
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900 mb-3">1. Предмет соглашения</h2>
-                        <p class="mb-2">1.1. Исполнитель предоставляет Пользователю доступ к бесплатным образовательным материалам (курсам, статьям, инструкциям) по теме основ работы с криптовалютами и технологией блокчейн.</p>
-                        <p>1.2. Оставляя заявку на сайте, Пользователь выражает свое полное и безоговорочное согласие с условиями настоящего Соглашения.</p>
+                <!-- Секция 1 -->
+                <section id="section-1" class="bg-white rounded-2xl p-6 md:p-8 border border-slate-100 card-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold">1</div>
+                        <h2 class="text-xl font-bold text-slate-900">Предмет документа</h2>
                     </div>
-
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900 mb-3">2. Отказ от ответственности (Важно!)</h2>
-                        <p class="mb-2">2.1. <strong>Все материалы на сайте носят исключительно информационный и образовательный характер.</strong> Ни один из материалов не является индивидуальной инвестиционной рекомендацией, призывом к действию или финансовым советом.</p>
-                        <p class="mb-2">2.2. Исполнитель не предоставляет услуги доверительного управления активами, не принимает средства Пользователей в управление и не гарантирует получение прибыли от операций с криптовалютами.</p>
-                        <p>2.3. Пользователь осознает, что операции с цифровыми активами несут высокие риски частичной или полной потери средств. Пользователь самостоятельно несет ответственность за все принятые им решения на основе полученной информации.</p>
+                    <div class="space-y-3 text-slate-600 text-[15px] md:text-base">
+                        <p>1.1. В рамках данного Соглашения Исполнитель открывает Пользователю безвозмездный доступ к учебному контенту (видеоурокам, текстовым инструкциям, статьям), посвященному базовым принципам функционирования блокчейн-технологий и цифровых активов.</p>
+                        <p>1.2. Факт отправки регистрационной формы на сайте признается полным и безоговорочным принятием всех пунктов данного документа.</p>
                     </div>
+                </section>
 
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900 mb-3">3. Права и обязанности сторон</h2>
-                        <p class="mb-2">3.1. Пользователь обязуется использовать полученные материалы только для личного обучения и не распространять их в коммерческих целях без письменного согласия Исполнителя.</p>
-                        <p>3.2. Исполнитель обязуется предоставить доступ к заявленным образовательным материалам в течение срока, указанного на сайте, после корректного заполнения Пользователем формы заявки.</p>
+                <!-- Секция 2 -->
+                <section id="section-2" class="bg-white rounded-2xl p-6 md:p-8 border border-slate-100 card-shadow relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1.5 h-full bg-blue-500"></div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold">2</div>
+                        <h2 class="text-xl font-bold text-slate-900">Уведомление об отказе от ответственности</h2>
                     </div>
-
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900 mb-3">4. Прочие условия</h2>
-                        <p>4.1. Настоящее Соглашение может быть изменено Исполнителем без какого-либо специального уведомления. Новая редакция вступает в силу с момента ее размещения на сайте.</p>
+                    <div class="space-y-3 text-slate-600 text-[15px] md:text-base">
+                        <p>2.1. <strong>Весь контент, представленный на платформе, имеет исключительно просветительскую направленность.</strong> Любая информация не может трактоваться как персональная инвестиционная рекомендация, финансовая консультация или прямое руководство к совершению сделок.</p>
+                        <p>2.2. Платформа не оказывает брокерских услуг и услуг доверительного управления. Исполнитель не принимает денежные средства в управление и категорически не гарантирует получение какого-либо дохода.</p>
+                        <p>2.3. Взаимодействие с цифровыми валютами сопряжено с повышенным риском финансовых потерь. Пользователь подтверждает, что самостоятельно оценивает эти риски и несет единоличную ответственность за любые свои действия и инвестиционные решения.</p>
                     </div>
+                </section>
 
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900 mb-4">5. Реквизиты Исполнителя</h2>
-                        <div class="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-200">
-                            <p class="mb-2 font-bold text-slate-900 text-lg">ИП Куценко Н.О.</p>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-700">
-                                <div>
-                                    <p class="mb-1"><span class="text-slate-500">ОГРНИП:</span> 320665800111086</p>
-                                    <p class="mb-1"><span class="text-slate-500">ИНН:</span> 860408700802</p>
-                                    <p class="mb-1"><span class="text-slate-500">Телефон:</span> +7 (967) 519-73-53</p>
-                                    <p><span class="text-slate-500">E-mail:</span> crypto.education@list.ru</p>
-                                </div>
-                                <div>
-                                    <p class="mb-1"><span class="text-slate-500">Адрес:</span> г. Екатеринбург, ул. Татищева, д. 90, кв. 73</p>
-                                    <p class="mt-3 text-xs leading-relaxed text-slate-500 border-t border-slate-200 pt-3">
-                                        Лицензия Л035-01277-66/00193426 выдана Министерством образования и молодежной политики Свердловской области 17.08.2021 г.
-                                    </p>
-                                </div>
+                <!-- Секция 3 -->
+                <section id="section-3" class="bg-white rounded-2xl p-6 md:p-8 border border-slate-100 card-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold">3</div>
+                        <h2 class="text-xl font-bold text-slate-900">Права и обязанности</h2>
+                    </div>
+                    <div class="space-y-3 text-slate-600 text-[15px] md:text-base">
+                        <p>3.1. Доступные материалы предназначены исключительно для личного некоммерческого использования. Любое копирование, тиражирование или перепродажа контента без официального письменного разрешения строго запрещены.</p>
+                        <p>3.2. Исполнитель берет на себя обязательство открыть доступ к заявленным в программе урокам после успешного прохождения Пользователем процедуры регистрации и верификации контактных данных.</p>
+                    </div>
+                </section>
+
+                <!-- Секция 4 -->
+                <section id="section-4" class="bg-white rounded-2xl p-6 md:p-8 border border-slate-100 card-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold">4</div>
+                        <h2 class="text-xl font-bold text-slate-900">Внесение изменений</h2>
+                    </div>
+                    <div class="space-y-3 text-slate-600 text-[15px] md:text-base">
+                        <p>4.1. Исполнитель оставляет за собой право вносить изменения в текущий текст Соглашения без предварительного персонального уведомления. Актуальная и действующая версия документа всегда публикуется на этой странице.</p>
+                    </div>
+                </section>
+
+                <!-- Секция 5 -->
+                <section id="section-5" class="bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-200">
+                    <h2 class="text-xl font-bold text-slate-900 mb-6">5. Контакты и юридическая информация</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-700">
+                        <div>
+                            <p class="font-bold text-slate-900 text-base mb-3">ИП Куценко Н.О.</p>
+                            <ul class="space-y-2">
+                                <li><span class="text-slate-500 mr-2">ОГРНИП:</span> 320665800111086</li>
+                                <li><span class="text-slate-500 mr-2">ИНН:</span> 860408700802</li>
+                                <li class="pt-2"><span class="text-slate-500 mr-2">Телефон:</span> +7 (967) 519-73-53</li>
+                                <li><span class="text-slate-500 mr-2">E-mail:</span> crypto.education@list.ru</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-col justify-between">
+                            <p class="leading-relaxed"><span class="text-slate-500 block mb-1">Фактический адрес:</span> г. Екатеринбург, ул. Татищева, д. 90, кв. 73</p>
+                            <div class="mt-4 p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
+                                <p class="text-xs leading-relaxed text-slate-500">
+                                    <i data-lucide="shield-check" class="w-4 h-4 text-blue-500 inline-block mr-1 -mt-0.5"></i>
+                                    Лицензия Л035-01277-66/00193426 выдана Министерством образования и молодежной политики Свердловской области 17.08.2021 г.
+                                </p>
                             </div>
                         </div>
                     </div>
-                    
-                </div>
+                </section>
+                
             </div>
         </div>
     </main>
