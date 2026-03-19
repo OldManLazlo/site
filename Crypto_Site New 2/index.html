@@ -263,8 +263,16 @@
         /* Карточки "Для кого" с верхним цветовым акцентом */
         .target-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
         @media (min-width: 768px) { .target-grid { grid-template-columns: repeat(3, 1fr); } }
-        .target-card { padding: 32px 24px; border-top: 3px solid transparent; }
-        .target-card:hover { border-top-color: var(--primary); }
+        .target-card { 
+            padding: 32px 24px; 
+            border-top: 3px solid transparent; 
+            background: linear-gradient(145deg, #FFFFFF 0%, #F0F7FF 100%);
+            box-shadow: 0 12px 30px -10px rgba(37, 99, 235, 0.1);
+        }
+        .target-card:hover { 
+            border-top-color: var(--primary); 
+            background: linear-gradient(145deg, #FFFFFF 0%, #E0F2FE 100%);
+        }
         .target-icon { width: 50px; height: 50px; background: linear-gradient(135deg, #EFF6FF, #E0F2FE); border: 1px solid #DBEAFE; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: var(--primary); margin-bottom: 20px; box-shadow: 0 4px 10px rgba(37,99,235,0.05);}
         .target-title { font-size: 20px; font-weight: 700; color: var(--text-heading); margin-bottom: 12px; }
         .target-desc { font-size: 15px; color: var(--text-main); margin-bottom: 20px; }
@@ -296,7 +304,14 @@
         .team-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
         @media (min-width: 1024px) { .team-grid { grid-template-columns: 1fr 1fr; gap: 80px; } }
         .team-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-        .team-card { padding: 32px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; aspect-ratio: 4/5; }
+        .team-card { 
+            padding: 32px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; aspect-ratio: 4/5; 
+            background: linear-gradient(145deg, #FFFFFF 0%, #F0F7FF 100%);
+            box-shadow: 0 12px 30px -10px rgba(37, 99, 235, 0.1);
+        }
+        .team-card:hover {
+            background: linear-gradient(145deg, #FFFFFF 0%, #E0F2FE 100%);
+        }
         .team-card-icon { width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; background: linear-gradient(135deg, #EFF6FF, #E0F2FE); border: 1px solid #DBEAFE; border-radius: 50%; color: var(--primary); box-shadow: 0 4px 10px rgba(37,99,235,0.05);}
         .team-card-icon svg { width: 28px; height: 28px; }
         .team-card-title { font-size: 17px; font-weight: 700; color: var(--text-heading); margin-bottom: 6px; }
