@@ -29,19 +29,18 @@
     <style>
         /* === PREMIUM LIGHT EDTECH / FINTECH STYLE === */
         :root {
-            --primary: #2563EB; /* Насыщенный синий */
-            --primary-hover: #1D4ED8; /* Глубокий синий для ховера */
-            --accent: #0EA5E9; /* Мягкий голубой / Cyan */
-            --bg-main: #F4F7FB; /* Благородный светло-серо-голубой для чередования */
-            --bg-white: #FFFFFF; /* Чистый белый */
+            --primary: #2563EB;
+            --primary-hover: #1D4ED8;
+            --accent: #0EA5E9;
+            --bg-main: #F4F7FB;
+            --bg-white: #FFFFFF;
             --bg-card: #FFFFFF;
-            --text-heading: #0F172A; /* Глубокий темно-синий (почти черный) */
-            --text-main: #334155; /* Мягкий темно-серый / slate */
-            --text-muted: #64748B; /* Вторичный серо-голубой */
-            --border: #E2E8F0; /* Легкие рамки */
-            --border-highlight: #BFDBFE; /* Акцентные голубые рамки */
+            --text-heading: #0F172A;
+            --text-main: #334155;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+            --border-highlight: #BFDBFE;
             
-            /* Дорогие мягкие тени */
             --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.02);
             --shadow-card: 0 10px 30px -10px rgba(15, 23, 42, 0.05), 0 4px 6px -2px rgba(15, 23, 42, 0.02);
             --shadow-card-hover: 0 20px 40px -10px rgba(37, 99, 235, 0.08), 0 0 0 1px rgba(37, 99, 235, 0.05);
@@ -80,6 +79,20 @@
             filter: blur(30px);
         }
 
+        .grid-pattern {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.16;
+            background-image:
+                linear-gradient(to right, rgba(226, 232, 240, 0.35) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(226, 232, 240, 0.35) 1px, transparent 1px);
+            background-size: 32px 32px;
+            mask-image: radial-gradient(circle at 50% 30%, black 35%, transparent 85%);
+            -webkit-mask-image: radial-gradient(circle at 50% 30%, black 35%, transparent 85%);
+        }
+
         /* Универсальные классы */
         .flex { display: flex; }
         .items-center { align-items: center; }
@@ -96,7 +109,7 @@
             display: inline-block;
         }
 
-        /* Кнопки (Более выразительные, градиент глубокий синий -> голубой) */
+        /* Кнопки */
         .btn {
             display: inline-flex; align-items: center; justify-content: center; gap: 10px;
             background: linear-gradient(90deg, #1E3A8A 0%, #2563EB 50%, #0EA5E9 100%);
@@ -112,7 +125,16 @@
             background-position: right center;
             box-shadow: 0 12px 25px -4px rgba(37, 99, 235, 0.45), 0 6px 12px -2px rgba(37, 99, 235, 0.3); 
         }
-        .btn-glow { animation: none; } /* Убираем неон, оставляем солидную тень */
+        .btn-glow { animation: none; }
+
+        .hero-main-btn {
+            width: 100%;
+        }
+        @media (min-width: 768px) {
+            .hero-main-btn {
+                width: auto;
+            }
+        }
 
         /* Header */
         header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 15px 0; transition: var(--transition); background: transparent; }
@@ -143,7 +165,7 @@
         .section-bg-alt { background-color: var(--bg-main); border-top: 1px solid #F1F5F9; border-bottom: 1px solid #F1F5F9; }
         .section-bg-white { background-color: var(--bg-white); }
 
-        /* Hero Section - Переработан на более контрастный, но светлый */
+        /* Hero */
         .hero { 
             padding: 150px 0 80px; 
             position: relative; 
@@ -181,7 +203,22 @@
         .hero-actions { margin-top: 10px; }
         .hero-subtext { font-size: 13px; color: var(--text-muted); margin-top: 14px; text-align: left; }
 
-        /* Форма в Hero (Дорогая, выделяющаяся карточка) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .hero {
+                padding: 130px 0 70px;
+            }
+            .hero-grid {
+                gap: 28px;
+            }
+            .hero-title {
+                font-size: 44px;
+            }
+            .hero-subtitle {
+                max-width: 100%;
+            }
+        }
+
+        /* Форма в Hero */
         .desktop-form { position: relative; z-index: 2; }
         .form-card {
             background: #FFFFFF;
@@ -214,7 +251,25 @@
         .desktop-form { display: none; }
         @media (min-width: 1024px) { .desktop-form { display: block; } }
 
-        /* Абстрактная крипто-графика для Hero (Десктоп) */
+        /* Планшетная визуалка */
+        .tablet-hero-visual {
+            display: none;
+            position: relative;
+            width: 100%;
+            height: 260px;
+            margin-top: 8px;
+            border-radius: 28px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.82), rgba(255,255,255,0.58));
+            border: 1px solid rgba(226, 232, 240, 0.85);
+            box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.12);
+            overflow: hidden;
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .tablet-hero-visual {
+                display: block;
+            }
+        }
+
         @keyframes float-slow {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(5deg); }
@@ -258,7 +313,7 @@
         .section-title { font-size: 32px; font-weight: 800; color: var(--text-heading); margin-bottom: 16px; letter-spacing: -0.5px;}
         .section-subtitle { font-size: 18px; color: var(--text-muted); max-width: 700px; margin: 0 auto; font-weight: 400; line-height: 1.6;}
 
-        /* Карточки (Мягкие, многослойные) */
+        /* Карточки */
         .target-card, .lesson-card, .result-item, .step-item, .team-card {
             background: var(--bg-white);
             border: 1px solid var(--border);
@@ -274,7 +329,7 @@
             box-shadow: var(--shadow-card-hover);
         }
 
-        /* Карточки "Для кого" с верхним цветовым акцентом */
+        /* Карточки "Для кого" */
         .target-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
         @media (min-width: 768px) { .target-grid { grid-template-columns: repeat(3, 1fr); } }
         .target-card { 
@@ -318,6 +373,9 @@
         .team-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
         @media (min-width: 1024px) { .team-grid { grid-template-columns: 1fr 1fr; gap: 80px; } }
         .team-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        @media (max-width: 480px) {
+            .team-cards { grid-template-columns: 1fr; }
+        }
         .team-card { 
             padding: 32px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; aspect-ratio: 4/5; 
             background: linear-gradient(145deg, #FFFFFF 0%, #F0F7FF 100%);
@@ -335,12 +393,12 @@
         
         .mid-cta { text-align: center; margin-top: 40px; }
 
-        /* FAQ (Аккордеон) */
+        /* FAQ */
         .faq-item { background: var(--bg-white); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 12px; overflow: hidden; transition: var(--transition); box-shadow: var(--shadow-sm);}
         .faq-btn { width: 100%; padding: 22px 24px; display: flex; justify-content: space-between; align-items: center; background: none; border: none; cursor: pointer; font-size: 16px; font-weight: 600; color: var(--text-heading); text-align: left; }
         .faq-content { max-height: 0; padding: 0 24px; opacity: 0; transition: var(--transition); color: var(--text-main); font-size: 15px;}
         .faq-item.open { border-color: var(--border-highlight); background: #F8FAFC; box-shadow: var(--shadow-card-hover);}
-        .faq-item.open .faq-content { max-height: 200px; padding: 0 24px 24px; opacity: 1; }
+        .faq-item.open .faq-content { max-height: 500px; padding: 0 24px 24px; opacity: 1; }
         .faq-item.open .faq-icon { transform: rotate(180deg); color: var(--primary); }
 
         /* Bottom CTA */
@@ -371,7 +429,6 @@
     <div class="grid-pattern"></div>
 
     <svg style="display: none;">
-        <!-- Общие иконки -->
         <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
         <symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></symbol>
         <symbol id="icon-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></symbol>
@@ -457,20 +514,60 @@
                     </div>
                     
                     <div class="hero-actions">
-                        <!-- Кнопка №1 -->
-                        <button onclick="scrollToSection('cta-form')" class="btn btn-glow w-full md:w-auto">
+                        <button onclick="scrollToSection('cta-form')" class="btn btn-glow hero-main-btn">
                             Начать бесплатное обучение
                         </button>
                         <p class="hero-subtext">Старт — сразу после регистрации</p>
+                    </div>
+
+                    <!-- Планшетная визуалка -->
+                    <div class="tablet-hero-visual fade-up" style="transition-delay: 0.15s;">
+                        <div style="position: absolute; inset: 0; background: radial-gradient(circle at 30% 30%, rgba(37,99,235,0.08), transparent 45%), radial-gradient(circle at 75% 65%, rgba(14,165,233,0.08), transparent 45%);"></div>
+
+                        <div class="glass-coin crypto-element-1" style="width: 145px; height: 145px; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3;">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="url(#tablet-blue-grad)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                                <defs>
+                                    <linearGradient id="tablet-blue-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#2563EB" />
+                                        <stop offset="100%" stop-color="#0EA5E9" />
+                                    </linearGradient>
+                                </defs>
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                <polyline points="2 17 12 22 22 17"></polyline>
+                                <polyline points="2 12 12 17 22 12"></polyline>
+                            </svg>
+                        </div>
+
+                        <div class="glass-coin crypto-element-2" style="width: 86px; height: 86px; top: 20%; right: 12%; z-index: 4;">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <line x1="12" y1="2" x2="12" y2="9"></line>
+                                <line x1="12" y1="15" x2="12" y2="22"></line>
+                                <line x1="2" y1="12" x2="9" y2="12"></line>
+                                <line x1="15" y1="12" x2="22" y2="12"></line>
+                            </svg>
+                        </div>
+
+                        <div class="glass-coin crypto-element-3" style="width: 94px; height: 94px; bottom: 12%; left: 10%; z-index: 2;">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                        </div>
+
+                        <div class="glass-coin crypto-element-1" style="width: 52px; height: 52px; top: 26%; left: 16%; z-index: 4; opacity: 0.95;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
                     </div>
                 </div>
 
                 <div class="desktop-form fade-up" style="transition-delay: 0.2s;">
                     <div class="abstract-hero-visual">
-                        <!-- Свечение на фоне -->
                         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 350px; height: 350px; background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%); border-radius: 50%; filter: blur(30px); z-index: 1;"></div>
                         
-                        <!-- Центральный элемент (Многослойный блокчейн) -->
                         <div class="glass-coin crypto-element-1" style="width: 240px; height: 240px; z-index: 3;">
                             <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="url(#blue-grad)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
                                 <defs>
@@ -485,7 +582,6 @@
                             </svg>
                         </div>
 
-                        <!-- Малая монета 1 (Сеть) -->
                         <div class="glass-coin crypto-element-2" style="width: 110px; height: 110px; top: 10%; right: 10%; z-index: 4;">
                             <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
@@ -497,14 +593,12 @@
                             </svg>
                         </div>
 
-                        <!-- Малая монета 2 (График) -->
                         <div class="glass-coin crypto-element-3" style="width: 130px; height: 130px; bottom: 5%; left: 5%; z-index: 2;">
                             <svg width="55" height="55" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
                             </svg>
                         </div>
                         
-                        <!-- Защита / Безопасность -->
                         <div class="glass-coin crypto-element-1" style="width: 60px; height: 60px; top: 30%; left: 15%; z-index: 4; opacity: 0.9;">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
@@ -643,14 +737,13 @@
                     </div>
                 </div>
 
-                <!-- Кнопка №2 -->
                 <div class="mid-cta fade-up" style="margin-top: 40px;">
                     <button onclick="scrollToSection('cta-form')" class="btn btn-glow">Записаться на 2-недельный курс</button>
                 </div>
             </div>
         </section>
 
-        <!-- PROCESS (Как работает) -->
+        <!-- PROCESS -->
         <section id="process" class="section section-bg-alt">
             <div class="container">
                 <div class="section-header fade-up">
@@ -683,11 +776,10 @@
             </div>
         </section>
 
-        <!-- TEAM (Авторы курса) -->
+        <!-- TEAM -->
         <section id="team" class="section section-bg-white">
             <div class="container team-grid">
                 <div class="team-cards fade-up">
-                    <!-- Левая колонка карточек -->
                     <div style="display: flex; flex-direction: column; gap: 20px; padding-top: 40px;">
                         <div class="team-card">
                             <div class="team-card-icon"><svg><use href="#icon-book-open"/></svg></div>
@@ -698,7 +790,6 @@
                             <div class="team-card-icon" style="margin: 0;"><svg><use href="#icon-award"/></svg></div>
                         </div>
                     </div>
-                    <!-- Правая колонка карточек -->
                     <div style="display: flex; flex-direction: column; gap: 20px;">
                         <div class="team-card" style="justify-content: center;">
                             <div class="team-card-icon" style="margin: 0;"><svg><use href="#icon-users"/></svg></div>
@@ -726,7 +817,6 @@
             <div class="container" style="max-width: 800px;">
                 <h2 class="section-title fade-up text-center mb-10">Частые вопросы</h2>
                 <div class="fade-up">
-                    
                     <div class="faq-item">
                         <button class="faq-btn" onclick="toggleFaq(this)">Действительно ли обучение бесплатное? <svg class="faq-icon" width="20" height="20"><use href="#icon-chevron"/></svg></button>
                         <div class="faq-content"><p>Да, 2-недельный базовый курс предоставляется бесплатно. Он создан для знакомства с основами и понимания принципов работы.</p></div>
@@ -746,7 +836,6 @@
                         <button class="faq-btn" onclick="toggleFaq(this)">Сколько времени в день нужно уделять? <svg class="faq-icon" width="20" height="20"><use href="#icon-chevron"/></svg></button>
                         <div class="faq-content"><p>В среднем достаточно 20–30 минут в день. Вы можете проходить материалы в удобном для себя темпе.</p></div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -774,7 +863,6 @@
                             <div class="input-error">Введите корректный номер (от 10 цифр)</div>
                         </div>
 
-                        <!-- Кнопка №3 -->
                         <button type="submit" class="btn btn-glow w-full" style="margin-top: 10px;">Отправить заявку</button>
                         
                         <div style="display: flex; align-items: flex-start; gap: 8px; margin-top: 18px;">
