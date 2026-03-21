@@ -1035,41 +1035,7 @@
         return false;
     }
 </script>
-            event.preventDefault();
-            
-            const nameInput = form.querySelector('input[name="name"]');
-            const phoneInput = form.querySelector('input[name="phone"]');
-            const nameError = nameInput.nextElementSibling;
-            const phoneError = phoneInput.nextElementSibling;
-            
-            let isValid = true;
-            
-            const nameRegex = /^[а-яА-ЯёЁa-zA-Z\s\-]{2,}$/;
-            if (!nameRegex.test(nameInput.value.trim())) {
-                nameInput.style.borderColor = '#EF4444';
-                nameError.style.display = 'block';
-                isValid = false;
-            } else {
-                nameInput.style.borderColor = '#E2E8F0';
-                nameError.style.display = 'none';
-            }
-
-            const phoneDigits = phoneInput.value.replace(/\D/g, '');
-            if (phoneDigits.length < 10 || phoneDigits.length > 15) {
-                phoneInput.style.borderColor = '#EF4444';
-                phoneError.style.display = 'block';
-                isValid = false;
-            } else {
-                phoneInput.style.borderColor = '#E2E8F0';
-                phoneError.style.display = 'none';
-            }
-
-            if (isValid) {
-                window.location.href = '/thanks/';
-            }
-            
-            return false;
-        }
+          
     </script>
 </body>
 </html>
