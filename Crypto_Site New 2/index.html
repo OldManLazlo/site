@@ -912,67 +912,7 @@
         </div>
     </footer>
 
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        function scrollToSection(id) {
-            const el = document.getElementById(id);
-            if (el) {
-                const headerOffset = 70;
-                const elementPosition = el.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                
-                const menu = document.getElementById('mobile-menu');
-                if (menu.classList.contains('open')) toggleMobileMenu();
-            }
-        }
-
-        const header = document.getElementById('header');
-        const desktopNavBtn = document.getElementById('desktop-nav-btn');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 30) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const menuSvg = document.getElementById('icon-menu-svg');
-            const xSvg = document.getElementById('icon-x-svg');
-            menu.classList.toggle('open');
-            if (menu.classList.contains('open')) {
-                menuSvg.style.display = 'none';
-                xSvg.style.display = 'block';
-                header.classList.add('scrolled');
-            } else {
-                menuSvg.style.display = 'block';
-                xSvg.style.display = 'none';
-                if(window.scrollY <= 30) header.classList.remove('scrolled');
-            }
-        }
-
-        function toggleFaq(btn) {
-            const item = btn.parentElement;
-            const allItems = document.querySelectorAll('.faq-item');
-            allItems.forEach(i => { if(i !== item) i.classList.remove('open'); });
-            item.classList.toggle('open');
-        }
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-        <script>
+   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
     function scrollToSection(id) {
@@ -982,13 +922,14 @@
             const elementPosition = el.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
             window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-            
+
             const menu = document.getElementById('mobile-menu');
             if (menu.classList.contains('open')) toggleMobileMenu();
         }
     }
 
     const header = document.getElementById('header');
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 30) {
             header.classList.add('scrolled');
@@ -1001,7 +942,9 @@
         const menu = document.getElementById('mobile-menu');
         const menuSvg = document.getElementById('icon-menu-svg');
         const xSvg = document.getElementById('icon-x-svg');
+
         menu.classList.toggle('open');
+
         if (menu.classList.contains('open')) {
             menuSvg.style.display = 'none';
             xSvg.style.display = 'block';
@@ -1016,7 +959,11 @@
     function toggleFaq(btn) {
         const item = btn.parentElement;
         const allItems = document.querySelectorAll('.faq-item');
-        allItems.forEach(i => { if (i !== item) i.classList.remove('open'); });
+
+        allItems.forEach(i => {
+            if (i !== item) i.classList.remove('open');
+        });
+
         item.classList.toggle('open');
     }
 
@@ -1033,15 +980,16 @@
 
     function validateForm(event, form) {
         event.preventDefault();
-        
+
         const nameInput = form.querySelector('input[name="name"]');
         const phoneInput = form.querySelector('input[name="phone"]');
         const nameError = nameInput.nextElementSibling;
         const phoneError = phoneInput.nextElementSibling;
-        
+
         let isValid = true;
-        
+
         const nameRegex = /^[а-яА-ЯёЁa-zA-Z\s\-]{2,}$/;
+
         if (!nameRegex.test(nameInput.value.trim())) {
             nameInput.style.borderColor = '#EF4444';
             nameError.style.display = 'block';
@@ -1052,6 +1000,7 @@
         }
 
         const phoneDigits = phoneInput.value.replace(/\D/g, '');
+
         if (phoneDigits.length < 10 || phoneDigits.length > 15) {
             phoneInput.style.borderColor = '#EF4444';
             phoneError.style.display = 'block';
@@ -1078,7 +1027,8 @@
         .then(() => {
             window.location.href = '/thanks/';
         })
-        .catch(() => {
+        .catch((error) => {
+            console.error('Ошибка отправки в Make:', error);
             alert('Ошибка отправки. Попробуйте еще раз.');
         });
 
