@@ -31,9 +31,8 @@
             --bg-body: #f8f9fd; 
             --text-dark: #1a1a2e; 
             --text-gray: #6b6b85;
-            --card-shadow: 0 10px 30px rgba(108, 99, 255, 0.08); 
-            --radius: 24px;
-            /* НОВЫЙ ГРАДИЕНТ: Глубокий темно-синий/технологичный */
+            --card-shadow: 0 8px 24px rgba(108, 99, 255, 0.06); 
+            --radius: 20px; /* Изменен радиус для уникальности */
             --hero-gradient: linear-gradient(135deg, #080b12 0%, #12182b 50%, #0a1424 100%);
             --error-color: #d93025;
             --error-border: #f3b8b3;
@@ -50,25 +49,23 @@
         }
 
         /* --- ШАПКА --- */
-        header { position: absolute; top: 0; left: 0; width: 100%; padding: 20px 0; z-index: 10; }
-        .nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 40px; }
-        .nav a { color: rgba(255,255,255,0.8); font-weight: 600; font-size: 14px; text-decoration: none; transition: 0.2s; }
+        header { position: absolute; top: 0; left: 0; width: 100%; padding: 25px 0; z-index: 10; }
+        .nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 45px; }
+        .nav a { color: rgba(255,255,255,0.75); font-weight: 500; font-size: 15px; text-decoration: none; transition: 0.2s; letter-spacing: 0.3px; }
         .nav a:hover { color: #fff; }
 
         /* --- HERO SECTION --- */
         .hero {
             background: var(--hero-gradient);
-            padding: 140px 20px 70px;
+            padding: 150px 20px 80px;
             position: relative;
             overflow: hidden;
             color: #fff;
             border-bottom-left-radius: 40px;
             border-bottom-right-radius: 40px;
-            /* Обновленная тень под цвет нового фона */
             box-shadow: 0 15px 40px rgba(10, 20, 36, 0.5);
         }
 
-        /* НОВЫЙ ПАТТЕРН: Технологичная сетка (Grid) вместо точек */
         .hero::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-image: 
@@ -80,7 +77,6 @@
             z-index: 0;
         }
 
-        /* Дополнительное свечение за иконкой */
         .hero::after {
             content: ''; position: absolute; top: 50%; right: 15%; width: 400px; height: 400px;
             background: radial-gradient(circle, rgba(108, 99, 255, 0.12) 0%, transparent 70%);
@@ -91,32 +87,31 @@
         }
 
         .container-hero {
-            max-width: 1000px; 
+            max-width: 1050px; 
             margin: 0 auto; position: relative; z-index: 2;
-            display: flex; align-items: center; justify-content: center; gap: 50px;
+            display: flex; align-items: center; justify-content: space-between; gap: 40px;
         }
 
-        .hero-content { flex: 0 1 550px; text-align: left; }
+        .hero-content { flex: 0 1 580px; text-align: left; }
 
         .badge {
-            display: inline-block; background: rgba(255,255,255,0.08); color: #fff;
-            padding: 8px 16px; border-radius: 100px; font-size: 13px; font-weight: 600; margin-bottom: 25px;
-            border: 1px solid rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+            display: inline-flex; align-items: center; background: rgba(255,255,255,0.06); color: #fff;
+            padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 500; margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);
         }
 
-        h1 { font-family: 'Manrope', sans-serif; font-size: clamp(34px, 5vw, 54px); font-weight: 800; line-height: 1.15; margin: 0 0 20px 0; color: #fff; }
-        .hero p { font-size: 17px; color: rgba(255,255,255,0.85); margin: 0 0 35px; line-height: 1.6; max-width: 500px; }
+        h1 { font-family: 'Manrope', sans-serif; font-size: clamp(34px, 5vw, 56px); font-weight: 800; line-height: 1.15; margin: 0 0 22px 0; color: #fff; letter-spacing: -0.5px; }
+        .hero p { font-size: 17px; color: rgba(255,255,255,0.8); margin: 0 0 40px; line-height: 1.6; max-width: 520px; }
 
         .btn-purple-glow {
-            background: var(--primary-purple); color: #fff; padding: 18px 40px; border-radius: 14px; font-weight: 700; font-size: 16px; border: none; cursor: pointer; box-shadow: 0 10px 30px rgba(108, 99, 255, 0.4); transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+            background: var(--primary-purple); color: #fff; padding: 18px 42px; border-radius: 12px; font-weight: 600; font-size: 16px; border: none; cursor: pointer; box-shadow: 0 8px 25px rgba(108, 99, 255, 0.35); transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
         }
-        .btn-purple-glow:hover { transform: translateY(-3px); background: var(--primary-purple-hover); box-shadow: 0 15px 40px rgba(108, 99, 255, 0.6); }
+        .btn-purple-glow:hover { transform: translateY(-3px); background: var(--primary-purple-hover); box-shadow: 0 12px 35px rgba(108, 99, 255, 0.5); }
 
         .hero-image-container {
             flex: 0 0 320px; display: flex; justify-content: center; align-items: center; position: relative;
         }
         
-        /* ОБНОВЛЕННАЯ АНИМАЦИЯ И ТЕНИ ДЛЯ ИКОНКИ */
         .crypto-sticker {
             width: 100%; max-width: 240px;
             filter: drop-shadow(0 20px 30px rgba(0,0,0,0.6)) drop-shadow(0 0 25px rgba(108, 99, 255, 0.35));
@@ -129,160 +124,121 @@
 
         /* --- СЕКЦИИ --- */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        section { padding: 50px 0; }
-        h2 { font-family: 'Manrope', sans-serif; font-size: clamp(28px, 4vw, 38px); font-weight: 800; text-align: center; margin-bottom: 40px; color: var(--text-dark); }
+        section { padding: 45px 0; }
+        h2 { font-family: 'Manrope', sans-serif; font-size: clamp(28px, 4vw, 40px); font-weight: 800; text-align: center; margin-bottom: 35px; color: var(--text-dark); letter-spacing: -0.5px; }
 
-        /* --- КАРТОЧКИ --- */
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .card { background: #fff; border-radius: var(--radius); padding: 35px 25px; box-shadow: var(--card-shadow); transition: 0.3s; text-align: center; border: 1px solid rgba(108, 99, 255, 0.05); }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(108, 99, 255, 0.15); border-color: rgba(108, 99, 255, 0.2); }
-        .card-icon { width: 60px; height: 60px; background: #f0f0ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; margin: 0 auto 20px; color: var(--primary-purple); }
-        .card h3 { font-size: 19px; margin-bottom: 10px; font-weight: 700; }
-        .card p { color: var(--text-gray); font-size: 14px; margin: 0; line-height: 1.5; }
+        /* --- ПЕРЕДЕЛАННЫЕ КАРТОЧКИ --- */
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .card { background: #fff; border-radius: var(--radius); padding: 30px 25px; box-shadow: var(--card-shadow); transition: 0.3s; text-align: left; border: 1px solid rgba(0, 0, 0, 0.03); display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(108, 99, 255, 0.12); border-color: rgba(108, 99, 255, 0.1); }
+        /* Иконки теперь слева сверху, квадратные, с SVG */
+        .card-icon { width: 54px; height: 54px; background: #f4f4ff; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 0 15px 0; color: var(--primary-purple); }
+        .card-icon svg { width: 28px; height: 28px; stroke-width: 2; }
+        .card h3 { font-size: 20px; margin-bottom: 10px; font-weight: 700; color: var(--text-dark); }
+        .card p { color: var(--text-gray); font-size: 15px; margin: 0; line-height: 1.6; }
 
-        /* --- ПРОГРАММА --- */
-        .program-container { max-width: 850px; margin: 0 auto; }
-        .program-item { background: #fff; border-radius: 20px; padding: 30px; margin-bottom: 15px; display: flex; align-items: flex-start; gap: 25px; box-shadow: var(--card-shadow); border: 1px solid transparent; transition: 0.2s; }
-        .program-item:hover { border-color: rgba(108, 99, 255, 0.2); }
-        .day-badge { background: var(--accent-blue); color: #fff; padding: 8px 14px; border-radius: 10px; font-weight: 700; font-size: 13px; white-space: nowrap; }
-        .prog-content h4 { margin: 0 0 5px 0; font-size: 17px; font-weight: 700; }
-        .prog-content p { margin: 0; color: var(--text-gray); font-size: 15px; }
-        .btn-purple-wide { background: var(--primary-purple); color: #fff; padding: 18px 45px; border-radius: 12px; font-weight: 700; font-size: 16px; border: none; cursor: pointer; transition: 0.3s; margin-top: 30px; width: 100%; max-width: 320px; box-shadow: 0 10px 25px rgba(108, 99, 255, 0.3); }
-        .btn-purple-wide:hover { background: var(--primary-purple-hover); transform: translateY(-2px); box-shadow: 0 15px 35px rgba(108, 99, 255, 0.4); }
+        /* --- ПЕРЕДЕЛАННАЯ ПРОГРАММА (ГРИД СЕТКА ВМЕСТО СПИСКА) --- */
+        .program-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .program-item { background: #fff; border-radius: var(--radius); padding: 35px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px; box-shadow: var(--card-shadow); border: 1px solid rgba(0,0,0,0.02); transition: 0.3s; }
+        .program-item:hover { border-color: rgba(108, 99, 255, 0.15); box-shadow: 0 10px 30px rgba(108, 99, 255, 0.1); }
+        .day-badge { background: #eff3ff; color: var(--primary-purple); padding: 6px 14px; border-radius: 8px; font-weight: 700; font-size: 13px; display: inline-block; }
+        .prog-content h4 { margin: 0 0 10px 0; font-size: 18px; font-weight: 700; color: var(--text-dark); }
+        .prog-content p { margin: 0; color: var(--text-gray); font-size: 15px; line-height: 1.6; }
+        .program-action { text-align: center; margin-top: 25px; }
+        .btn-purple-wide { background: var(--primary-purple); color: #fff; padding: 18px 45px; border-radius: 12px; font-weight: 600; font-size: 16px; border: none; cursor: pointer; transition: 0.3s; width: 100%; max-width: 320px; box-shadow: 0 8px 25px rgba(108, 99, 255, 0.3); }
+        .btn-purple-wide:hover { background: var(--primary-purple-hover); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(108, 99, 255, 0.4); }
 
-        /* --- ЭКСПЕРТЫ --- */
-        .expert-wrapper { background: #fff; border-radius: var(--radius); box-shadow: var(--card-shadow); padding: 50px; display: flex; align-items: center; gap: 50px; }
-        .expert-text h3 { margin-top: 0; color: var(--primary-purple); font-size: 24px; margin-bottom: 15px; }
+        /* --- ПЕРЕДЕЛАННЫЕ ЭКСПЕРТЫ (ОТЗЕРКАЛЕНО + ФОРМА ФОТО) --- */
+        /* row-reverse меняет расположение: фото слева, текст справа */
+        .expert-wrapper { background: #fff; border-radius: var(--radius); box-shadow: var(--card-shadow); padding: 50px; display: flex; flex-direction: row-reverse; align-items: center; justify-content: space-between; gap: 60px; border: 1px solid rgba(0,0,0,0.02); }
+        .expert-text h3 { margin-top: 0; color: var(--text-dark); font-size: 26px; margin-bottom: 15px; }
         .expert-text ul { padding: 0; list-style: none; margin: 0; }
-        .expert-text li { position: relative; padding-left: 30px; margin-bottom: 12px; color: var(--text-dark); font-size: 15px; }
-        .expert-text li::before { content: '✦'; position: absolute; left: 0; color: var(--accent-blue); font-weight: bold; font-size: 16px; }
-        
+        .expert-text li { position: relative; padding-left: 28px; margin-bottom: 14px; color: var(--text-dark); font-size: 15px; line-height: 1.5; }
+        .expert-text li::before { content: ''; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--primary-purple); }
         .expert-photo {
-            flex-shrink: 0; width: 280px; height: 280px;
-            border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            flex-shrink: 0; width: 320px; height: 320px;
+            /* Уникальная асимметричная форма фото */
+            border-radius: 20px 80px 20px 80px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
             object-fit: cover; display: block;
-            background-color: #f0f0ff;
         }
 
-        /* --- FAQ --- */
-        .faq-item { background: #fff; border: 1px solid #eee; border-radius: 16px; padding: 25px; margin-bottom: 15px; transition: 0.2s; }
-        .faq-item:hover { border-color: rgba(108, 99, 255, 0.3); box-shadow: 0 5px 15px rgba(108, 99, 255, 0.05); }
-        .faq-item h4 { margin: 0 0 8px 0; font-size: 16px; color: var(--text-dark); font-weight: 700; }
-        .faq-item p { margin: 0; color: var(--text-gray); font-size: 14px; }
+        /* --- ПЕРЕДЕЛАННЫЙ FAQ (ЛИНИИ СЛЕВА) --- */
+        .faq-item { background: #fff; border: none; border-left: 4px solid #e0e0ed; border-radius: 0 16px 16px 0; padding: 25px 30px; margin-bottom: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); transition: 0.3s; }
+        .faq-item:hover { border-left-color: var(--primary-purple); box-shadow: 0 8px 25px rgba(108, 99, 255, 0.08); transform: translateX(3px); }
+        .faq-item h4 { margin: 0 0 10px 0; font-size: 17px; color: var(--text-dark); font-weight: 700; }
+        .faq-item p { margin: 0; color: var(--text-gray); font-size: 15px; line-height: 1.6; }
 
-        /* --- ДОП. CTA БЛОК --- */
-        .final-cta {
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
-
+        /* --- ПЕРЕДЕЛАННЫЙ ДОП. CTA БЛОК (2 КОЛОНКИ) --- */
+        .final-cta { padding-top: 20px; padding-bottom: 20px; }
         .final-cta-card {
-            max-width: 820px;
-            margin: 0 auto;
-            background: #fff;
-            border-radius: var(--radius);
-            box-shadow: var(--card-shadow);
-            padding: 42px 32px;
-            text-align: center;
+            max-width: 950px; margin: 0 auto; background: #fff; border-radius: var(--radius);
+            box-shadow: var(--card-shadow); padding: 50px 60px;
+            display: flex; align-items: center; justify-content: space-between; gap: 40px;
             border: 1px solid rgba(108, 99, 255, 0.08);
+            background-image: linear-gradient(to right, #fff, #fafaff);
         }
-
-        .final-cta-card h3 {
-            font-family: 'Manrope', sans-serif;
-            font-size: clamp(24px, 3vw, 34px);
-            font-weight: 800;
-            margin: 0 0 14px 0;
-            color: var(--text-dark);
-        }
-
-        .final-cta-card p {
-            margin: 0 auto 24px;
-            max-width: 560px;
-            color: var(--text-gray);
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
+        .final-cta-text { flex: 1; max-width: 500px; text-align: left; }
+        .final-cta-action { flex: 0 0 auto; text-align: center; }
+        .final-cta-card h3 { font-family: 'Manrope', sans-serif; font-size: clamp(26px, 3vw, 36px); font-weight: 800; margin: 0 0 15px 0; color: var(--text-dark); letter-spacing: -0.5px; }
+        .final-cta-card p { margin: 0; color: var(--text-gray); font-size: 16px; line-height: 1.6; }
+        
         .btn-purple-outline {
-            display: inline-block;
-            background: var(--primary-purple);
-            color: #fff;
-            padding: 18px 40px;
-            border-radius: 14px;
-            font-weight: 700;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.25);
+            display: inline-block; background: var(--primary-purple); color: #fff;
+            padding: 18px 45px; border-radius: 12px; font-weight: 600; font-size: 16px;
+            border: none; cursor: pointer; box-shadow: 0 8px 25px rgba(108, 99, 255, 0.25);
             transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
         }
-
         .btn-purple-outline:hover {
-            transform: translateY(-3px);
-            background: var(--primary-purple-hover);
-            box-shadow: 0 15px 35px rgba(108, 99, 255, 0.35);
+            transform: translateY(-3px); background: var(--primary-purple-hover); box-shadow: 0 12px 30px rgba(108, 99, 255, 0.35);
         }
-
-        .final-cta-note {
-            font-size: 12px;
-            color: var(--text-gray);
-            margin-top: 16px;
-        }
+        .final-cta-note { font-size: 12px; color: var(--text-gray); margin-top: 15px; }
 
         /* --- FOOTER --- */
-        footer { background: #1a1a2e; color: rgba(255,255,255,0.7); padding: 50px 0; font-size: 13px; margin-top: 40px; }
-        .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
-        footer strong { color: #fff; font-size: 15px; display: block; margin-bottom: 5px; }
-        footer a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); transition: 0.2s; }
+        footer { background: #0b0e14; color: rgba(255,255,255,0.6); padding: 60px 0 40px; font-size: 13px; margin-top: 40px; }
+        .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
+        footer strong { color: #fff; font-size: 15px; display: block; margin-bottom: 8px; font-weight: 600; }
+        footer p { margin: 0 0 5px 0; }
+        footer a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); transition: 0.2s; padding-bottom: 1px; }
         footer a:hover { border-color: var(--primary-purple); color: var(--primary-purple); }
 
-        /* --- MODAL --- */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(26, 10, 46, 0.8); backdrop-filter: blur(8px); z-index: 1000; display: none; justify-content: center; align-items: center; }
-        .modal-card { background: #fff; padding: 40px; border-radius: 24px; width: 90%; max-width: 400px; text-align: center; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-        .modal-card input { width: 100%; padding: 16px; margin-bottom: 8px; border: 2px solid #eee; border-radius: 12px; box-sizing: border-box; background: #f8f9fd; font-size: 15px; transition: 0.2s; }
-        .modal-card input:focus { border-color: var(--primary-purple); outline: none; background: #fff; }
-        .modal-card input.input-error { border-color: var(--error-border); background: #fff7f6; }
-        .field-error {
-            min-height: 18px;
-            margin-bottom: 10px;
-            font-size: 12px;
-            line-height: 1.4;
-            color: var(--error-color);
-            text-align: left;
-        }
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 26px; cursor: pointer; color: #999; }
-        .btn-purple-full { width: 100%; background: var(--primary-purple); color: #fff; padding: 16px; border-radius: 12px; font-weight: 700; font-size: 16px; border: none; cursor: pointer; margin-top: 5px; transition: 0.2s; }
+        /* --- ПЕРЕДЕЛАННОЕ MODAL (ПЛОСКИЙ ДИЗАЙН ИНПУТОВ) --- */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(8, 11, 18, 0.85); backdrop-filter: blur(6px); z-index: 1000; display: none; justify-content: center; align-items: center; }
+        .modal-card { background: #fff; padding: 45px 40px; border-radius: 20px; width: 90%; max-width: 420px; text-align: left; position: relative; box-shadow: 0 25px 60px rgba(0,0,0,0.4); border-top: 6px solid var(--primary-purple); }
+        .modal-card h3 { margin-top: 0; margin-bottom: 10px; font-size: 24px; }
+        .modal-card input { width: 100%; padding: 15px 16px; margin-bottom: 6px; border: 1px solid #d1d5db; border-radius: 10px; box-sizing: border-box; background: #fff; font-size: 15px; transition: all 0.2s; font-family: inherit; }
+        .modal-card input:focus { border-color: var(--primary-purple); outline: none; box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.1); }
+        .modal-card input.input-error { border-color: var(--error-color); }
+        .field-error { min-height: 20px; margin-bottom: 8px; font-size: 12px; line-height: 1.4; color: var(--error-color); }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #a1a1aa; transition: 0.2s; line-height: 1; }
+        .close-btn:hover { color: #3f3f46; }
+        .btn-purple-full { width: 100%; background: var(--primary-purple); color: #fff; padding: 16px; border-radius: 10px; font-weight: 600; font-size: 16px; border: none; cursor: pointer; margin-top: 5px; transition: 0.2s; }
         .btn-purple-full:hover { background: var(--primary-purple-hover); }
         .btn-purple-full:disabled { opacity: 0.7; cursor: not-allowed; }
 
         /* ====== МОБИЛЬНАЯ АДАПТАЦИЯ ====== */
         @media (max-width: 900px) {
-            .hero { padding: 120px 20px 40px; } 
-            .container-hero { flex-direction: column; text-align: center; gap: 20px; } 
+            .hero { padding: 120px 20px 50px; } 
+            .container-hero { flex-direction: column; text-align: center; gap: 30px; } 
             
             .hero-image-container { flex: 1 1 auto; width: 100%; height: auto; margin-bottom: 0; }
-            .crypto-sticker { max-width: 140px; } 
+            /* УМЕНЬШЕНИЕ ИКОНКИ НА 20% ДЛЯ МОБИЛЬНЫХ (было 140px, стало 112px) */
+            .crypto-sticker { max-width: 112px; } 
 
             .hero-content { flex: 1 1 auto; text-align: center; display: flex; flex-direction: column; align-items: center; }
+            
             .grid-3 { grid-template-columns: 1fr; }
             
-            .expert-wrapper { flex-direction: column; text-align: center; gap: 25px; padding: 30px; }
-            .expert-text li { text-align: left; display: inline-block; }
-            .expert-photo { width: 100%; height: 220px; display: block; } 
+            .program-container { grid-template-columns: 1fr; } /* Сетка в 1 колонку */
             
-            .program-item { flex-direction: column; gap: 15px; }
+            .expert-wrapper { flex-direction: column; text-align: left; gap: 35px; padding: 35px 25px; }
+            .expert-photo { width: 100%; height: 260px; display: block; border-radius: 20px; } 
             
-            .nav { 
-                display: flex; 
-                flex-wrap: wrap; 
-                gap: 10px 20px; 
-                padding: 0 10px;
-            }
+            .final-cta-card { flex-direction: column; text-align: center; padding: 40px 25px; gap: 25px; }
+            .final-cta-text { text-align: center; }
+            
+            .nav { display: flex; flex-wrap: wrap; gap: 12px 20px; padding: 0 10px; }
             .nav a { font-size: 13px; }
-
-            .final-cta-card {
-                padding: 30px 20px;
-            }
         }
     </style>
 </head>
@@ -307,7 +263,6 @@
             </div>
             
             <div class="hero-image-container">
-                <!-- НОВАЯ ИКОНКА: 3D Кристалл Ethereum -->
                 <svg class="crypto-sticker" viewBox="0 0 256 417" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid">
                     <path fill="#8b85ff" d="M127.961 0l-2.795 9.5v275.668l2.795 2.79 127.962-75.638z" opacity=".9"/>
                     <path fill="#6c63ff" d="M127.962 0L0 212.32l127.962 75.639V154.158z" opacity=".8"/>
@@ -324,9 +279,30 @@
         <div class="container">
             <h2>Кому подойдёт этот курс?</h2>
             <div class="grid-3">
-                <div class="card"><div class="card-icon">🐣</div><h3>С нуля без подготовки</h3><p>Разберётесь в теме без сложных терминов и перегрузки. Объясняем простым языком и по шагам.</p></div>
-                <div class="card"><div class="card-icon">👀</div><h3>Начинающий с осторожностью</h3><p>Не уверены в первых действиях? Покажем, как выполнять операции спокойно и без лишнего риска.</p></div>
-                <div class="card"><div class="card-icon">🧠</div><h3>Ищущий структуру</h3><p>Смотрели разные источники, но нет системы? Получите понятную последовательность обучения на 14 дней.</p></div>
+                <div class="card">
+                    <div class="card-icon">
+                        <!-- Заменено на стильную SVG иконку (Старт) -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                    </div>
+                    <h3>С нуля без подготовки</h3>
+                    <p>Разберётесь в теме без сложных терминов и перегрузки. Объясняем простым языком и по шагам.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <!-- Заменено на стильную SVG иконку (Безопасность/Осторожность) -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <h3>Начинающий с осторожностью</h3>
+                    <p>Не уверены в первых действиях? Покажем, как выполнять операции спокойно и без лишнего риска.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <!-- Заменено на стильную SVG иконку (Структура) -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 12 12 17 22 12"></polyline><polyline points="2 17 12 22 22 17"></polyline></svg>
+                    </div>
+                    <h3>Ищущий структуру</h3>
+                    <p>Смотрели разные источники, но нет системы? Получите понятную последовательность обучения на 14 дней.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -334,23 +310,48 @@
     <section id="program">
         <div class="container">
             <h2>Программа обучения</h2>
+            <!-- Теперь это grid-сетка -->
             <div class="program-container">
-                <div class="program-item"><div class="day-badge">Урок 1-2</div><div class="prog-content"><h4>База и понимание рынка</h4><p>Разберётесь в основе блокчейна, ключевых терминах, переводах и комиссиях. Поймёте, как устроена система.</p></div></div>
-                <div class="program-item"><div class="day-badge">Урок 3-4</div><div class="prog-content"><h4>Платформы и операции</h4><p>Создание аккаунтов, базовая защита (2FA), покупка и вывод средств без лишних сложностей.</p></div></div>
-                <div class="program-item"><div class="day-badge">Урок 5-6</div><div class="prog-content"><h4>Защита и контроль средств</h4><p>Разберём виды кошельков, работу с сид-фразами и основные принципы безопасного использования.</p></div></div>
-                <div class="program-item"><div class="day-badge">Урок 7-8</div><div class="prog-content"><h4>Практика и системный подход</h4><p>Разбор типичных ошибок, реальные примеры и формирование понятного плана дальнейших действий.</p></div></div>
+                <div class="program-item">
+                    <div class="day-badge">Урок 1-2</div>
+                    <div class="prog-content">
+                        <h4>База и понимание рынка</h4>
+                        <p>Разберётесь в основе блокчейна, ключевых терминах, переводах и комиссиях. Поймёте, как устроена система.</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <div class="day-badge">Урок 3-4</div>
+                    <div class="prog-content">
+                        <h4>Платформы и операции</h4>
+                        <p>Создание аккаунтов, базовая защита (2FA), покупка и вывод средств без лишних сложностей.</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <div class="day-badge">Урок 5-6</div>
+                    <div class="prog-content">
+                        <h4>Защита и контроль средств</h4>
+                        <p>Разберём виды кошельков, работу с сид-фразами и основные принципы безопасного использования.</p>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <div class="day-badge">Урок 7-8</div>
+                    <div class="prog-content">
+                        <h4>Практика и системный подход</h4>
+                        <p>Разбор типичных ошибок, реальные примеры и формирование понятного плана дальнейших действий.</p>
+                    </div>
+                </div>
             </div>
-            <div style="text-align: center;"><button class="btn-purple-wide" onclick="openModal()">Записаться на бесплатное обучение</button></div>
+            <div class="program-action"><button class="btn-purple-wide" onclick="openModal()">Записаться на бесплатное обучение</button></div>
         </div>
     </section>
 
     <section id="expert">
         <div class="container">
             <div class="expert-wrapper">
-                <div class="expert-text" style="flex: 1;">
+                <div class="expert-text">
                     <h2 style="text-align: left; margin-bottom: 25px;">Кто ведет курс?</h2>
                     <h3>Образовательная команда проекта</h3>
-                    <p style="margin-bottom: 20px; line-height: 1.6; color: var(--text-gray);">Мы объединили опыт практиков, работающих в сфере цифровых активов более 10 лет, чтобы создать самую понятную базу для старта.</p>
+                    <p style="margin-bottom: 25px; line-height: 1.6; color: var(--text-gray);">Мы объединили опыт практиков, работающих в сфере цифровых активов более 10 лет, чтобы создать самую понятную базу для старта.</p>
                     <ul>
                         <li>Практический опыт работы с цифровыми инструментами с 2014 года.</li>
                         <li>Собственная методика обучения «от простого к сложному».</li>
@@ -358,9 +359,7 @@
                         <li>Фокус на безопасности и грамотном использовании цифровых инструментов.</li>
                     </ul>
                 </div>
-                <img src="/assets/team.jpeg"
-     alt="Команда специалистов"
-     class="expert-photo">
+                <img src="/assets/team.jpeg" alt="Команда специалистов" class="expert-photo">
             </div>
         </div>
     </section>
@@ -369,21 +368,35 @@
         <div class="container">
             <h2>Ответы на популярные вопросы</h2>
             <div style="max-width: 800px; margin: 0 auto;">
-                <div class="faq-item"><h4>Подойдёт ли курс без опыта?</h4><p>Да. Программа рассчитана на новичков и объясняет базовые вещи простым языком.</p></div>
-                <div class="faq-item"><h4>Если мало свободного времени?</h4><p>Материалы доступны в записи — вы проходите обучение в удобном для себя режиме.</p></div>
-                <div class="faq-item"><h4>Предусмотрена ли обратная связь?</h4><p>Да. В процессе обучения можно задать вопросы и получить ответы в закрытом чате.</p></div>
+                <div class="faq-item">
+                    <h4>Подойдёт ли курс без опыта?</h4>
+                    <p>Да. Программа рассчитана на новичков и объясняет базовые вещи простым языком.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Если мало свободного времени?</h4>
+                    <p>Материалы доступны в записи — вы проходите обучение в удобном для себя режиме.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Предусмотрена ли обратная связь?</h4>
+                    <p>Да. В процессе обучения можно задать вопросы и получить ответы в закрытом чате.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="final-cta">
         <div class="container">
+            <!-- Двухколоночный дизайн для CTA -->
             <div class="final-cta-card">
-                <h3>Готовы начать обучение?</h3>
-                <p>Оставьте заявку, чтобы записаться на бесплатное обучение. Подходит для тех, кто хочет спокойно разобраться в криптовалютах с нуля.</p>
-                <button class="btn-purple-outline" onclick="openModal()">Записаться на обучение</button>
-                <div class="final-cta-note">
-                    Нажимая кнопку, вы соглашаетесь с <a href="/policy/" style="color: var(--primary-purple); text-decoration: none; border-bottom: 1px solid rgba(108, 99, 255, 0.35);">политикой конфиденциальности</a>
+                <div class="final-cta-text">
+                    <h3>Готовы начать обучение?</h3>
+                    <p>Оставьте заявку, чтобы записаться на бесплатное обучение. Подходит для тех, кто хочет спокойно разобраться в криптовалютах с нуля.</p>
+                </div>
+                <div class="final-cta-action">
+                    <button class="btn-purple-outline" onclick="openModal()">Записаться на обучение</button>
+                    <div class="final-cta-note">
+                        Нажимая кнопку, вы соглашаетесь с <br><a href="/policy/" style="color: var(--primary-purple); text-decoration: none; border-bottom: 1px solid rgba(108, 99, 255, 0.35);">политикой конфиденциальности</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -397,8 +410,7 @@
                 <p>ОГРН 1077847552639 | ИНН 7840368681 | КПП 784001001</p>
                 <p>Адрес: 191040, г. Санкт-Петербург, Лиговский пр-т, д. 73, офис 205</p>
                 
-                <!-- Добавленная строка -->
-                <p style="opacity: 0.6; margin-top: 8px;">
+                <p style="opacity: 0.6; margin-top: 10px;">
                     Курс проводится в рамках образовательной деятельности бизнес-школы ITC Group
                 </p>
             </div>
@@ -409,7 +421,7 @@
             </div>
         </div>
 
-        <div style="text-align: center; margin-top: 30px; opacity: 0.5;">
+        <div style="text-align: center; margin-top: 35px; opacity: 0.4;">
             "Информация на сайте носит образовательный характер и не является инвестиционной рекомендацией"<br>
             © 2026 Все права защищены
         </div>
@@ -419,7 +431,7 @@
     <div class="modal-overlay" id="modal">
         <div class="modal-card">
             <span class="close-btn" onclick="closeModal()">×</span>
-            <h3 style="margin-top: 0; color: var(--text-dark); font-weight: 800;">Начать обучение</h3>
+            <h3 style="color: var(--text-dark); font-weight: 800;">Начать обучение</h3>
             <p style="color: var(--text-gray); margin-bottom: 25px; font-size: 14px;">Заполните форму, чтобы получить доступ к обучению после подтверждения заявки</p>
             <form onsubmit="submitForm(event)" novalidate>
                 <input type="text" id="modal-name" name="name" placeholder="Ваше имя" autocomplete="name" required>
