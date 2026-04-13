@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Разберитесь в криптовалютах за 2 недели | Digital Learning</title>
+    <title>Основы цифровых активов | Образовательная программа</title>
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
@@ -37,1515 +37,791 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #2563EB;
-            --primary-hover: #1D4ED8;
-            --accent: #0EA5E9;
-            --bg-main: #F4F7FB;
-            --bg-white: #FFFFFF;
-            --bg-card: #FFFFFF;
-            --text-heading: #0F172A;
-            --text-main: #334155;
-            --text-muted: #64748B;
-            --border: #E2E8F0;
-            --border-highlight: #BFDBFE;
-
-            --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.02);
-            --shadow-card: 0 10px 30px -10px rgba(15, 23, 42, 0.05), 0 4px 6px -2px rgba(15, 23, 42, 0.02);
-            --shadow-card-hover: 0 20px 40px -10px rgba(37, 99, 235, 0.08), 0 0 0 1px rgba(37, 99, 235, 0.05);
-            --shadow-form: 0 25px 50px -12px rgba(15, 23, 42, 0.1), 0 0 0 1px rgba(226, 232, 240, 0.5);
-
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            --section-pad: 80px;
+            /* Новая цветовая палитра: технологичный голубой и синий */
+            --color-theme-dark: #0B1121;
+            --color-theme-main: #0EA5E9;
+            --color-theme-light: #E0F2FE;
+            --color-accent-glow: #38BDF8;
+            --color-bg-base: #FAFAFC;
+            --color-bg-surface: #FFFFFF;
+            --color-text-dark: #0F172A;
+            --color-text-body: #475569;
+            --color-text-muted: #94A3B8;
+            --color-border: #E2E8F0;
+            
+            --shadow-subtle: 0 4px 20px rgba(14, 165, 233, 0.05);
+            --shadow-card: 0 12px 32px rgba(15, 23, 42, 0.04);
+            --shadow-hover: 0 20px 40px rgba(14, 165, 233, 0.1);
+            --shadow-neon: 0 0 25px rgba(56, 189, 248, 0.4);
+            
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-white);
-            color: var(--text-main);
+            background-color: var(--color-bg-base);
+            color: var(--color-text-body);
             line-height: 1.6;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-main); }
-        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
-
-        .container {
-            max-width: 1200px;
+        .wrapper {
+            max-width: 1140px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
             position: relative;
             z-index: 10;
         }
 
-        .bg-mesh {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            pointer-events: none;
-            background-color: transparent;
-            background-image:
-                radial-gradient(circle at 10% 10%, rgba(37, 99, 235, 0.04) 0%, transparent 40%),
-                radial-gradient(circle at 90% 30%, rgba(14, 165, 233, 0.03) 0%, transparent 40%),
-                radial-gradient(circle at 40% 80%, rgba(37, 99, 235, 0.02) 0%, transparent 50%);
-            filter: blur(30px);
-        }
-
-        .grid-pattern {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.16;
-            background-image:
-                linear-gradient(to right, rgba(226, 232, 240, 0.35) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(226, 232, 240, 0.35) 1px, transparent 1px);
-            background-size: 32px 32px;
-            mask-image: radial-gradient(circle at 50% 30%, black 35%, transparent 85%);
-            -webkit-mask-image: radial-gradient(circle at 50% 30%, black 35%, transparent 85%);
-        }
-
-        .flex { display: flex; }
-        .items-center { align-items: center; }
-        .justify-between { justify-content: space-between; }
-        .text-center { text-align: center; }
-        .w-full { width: 100%; }
-
-        .text-gradient {
-            background: linear-gradient(90deg, #1E3A8A 0%, #2563EB 50%, #0EA5E9 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: inline-block;
-        }
-
-        .btn {
+        /* --- СТИЛИ КНОПОК --- */
+        .action-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            background: linear-gradient(90deg, #1E3A8A 0%, #2563EB 50%, #0EA5E9 100%);
-            background-size: 200% auto;
+            background: linear-gradient(135deg, var(--color-theme-main) 0%, var(--color-accent-glow) 100%);
             color: #FFFFFF;
-            padding: 16px 32px;
+            padding: 16px 36px;
             border-radius: 12px;
             font-weight: 600;
             font-size: 16px;
             border: none;
             cursor: pointer;
-            transition: var(--transition);
+            transition: var(--transition-smooth);
             text-decoration: none;
-            position: relative;
-            box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.3), 0 4px 8px -2px rgba(37, 99, 235, 0.2);
-            white-space: nowrap;
+            box-shadow: var(--shadow-neon);
         }
 
-        .btn:hover {
+        .action-button:hover {
             transform: translateY(-2px);
-            background-position: right center;
-            box-shadow: 0 12px 25px -4px rgba(37, 99, 235, 0.45), 0 6px 12px -2px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 8px 30px rgba(56, 189, 248, 0.6);
+            background: linear-gradient(135deg, #0284C7 0%, #0EA5E9 100%);
         }
 
-        .btn-glow { animation: none; }
-
-        .hero-main-btn {
-            width: 100%;
+        .action-button.outline {
+            background: transparent;
+            color: var(--color-theme-main);
+            border: 2px solid var(--color-theme-main);
+            box-shadow: none;
         }
 
-        @media (min-width: 768px) {
-            .hero-main-btn {
-                width: auto;
-            }
+        .action-button.outline:hover {
+            background: var(--color-theme-light);
+            box-shadow: none;
         }
 
-        header {
+        /* --- НАВИГАЦИЯ --- */
+        .top-navbar {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 50;
-            padding: 15px 0;
-            transition: var(--transition);
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 18px 0;
+            transition: var(--transition-smooth);
             background: transparent;
         }
 
-        header.scrolled {
+        .top-navbar.is-scrolled {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            box-shadow: 0 2px 10px rgba(15,23,42,0.03);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            padding: 12px 0;
         }
 
-        .header-inner {
+        .top-navbar.is-scrolled .brand-name { color: var(--color-text-dark); }
+        .top-navbar.is-scrolled .nav-item { color: var(--color-text-body); }
+        .top-navbar.is-scrolled .nav-item:hover { color: var(--color-theme-main); }
+        .top-navbar.is-scrolled .mobile-toggle { color: var(--color-text-dark); }
+
+        .navbar-content {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            flex-wrap: nowrap;
-            gap: 16px;
+            align-items: center;
         }
 
-        .logo {
+        .brand-wrap {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
             cursor: pointer;
-            flex-shrink: 0;
         }
 
-        .logo-box {
-            width: 34px;
-            height: 34px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            box-shadow: 0 4px 10px rgba(37,99,235,0.2);
+        .brand-icon {
+            width: 32px; height: 32px;
+            background: linear-gradient(135deg, var(--color-theme-main), var(--color-accent-glow));
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
         }
 
-        .logo-text {
-            font-size: 19px;
+        .brand-name {
+            font-family: 'Manrope', sans-serif;
+            font-size: 20px;
             font-weight: 800;
-            color: var(--text-heading);
-            letter-spacing: -0.5px;
-            white-space: nowrap;
+            color: #ffffff;
+            transition: color 0.3s;
         }
 
-        nav {
+        .desktop-menu {
             display: none;
-            gap: 24px;
-            flex-shrink: 1;
-            overflow: hidden;
+            gap: 28px;
+            align-items: center;
         }
 
         @media (min-width: 1024px) {
-            nav { display: flex; }
+            .desktop-menu { display: flex; }
         }
 
-        .nav-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 15px;
+        .nav-item {
+            color: rgba(255,255,255,0.8);
             font-weight: 500;
-            transition: var(--transition);
-            background: none;
-            border: none;
-            cursor: pointer;
-            white-space: nowrap;
+            font-size: 15px;
+            text-decoration: none;
+            background: none; border: none; cursor: pointer;
+            transition: var(--transition-smooth);
         }
 
-        .nav-link:hover { color: var(--primary); }
+        .nav-item:hover { color: #ffffff; }
 
-        .header-btn-wrap {
-            flex-shrink: 0;
-            display: none;
-        }
-
-        @media (min-width: 1024px) {
-            .header-btn-wrap { display: block; }
-        }
-
-        .menu-btn {
+        .mobile-toggle {
             display: block;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--text-heading);
-            flex-shrink: 0;
+            background: none; border: none;
+            color: #ffffff; cursor: pointer;
         }
 
         @media (min-width: 1024px) {
-            .menu-btn { display: none; }
+            .mobile-toggle { display: none; }
         }
 
-        .mobile-menu {
+        .mobile-dropdown {
             position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: var(--bg-white);
+            top: 100%; left: 0; right: 0;
+            background: var(--color-bg-surface);
             max-height: 0;
             overflow: hidden;
-            transition: var(--transition);
-            box-shadow: 0 10px 15px -3px rgba(15,23,42,0.05);
+            transition: var(--transition-smooth);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
-        .mobile-menu.open {
+        .mobile-dropdown.is-open {
             max-height: 400px;
             padding: 16px 0;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--color-border);
         }
 
-        .mobile-link {
-            display: block;
-            padding: 12px 24px;
-            color: var(--text-heading);
-            font-weight: 500;
-            text-align: left;
-            background: none;
-            border: none;
-            width: 100%;
+        .mobile-dropdown-link {
+            display: block; width: 100%;
+            text-align: left; padding: 12px 24px;
+            color: var(--color-text-dark);
+            font-weight: 500; font-size: 16px;
+            background: none; border: none;
         }
 
-        .section-bg-alt {
-            background-color: var(--bg-main);
-            border-top: 1px solid #F1F5F9;
-            border-bottom: 1px solid #F1F5F9;
-        }
-
-        .section-bg-white {
-            background-color: var(--bg-white);
-        }
-
-        .hero {
-            padding: 150px 0 80px;
+        /* --- HERO БЛОК (Абстрактный) --- */
+        .hero-section {
+            background: linear-gradient(135deg, var(--color-theme-dark) 0%, #0C4A6E 50%, #082F49 100%);
+            padding: 110px 0 50px;
             position: relative;
-            background: linear-gradient(135deg, #F0F7FF 0%, #E0F2FE 50%, #E1F8FA 100%);
             overflow: hidden;
+            color: #ffffff;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            left: -10%;
-            width: 70%;
-            height: 70%;
-            background: radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 60%);
-            z-index: 0;
-            pointer-events: none;
+        /* Фоновая сетка для глубины */
+        .hero-section::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(circle at top right, black 40%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at top right, black 40%, transparent 80%);
         }
 
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -20%;
-            right: -10%;
-            width: 70%;
-            height: 70%;
-            background: radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 60%);
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .hero-grid {
+        .hero-layout {
             display: grid;
             grid-template-columns: 1fr;
             gap: 40px;
             align-items: center;
-            position: relative;
-            z-index: 2;
         }
 
         @media (min-width: 1024px) {
-            .hero-grid {
-                grid-template-columns: 1.15fr 0.85fr;
-                gap: 60px;
-            }
+            .hero-layout { grid-template-columns: 1.2fr 0.8fr; gap: 60px; }
         }
 
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            background: #FFFFFF;
-            border: 1px solid rgba(37, 99, 235, 0.15);
+        .hero-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 14px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
             border-radius: 100px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 13px; font-weight: 600;
+            color: #BAE6FD;
             margin-bottom: 24px;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.05);
+            backdrop-filter: blur(10px);
         }
 
-        .hero-title {
-            font-size: 38px;
+        .hero-headline {
+            font-family: 'Manrope', sans-serif;
+            font-size: clamp(34px, 5vw, 54px);
             font-weight: 800;
             line-height: 1.15;
             margin-bottom: 20px;
             letter-spacing: -1px;
-            color: var(--text-heading);
         }
 
-        @media (min-width: 768px) {
-            .hero-title { font-size: 52px; }
+        .hero-highlight {
+            color: var(--color-accent-glow);
+            background: linear-gradient(135deg, #7DD3FC 0%, #0EA5E9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .hero-subtitle {
+        .hero-description {
             font-size: 18px;
-            color: var(--text-main);
+            color: rgba(255,255,255,0.8);
             margin-bottom: 32px;
-            font-weight: 400;
-            max-width: 90%;
-            line-height: 1.6;
+            max-width: 540px;
         }
 
-        .hero-bullets {
-            margin-bottom: 32px;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
+        .hero-features {
+            display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px;
         }
 
-        .hero-bullet {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            font-size: 15px;
-            color: var(--text-main);
-            font-weight: 500;
+        .hero-feature-item {
+            display: flex; align-items: flex-start; gap: 12px;
+            font-size: 15px; color: rgba(255,255,255,0.9);
         }
 
-        .hero-bullet svg {
-            flex-shrink: 0;
-            color: var(--primary);
-            margin-top: 2px;
-        }
+        .hero-feature-item svg { color: var(--color-accent-glow); flex-shrink: 0; margin-top: 3px; }
 
-        .hero-actions { margin-top: 10px; }
-
-        .hero-subtext {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-top: 14px;
-            text-align: left;
-        }
-
-        @media (min-width: 768px) and (max-width: 1023px) {
-            .hero {
-                padding: 130px 0 70px;
-            }
-
-            .hero-grid {
-                gap: 28px;
-            }
-
-            .hero-title {
-                font-size: 44px;
-            }
-
-            .hero-subtitle {
-                max-width: 100%;
-            }
-        }
-
-        .desktop-form { position: relative; z-index: 2; }
-
-        .form-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 0 40px rgba(14, 165, 233, 0.08), 0 25px 50px -12px rgba(15, 23, 42, 0.15);
+        .abstract-visual {
             position: relative;
-            overflow: hidden;
-            transform: translateY(0);
+            width: 100%; height: 400px;
+            display: flex; justify-content: center; align-items: center;
         }
 
-        .form-card::before {
-            content: '';
+        .visual-glow {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #0EA5E9, #2563EB, #1E3A8A);
+            width: 250px; height: 250px;
+            background: var(--color-accent-glow);
+            filter: blur(80px); opacity: 0.4;
+            border-radius: 50%;
         }
 
-        .form-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 24px;
-            color: var(--text-heading);
-            text-align: center;
-        }
-
-        .input-group {
-            margin-bottom: 16px;
-            text-align: left;
-        }
-
-        .input-label {
-            display: block;
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 14px 18px;
-            border-radius: 12px;
-            background: #F8FAFC;
-            border: 1px solid #CBD5E1;
-            color: var(--text-heading);
-            font-size: 15px;
-            outline: none;
-            transition: var(--transition);
-            box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.02);
-        }
-
-        .input-field::placeholder { color: #94A3B8; }
-
-        .input-field:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1), inset 0 2px 4px rgba(15, 23, 42, 0.02);
-            background: var(--bg-white);
-        }
-
-        .input-error {
-            color: #EF4444;
-            font-size: 12px;
-            margin-top: 6px;
-            display: none;
-        }
-
-        .form-disclaimer {
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.5;
-            margin-top: 12px;
-        }
-
-        .form-disclaimer a {
-            color: var(--primary);
-            text-decoration: underline;
-        }
-
-        .desktop-form { display: none; }
-
-        @media (min-width: 1024px) {
-            .desktop-form { display: block; }
-        }
-
-        .tablet-hero-visual {
-            display: none;
-            position: relative;
-            width: 100%;
-            height: 260px;
-            margin-top: 8px;
-            border-radius: 28px;
-            background: linear-gradient(145deg, rgba(255,255,255,0.82), rgba(255,255,255,0.58));
-            border: 1px solid rgba(226, 232, 240, 0.85);
-            box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.12);
-            overflow: hidden;
-        }
-
-        @media (min-width: 768px) and (max-width: 1023px) {
-            .tablet-hero-visual { display: block; }
-        }
-
-        @keyframes float-slow {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        @keyframes float-medium {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(-5deg); }
-        }
-
-        @keyframes float-fast {
-            0%, 100% { transform: translateY(0px) scale(1); }
-            50% { transform: translateY(-10px) scale(1.05); }
-        }
-
-        .crypto-element-1 { animation: float-slow 6s ease-in-out infinite; }
-        .crypto-element-2 { animation: float-medium 5s ease-in-out infinite 1s; }
-        .crypto-element-3 { animation: float-fast 4s ease-in-out infinite 2s; }
-
-        .abstract-hero-visual {
-            position: relative;
-            width: 100%;
-            height: 450px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .glass-coin {
-            background: rgba(255, 255, 255, 0.85);
+        .glass-shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 1);
-            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: float 6s ease-in-out infinite;
         }
 
-        .section {
-            padding: var(--section-pad) 0;
-            position: relative;
+        .shape-1 { width: 180px; height: 180px; border-radius: 30px; transform: rotate(15deg); z-index: 3; }
+        .shape-2 { width: 120px; height: 120px; border-radius: 50%; top: 10%; right: 10%; animation-delay: 1s; z-index: 2; background: linear-gradient(135deg, rgba(56,189,248,0.2), transparent);}
+        .shape-3 { width: 100px; height: 100px; border-radius: 20px; bottom: 15%; left: 15%; animation-delay: 2s; z-index: 4; transform: rotate(-10deg);}
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+            50% { transform: translateY(-15px) rotate(var(--rot, 0deg)); }
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
+        /* --- ОБЩИЕ СТИЛИ СЕКЦИЙ --- */
+        .page-section { padding: 50px 0; }
+        .section-heading { text-align: center; margin-bottom: 32px; }
+        .section-h2 {
+            font-family: 'Manrope', sans-serif;
+            font-size: clamp(28px, 4vw, 38px);
+            font-weight: 800; color: var(--color-text-dark);
+            margin-bottom: 16px; letter-spacing: -0.5px;
         }
+        .section-sub { font-size: 16px; color: var(--color-text-body); max-width: 600px; margin: 0 auto; }
 
-        .section-title {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--text-heading);
-            margin-bottom: 16px;
-            letter-spacing: -0.5px;
+        /* --- ПРЕИМУЩЕСТВА --- */
+        .benefits-grid {
+            display: grid; grid-template-columns: 1fr; gap: 24px;
         }
+        @media (min-width: 768px) { .benefits-grid { grid-template-columns: repeat(3, 1fr); } }
 
-        .section-subtitle {
-            font-size: 18px;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto;
-            font-weight: 400;
-            line-height: 1.6;
-        }
-
-        .target-card, .lesson-card, .result-item, .step-item, .team-card {
-            background: var(--bg-white);
-            border: 1px solid var(--border);
-            border-radius: 20px;
+        .benefit-card {
+            background: var(--color-bg-surface);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            border: 1px solid var(--color-border);
             box-shadow: var(--shadow-card);
-            position: relative;
-            z-index: 2;
-            transition: var(--transition);
+            transition: var(--transition-smooth);
         }
-
-        .target-card:hover, .lesson-card:hover, .team-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--border-highlight);
-            box-shadow: var(--shadow-card-hover);
+        .benefit-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--color-theme-light); }
+        .b-icon {
+            width: 52px; height: 52px; border-radius: 14px;
+            background: var(--color-theme-light); color: var(--color-theme-main);
+            display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
         }
+        .b-title { font-size: 19px; font-weight: 700; color: var(--color-text-dark); margin-bottom: 12px; }
+        .b-text { font-size: 15px; color: var(--color-text-body); }
 
-        .target-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
+        /* --- ФОРМАТ / КАК ПРОХОДИТ --- */
+        .process-wrapper { max-width: 800px; margin: 0 auto; }
+        .process-step {
+            display: flex; gap: 24px; background: var(--color-bg-surface);
+            padding: 18px; border-radius: var(--radius-lg); margin-bottom: 16px;
+            border: 1px solid var(--color-border); box-shadow: var(--shadow-subtle);
         }
-
-        @media (min-width: 768px) {
-            .target-grid { grid-template-columns: repeat(3, 1fr); }
+        .p-num {
+            width: 40px; height: 40px; flex-shrink: 0; background: var(--color-theme-main); color: #fff;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;
         }
+        .p-info h4 { font-size: 18px; font-weight: 700; color: var(--color-text-dark); margin-bottom: 6px; }
 
-        .target-card {
-            padding: 32px 24px;
-            border-top: 3px solid transparent;
-            background: linear-gradient(145deg, #FFFFFF 0%, #F0F7FF 100%);
-            box-shadow: 0 12px 30px -10px rgba(37, 99, 235, 0.1);
+        /* --- ПРОГРАММА (Грид) --- */
+        .module-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 768px) { .module-grid { grid-template-columns: repeat(2, 1fr); } }
+        
+        .module-card {
+            background: var(--color-bg-surface); border: 1px solid var(--color-border);
+            padding: 20px; border-radius: var(--radius-md); transition: var(--transition-smooth);
+            position: relative; overflow: hidden;
         }
-
-        .target-card:hover {
-            border-top-color: var(--primary);
-            background: linear-gradient(145deg, #FFFFFF 0%, #E0F2FE 100%);
+        .module-card:hover { border-color: var(--color-theme-main); box-shadow: var(--shadow-subtle); }
+        .module-badge {
+            font-size: 12px; font-weight: 700; color: var(--color-theme-main); text-transform: uppercase;
+            letter-spacing: 1px; margin-bottom: 10px; display: block;
         }
+        .module-card h4 { font-size: 17px; font-weight: 700; color: var(--color-text-dark); margin-bottom: 8px; }
+        .module-card p { font-size: 14px; color: var(--color-text-body); }
 
-        .target-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #EFF6FF, #E0F2FE);
-            border: 1px solid #DBEAFE;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(37,99,235,0.05);
+        /* --- РЕЗУЛЬТАТЫ --- */
+        .outcomes-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 768px) { .outcomes-grid { grid-template-columns: repeat(2, 1fr); } }
+        .outcome-item {
+            display: flex; gap: 16px; align-items: flex-start;
+            background: linear-gradient(145deg, #fff, #F8FAFC); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--color-border);
         }
+        .outcome-item svg { color: var(--color-accent-glow); flex-shrink: 0; width: 24px; height: 24px; }
 
-        .target-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--text-heading);
-            margin-bottom: 12px;
+        /* --- О СОЗДАТЕЛЯХ --- */
+        .about-layout {
+            display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center;
+            background: var(--color-bg-surface); padding: 32px; border-radius: var(--radius-lg); border: 1px solid var(--color-border);
         }
+        @media (min-width: 1024px) { .about-layout { grid-template-columns: 1fr 1fr; gap: 60px; } }
+        .about-text h3 { font-family: 'Manrope', sans-serif; font-size: 28px; margin-bottom: 20px; color: var(--color-text-dark); }
+        .about-text p { margin-bottom: 16px; font-size: 15px; }
+        .about-points { display: flex; flex-direction: column; gap: 16px; }
+        .point-card { background: var(--color-bg-base); padding: 20px; border-radius: var(--radius-md); display: flex; gap: 16px; align-items: center;}
+        .point-icon { width: 40px; height: 40px; background: #fff; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--color-theme-main); box-shadow: var(--shadow-subtle); flex-shrink: 0;}
 
-        .target-desc {
-            font-size: 15px;
-            color: var(--text-main);
-            margin-bottom: 20px;
+        /* --- FAQ --- */
+        .faq-wrapper { max-width: 700px; margin: 0 auto; }
+        .faq-box {
+            background: var(--color-bg-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); margin-bottom: 12px; overflow: hidden; transition: var(--transition-smooth);
         }
-
-        .target-result {
-            font-size: 14px;
-            color: var(--primary);
-            font-weight: 600;
-            padding-top: 16px;
-            border-top: 1px solid var(--border);
+        .faq-trigger {
+            width: 100%; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center;
+            background: none; border: none; cursor: pointer; font-size: 16px; font-weight: 600; color: var(--color-text-dark); text-align: left;
         }
+        .faq-body { max-height: 0; padding: 0 24px; opacity: 0; transition: var(--transition-smooth); font-size: 15px; }
+        .faq-box.active { border-color: var(--color-theme-main); box-shadow: var(--shadow-subtle); }
+        .faq-box.active .faq-body { max-height: 200px; padding: 0 24px 20px; opacity: 1; }
+        .faq-box.active .faq-icon { transform: rotate(180deg); color: var(--color-theme-main); }
 
-        .program-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
+        /* --- ФОРМА / CTA --- */
+        .cta-section { background: linear-gradient(180deg, var(--color-bg-base) 0%, #E0F2FE 100%); padding: 50px 0; }
+        .cta-card {
+            max-width: 500px; margin: 0 auto; background: var(--color-bg-surface);
+            padding: 40px; border-radius: var(--radius-lg); box-shadow: var(--shadow-card);
+            border: 1px solid rgba(255,255,255,0.8); position: relative;
         }
-
-        @media (min-width: 768px) {
-            .program-grid { grid-template-columns: repeat(2, 1fr); }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .f-label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; color: var(--color-text-body); }
+        .f-input {
+            width: 100%; padding: 14px 16px; border-radius: 10px; border: 1px solid var(--color-border);
+            background: var(--color-bg-base); font-family: inherit; font-size: 15px; transition: var(--transition-smooth);
         }
+        .f-input:focus { outline: none; border-color: var(--color-theme-main); background: #fff; box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1); }
+        .f-error { color: var(--alert-red, #EF4444); font-size: 12px; margin-top: 6px; display: none; }
+        .f-hint { font-size: 12px; color: var(--color-text-muted); margin-top: 16px; text-align: center; }
+        .f-hint a { color: var(--color-theme-main); text-decoration: underline; }
 
-        .lesson-card {
-            display: flex;
-            gap: 20px;
-            padding: 24px;
-            overflow: hidden;
-        }
+        /* --- FOOTER --- */
+        .site-footer { background: #FFFFFF; padding: 60px 0 30px; border-top: 1px solid var(--color-border); }
+        .footer-content { display: grid; grid-template-columns: 1fr; gap: 30px; margin-bottom: 40px; }
+        @media (min-width: 768px) { .footer-content { grid-template-columns: 2fr 1fr; } }
+        .footer-col h5 { font-size: 15px; font-weight: 700; color: var(--color-text-dark); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-text { font-size: 14px; color: var(--color-text-muted); margin-bottom: 8px; }
+        .footer-link { color: var(--color-text-body); text-decoration: none; font-size: 14px; display: block; margin-bottom: 12px; transition: 0.2s;}
+        .footer-link:hover { color: var(--color-theme-main); }
+        .footer-bottom { border-top: 1px solid var(--color-border); padding-top: 24px; text-align: center; font-size: 13px; color: var(--color-text-muted); }
 
-        .lesson-num {
-            font-size: 40px;
-            font-weight: 900;
-            color: rgba(37, 99, 235, 0.08);
-            line-height: 0.8;
-            margin-top: 4px;
-            font-family: sans-serif;
-        }
-
-        .lesson-info h4 {
-            font-size: 17px;
-            font-weight: 700;
-            color: var(--text-heading);
-            margin-bottom: 8px;
-        }
-
-        .lesson-info p {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        .results-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .results-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        .result-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            padding: 24px;
-            background: linear-gradient(145deg, #FFFFFF, #F8FAFC);
-        }
-
-        .result-item svg {
-            color: var(--primary);
-            flex-shrink: 0;
-            width: 28px;
-            height: 28px;
-            background: #EFF6FF;
-            border-radius: 50%;
-            padding: 4px;
-        }
-
-        .result-item p {
-            font-size: 15px;
-            color: var(--text-main);
-        }
-
-        .steps-wrapper {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .step-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 24px;
-            margin-bottom: 24px;
-            padding: 28px;
-        }
-
-        .step-icon {
-            width: 50px;
-            height: 50px;
-            flex-shrink: 0;
-            background: linear-gradient(135deg, #EFF6FF, #E0F2FE);
-            border: 1px solid #BFDBFE;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-weight: 800;
-            font-size: 20px;
-            box-shadow: 0 4px 10px rgba(37,99,235,0.05);
-        }
-
-        .step-content h4 {
-            font-size: 19px;
-            font-weight: 700;
-            color: var(--text-heading);
-            margin-bottom: 8px;
-        }
-
-        .step-content p {
-            color: var(--text-main);
-            font-size: 15px;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        @media (min-width: 1024px) {
-            .team-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 80px;
-            }
-        }
-
-        .team-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .team-column {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .team-column-offset {
-            padding-top: 40px;
-        }
-
-        .team-card {
-            padding: 32px 24px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            aspect-ratio: 4/5;
-            background: linear-gradient(145deg, #FFFFFF 0%, #F0F7FF 100%);
-            box-shadow: 0 12px 30px -10px rgba(37, 99, 235, 0.1);
-        }
-
-        .team-card:hover {
-            background: linear-gradient(145deg, #FFFFFF 0%, #E0F2FE 100%);
-        }
-
-        .team-card-icon {
-            width: 56px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #EFF6FF, #E0F2FE);
-            border: 1px solid #DBEAFE;
-            border-radius: 50%;
-            color: var(--primary);
-            box-shadow: 0 4px 10px rgba(37,99,235,0.05);
-        }
-
-        .team-card-icon svg {
-            width: 28px;
-            height: 28px;
-        }
-
-        .team-card-title {
-            font-size: 17px;
-            font-weight: 700;
-            color: var(--text-heading);
-            margin-bottom: 6px;
-        }
-
-        .team-card-desc {
-            font-size: 13px;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .team-text-block h2 {
-            text-align: left;
-            margin-bottom: 24px;
-            color: var(--text-heading);
-        }
-
-        .team-text-block p {
-            color: var(--text-main);
-            font-size: 16px;
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-
-        @media (max-width: 767px) {
-            .team-grid {
-                gap: 28px;
-            }
-
-            .team-cards {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-
-            .team-column {
-                gap: 12px;
-            }
-
-            .team-column-offset {
-                padding-top: 0;
-            }
-
-            .team-card {
-                padding: 20px 14px;
-                aspect-ratio: auto;
-                min-height: 180px;
-            }
-
-            .team-card-icon {
-                width: 48px;
-                height: 48px;
-                margin-bottom: 14px;
-            }
-
-            .team-card-icon svg {
-                width: 24px;
-                height: 24px;
-            }
-
-            .team-card-title {
-                font-size: 15px;
-            }
-
-            .team-card-desc {
-                font-size: 12px;
-            }
-        }
-
-        .mid-cta {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .faq-item {
-            background: var(--bg-white);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            margin-bottom: 12px;
-            overflow: hidden;
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .faq-btn {
-            width: 100%;
-            padding: 22px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-heading);
-            text-align: left;
-        }
-
-        .faq-content {
-            max-height: 0;
-            padding: 0 24px;
-            opacity: 0;
-            transition: var(--transition);
-            color: var(--text-main);
-            font-size: 15px;
-        }
-
-        .faq-item.open {
-            border-color: var(--border-highlight);
-            background: #F8FAFC;
-            box-shadow: var(--shadow-card-hover);
-        }
-
-        .faq-item.open .faq-content {
-            max-height: 500px;
-            padding: 0 24px 24px;
-            opacity: 1;
-        }
-
-        .faq-item.open .faq-icon {
-            transform: rotate(180deg);
-            color: var(--primary);
-        }
-
-        .cta-section {
-            padding: 60px 0 80px;
-            text-align: center;
-            position: relative;
-            background: linear-gradient(180deg, var(--bg-main) 0%, #E0E7FF 100%);
-            border-top: 1px solid var(--border);
-        }
-
-        .cta-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60%;
-            height: 80%;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
-            filter: blur(50px);
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .cta-container {
-            max-width: 500px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 10;
-        }
-
-        footer {
-            background: #F8FAFC;
-            padding: 60px 0 30px;
-            font-size: 14px;
-            border-top: 1px solid #E2E8F0;
-            position: relative;
-            z-index: 10;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        @media (min-width: 768px) {
-            .footer-grid {
-                grid-template-columns: 2fr 1fr 1fr;
-            }
-        }
-
-        .footer-title {
-            color: var(--text-heading);
-            font-weight: 700;
-            margin-bottom: 20px;
-            font-size: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a,
-        .footer-links button {
-            color: var(--text-muted);
-            text-decoration: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-            transition: var(--transition);
-            font-weight: 500;
-        }
-
-        .footer-links a:hover,
-        .footer-links button:hover {
-            color: var(--primary);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #E2E8F0;
-            padding-top: 24px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 13px;
-        }
-
-        .fade-up {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* Иконки SVG (inline styles) */
+        svg { display: block; }
     </style>
 </head>
 <body>
 
-    <div class="bg-mesh"></div>
-    <div class="grid-pattern"></div>
-
+    <!-- Вспомогательные SVG-символы -->
     <svg style="display: none;">
-        <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
-        <symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></symbol>
-        <symbol id="icon-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></symbol>
-        <symbol id="icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></symbol>
-        <symbol id="icon-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
-        <symbol id="icon-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
-        <symbol id="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
-        <symbol id="icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></symbol>
-        <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
-        <symbol id="icon-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></symbol>
-        <symbol id="icon-book-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
-        <symbol id="icon-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
-        <symbol id="icon-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></symbol>
-        <symbol id="icon-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></symbol>
+        <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+        <symbol id="icon-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+        <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+        <symbol id="icon-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></symbol>
+        <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+        <symbol id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
     </svg>
 
-    <header id="header">
-        <div class="container header-inner">
-            <div class="logo" onclick="scrollToSection('hero')">
-                <div class="logo-box">
-                    <svg width="18" height="18" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+    <header class="top-navbar" id="navbar">
+        <div class="wrapper navbar-content">
+            <a onclick="scrollToSection('hero')" class="brand-wrap">
+                <div class="brand-icon">
+                    <svg width="18" height="18" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M3 9h18 M9 21V9"/></svg>
                 </div>
-                <span class="logo-text">Digital Learning</span>
-            </div>
+                <span class="brand-name">Digital Base</span>
+            </a>
 
-            <nav>
-                <button onclick="scrollToSection('audience')" class="nav-link">Для кого</button>
-                <button onclick="scrollToSection('program')" class="nav-link">Программа</button>
-                <button onclick="scrollToSection('results')" class="nav-link">Результаты</button>
-                <button onclick="scrollToSection('team')" class="nav-link">Авторы</button>
-                <button onclick="scrollToSection('faq')" class="nav-link">Ответы</button>
+            <nav class="desktop-menu">
+                <button onclick="scrollToSection('advantages')" class="nav-item">Преимущества</button>
+                <button onclick="scrollToSection('process')" class="nav-item">Формат</button>
+                <button onclick="scrollToSection('program')" class="nav-item">Программа</button>
+                <button onclick="scrollToSection('about')" class="nav-item">О программе</button>
+                <button onclick="scrollToSection('faq')" class="nav-item">FAQ</button>
+                <button onclick="scrollToSection('cta-form')" class="action-button outline" style="padding: 8px 20px; font-size: 14px;">Оставить заявку</button>
             </nav>
 
-            <div class="header-btn-wrap">
-                <button onclick="scrollToSection('cta-form')" class="btn btn-glow" style="padding: 10px 24px; font-size: 15px;" id="desktop-nav-btn">
-                    Записаться
-                </button>
-            </div>
-
-            <button class="menu-btn" onclick="toggleMobileMenu()">
-                <svg id="icon-menu-svg" width="24" height="24"><use href="#icon-menu"/></svg>
-                <svg id="icon-x-svg" width="24" height="24" style="display:none;"><use href="#icon-x"/></svg>
+            <button class="mobile-toggle" onclick="toggleMenu()">
+                <svg id="menu-icon-open" width="24" height="24"><use href="#icon-menu"/></svg>
+                <svg id="menu-icon-close" width="24" height="24" style="display: none;"><use href="#icon-close"/></svg>
             </button>
         </div>
 
-        <div class="mobile-menu" id="mobile-menu">
-            <button onclick="scrollToSection('audience')" class="mobile-link">Для кого этот курс</button>
-            <button onclick="scrollToSection('program')" class="mobile-link">Программа (8 уроков)</button>
-            <button onclick="scrollToSection('results')" class="mobile-link">Что вы получите</button>
-            <button onclick="scrollToSection('team')" class="mobile-link">Кто подготовил обучение</button>
-            <button onclick="scrollToSection('faq')" class="mobile-link">Вопросы и ответы</button>
-            <div style="padding: 0 24px; margin-top: 10px;">
-                <button onclick="scrollToSection('cta-form')" class="btn w-full btn-glow">Начать обучение</button>
+        <div class="mobile-dropdown" id="mob-menu">
+            <button onclick="scrollToSection('advantages')" class="mobile-dropdown-link">Преимущества</button>
+            <button onclick="scrollToSection('process')" class="mobile-dropdown-link">Формат</button>
+            <button onclick="scrollToSection('program')" class="mobile-dropdown-link">Программа</button>
+            <button onclick="scrollToSection('about')" class="mobile-dropdown-link">О программе</button>
+            <button onclick="scrollToSection('faq')" class="mobile-dropdown-link">Вопросы и ответы</button>
+            <div style="padding: 16px 24px;">
+                <button onclick="scrollToSection('cta-form')" class="action-button" style="width: 100%;">Оставить заявку</button>
             </div>
         </div>
     </header>
 
     <main>
-        <section id="hero" class="hero">
-            <div class="container hero-grid">
-                <div class="fade-up">
-                    <div class="badge">
-                        <svg width="14" height="14"><use href="#icon-play"/></svg>
-                        Бесплатный 2-недельный курс
-                    </div>
-                    <h1 class="hero-title"><span class="text-gradient">Разберитесь в криптовалютах</span> за 2 недели: базовый курс для новичков</h1>
-                    <p class="hero-subtitle">Без сложной терминологии, с примерами и пошаговыми инструкциями: от создания кошелька до понимания базовых операций.</p>
-
-                    <div class="hero-bullets">
-                        <div class="hero-bullet">
-                            <svg width="20" height="20"><use href="#icon-check-circle"/></svg>
-                            <span>Поймёте, как устроены цифровые активы и технология блокчейн</span>
+        <!-- 1. HERO -->
+        <section id="hero" class="hero-section">
+            <div class="wrapper hero-layout">
+                <div class="hero-content-area">
+                    <div class="hero-tag">БЕСПЛАТНОЕ ОБУЧЕНИЕ 14 ДНЕЙ</div>
+                    <h1 class="hero-headline">Основы криптовалют:<br>понятное <span class="hero-highlight">пошаговое<br>руководство</span></h1>
+                    <p class="hero-description">Понятным языком о технологии блокчейн, безопасности и базовых принципах работы с современными финансовыми инструментами.</p>
+                    
+                    <div class="hero-features">
+                        <div class="hero-feature-item">
+                            <svg width="20" height="20"><use href="#icon-check"/></svg>
+                            <span>Архитектура цифровой среды и механика сетей</span>
                         </div>
-                        <div class="hero-bullet">
-                            <svg width="20" height="20"><use href="#icon-check-circle"/></svg>
-                            <span>Познакомитесь с принципами настройки кошелька и цифровой безопасностью</span>
+                        <div class="hero-feature-item">
+                            <svg width="20" height="20"><use href="#icon-check"/></svg>
+                            <span>Цифровая гигиена, кошельки и хранение</span>
                         </div>
-                        <div class="hero-bullet">
-                            <svg width="20" height="20"><use href="#icon-check-circle"/></svg>
-                            <span>Поймёте, с чего начать изучение и как избежать распространённых ошибок</span>
+                        <div class="hero-feature-item">
+                            <svg width="20" height="20"><use href="#icon-check"/></svg>
+                            <span>Пошаговое формирование практических навыков</span>
                         </div>
                     </div>
 
-                    <div class="hero-actions">
-                        <button onclick="scrollToSection('cta-form')" class="btn btn-glow hero-main-btn">
-                            Начать бесплатное обучение
-                        </button>
-                        <p class="hero-subtext">Старт — сразу после регистрации</p>
-                    </div>
-
-                    <div class="tablet-hero-visual fade-up" style="transition-delay: 0.15s;">
-                        <div style="position: absolute; inset: 0; background: radial-gradient(circle at 30% 30%, rgba(37,99,235,0.08), transparent 45%), radial-gradient(circle at 75% 65%, rgba(14,165,233,0.08), transparent 45%);"></div>
-
-                        <div class="glass-coin crypto-element-1" style="width: 145px; height: 145px; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3;">
-                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="url(#tablet-blue-grad)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                                <defs>
-                                    <linearGradient id="tablet-blue-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#2563EB" />
-                                        <stop offset="100%" stop-color="#0EA5E9" />
-                                    </linearGradient>
-                                </defs>
-                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                                <polyline points="2 17 12 22 22 17"></polyline>
-                                <polyline points="2 12 12 17 22 12"></polyline>
-                            </svg>
-                        </div>
-
-                        <div class="glass-coin crypto-element-2" style="width: 86px; height: 86px; top: 20%; right: 12%; z-index: 4;">
-                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <circle cx="12" cy="12" r="3"></circle>
-                                <line x1="12" y1="2" x2="12" y2="9"></line>
-                                <line x1="12" y1="15" x2="12" y2="22"></line>
-                                <line x1="2" y1="12" x2="9" y2="12"></line>
-                                <line x1="15" y1="12" x2="22" y2="12"></line>
-                            </svg>
-                        </div>
-
-                        <div class="glass-coin crypto-element-3" style="width: 94px; height: 94px; bottom: 12%; left: 10%; z-index: 2;">
-                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                            </svg>
-                        </div>
-
-                        <div class="glass-coin crypto-element-1" style="width: 52px; height: 52px; top: 26%; left: 16%; z-index: 4; opacity: 0.95;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                            </svg>
-                        </div>
-                    </div>
+                    <button onclick="scrollToSection('cta-form')" class="action-button">Оставить заявку на бесплатный курс</button>
                 </div>
 
-                <div class="desktop-form fade-up" style="transition-delay: 0.2s;">
-                    <div class="abstract-hero-visual">
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 350px; height: 350px; background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%); border-radius: 50%; filter: blur(30px); z-index: 1;"></div>
+                <div class="abstract-visual">
+                    <div class="visual-glow"></div>
+                    <div class="glass-shape shape-1" style="--rot: 15deg;"></div>
+                    <div class="glass-shape shape-2" style="--rot: -5deg;"></div>
+                    <div class="glass-shape shape-3" style="--rot: -10deg;"></div>
+                    
+                    <!-- Clean SVG element overlay -->
+                    <svg style="position: absolute; z-index: 5; width: 140px; height: 140px;" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                        <line x1="12" y1="22" x2="12" y2="15.5"></line>
+                        <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+                        <polyline points="2 15.5 12 8.5 22 15.5"></polyline>
+                        <line x1="12" y1="2" x2="12" y2="8.5"></line>
+                    </svg>
+                </div>
+            </div>
+        </section>
 
-                        <div class="glass-coin crypto-element-1" style="width: 240px; height: 240px; z-index: 3;">
-                            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="url(#blue-grad)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                                <defs>
-                                    <linearGradient id="blue-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#2563EB" />
-                                        <stop offset="100%" stop-color="#0EA5E9" />
-                                    </linearGradient>
-                                </defs>
-                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                                <polyline points="2 17 12 22 22 17"></polyline>
-                                <polyline points="2 12 12 17 22 12"></polyline>
-                            </svg>
+        <!-- 2. ПРЕИМУЩЕСТВА -->
+        <section id="advantages" class="page-section">
+            <div class="wrapper">
+                <div class="section-heading">
+                    <h2 class="section-h2">Почему этот формат идеален для старта</h2>
+                    <p class="section-sub">Мы убрали всё лишнее, чтобы вы могли сфокусироваться на главном.</p>
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="b-icon"><svg width="24" height="24"><use href="#icon-book"/></svg></div>
+                        <h3 class="b-title">Без перегруза</h3>
+                        <p class="b-text">Только проверенная теория и выверенные алгоритмы. Избегаем сложного технического сленга там, где это возможно.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="b-icon"><svg width="24" height="24"><use href="#icon-clock"/></svg></div>
+                        <h3 class="b-title">Короткие форматы</h3>
+                        <p class="b-text">Занятия рассчитаны на 20-30 минут в день. Материалы легко совмещать с основной работой или учебой.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="b-icon"><svg width="24" height="24"><use href="#icon-shield"/></svg></div>
+                        <h3 class="b-title">Упор на безопасность</h3>
+                        <p class="b-text">Главный приоритет программы — научить вас защищать свои данные и активы от распространенных уловок.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. КАК ПРОХОДИТ ОБУЧЕНИЕ -->
+        <section id="process" class="page-section" style="background-color: var(--color-bg-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+            <div class="wrapper">
+                <div class="section-heading">
+                    <h2 class="section-h2">Формат прохождения программы</h2>
+                    <p class="section-sub">Прозрачный алгоритм от заявки до первых результатов.</p>
+                </div>
+                <div class="process-wrapper">
+                    <div class="process-step">
+                        <div class="p-num">1</div>
+                        <div class="p-info">
+                            <h4>Звонок специалиста</h4>
+                            <p>Сразу после оставления заявки с вами свяжется специалист для подтверждения, ответит на вопросы и поможет организовать процесс обучения.</p>
                         </div>
-
-                        <div class="glass-coin crypto-element-2" style="width: 110px; height: 110px; top: 10%; right: 10%; z-index: 4;">
-                            <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <circle cx="12" cy="12" r="3"></circle>
-                                <line x1="12" y1="2" x2="12" y2="9"></line>
-                                <line x1="12" y1="15" x2="12" y2="22"></line>
-                                <line x1="2" y1="12" x2="9" y2="12"></line>
-                                <line x1="15" y1="12" x2="22" y2="12"></line>
-                            </svg>
+                    </div>
+                    <div class="process-step">
+                        <div class="p-num">2</div>
+                        <div class="p-info">
+                            <h4>Комфортный ритм</h4>
+                            <p>Обучение проходит в закрытом чате с куратором. Материалы выдаются дозированно, чтобы вы могли изучать их в комфортном темпе.</p>
                         </div>
-
-                        <div class="glass-coin crypto-element-3" style="width: 130px; height: 130px; bottom: 5%; left: 5%; z-index: 2;">
-                            <svg width="55" height="55" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                            </svg>
-                        </div>
-
-                        <div class="glass-coin crypto-element-1" style="width: 60px; height: 60px; top: 30%; left: 15%; z-index: 4; opacity: 0.9;">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                            </svg>
+                    </div>
+                    <div class="process-step">
+                        <div class="p-num">3</div>
+                        <div class="p-info">
+                            <h4>Обратная связь</h4>
+                            <p>Если в процессе настройки кошелька или работы с платформой возникают трудности, вы всегда можете задать вопрос вашему куратору.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="audience" class="section section-bg-white">
-            <div class="container">
-                <div class="section-header fade-up">
-                    <h2 class="section-title">Для кого этот курс</h2>
-                    <p class="section-subtitle">Мы адаптировали программу так, чтобы она была полезна на разных этапах старта.</p>
+        <!-- 4. ПРОГРАММА (8 УРОКОВ) -->
+        <section id="program" class="page-section">
+            <div class="wrapper">
+                <div class="section-heading">
+                    <h2 class="section-h2">Учебный план: от теории к практике</h2>
+                    <p class="section-sub">8 структурированных модулей, которые сформируют надежный фундамент.</p>
                 </div>
-
-                <div class="target-grid fade-up">
-                    <div class="target-card">
-                        <div class="target-icon"><svg width="24" height="24"><use href="#icon-user"/></svg></div>
-                        <h3 class="target-title">Полный новичок</h3>
-                        <p class="target-desc">Вы хотите понять, что такое цифровые активы и как они работают, но вас пугает обилие сложных терминов в интернете.</p>
-                        <div class="target-result">→ После курса: у вас появится понятная база знаний</div>
+                <div class="module-grid">
+                    <div class="module-card">
+                        <span class="module-badge">Урок 1</span>
+                        <h4>Введение в блокчейн-среду</h4>
+                        <p>Изучаем базовые понятия цифровой экономики, принципы работы децентрализованных сетей и их главные отличия от фиатной системы.</p>
                     </div>
-                    <div class="target-card">
-                        <div class="target-icon"><svg width="24" height="24"><use href="#icon-shield"/></svg></div>
-                        <h3 class="target-title">Уже пробовали</h3>
-                        <p class="target-desc">Вы уже совершали первые шаги, но беспокоитесь за безопасность средств и хотите лучше понимать свои дальнейшие действия.</p>
-                        <div class="target-result">→ После курса: разберётесь в вопросах безопасности</div>
+                    <div class="module-card">
+                        <span class="module-badge">Урок 2</span>
+                        <h4>Инфраструктура и хранение</h4>
+                        <p>Обзор типов цифровых хранилищ. Разница между горячими и аппаратными кошельками. Настройка первого безопасного интерфейса.</p>
                     </div>
-                    <div class="target-card">
-                        <div class="target-icon"><svg width="24" height="24"><use href="#icon-target"/></svg></div>
-                        <h3 class="target-title">Устали от хаоса</h3>
-                        <p class="target-desc">Вы смотрели обучающие видео, но вместо ясного понимания получили лишь обрывки информации и чужие мнения.</p>
-                        <div class="target-result">→ После курса: вы получите системный фундамент</div>
+                    <div class="module-card">
+                        <span class="module-badge">Урок 3</span>
+                        <h4>Основы цифровой гигиены</h4>
+                        <p>Ключевые правила безопасности в сети. Способы защиты закрытых ключей, работа с seed-фразами и настройка 2FA.</p>
                     </div>
+                    <div class="module-card">
+                        <span class="module-badge">Урок 4</span>
+                        <h4>Платформы для работы</h4>
+                        <p>Знакомство с централизованными и децентрализованными сервисами. Базовая навигация, регистрация и верификация личности.</p>
+                    </div>
+                    <div class="module-card">
+                        <span class="module-badge">Урок 5</span>
+                        <h4>Типология цифровых инструментов</h4>
+                        <p>Как ориентироваться в активах. Роль стейблкоинов, инфраструктурных монет и оценка реальной полезности (утилиты) проектов.</p>
+                    </div>
+                    <div class="module-card">
+                        <span class="module-badge">Урок 6</span>
+                        <h4>Сети и транзакции</h4>
+                        <p>Практическая механика: как правильно переводить средства, избегать ошибок в адресах и рассчитывать комиссии газа.</p>
+                    </div>
+                    <div class="module-card">
+                        <span class="module-badge">Урок 7</span>
+                        <h4>Работа с источниками информации</h4>
+                        <p>Использование аналитических агрегаторов. Самостоятельная проверка смарт-контрактов и истории развития проектов.</p>
+                    </div>
+                    <div class="module-card">
+                        <span class="module-badge">Урок 8</span>
+                        <h4>Предотвращение рисков</h4>
+                        <p>Анализ частых ошибок новичков. Учимся выявлять сомнительные схемы, фишинговые сайты и защищать свои данные.</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 40px;">
+                    <button onclick="scrollToSection('cta-form')" class="action-button">Оставить заявку на бесплатный курс</button>
                 </div>
             </div>
         </section>
 
-        <section id="program" class="section section-bg-alt">
-            <div class="container">
-                <div class="section-header fade-up">
-                    <h2 class="section-title">Что внутри: 8 уроков за 14 дней</h2>
-                    <p class="section-subtitle">Практическая выжимка знаний. Формула каждого урока: короткая теория + понятный результат.</p>
+        <!-- 5. РЕЗУЛЬТАТЫ -->
+        <section id="results" class="page-section" style="background-color: var(--color-bg-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+            <div class="wrapper">
+                <div class="section-heading">
+                    <h2 class="section-h2">Ключевые навыки после прохождения</h2>
                 </div>
-
-                <div class="program-grid fade-up">
-                    <div class="lesson-card">
-                        <div class="lesson-num">1</div>
-                        <div class="lesson-info">
-                            <h4>Что такое цифровые активы и блокчейн</h4>
-                            <p>Вы изучите базовые термины, принципы работы сети и главные отличия цифровых активов от привычных фиатных денег.</p>
+                <div class="outcomes-grid">
+                    <div class="outcome-item">
+                        <svg><use href="#icon-check"/></svg>
+                        <div>
+                            <h4 style="margin-bottom: 4px; font-weight: 700; color: var(--color-text-dark);">Ориентация в экосистеме</h4>
+                            <p style="font-size: 14px;">Поймете принципы функционирования цифровой экономики и логику работы сетей.</p>
                         </div>
                     </div>
-                    <div class="lesson-card">
-                        <div class="lesson-num">2</div>
-                        <div class="lesson-info">
-                            <h4>Кошельки и инфраструктура</h4>
-                            <p>Узнаете разницу между онлайн- и аппаратными кошельками. Сможете настроить свой первый кошелек.</p>
+                    <div class="outcome-item">
+                        <svg><use href="#icon-check"/></svg>
+                        <div>
+                            <h4 style="margin-bottom: 4px; font-weight: 700; color: var(--color-text-dark);">Уверенное владение кошельками</h4>
+                            <p style="font-size: 14px;">Сможете самостоятельно создавать, восстанавливать и настраивать безопасное хранение.</p>
                         </div>
                     </div>
-                    <div class="lesson-card">
-                        <div class="lesson-num">3</div>
-                        <div class="lesson-info">
-                            <h4>Основы безопасности</h4>
-                            <p>Разберетесь в базовых принципах защиты. Узнаете основные способы хранения seed-фразы и паролей.</p>
+                    <div class="outcome-item">
+                        <svg><use href="#icon-check"/></svg>
+                        <div>
+                            <h4 style="margin-bottom: 4px; font-weight: 700; color: var(--color-text-dark);">Грамотное совершение транзакций</h4>
+                            <p style="font-size: 14px;">Изучите механику переводов, выбор правильной сети и расчет оптимальных комиссий.</p>
                         </div>
                     </div>
-                    <div class="lesson-card">
-                        <div class="lesson-num">4</div>
-                        <div class="lesson-info">
-                            <h4>Биржи и их интерфейс</h4>
-                            <p>Освоите интерфейс современных торговых площадок. Поймете, как правильно регистрировать аккаунт и проходить верификацию.</p>
-                        </div>
-                    </div>
-                    <div class="lesson-card">
-                        <div class="lesson-num">5</div>
-                        <div class="lesson-info">
-                            <h4>Разбор популярных активов</h4>
-                            <p>Научитесь анализировать фундаментальные проекты и распознавать сомнительные токены. Узнаете, как работают стейблкоины.</p>
-                        </div>
-                    </div>
-                    <div class="lesson-card">
-                        <div class="lesson-num">6</div>
-                        <div class="lesson-info">
-                            <h4>Механика переводов и сетей</h4>
-                            <p>Разберёте механику переводов и работы сетей. Поймёте, почему важно учитывать особенности разных сетей.</p>
-                        </div>
-                    </div>
-                    <div class="lesson-card">
-                        <div class="lesson-num">7</div>
-                        <div class="lesson-info">
-                            <h4>Базовый анализ проектов</h4>
-                            <p>Научитесь использовать основные информационные агрегаторы для проверки истории и надежности проектов.</p>
-                        </div>
-                    </div>
-                    <div class="lesson-card">
-                        <div class="lesson-num">8</div>
-                        <div class="lesson-info">
-                            <h4>Ловушки и безопасность</h4>
-                            <p>Разберем типичные схемы злоумышленников. Вы научитесь распознавать мошеннические проекты и избегать финансовых пирамид.</p>
+                    <div class="outcome-item">
+                        <svg><use href="#icon-check"/></svg>
+                        <div>
+                            <h4 style="margin-bottom: 4px; font-weight: 700; color: var(--color-text-dark);">Фильтрация рисков</h4>
+                            <p style="font-size: 14px;">Научитесь распознавать потенциальные угрозы, фишинг и защищать свои учетные записи.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="results" class="section section-bg-white">
-            <div class="container">
-                <div class="section-header fade-up">
-                    <h2 class="section-title">Что вы будете уметь через 2 недели</h2>
-                    <p class="section-subtitle">Фокус на практических и безопасных навыках работы с цифровыми активами.</p>
+        <!-- 6. КОМУ ПОДОЙДЕТ -->
+        <section id="audience" class="page-section">
+            <div class="wrapper">
+                <div class="section-heading">
+                    <h2 class="section-h2">Кому будет полезна программа</h2>
                 </div>
-
-                <div class="results-grid fade-up">
-                    <div class="result-item">
-                        <svg><use href="#icon-check-circle"/></svg>
-                        <p><strong>Понимать архитектуру цифровой экономики:</strong> как работают цифровые активы, откуда берется их ценность и где скрыты риски.</p>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <h3 class="b-title" style="color: var(--color-theme-main);">Тем, кто делает первые шаги</h3>
+                        <p class="b-text">Вы хотите сформировать базу знаний, но не знаете, за какой источник браться. Мы проведем вас за руку по основным этапам.</p>
                     </div>
-                    <div class="result-item">
-                        <svg><use href="#icon-check-circle"/></svg>
-                        <p><strong>Создавать и защищать кошельки:</strong> грамотно работать с ключами, seed-фразами и двухфакторной аутентификацией.</p>
+                    <div class="benefit-card">
+                        <h3 class="b-title" style="color: var(--color-theme-main);">Пользователям с небольшим опытом</h3>
+                        <p class="b-text">У вас уже есть поверхностные знания, но нет уверенности в безопасности своих действий. Закроем пробелы и усилим защиту.</p>
                     </div>
-                    <div class="result-item">
-                        <svg><use href="#icon-check-circle"/></svg>
-                        <p><strong>Понимать базовые операции:</strong> как устроены покупки, переводы и обмены цифровых активов.</p>
+                    <div class="benefit-card">
+                        <h3 class="b-title" style="color: var(--color-theme-main);">Ищущим системные знания</h3>
+                        <p class="b-text">Вы устали от разрозненных видеороликов и чужих мнений. Хотите получить строгий алгоритм базовых действий без инфошума.</p>
                     </div>
-                    <div class="result-item">
-                        <svg><use href="#icon-check-circle"/></svg>
-                        <p><strong>Обеспечивать свою безопасность:</strong> распознавать сомнительные схемы и защищать свои активы от злоумышленников.</p>
-                    </div>
-                </div>
-
-                <div class="mid-cta fade-up" style="margin-top: 40px;">
-                    <button onclick="scrollToSection('cta-form')" class="btn btn-glow">Записаться на 2-недельный курс</button>
                 </div>
             </div>
         </section>
 
-        <section id="process" class="section section-bg-alt">
-            <div class="container">
-                <div class="section-header fade-up">
-                    <h2 class="section-title">Как проходит обучение</h2>
-                </div>
-
-                <div class="steps-wrapper fade-up">
-                    <div class="step-item">
-                        <div class="step-icon">1</div>
-                        <div class="step-content">
-                            <h4>Доступ к материалам</h4>
-                            <p>После подтверждения заявки с вами свяжется специалист, ответит на вопросы и предоставит доступ к обучающим материалам.</p>
-                        </div>
+        <!-- 7. О СОЗДАТЕЛЯХ -->
+        <section id="about" class="page-section" style="padding-top: 0;">
+            <div class="wrapper">
+                <div class="about-layout">
+                    <div class="about-text">
+                        <h3>О создателях программы</h3>
+                        <p>Материалы курса разработаны методистами и практиками с многолетним опытом работы в индустрии цифровых технологий.</p>
+                        <p>Наш главный принцип — предоставление нейтральной, объективной образовательной информации. Мы исключили элементы "успешного успеха" и агрессивной рекламы торговых стратегий, сфокусировавшись на том, что действительно важно: безопасности, техническом понимании инфраструктуры и цифровой гигиене.</p>
+                        <p>Курс спроектирован так, чтобы сформировать у вас независимое понимание процессов и способность самостоятельно принимать решения.</p>
                     </div>
-                    <div class="step-item">
-                        <div class="step-icon">2</div>
-                        <div class="step-content">
-                            <h4>Видеоуроки в записи</h4>
-                            <p>8 компактных видео по 20–30 минут. Изучайте в своем темпе в любое удобное время, без привязки к жесткому расписанию.</p>
+                    <div class="about-points">
+                        <div class="point-card">
+                            <div class="point-icon"><svg width="20" height="20"><use href="#icon-book"/></svg></div>
+                            <div>
+                                <h4 style="font-size: 16px; font-weight: 700; color: var(--color-text-dark);">Фокус на образовании</h4>
+                                <p style="font-size: 14px; margin: 0;">Никаких рекомендаций по покупкам. Только понимание механики.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-icon">3</div>
-                        <div class="step-content">
-                            <h4>Простые домашки и чат</h4>
-                            <p>Практические задания для закрепления (например, установить кошелек). Ответы на вопросы в поддерживающем чате.</p>
+                        <div class="point-card">
+                            <div class="point-icon"><svg width="20" height="20"><use href="#icon-shield"/></svg></div>
+                            <div>
+                                <h4 style="font-size: 16px; font-weight: 700; color: var(--color-text-dark);">Практическая безопасность</h4>
+                                <p style="font-size: 14px; margin: 0;">Алгоритмы защиты, основанные на реальном разборе инцидентов.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="team" class="section section-bg-white">
-            <div class="container team-grid">
-                <div class="team-cards fade-up">
-                    <div class="team-column team-column-offset">
-                        <div class="team-card">
-                            <div class="team-card-icon"><svg><use href="#icon-book-open"/></svg></div>
-                            <div class="team-card-title">Учебная база</div>
-                            <div class="team-card-desc">Без лишней воды</div>
-                        </div>
-                        <div class="team-card" style="justify-content: center;">
-                            <div class="team-card-icon" style="margin: 0;"><svg><use href="#icon-award"/></svg></div>
-                        </div>
-                    </div>
-
-                    <div class="team-column">
-                        <div class="team-card" style="justify-content: center;">
-                            <div class="team-card-icon" style="margin: 0;"><svg><use href="#icon-users"/></svg></div>
-                        </div>
-                        <div class="team-card">
-                            <div class="team-card-icon"><svg><use href="#icon-message"/></svg></div>
-                            <div class="team-card-title">Сопровождение</div>
-                            <div class="team-card-desc">Ответы на вопросы</div>
-                        </div>
-                    </div>
+        <!-- 8. FAQ -->
+        <section id="faq" class="page-section">
+            <div class="wrapper">
+                <div class="section-heading">
+                    <h2 class="section-h2">Ответы на вопросы</h2>
                 </div>
-
-                <div class="team-text-block fade-up" style="transition-delay: 0.2s;">
-                    <h2 class="section-title" style="text-align: left; margin-bottom: 24px;">Кто подготовил обучение</h2>
-                    <p>Над курсом работали специалисты с реальным опытом в сфере цифровых финансов, которые сами проходили путь новичка и отлично знают все возможные ошибки.</p>
-                    <p>Учебный процесс построен так, чтобы шаг за шагом перевести вас от базовых определений к пониманию ключевых механизмов.</p>
-                    <p>Мы убрали излишнюю перегруженность терминами, оставив только те практические знания, которые помогут лучше ориентироваться в теме и избегать типичных ошибок.</p>
-                    <p>Результат — сформированный навык и понятная инструкция к действию, без необходимости собирать информацию по крупицам в интернете.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="faq" class="section section-bg-alt">
-            <div class="container" style="max-width: 800px;">
-                <h2 class="section-title fade-up text-center mb-10">Частые вопросы</h2>
-                <div class="fade-up">
-                    <div class="faq-item">
-                        <button class="faq-btn" onclick="toggleFaq(this)">Действительно ли обучение бесплатное? <svg class="faq-icon" width="20" height="20"><use href="#icon-chevron"/></svg></button>
-                        <div class="faq-content"><p>Да, 2-недельный базовый курс предоставляется бесплатно. Он создан для знакомства с основами и понимания принципов работы.</p></div>
+                <div class="faq-wrapper">
+                    <div class="faq-box">
+                        <button class="faq-trigger" onclick="toggleAccordion(this)">Требуется ли оплата за участие? <svg class="faq-icon" width="20" height="20"><use href="#icon-down"/></svg></button>
+                        <div class="faq-body"><p>Нет, 14-дневная базовая программа предоставляется полностью на безвозмездной основе. Цель курса — повышение общего уровня цифровой грамотности.</p></div>
                     </div>
-
-                    <div class="faq-item">
-                        <button class="faq-btn" onclick="toggleFaq(this)">Нужно ли мне уже иметь стартовый капитал или цифровые активы? <svg class="faq-icon" width="20" height="20"><use href="#icon-chevron"/></svg></button>
-                        <div class="faq-content"><p>Нет, программа подходит для начинающих. Вы начнёте с базовых тем, включая создание кошельков и основы безопасности.</p></div>
+                    <div class="faq-box">
+                        <button class="faq-trigger" onclick="toggleAccordion(this)">Обязателен ли опыт или стартовый бюджет? <svg class="faq-icon" width="20" height="20"><use href="#icon-down"/></svg></button>
+                        <div class="faq-body"><p>Абсолютно нет. Наш фокус — техническая и теоретическая база. Вам не нужны средства для прохождения занятий, мы изучаем принципы, а не занимаемся торговыми операциями.</p></div>
                     </div>
-
-                    <div class="faq-item">
-                        <button class="faq-btn" onclick="toggleFaq(this)">Почему после заявки мне позвонят? <svg class="faq-icon" width="20" height="20"><use href="#icon-chevron"/></svg></button>
-                        <div class="faq-content"><p>После заявки специалист связывается, чтобы ответить на вводные вопросы, объяснить формат обучения и предоставить доступ к материалам.</p></div>
+                    <div class="faq-box">
+                        <button class="faq-trigger" onclick="toggleAccordion(this)">Как предоставляется доступ после заявки? <svg class="faq-icon" width="20" height="20"><use href="#icon-down"/></svg></button>
+                        <div class="faq-body"><p>Заполнив форму, вы закрепляете за собой место. Наш специалист свяжется с вами для подтверждения заявки. Само обучение и выдача материалов будут проходить в удобном формате закрытого чата с вашим личным куратором.</p></div>
                     </div>
-
-                    <div class="faq-item">
-                        <button class="faq-btn" onclick="toggleFaq(this)">Сколько времени в день нужно уделять? <svg class="faq-icon" width="20" height="20"><use href="#icon-chevron"/></svg></button>
-                        <div class="faq-content"><p>В среднем достаточно 20–30 минут в день. Вы можете проходить материалы в удобном для себя темпе.</p></div>
+                    <div class="faq-box">
+                        <button class="faq-trigger" onclick="toggleAccordion(this)">Какой график занятий? <svg class="faq-icon" width="20" height="20"><use href="#icon-down"/></svg></button>
+                        <div class="faq-body"><p>График полностью свободный. Материалы выдаются дозированно, и вы можете смотреть их в любое удобное время. В среднем достаточно 20-30 минут в день.</p></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="cta-form" class="cta-section section" style="padding-top: 50px;">
-            <div class="cta-glow"></div>
-            <div class="container cta-container">
-                <div class="fade-up">
-                    <h2 class="section-title" style="margin-bottom: 12px;">Начните бесплатное обучение</h2>
-                    <p style="font-size: 17px; color: var(--text-main);">Заполните форму, чтобы закрепить место на курсе.</p>
+        <!-- 9. CTA ФОРМА -->
+        <section id="cta-form" class="cta-section">
+            <div class="wrapper">
+                <div class="section-heading">
+                    <h2 class="section-h2">Заявка на бесплатный курс</h2>
+                    <p class="section-sub">Оставьте контактные данные, и наш специалист свяжется с вами в ближайшее время.</p>
                 </div>
 
-                <div class="form-card fade-up" style="margin-top: 30px;">
-                    <form onsubmit="return validateForm(event, this)" action="/thanks/">
-                        <div class="input-group">
-                            <label class="input-label">Ваше имя</label>
-                            <input type="text" name="name" class="input-field" placeholder="Например, Иван" required>
-                            <div class="input-error">Введите имя (без цифр, минимум 2 буквы)</div>
+                <div class="cta-card">
+                    <form onsubmit="return handleFormSubmit(event, this)" action="/thanks/">
+                        <div class="form-group">
+                            <label class="f-label">Как к вам обращаться</label>
+                            <input type="text" name="name" class="f-input" placeholder="Введите ваше имя" required>
+                            <div class="f-error">Пожалуйста, введите корректное имя</div>
                         </div>
 
-                        <div class="input-group">
-                            <label class="input-label">Номер телефона</label>
-                            <input type="tel" name="phone" class="input-field" placeholder="+7 (999) 000-00-00" required>
-                            <div class="input-error">Введите корректный номер (от 10 цифр)</div>
+                        <div class="form-group">
+                            <label class="f-label">Контактный телефон</label>
+                            <input type="tel" name="phone" class="f-input" placeholder="+7 (___) ___-__-__" required>
+                            <div class="f-error">Укажите корректный номер телефона</div>
                         </div>
 
-                        <button type="submit" class="btn btn-glow w-full" style="margin-top: 10px;">Отправить заявку</button>
+                        <button type="submit" class="action-button" style="width: 100%; margin-top: 10px;">Оставить заявку</button>
 
-                        <div style="display: flex; align-items: flex-start; gap: 8px; margin-top: 18px;">
-                            <svg width="14" height="14" style="color: #64748B; flex-shrink: 0; margin-top: 2px;"><use href="#icon-lock"/></svg>
-                            <p class="form-disclaimer" style="margin-top: 0; text-align: left;">
-                                Нажимая кнопку, вы соглашаетесь с <a href="/policy/">Политикой конфиденциальности</a> и обработкой данных.
-                            </p>
+                        <div class="f-hint">
+                            Отправляя данные, вы соглашаетесь с <br><a href="/policy/">Политикой конфиденциальности</a>
                         </div>
                     </form>
                 </div>
@@ -1553,43 +829,38 @@
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
-                        <div class="logo-box" style="width: 26px; height: 26px; border-radius: 6px;"><svg width="14" height="14" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
-                        <span style="color: var(--text-heading); font-weight: 700; font-size: 16px;">Digital Learning</span>
+    <!-- 10. FOOTER -->
+    <footer class="site-footer">
+        <div class="wrapper">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                        <div class="brand-icon" style="width: 24px; height: 24px; border-radius: 6px;">
+                            <svg width="12" height="12" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M3 9h18 M9 21V9"/></svg>
+                        </div>
+                        <span style="font-weight: 700; color: var(--color-text-dark); font-size: 16px;">Digital Base</span>
                     </div>
-                    <p style="color: var(--text-muted); line-height: 1.6;">Образовательный проект, направленный на повышение цифровой грамотности населения. Деятельность компании включает разработку и предоставление образовательных онлайн-программ.</p>
+                    <p class="footer-text" style="max-width: 400px;">Образовательная программа, направленная на системное повышение уровня технической и цифровой грамотности при работе с современными активами.</p>
                 </div>
-                <div>
-                    <h5 class="footer-title">Информация</h5>
-                    <ul class="footer-links">
-                        <li><a href="/policy/">Политика конфиденциальности</a></li>
-                        <li><a href="/terms/">Пользовательское соглашение</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="footer-title">Контакты</h5>
-                    <ul class="footer-links">
-                        <li><span>support@iteos.ru</span></li>
-                    </ul>
+                <div class="footer-col">
+                    <h5>Документы</h5>
+                    <a href="/policy/" class="footer-link">Политика конфиденциальности</a>
                 </div>
             </div>
-
             <div class="footer-bottom">
-                <p style="margin-bottom: 12px;">Информация на сайте носит исключительно образовательный характер и не является индивидуальной инвестиционной рекомендацией.</p>
-                <p style="margin-bottom: 16px;">ООО «Итеос» | ИНН 7724761154 | КПП 772401001 | ОГРН 1107746765752<br>
-                Юридический адрес: г. Москва, вн.тер.г. муниципальный округ Нагатино-Садовники, пр-д Хлебозаводский, д. 7, стр. 9, эт.9 пом.XVI комн.2.</p>
-                <p>&copy; <span id="year"></span> Digital Learning. Все права защищены.</p>
+                <p style="margin-bottom: 12px;">Материалы сайта носят исключительно образовательный характер и не являются индивидуальной финансовой рекомендацией.</p>
+                <p style="margin-bottom: 16px;">Индивидуальный предприниматель Залунина Олеся Сергеевна | ИНН 510903802453 | ОГРНИП 319519000001912<br>
+                Мурманская область, г. Мурманск | E-mail: platform.education.contact@gmail.com</p>
+                <p>&copy; <span id="current-year"></span> Digital Base. Все права защищены.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
+        // Установка года
+        document.getElementById('current-year').textContent = new Date().getFullYear();
 
+        // Скролл к секциям
         function scrollToSection(id) {
             const el = document.getElementById(id);
             if (el) {
@@ -1598,73 +869,66 @@
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                 window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
 
-                const menu = document.getElementById('mobile-menu');
-                if (menu.classList.contains('open')) toggleMobileMenu();
+                const menu = document.getElementById('mob-menu');
+                if (menu.classList.contains('is-open')) toggleMenu();
             }
         }
 
-        const header = document.getElementById('header');
-
+        // Логика шапки
+        const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 30) {
-                header.classList.add('scrolled');
+            if (window.scrollY > 40) {
+                navbar.classList.add('is-scrolled');
             } else {
-                header.classList.remove('scrolled');
+                navbar.classList.remove('is-scrolled');
             }
         });
 
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const menuSvg = document.getElementById('icon-menu-svg');
-            const xSvg = document.getElementById('icon-x-svg');
+        // Мобильное меню
+        function toggleMenu() {
+            const menu = document.getElementById('mob-menu');
+            const iconOpen = document.getElementById('menu-icon-open');
+            const iconClose = document.getElementById('menu-icon-close');
 
-            menu.classList.toggle('open');
+            menu.classList.toggle('is-open');
 
-            if (menu.classList.contains('open')) {
-                menuSvg.style.display = 'none';
-                xSvg.style.display = 'block';
-                header.classList.add('scrolled');
+            if (menu.classList.contains('is-open')) {
+                iconOpen.style.display = 'none';
+                iconClose.style.display = 'block';
+                navbar.classList.add('is-scrolled');
             } else {
-                menuSvg.style.display = 'block';
-                xSvg.style.display = 'none';
-                if (window.scrollY <= 30) header.classList.remove('scrolled');
+                iconOpen.style.display = 'block';
+                iconClose.style.display = 'none';
+                if (window.scrollY <= 40) navbar.classList.remove('is-scrolled');
             }
         }
 
-        function toggleFaq(btn) {
-            const item = btn.parentElement;
-            const allItems = document.querySelectorAll('.faq-item');
+        // FAQ Аккордеон
+        function toggleAccordion(btn) {
+            const box = btn.parentElement;
+            const allBoxes = document.querySelectorAll('.faq-box');
 
-            allItems.forEach(i => {
-                if (i !== item) i.classList.remove('open');
+            allBoxes.forEach(b => {
+                if (b !== box) b.classList.remove('active');
             });
 
-            item.classList.toggle('open');
+            box.classList.toggle('active');
         }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-        function validateForm(event, form) {
+        // Валидация и отправка формы
+        function handleFormSubmit(event, form) {
             event.preventDefault();
 
             const nameInput = form.querySelector('input[name="name"]');
             const phoneInput = form.querySelector('input[name="phone"]');
             const nameError = nameInput.nextElementSibling;
             const phoneError = phoneInput.nextElementSibling;
+            const submitBtn = form.querySelector('button[type="submit"]');
 
             let isValid = true;
 
+            // Валидация имени
             const nameRegex = /^[а-яА-ЯёЁa-zA-Z\s\-]{2,}$/;
-
             if (!nameRegex.test(nameInput.value.trim())) {
                 nameInput.style.borderColor = '#EF4444';
                 nameError.style.display = 'block';
@@ -1674,8 +938,8 @@
                 nameError.style.display = 'none';
             }
 
+            // Валидация телефона
             const phoneDigits = phoneInput.value.replace(/\D/g, '');
-
             if (phoneDigits.length < 10 || phoneDigits.length > 15) {
                 phoneInput.style.borderColor = '#EF4444';
                 phoneError.style.display = 'block';
@@ -1687,6 +951,10 @@
 
             if (!isValid) return false;
 
+            submitBtn.textContent = 'Обработка...';
+            submitBtn.disabled = true;
+
+            // Отправка вебхука Make
             fetch('https://hook.eu2.make.com/qm6jhrryn9tmyfo0vtapf6fo77gq6gto', {
                 method: 'POST',
                 headers: {
@@ -1704,7 +972,9 @@
             })
             .catch((error) => {
                 console.error('Ошибка отправки в Make:', error);
-                alert('Ошибка отправки. Попробуйте еще раз.');
+                alert('Произошла ошибка при отправке заявки. Пожалуйста, попробуйте еще раз.');
+                submitBtn.textContent = 'Оставить заявку';
+                submitBtn.disabled = false;
             });
 
             return false;
