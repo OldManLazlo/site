@@ -337,6 +337,27 @@
             50% { transform: translateY(-15px) rotate(var(--rot, 0deg)); }
         }
 
+        /* --- МОБИЛЬНЫЕ ПРАВКИ ДЛЯ HERO БЛОКА --- */
+        @media (max-width: 1023px) {
+            .abstract-visual {
+                display: none !important; /* Полностью убираем абстрактные элементы на мобильном */
+            }
+            .hero-layout {
+                gap: 0 !important; /* Убираем пустой отступ от удаленных элементов */
+            }
+            .hero-headline {
+                font-size: clamp(30px, 9vw, 48px) !important; /* Крупный и массивный шрифт */
+                font-weight: 900 !important; /* Делаем жирнее */
+                line-height: 1.15 !important; /* Делаем плотнее */
+                text-transform: uppercase !important; /* Заглавными буквами */
+                overflow-wrap: break-word !important; /* Защита от вылезания за края */
+                word-wrap: break-word !important;
+            }
+            .hero-section {
+                padding-bottom: 40px !important; /* Сразу начинается следующий блок */
+            }
+        }
+
         /* --- ОБЩИЕ СТИЛИ СЕКЦИЙ --- */
         .page-section { padding: 50px 0; }
         .section-heading { text-align: center; margin-bottom: 32px; }
@@ -523,7 +544,7 @@
             <div class="wrapper hero-layout">
                 <div class="hero-content-area">
                     <div class="hero-tag">БЕСПЛАТНОЕ КУРС: 14 ДНЕЙ</div>
-                    <h1 class="hero-headline">Основы криптовалют:<br>понятное <span class="hero-highlight">пошаговое<br>обучение</span></h1>
+                    <h1 class="hero-headline">Основы криптовалют:<br>понятное <span class="hero-highlight">пошаговое</span><br><span class="hero-highlight">обучение</span></h1>
                     <p class="hero-description">Простым языком о технологии блокчейн, безопасности и базовых принципах работы с современными финансовыми инструментами.</p>
                     
                     <div class="hero-features">
