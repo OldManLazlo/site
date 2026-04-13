@@ -3,75 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Политика конфиденциальности | Digital Learning</title>
+    <title>Политика конфиденциальности | Образовательная платформа</title>
 
-    <link rel="icon" type="image/png" href="../favicon.png">
-    <link rel="shortcut icon" href="../favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" href="favicon.png">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
-                    colors: {
-                        primary: '#2563EB',
-                        accent: '#0EA5E9'
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #F4F7FB;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .premium-shadow {
-            box-shadow:
-                0 25px 50px -12px rgba(15, 23, 42, 0.08),
-                0 0 0 1px rgba(226, 232, 240, 0.8);
-        }
-
-        .policy-content h1,
-        .policy-content h2,
-        .policy-content h3,
-        .policy-content p,
-        .policy-content li,
-        .policy-content a,
-        .policy-content span {
-            overflow-wrap: anywhere;
-            word-break: normal;
-        }
-
-        .policy-content p,
-        .policy-content li {
-            line-height: 1.8;
-        }
-
-        .policy-content ul {
-            padding-left: 1.25rem;
-        }
-
-        .policy-content a {
-            color: #2563EB;
-            text-decoration: none;
-        }
-
-        .policy-content a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
@@ -101,182 +40,228 @@
         </div>
     </noscript>
     <!-- /Yandex.Metrika counter -->
+
+    <style>
+        :root {
+            /* Поддержка сине-голубой стилистики основной страницы */
+            --color-theme-dark: #0B1121;
+            --color-theme-main: #0EA5E9;
+            --color-theme-light: #E0F2FE;
+            --color-accent-glow: #38BDF8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.7; 
+            color: rgba(255, 255, 255, 0.75); 
+            background: linear-gradient(135deg, var(--color-theme-dark) 0%, #0C4A6E 50%, #082F49 100%);
+            padding: 60px 20px; 
+            position: relative;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Фоновая сетка как на главной странице */
+        body::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 35px 35px;
+            z-index: -1; pointer-events: none;
+        }
+
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: rgba(11, 17, 33, 0.6); 
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 50px 60px; 
+            border-radius: 28px; 
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4); 
+        }
+
+        h1 { 
+            font-family: 'Manrope', sans-serif; 
+            color: #ffffff; 
+            font-size: 34px; 
+            margin-bottom: 12px; 
+            font-weight: 800; 
+            line-height: 1.3;
+        }
+
+        h2 { 
+            font-family: 'Manrope', sans-serif; 
+            margin-top: 40px; 
+            margin-bottom: 16px;
+            font-size: 20px; 
+            color: var(--color-theme-main); 
+        }
+
+        p { 
+            font-size: 15px; 
+            margin-bottom: 16px; 
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Кнопка возврата в стиле сайта */
+        .btn-back { 
+            display: inline-flex; 
+            align-items: center; 
+            margin-bottom: 35px; 
+            color: #BAE6FD; 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: all 0.3s ease; 
+            font-size: 14px; 
+            background: rgba(14, 165, 233, 0.1);
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(14, 165, 233, 0.25);
+        }
+
+        .btn-back:hover { 
+            background: rgba(14, 165, 233, 0.25);
+            transform: translateX(-5px); 
+            box-shadow: 0 5px 20px rgba(14, 165, 233, 0.2);
+            color: #ffffff;
+        }
+
+        .date { 
+            font-size: 14px; 
+            color: rgba(255,255,255,0.4); 
+            margin-bottom: 35px; 
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .requisites-box {
+            background: rgba(14, 165, 233, 0.05);
+            border: 1px solid rgba(14, 165, 233, 0.15);
+            padding: 24px 30px;
+            border-radius: 16px;
+            margin-top: 16px;
+        }
+
+        .requisites-box p {
+            margin-bottom: 8px;
+        }
+        .requisites-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .footer-note {
+            margin-top: 50px; 
+            font-size: 14px; 
+            color: rgba(255,255,255,0.3);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 30px 15px; }
+            .container { padding: 35px 25px; border-radius: 20px; }
+            h1 { font-size: 26px; }
+            .requisites-box { padding: 20px; }
+        }
+    </style>
 </head>
+<body>
+    
+    <div class="container">
+        <a href="/" class="btn-back">← Вернуться на главную</a>
+        
+        <h1>Политика обработки персональных данных</h1>
+        <div class="date">Дата публикации: 03.04.2026 г.</div>
 
-<body class="text-slate-700 font-sans selection:bg-blue-500/20 overflow-x-hidden relative min-h-screen flex flex-col">
+        <p>Настоящий документ (далее — Политика) определяет порядок обработки и защиты персональных данных Пользователей сайта образовательной программы. Оператором персональных данных является Индивидуальный предприниматель Соколова Екатерина Юрьевна (далее — Оператор).</p>
 
-    <!-- Светлые деликатные фоновые эффекты -->
-    <div class="fixed inset-0 z-0 pointer-events-none">
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_60%,transparent_100%)] opacity-30"></div>
-        <div class="absolute top-0 left-1/4 w-[40%] h-[40%] bg-blue-500/5 blur-[120px] rounded-full"></div>
-        <div class="absolute bottom-0 right-1/4 w-[40%] h-[40%] bg-sky-400/5 blur-[120px] rounded-full"></div>
+        <h2>1. Общие положения</h2>
+        <p>1.1. Оставляя свои контактные данные на сайте, Пользователь подтверждает, что ознакомился с настоящей Политикой и выражает согласие на обработку своих персональных данных на указанных в ней условиях.</p>
+        <p>1.2. Если Пользователь не согласен с условиями настоящей Политики, ему следует воздержаться от заполнения форм на сайте и передачи своих данных Оператору.</p>
+        <p>1.3. Политика применяется ко всей информации, которую Оператор получает от Пользователя через сайт образовательной платформы, формы обратной связи и иные способы взаимодействия.</p>
+
+        <h2>2. Для чего мы собираем данные</h2>
+        <p>2.1. Оператор запрашивает только тот объем персональных данных, который необходим для обработки заявки Пользователя и организации дальнейшего взаимодействия по вопросам обучения.</p>
+        <p>2.2. Данные могут использоваться для следующих целей:</p>
+        <ul>
+            <li>связь с Пользователем по оставленной заявке;</li>
+            <li>консультация по программе обучения, формату участия и организационным вопросам;</li>
+            <li>предоставление доступа к материалам бесплатной образовательной программы;</li>
+            <li>улучшение работы образовательной платформы и анализ ее использования;</li>
+            <li>обработка обращений и обратной связи.</li>
+        </ul>
+
+        <h2>3. Какие данные мы обрабатываем</h2>
+        <p>3.1. В зависимости от формы на сайте Оператор может обрабатывать следующие данные Пользователя:</p>
+        <ul>
+            <li>имя;</li>
+            <li>контактный номер телефона;</li>
+            <li>адрес электронной почты — если Пользователь указывает его добровольно;</li>
+            <li>иные сведения, которые Пользователь самостоятельно сообщает через формы сайта.</li>
+        </ul>
+        <p>3.2. Также могут автоматически обрабатываться технические данные: IP-адрес, cookie, сведения о браузере, типе устройства, примерной геолокации, страницах сайта и действиях Пользователя на сайте.</p>
+
+        <h2>4. Порядок обработки и защиты данных</h2>
+        <p>4.1. Вся полученная от Пользователя информация рассматривается как конфиденциальная и обрабатывается законными способами.</p>
+        <p>4.2. Оператор не передает персональные данные третьим лицам, за исключением случаев, прямо предусмотренных законодательством Российской Федерации, либо случаев, когда такая передача необходима для работы платформы и связанных с ней технических сервисов.</p>
+        <p>4.3. Оператор принимает разумные организационные и технические меры для защиты персональных данных от неправомерного доступа, изменения, раскрытия, утраты или уничтожения.</p>
+        <p>4.4. Персональные данные хранятся не дольше, чем это необходимо для достижения целей их обработки, если иной срок хранения не предусмотрен законодательством Российской Федерации.</p>
+
+        <h2>5. Использование cookie и сервисов аналитики</h2>
+        <p>5.1. На сайте могут использоваться cookie и аналитические сервисы для анализа посещаемости, улучшения качества работы платформы, оценки удобства интерфейса и эффективности страниц.</p>
+        <p>5.2. При использовании аналитических сервисов могут автоматически обрабатываться технические и обезличенные данные, включая сведения о действиях Пользователя на сайте, используемом устройстве, браузере и источнике перехода.</p>
+        <p>5.3. Пользователь может ограничить использование cookie в настройках своего браузера, однако это может повлиять на корректную работу отдельных функций сайта.</p>
+
+        <h2>6. Права Пользователя</h2>
+        <p>Пользователь вправе:</p>
+        <ul>
+            <li>получать сведения об обработке своих персональных данных;</li>
+            <li>требовать уточнения, обновления или удаления своих персональных данных;</li>
+            <li>отозвать согласие на обработку персональных данных;</li>
+            <li>обратиться к Оператору по вопросам, связанным с обработкой своих персональных данных.</li>
+        </ul>
+
+        <h2>7. Данные оператора</h2>
+        <div class="requisites-box">
+            <p><strong>Наименование:</strong> Индивидуальный предприниматель Соколова Екатерина Юрьевна</p>
+            <p><strong>ОГРНИП:</strong> 309774608400121</p>
+            <p><strong>ИНН:</strong> 771533439012</p>
+            <p><strong>Адрес:</strong> г. Москва</p>
+            <p><strong>Email для связи:</strong> platform.education.contact@gmail.com</p>
+        </div>
+
+        <h2>8. Заключительные положения</h2>
+        <p>8.1. Оператор вправе вносить изменения в настоящую Политику без предварительного уведомления Пользователя.</p>
+        <p>8.2. Актуальная редакция Политики всегда размещается на данной странице.</p>
+        <p>8.3. Продолжение использования сайта образовательной программы после опубликования новой редакции Политики означает согласие Пользователя с внесенными изменениями.</p>
+        
+        <div class="footer-note">
+            © <script>document.write(new Date().getFullYear())</script> Образовательная платформа. ИП Соколова Екатерина Юрьевна. Все права защищены.
+        </div>
     </div>
-
-    <header class="w-full z-50 py-5 sm:py-6 relative">
-        <div class="container mx-auto px-4 sm:px-6 md:px-10 lg:px-12 flex justify-between items-center gap-4">
-            <a href="/" class="flex items-center gap-3 transition-transform hover:-translate-y-0.5 min-w-0">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-sky-500 flex items-center justify-center shadow-md shrink-0">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                        <line x1="3" y1="9" x2="21" y2="9"/>
-                        <line x1="9" y1="21" x2="9" y2="9"/>
-                    </svg>
-                </div>
-                <span class="text-slate-900 font-bold text-base sm:text-lg tracking-tight hidden sm:block">Digital Learning</span>
-            </a>
-
-            <a href="/" class="px-4 sm:px-5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold transition-all hover:shadow-md hover:-translate-y-0.5 flex items-center gap-2 shrink-0">
-                <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                <span class="hidden sm:inline">На главную</span>
-                <span class="sm:hidden">Назад</span>
-            </a>
-        </div>
-    </header>
-
-    <main class="relative z-10 flex-1 py-6 sm:py-8 md:py-10 container mx-auto px-4 sm:px-6 md:px-10 lg:px-12">
-        <div class="max-w-5xl mx-auto relative mb-10 sm:mb-16">
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-100 to-sky-50 rounded-[2rem] transform rotate-1 blur-sm opacity-60"></div>
-
-            <div class="relative bg-white premium-shadow rounded-[1.75rem] sm:rounded-[2rem] p-5 sm:p-8 md:p-10 lg:p-14 overflow-hidden policy-content">
-                <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-sky-400 via-blue-500 to-blue-700"></div>
-
-               <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-6 sm:mb-8 leading-snug">
-    Политика конфиденциальности
-</h1>
-
-                <div class="space-y-8 text-slate-600 font-normal text-[15px] sm:text-base">
-                    <p class="text-base sm:text-lg text-slate-700">
-                        Настоящий документ (далее — Политика) определяет порядок обработки и защиты персональных данных Пользователей сайта Digital Learning. Оператором персональных данных является ООО «Итеос» (далее — Оператор).
-                    </p>
-
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900 mb-3">1. Общие положения</h2>
-                        <p class="mb-2">
-                            1.1. Оставляя свои контактные данные на сайте, Пользователь подтверждает, что ознакомился с настоящей Политикой и выражает согласие на обработку своих персональных данных на указанных в ней условиях.
-                        </p>
-                        <p class="mb-2">
-                            1.2. Если Пользователь не согласен с условиями настоящей Политики, ему следует воздержаться от заполнения форм на сайте и передачи своих данных Оператору.
-                        </p>
-                        <p>
-                            1.3. Политика применяется ко всей информации, которую Оператор получает от Пользователя через сайт, формы обратной связи и иные способы взаимодействия, связанные с работой сайта.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900 mb-3">2. Для чего мы собираем данные</h2>
-                        <p class="mb-2">
-                            2.1. Оператор запрашивает только тот объем персональных данных, который необходим для обработки заявки Пользователя и организации дальнейшего взаимодействия по вопросам обучения.
-                        </p>
-                        <p class="mb-3">2.2. Данные могут использоваться для следующих целей:</p>
-                        <ul class="list-disc space-y-2 text-slate-700">
-                            <li>связь с Пользователем по оставленной заявке;</li>
-                            <li>консультация по программе обучения, формату участия и организационным вопросам;</li>
-                            <li>предоставление доступа к материалам бесплатной образовательной программы;</li>
-                            <li>улучшение работы сайта и анализ его использования;</li>
-                            <li>обработка обращений и обратной связи.</li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900 mb-3">3. Какие данные мы обрабатываем</h2>
-                        <p class="mb-2">
-                            3.1. В зависимости от формы на сайте Оператор может обрабатывать следующие данные Пользователя:
-                        </p>
-                        <ul class="list-disc space-y-2 text-slate-700">
-                            <li>имя;</li>
-                            <li>контактный номер телефона;</li>
-                            <li>адрес электронной почты — если Пользователь указывает его добровольно;</li>
-                            <li>иные сведения, которые Пользователь самостоятельно сообщает через формы сайта.</li>
-                        </ul>
-                        <p class="mt-3">
-                            3.2. Также могут автоматически обрабатываться технические данные: IP-адрес, cookie, сведения о браузере, типе устройства, примерной геолокации, страницах сайта и действиях Пользователя на сайте.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900 mb-3">4. Порядок обработки и защиты данных</h2>
-                        <p class="mb-2">
-                            4.1. Вся полученная от Пользователя информация рассматривается как конфиденциальная и обрабатывается законными способами.
-                        </p>
-                        <p class="mb-2">
-                            4.2. Оператор не передает персональные данные третьим лицам, за исключением случаев, прямо предусмотренных законодательством Российской Федерации, либо случаев, когда такая передача необходима для работы сайта и связанных с ним технических сервисов.
-                        </p>
-                        <p class="mb-2">
-                            4.3. Оператор принимает разумные организационные и технические меры для защиты персональных данных от неправомерного доступа, изменения, раскрытия, утраты или уничтожения.
-                        </p>
-                        <p>
-                            4.4. Персональные данные хранятся не дольше, чем это необходимо для достижения целей их обработки, если иной срок хранения не предусмотрен законодательством Российской Федерации.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900 mb-3">5. Использование cookie и сервисов аналитики</h2>
-                        <p class="mb-2">
-                            5.1. На сайте могут использоваться cookie и аналитические сервисы, в том числе Яндекс.Метрика, для анализа посещаемости, улучшения качества работы сайта, оценки удобства интерфейса и эффективности страниц.
-                        </p>
-                        <p class="mb-2">
-                            5.2. При использовании аналитических сервисов могут автоматически обрабатываться технические и обезличенные данные, включая сведения о действиях Пользователя на сайте, используемом устройстве, браузере и источнике перехода.
-                        </p>
-                        <p>
-                            5.3. Пользователь может ограничить использование cookie в настройках своего браузера, однако это может повлиять на корректную работу отдельных функций сайта.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900 mb-3">6. Права Пользователя</h2>
-                        <p class="mb-3">
-                            Пользователь вправе:
-                        </p>
-                        <ul class="list-disc space-y-2 text-slate-700">
-                            <li>получать сведения об обработке своих персональных данных;</li>
-                            <li>требовать уточнения, обновления или удаления своих персональных данных;</li>
-                            <li>отозвать согласие на обработку персональных данных;</li>
-                            <li>обратиться к Оператору по вопросам, связанным с обработкой своих персональных данных.</li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900 mb-4">7. Данные оператора</h2>
-                        <div class="bg-slate-50 p-5 sm:p-6 md:p-8 rounded-2xl border border-slate-200">
-                            <p class="mb-3 font-bold text-slate-900 text-lg">ООО «Итеос»</p>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-sm text-slate-700 leading-relaxed">
-                                <div>
-                                    <p class="mb-1"><span class="text-slate-500">ОГРН:</span> 1107746765752</p>
-                                    <p class="mb-1"><span class="text-slate-500">ИНН:</span> 7724761154</p>
-                                    <p class="mb-1"><span class="text-slate-500">КПП:</span> 772401001</p>
-                                    <p class="mb-1"><span class="text-slate-500">Генеральный директор:</span> Семячкин Дмитрий Александрович</p>
-                                    <p class="mb-1"><span class="text-slate-500">Телефон:</span> +7 495 231 9791</p>
-                                    <p><span class="text-slate-500">E-mail:</span> support@iteos.ru</p>
-                                </div>
-                                <div>
-                                    <p>
-                                        <span class="text-slate-500">Юридический адрес:</span>
-                                        г. Москва, вн.тер.г. муниципальный округ Нагатино-Садовники, пр-д Хлебозаводский, д. 7, стр. 9, эт. 9, пом. XVI, комн. 2
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900 mb-3">8. Заключительные положения</h2>
-                        <p class="mb-2">
-                            8.1. Оператор вправе вносить изменения в настоящую Политику без предварительного уведомления Пользователя.
-                        </p>
-                        <p class="mb-2">
-                            8.2. Актуальная редакция Политики всегда размещается на данной странице.
-                        </p>
-                        <p>
-                            8.3. Продолжение использования сайта после опубликования новой редакции Политики означает согласие Пользователя с внесенными изменениями.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <script>
-        lucide.createIcons();
-    </script>
 </body>
 </html>
