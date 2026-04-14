@@ -506,13 +506,21 @@
         <div class="popup-window">
             <span class="close-icon" onclick="closePopup()">×</span>
             <h3>Регистрация на обучение</h3>
-            <p>Оставьте контакты - мы свяжемся с вами, чтобы подтвердить заявку и предоставить доступ к обучению.</p>
+            <p style="margin-bottom: 8px;">Оставьте контакты - мы свяжемся с вами, чтобы подтвердить заявку и предоставить доступ к обучению.</p>
+            <p>В ваш телеграм придут обучающие материалы.</p>
             
             <form onsubmit="handleForm(event)" novalidate>
                 <div class="input-group">
                     <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                     <input type="text" id="inp-name" name="name" placeholder="Как к вам обращаться?" autocomplete="name" required>
                     <div class="error-msg" id="err-name"></div>
+                </div>
+
+                <!-- ДОБАВЛЕННОЕ ПОЛЕ TELEGRAM -->
+                <div class="input-group">
+                    <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                    <input type="text" id="inp-telegram" name="telegram" placeholder="Ваш ник тг в формате @username" required>
+                    <div class="error-msg" id="err-telegram"></div>
                 </div>
 
                 <div class="input-group">
@@ -541,13 +549,17 @@
 
         function resetValidation() {
             const fName = document.getElementById('inp-name');
+            const fTelegram = document.getElementById('inp-telegram');
             const fPhone = document.getElementById('inp-phone');
             const eName = document.getElementById('err-name');
+            const eTelegram = document.getElementById('err-telegram');
             const ePhone = document.getElementById('err-phone');
 
             fName.classList.remove('input-error');
+            fTelegram.classList.remove('input-error');
             fPhone.classList.remove('input-error');
             eName.textContent = '';
+            eTelegram.textContent = '';
             ePhone.textContent = '';
         }
 
@@ -555,6 +567,13 @@
             const clean = val.trim().replace(/\s+/g, ' ');
             if (clean.length < 2) return 'Минимум 2 символа';
             if (!/[A-Za-zА-Яа-яЁё]/.test(clean)) return 'Укажите корректное имя';
+            return '';
+        }
+
+        // ВАЛИДАЦИЯ ТЕЛЕГРАММА
+        function checkTelegram(val) {
+            const clean = val.trim();
+            if (clean.length < 2) return 'Укажите ваш Telegram';
             return '';
         }
 
@@ -574,15 +593,19 @@
             resetValidation();
 
             const fName = document.getElementById('inp-name');
+            const fTelegram = document.getElementById('inp-telegram');
             const fPhone = document.getElementById('inp-phone');
             const eName = document.getElementById('err-name');
+            const eTelegram = document.getElementById('err-telegram');
             const ePhone = document.getElementById('err-phone');
             const btn = document.getElementById('btn-submit');
 
             const valName = fName.value.trim();
+            const valTelegram = fTelegram.value.trim();
             const valPhone = fPhone.value.trim();
 
             const errN = checkName(valName);
+            const errT = checkTelegram(valTelegram);
             const errP = checkPhone(valPhone);
 
             let invalid = false;
@@ -590,6 +613,12 @@
             if (errN) {
                 fName.classList.add('input-error');
                 eName.textContent = errN;
+                invalid = true;
+            }
+
+            if (errT) {
+                fTelegram.classList.add('input-error');
+                eTelegram.textContent = errT;
                 invalid = true;
             }
 
@@ -613,6 +642,7 @@
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                         name: valName,
+                        telegram: valTelegram, // ДОБАВЛЕНО В ОТПРАВКУ
                         phone: valPhone,
                         page: window.location.href,
                         time: new Date().toISOString()
