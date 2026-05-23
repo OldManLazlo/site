@@ -290,6 +290,29 @@
         #form-wrapper.hide {
             display: none;
         }
+
+
+        /* Надёжное мобильное меню: без opacity-анимаций и конфликтов Tailwind hidden/flex */
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            z-index: 999999;
+            background: #070707;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        body.mobile-menu-open #mobile-menu {
+            display: flex;
+        }
+
+        body.mobile-menu-open {
+            overflow: hidden;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-gold-primary selection:text-dark-900">
@@ -320,19 +343,19 @@
             </a>
 
             <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-btn" class="lg:hidden text-gold-light text-2xl focus:outline-none z-50 relative">
+            <button id="mobile-menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false" class="lg:hidden text-gold-light text-2xl focus:outline-none z-50 relative">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
 
         <!-- Mobile Menu Overlay (Полностью независимый слой z-100 с собственным крестиком) -->
-        <div id="mobile-menu" class="fixed inset-0 bg-[#070707] z-[100] hidden flex-col transition-opacity duration-300 opacity-0">
+        <div id="mobile-menu" class="flex-col">
             <!-- Шапка мобильного меню -->
             <div class="w-full px-6 py-4 flex justify-between items-center border-b border-gold-primary/10">
                 <div class="text-xl font-medium tracking-wide flex items-center">
                     АРТУР <span class="text-gold-primary mx-2 text-lg font-light">|</span> <span class="text-xs md:text-sm font-normal text-text-muted tracking-normal">PERFORMANCE MARKETING</span>
                 </div>
-                <button id="mobile-close-btn" class="text-gold-light text-3xl focus:outline-none p-2 -mr-2">
+                <button id="mobile-close-btn" type="button" aria-label="Закрыть меню" class="text-gold-light text-3xl focus:outline-none p-2 -mr-2">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -947,42 +970,43 @@
             }
         });
 
-        // Мобильное меню
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileCloseBtn = document.getElementById('mobile-close-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-        
-        if (mobileMenuBtn && mobileMenu && mobileCloseBtn) {
-            
+        // Мобильное меню — максимально простой и надёжный вариант
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileCloseBtn = document.getElementById('mobile-close-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            if (!mobileMenuBtn || !mobileCloseBtn || !mobileMenu) return;
+
             function openMenu() {
-                mobileMenu.classList.remove('hidden');
-                mobileMenu.classList.add('flex'); 
-                
-                // Отрисовка для CSS transition
-                void mobileMenu.offsetWidth;
-                mobileMenu.classList.remove('opacity-0');
-                document.body.style.overflow = 'hidden'; // Блокируем скролл фона
+                document.body.classList.add('mobile-menu-open');
+                mobileMenuBtn.setAttribute('aria-expanded', 'true');
             }
 
             function closeMenu() {
-                mobileMenu.classList.add('opacity-0');
-                document.body.style.overflow = ''; // Возвращаем скролл
-                
-                setTimeout(() => {
-                    mobileMenu.classList.remove('flex');
-                    mobileMenu.classList.add('hidden');
-                }, 300);
+                document.body.classList.remove('mobile-menu-open');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
             }
 
-            mobileMenuBtn.addEventListener('click', openMenu);
-            mobileCloseBtn.addEventListener('click', closeMenu);
+            mobileMenuBtn.addEventListener('click', function (event) {
+                event.preventDefault();
+                openMenu();
+            });
 
-            // Закрытие меню при клике на любую ссылку
-            mobileLinks.forEach(link => {
+            mobileCloseBtn.addEventListener('click', function (event) {
+                event.preventDefault();
+                closeMenu();
+            });
+
+            mobileLinks.forEach(function (link) {
                 link.addEventListener('click', closeMenu);
             });
-        }
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') closeMenu();
+            });
+        });
     </script>
 </body>
 </html>
