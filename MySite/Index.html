@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Артур | Премиальная настройка интернет-рекламы</title>
+    
+    <!-- Подключение шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Иконки FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Настройка Tailwind для "Black Gold" -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#070707', // Глубокий черный
+                            800: '#0D0D0F', // Мягкий угольный
+                            700: '#141416', // Графит
+                            600: '#1B1B1F', // Темный антрацит
+                        },
+                        gold: {
+                            light: '#E7D2A5', // Светлый блик
+                            primary: '#C6A86A', // Теплое премиальное
+                            secondary: '#D8BE8A', // Шампань
+                            dark: '#A9874F', // Темное матовое
+                            muted: '#6E614E', // Серо-золотистый для линий
+                        },
+                        text: {
+                            main: '#F5F3EE', // Белый для текста
+                            muted: '#A7A29A', // Мягкий серый
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 40px -10px rgba(198, 168, 106, 0.15)',
+                        'gold-glow-hover': '0 0 50px -5px rgba(198, 168, 106, 0.25)',
+                        'premium': '0 20px 40px -10px rgba(0,0,0,0.8)',
+                    },
+                    backgroundImage: {
+                        'gold-gradient': 'linear-gradient(135deg, #A9874F 0%, #D8BE8A 50%, #C6A86A 100%)',
+                        'card-gradient': 'linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #070707;
+            color: #F5F3EE;
+            font-family: 'Manrope', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Общие слои */
+        .relative-z { position: relative; z-index: 10; }
+
+        /* Типографика */
+        .text-accent-serif { font-family: 'Cormorant Garamond', serif; font-style: italic; color: #C6A86A; }
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #D8BE8A 0%, #C6A86A 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-layer {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .bg-gradient-radial {
+            background: radial-gradient(circle at 75% 40%, rgba(198, 168, 106, 0.05) 0%, transparent 55%),
+                        radial-gradient(circle at 20% 80%, rgba(20, 20, 22, 1) 0%, #070707 100%);
+        }
+        
+        .bg-grid {
+            background-size: 35px 35px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);
+            mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);
+        }
+
+        .bg-noise {
+            opacity: 0.03;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+        }
+
+        /* Стеклянные карточки */
+        .glass-card {
+            background: rgba(20, 20, 22, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(198, 168, 106, 0.15);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(198, 168, 106, 0.4);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 20px rgba(198, 168, 106, 0.05);
+        }
+
+        /* Кнопки */
+        .btn-premium {
+            background: linear-gradient(135deg, #A9874F 0%, #D8BE8A 50%, #C6A86A 100%);
+            color: #070707;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+        }
+        
+        .btn-premium::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            transition: all 0.7s ease;
+        }
+        
+        .btn-premium:hover {
+            box-shadow: 0 0 25px rgba(198, 168, 106, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-premium:hover::after {
+            left: 200%;
+        }
+
+        .hero-visual {
+            position: relative;
+            width: 100%;
+            height: 540px;
+            perspective: 1000px;
+        }
+        
+        .hv-card {
+            position: absolute;
+            background: rgba(20, 20, 22, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(198, 168, 106, 0.15);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            color: #F5F3EE;
+            animation: float 6s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+        
+        .hv-card:hover {
+            border-color: rgba(198, 168, 106, 0.35);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6), inset 0 0 20px rgba(198, 168, 106, 0.05);
+        }
+
+        /* Позиционирование карточек */
+        .hv-top-left { top: 0; left: 0; width: 200px; animation-delay: 0s; z-index: 3; }
+        .hv-top-right { top: 30px; right: 0; width: 190px; animation-delay: -2s; z-index: 2; opacity: 0.95; }
+        .hv-main { 
+            top: 110px; left: 50%; transform: translateX(-40%); 
+            width: 320px; z-index: 4; animation-delay: -1s; padding: 24px; 
+            border-color: rgba(198, 168, 106, 0.25); 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6); 
+            background: rgba(20, 20, 22, 0.85); 
+        }
+        .hv-bottom-left { bottom: 30px; left: 10%; width: 220px; animation-delay: -3s; z-index: 5; }
+        .hv-bottom-right { bottom: 50px; right: 5%; width: 210px; animation-delay: -4s; z-index: 3; }
+
+        @keyframes float {
+            0% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-12px) translateX(2px); }
+            100% { transform: translateY(0px) translateX(0px); }
+        }
+        .hv-main {
+            /* Переопределяем трансформ для центрированной карточки */
+            animation: float-main 6s ease-in-out infinite;
+        }
+        @keyframes float-main {
+            0% { transform: translateX(-40%) translateY(0px); }
+            50% { transform: translateX(-40%) translateY(-10px); }
+            100% { transform: translateX(-40%) translateY(0px); }
+        }
+
+        /* Внутренние элементы карточек */
+        .hv-chip { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #E7D2A5; background: rgba(198,168,106,0.1); padding: 4px 8px; border-radius: 6px; display: inline-block; margin-bottom: 12px; border: 1px solid rgba(198,168,106,0.15); }
+        .hv-small-val { font-size: 28px; font-weight: 300; margin-bottom: 2px; }
+        .hv-small-label { font-size: 12px; color: #A7A29A; margin-bottom: 10px; }
+        .hv-tag { font-size: 11px; color: #C6A86A; display: flex; align-items: center; gap: 4px; font-weight: 500; }
+        .hv-progress { width: 100%; height: 4px; background: rgba(255,255,255,0.05); border-radius: 2px; margin-top: 12px; overflow: hidden; }
+        .hv-progress-bar { height: 100%; background: linear-gradient(90deg, #A9874F, #E7D2A5); }
+
+        .hv-card-label { font-size: 12px; font-weight: 500; margin-bottom: 16px; color: #E7D2A5; text-transform: uppercase; letter-spacing: 1px; }
+        .hv-metric { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+        .hv-metric-val { font-size: 42px; font-weight: 300; }
+        .hv-metric-unit { font-size: 16px; color: #A7A29A; }
+        .hv-metric-label { font-size: 13px; color: #A7A29A; margin-bottom: 20px; }
+        
+        .hv-chart { display: flex; align-items: flex-end; gap: 6px; height: 50px; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px; }
+        .hv-bar { flex: 1; background: #C6A86A; border-radius: 3px 3px 0 0; opacity: 0.6; transition: height 1s ease, opacity 0.3s; }
+        .hv-bar:hover { opacity: 1; background: #E7D2A5; }
+        
+        .hv-stat-row { display: flex; justify-content: space-between; font-size: 13px; padding: 10px 0; border-top: 1px dashed rgba(255,255,255,0.05); }
+        .hv-stat-name { color: #A7A29A; }
+        .hv-stat-val { color: #F5F3EE; font-weight: 500; }
+
+        .process-line {
+            position: absolute;
+            left: 24px;
+            top: 40px;
+            bottom: -20px;
+            width: 1px;
+            background: linear-gradient(to bottom, #C6A86A 0%, rgba(198, 168, 106, 0.1) 100%);
+            z-index: 0;
+        }
+
+        @media (min-width: 768px) {
+            .process-line {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        .form-input {
+            width: 100%;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(198, 168, 106, 0.2);
+            color: #F5F3EE;
+            padding: 16px 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        
+        .form-input:focus {
+            border-color: #C6A86A;
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 0 15px rgba(198, 168, 106, 0.1);
+        }
+
+        /* FAQ Аккордеон */
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.4s ease-out, padding 0.4s ease-out;
+            opacity: 0;
+        }
+        .faq-item.active .faq-content {
+            max-height: 300px;
+            opacity: 1;
+            padding-top: 16px;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+            color: #C6A86A;
+        }
+        
+        #success-message {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        #success-message.show {
+            display: block;
+            opacity: 1;
+        }
+        #form-wrapper.hide {
+            display: none;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold-primary selection:text-dark-900">
+
+    <div class="bg-layer bg-gradient-radial"></div>
+    <div class="bg-layer bg-grid"></div>
+    <div class="bg-layer bg-noise"></div>
+
+    <!-- Навигация (Минималистичная) -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar" style="background: rgba(7, 7, 7, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(198,168,106,0.1);">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-xl font-medium tracking-wide flex items-center z-50 relative">
+                АРТУР <span class="text-gold-primary mx-2 text-lg font-light">|</span> <span class="text-xs md:text-sm font-normal text-text-muted tracking-normal">PERFORMANCE MARKETING</span>
+            </div>
+            
+            <!-- Desktop Nav -->
+            <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-text-muted">
+                <a href="#problem" class="hover:text-gold-light transition-colors">Проблема</a>
+                <a href="#approach" class="hover:text-gold-light transition-colors">Подход</a>
+                <a href="#about" class="hover:text-gold-light transition-colors">Обо мне</a>
+                <a href="#services" class="hover:text-gold-light transition-colors">Услуги</a>
+                <a href="#process" class="hover:text-gold-light transition-colors">Этапы</a>
+            </div>
+
+            <!-- Desktop CTA -->
+            <a href="#lead-form" class="hidden lg:inline-block border border-gold-primary/30 text-gold-light px-5 py-2 rounded-lg text-sm hover:bg-gold-primary/10 transition-colors">
+                Связаться
+            </a>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="lg:hidden text-gold-light text-2xl focus:outline-none z-50 relative">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-dark-900/98 backdrop-blur-xl z-40 hidden flex-col items-center justify-center gap-8 text-lg transition-opacity duration-300 opacity-0">
+            <a href="#problem" class="mobile-link text-text-main hover:text-gold-light transition-colors">Проблема</a>
+            <a href="#approach" class="mobile-link text-text-main hover:text-gold-light transition-colors">Подход</a>
+            <a href="#about" class="mobile-link text-text-main hover:text-gold-light transition-colors">Обо мне</a>
+            <a href="#services" class="mobile-link text-text-main hover:text-gold-light transition-colors">Услуги</a>
+            <a href="#process" class="mobile-link text-text-main hover:text-gold-light transition-colors">Этапы</a>
+            <a href="#contact" class="mobile-link text-text-main hover:text-gold-light transition-colors">FAQ</a>
+            <a href="#lead-form" class="mobile-link btn-premium px-8 py-4 mt-4 text-base">Оставить заявку</a>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex items-center pt-28 pb-12 lg:pt-32 lg:pb-16 overflow-hidden relative-z">
+        <!-- Световые пятна фона (оставляем для доп. свечения слева) -->
+        <div class="absolute top-1/4 left-0 w-[500px] h-[500px] bg-gold-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
+            <!-- Левая колонка: Текст -->
+            <div class="flex flex-col items-start z-10">
+                <div class="inline-block px-4 py-1.5 rounded-full border border-gold-muted/30 bg-dark-800/50 text-xs font-medium tracking-widest text-gold-primary uppercase mb-6 backdrop-blur-sm">
+                    Интернет-реклама · 7+ лет опыта
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-6">
+                    Хватит сливать бюджет <br>
+                    <span class="text-accent-serif text-5xl md:text-6xl lg:text-7xl">на рекламу,</span> <br>
+                    которая не приносит клиентов
+                </h1>
+                
+                <p class="text-lg md:text-xl text-text-muted mb-8 max-w-xl font-light leading-relaxed">
+                    Я помогаю бизнесу получать заявки через Яндекс.Директ, Meta, Instagram, TikTok и другие рекламные каналы. <strong class="text-text-main font-medium">Не запускаю рекламу "на удачу".</strong>
+                </p>
+
+                <div class="space-y-3 mb-10 w-full max-w-md">
+                    <p class="text-sm text-gold-light mb-4">Сначала разбираю продукт — потом собираю связку, где понятно:</p>
+                    <div class="flex items-center gap-3 text-sm text-text-muted">
+                        <i class="fa-solid fa-arrow-right text-gold-primary text-xs"></i> куда уходит бюджет
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-text-muted">
+                        <i class="fa-solid fa-arrow-right text-gold-primary text-xs"></i> какие заявки приходят
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-text-muted">
+                        <i class="fa-solid fa-arrow-right text-gold-primary text-xs"></i> как системно снижать стоимость лида
+                    </div>
+                </div>
+                
+                <div class="w-full sm:w-auto">
+                    <a href="#lead-form" class="btn-premium block w-full sm:w-auto px-8 py-4 text-center text-lg">
+                        Получить бесплатный разбор
+                    </a>
+                    <p class="text-xs text-text-muted mt-4 max-w-sm text-center sm:text-left opacity-70">
+                        Оставьте заявку — я посмотрю вашу нишу и подскажу, с какого рекламного канала лучше начать.
+                    </p>
+                </div>
+            </div>
+
+            <div class="hidden lg:block relative z-10 w-full">
+                <!-- HERO VISUAL -->
+                <div class="hero-visual reveal reveal-delay-2">
+                    
+                    <!-- TOP LEFT CARD -->
+                    <div class="hv-card hv-top-left">
+                        <div class="hv-chip">Leads</div>
+                        <div class="hv-small-val">247</div>
+                        <div class="hv-small-label">заявок за месяц</div>
+                        <div class="hv-tag">+34% к прошлому</div>
+                        <div class="hv-progress"><div class="hv-progress-bar" style="width: 75%"></div></div>
+                    </div>
+
+                    <!-- TOP RIGHT CARD -->
+                    <div class="hv-card hv-top-right">
+                        <div class="hv-chip">CPL</div>
+                        <div class="hv-small-val">₽480</div>
+                        <div class="hv-small-label">стоимость лида</div>
+                        <div class="hv-tag">−22% vs старт</div>
+                    </div>
+
+                    <!-- MAIN CARD -->
+                    <div class="hv-card hv-main">
+                        <div class="hv-card-label">Performance Dashboard</div>
+                        <div class="hv-metric">
+                            <span class="hv-metric-val">72%</span>
+                            <span class="hv-metric-unit">целевые</span>
+                        </div>
+                        <div class="hv-metric-label">качество обращений</div>
+                        
+                        <div class="hv-chart">
+                            <div class="hv-bar" style="height:30%"></div>
+                            <div class="hv-bar" style="height:45%"></div>
+                            <div class="hv-bar" style="height:35%"></div>
+                            <div class="hv-bar" style="height:60%"></div>
+                            <div class="hv-bar" style="height:50%"></div>
+                            <div class="hv-bar" style="height:75%"></div>
+                            <div class="hv-bar" style="height:65%"></div>
+                            <div class="hv-bar" style="height:90%"></div>
+                        </div>
+                        
+                        <div class="hv-stat-row">
+                            <span class="hv-stat-name">Яндекс.Директ</span>
+                            <span class="hv-stat-val">143 лида</span>
+                        </div>
+                        <div class="hv-stat-row">
+                            <span class="hv-stat-name">Meta / Instagram</span>
+                            <span class="hv-stat-val">86 лидов</span>
+                        </div>
+                        <div class="hv-stat-row" style="border-bottom: none;">
+                            <span class="hv-stat-name">TikTok</span>
+                            <span class="hv-stat-val">18 лидов</span>
+                        </div>
+                    </div>
+
+                    <!-- BOTTOM LEFT -->
+                    <div class="hv-card hv-bottom-left">
+                        <div class="hv-chip">Funnel</div>
+                        <div class="hv-small-val">4.1%</div>
+                        <div class="hv-small-label">конверсия лендинга</div>
+                        <div class="hv-tag">+0.8% после правок</div>
+                    </div>
+
+                    <!-- BOTTOM RIGHT -->
+                    <div class="hv-card hv-bottom-right">
+                        <div class="hv-chip">Strategy</div>
+                        <div class="hv-small-val">6</div>
+                        <div class="hv-small-label">гипотез в тесте</div>
+                        <div class="hv-stat-row" style="border-top: none; padding-bottom: 0;">
+                            <span class="hv-stat-name">Статус</span>
+                            <span class="hv-stat-val text-gold-light">Оптимизация</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="problem" class="py-16 md:py-20 bg-dark-800 relative relative-z border-t border-gold-primary/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-light mb-6">Реклама не должна быть <span class="text-accent-serif text-4xl md:text-5xl">лотереей</span></h2>
+                <p class="text-text-muted text-lg font-light leading-relaxed">
+                    Многие запускают рекламу с надеждой: <span class="text-text-main italic">«Сейчас пойдут заявки»</span>. Но часто получается иначе. Бизнес не понимает, что именно исправлять, потому что реклама работает не сама по себе, а как часть единой связки.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Карточка 1 -->
+                <div class="glass-card p-8">
+                    <i class="fa-solid fa-wallet text-gold-dark text-2xl mb-4"></i>
+                    <h3 class="text-xl font-medium mb-3 text-text-main">Бюджет уходит</h3>
+                    <p class="text-text-muted text-sm leading-relaxed">Клики есть, а реальных заявок мало. Бюджет расходуется без отдачи.</p>
+                </div>
+                <!-- Карточка 2 -->
+                <div class="glass-card p-8">
+                    <i class="fa-solid fa-users-slash text-gold-dark text-2xl mb-4"></i>
+                    <h3 class="text-xl font-medium mb-3 text-text-main">Дорогие лиды</h3>
+                    <p class="text-text-muted text-sm leading-relaxed">Заявки приходят, но их стоимость не позволяет экономике проекта окупаться.</p>
+                </div>
+                <!-- Карточка 3 -->
+                <div class="glass-card p-8">
+                    <i class="fa-solid fa-comments text-gold-dark text-2xl mb-4"></i>
+                    <h3 class="text-xl font-medium mb-3 text-text-main">Нецелевые обращения</h3>
+                    <p class="text-text-muted text-sm leading-relaxed">Менеджеры жалуются, что люди «просто спрашивают» или не понимают продукт.</p>
+                </div>
+                <!-- Карточка 4 -->
+                <div class="glass-card p-8">
+                    <i class="fa-solid fa-magnifying-glass-chart text-gold-dark text-2xl mb-4"></i>
+                    <h3 class="text-xl font-medium mb-3 text-text-main">Слепые зоны</h3>
+                    <p class="text-text-muted text-sm leading-relaxed">Непонятно, проблема в рекламе, сайте, оффере или неправильной аудитории.</p>
+                </div>
+                <!-- Карточка 5 (Широкая) -->
+                <div class="glass-card p-8 md:col-span-2 lg:col-span-2 flex flex-col justify-center">
+                    <h3 class="text-xl font-medium mb-4 text-gold-light">Где теряются деньги?</h3>
+                    <p class="text-text-muted text-sm leading-relaxed mb-4">
+                        Если хотя бы одно звено слабое, бюджет начинает утекать. Работает вся связка целиком:
+                    </p>
+                    <div class="flex flex-wrap items-center gap-2 text-xs md:text-sm font-medium">
+                        <span class="px-3 py-1 bg-dark-900 border border-gold-muted/20 rounded">Канал</span>
+                        <i class="fa-solid fa-angle-right text-gold-muted"></i>
+                        <span class="px-3 py-1 bg-dark-900 border border-gold-muted/20 rounded">Креатив</span>
+                        <i class="fa-solid fa-angle-right text-gold-muted"></i>
+                        <span class="px-3 py-1 bg-dark-900 border border-gold-muted/20 rounded text-gold-primary">Посадочная</span>
+                        <i class="fa-solid fa-angle-right text-gold-muted"></i>
+                        <span class="px-3 py-1 bg-dark-900 border border-gold-muted/20 rounded">Продажа</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="approach" class="py-16 md:py-20 relative relative-z">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-12">
+                <h2 class="text-3xl md:text-4xl font-light mb-6">Я настраиваю не рекламу, <br>а <span class="text-gold-gradient font-medium">систему привлечения</span></h2>
+                <p class="text-text-muted text-lg max-w-2xl font-light">
+                    Рекламный кабинет — это только инструмент. Сам по себе Яндекс или Meta не спасают бизнес, если у проекта слабый оффер. Поэтому перед запуском я смотрю глубже.
+                </p>
+            </div>
+
+            <!-- Вертикальная линия шагов -->
+            <div class="relative">
+                <div class="process-line hidden md:block"></div>
+                
+                <div class="space-y-12 relative z-10">
+                    <!-- Шаг 1 -->
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16">
+                        <div class="md:w-1/2 md:text-right">
+                            <h3 class="text-xl font-medium text-gold-light mb-2">Что вы продаёте</h3>
+                            <p class="text-text-muted text-sm">Услуга, продукт, средний чек, география, маржа, цикл сделки. Понимание экономики.</p>
+                        </div>
+                        <div class="hidden md:flex w-12 h-12 rounded-full bg-dark-900 border-2 border-gold-primary items-center justify-center z-10 shadow-gold-glow">
+                            <div class="w-3 h-3 rounded-full bg-gold-light"></div>
+                        </div>
+                        <div class="md:w-1/2"></div>
+                    </div>
+
+                    <!-- Шаг 2 -->
+                    <div class="flex flex-col md:flex-row-reverse items-start md:items-center gap-8 md:gap-16">
+                        <div class="md:w-1/2 text-left">
+                            <h3 class="text-xl font-medium text-gold-light mb-2">Кому вы продаёте</h3>
+                            <p class="text-text-muted text-sm">Кто ваш клиент, что ему важно, чего он боится, почему откладывает решение о покупке.</p>
+                        </div>
+                        <div class="hidden md:flex w-12 h-12 rounded-full bg-dark-900 border-2 border-gold-primary items-center justify-center z-10 shadow-gold-glow">
+                            <div class="w-3 h-3 rounded-full bg-gold-light"></div>
+                        </div>
+                        <div class="md:w-1/2"></div>
+                    </div>
+
+                    <!-- Шаг 3 -->
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16">
+                        <div class="md:w-1/2 md:text-right">
+                            <h3 class="text-xl font-medium text-gold-light mb-2">Почему именно вы</h3>
+                            <p class="text-text-muted text-sm">Что можно усилить в оффере, чтобы реклама не выглядела как "ещё одно одинаковое предложение".</p>
+                        </div>
+                        <div class="hidden md:flex w-12 h-12 rounded-full bg-dark-900 border-2 border-gold-primary items-center justify-center z-10 shadow-gold-glow">
+                            <div class="w-3 h-3 rounded-full bg-gold-light"></div>
+                        </div>
+                        <div class="md:w-1/2"></div>
+                    </div>
+
+                    <!-- Шаг 4 -->
+                    <div class="flex flex-col md:flex-row-reverse items-start md:items-center gap-8 md:gap-16">
+                        <div class="md:w-1/2 text-left">
+                            <h3 class="text-xl font-medium text-gold-light mb-2">Куда вести трафик</h3>
+                            <p class="text-text-muted text-sm">На сайт, квиз, Telegram, WhatsApp, лид-форму или другую посадочную в зависимости от задачи.</p>
+                        </div>
+                        <div class="hidden md:flex w-12 h-12 rounded-full bg-dark-900 border-2 border-gold-primary items-center justify-center z-10 shadow-gold-glow">
+                            <div class="w-3 h-3 rounded-full bg-gold-light"></div>
+                        </div>
+                        <div class="md:w-1/2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Добавлен блок с кнопкой перед секцией Кто Я -->
+            <div class="mt-16 p-8 glass-card border-l-4 border-l-gold-primary flex flex-col md:flex-row items-center justify-between gap-8">
+                <p class="text-lg font-light leading-relaxed md:w-2/3 text-center md:text-left">
+                    <span class="text-gold-light font-medium">Дешёвый лид — это не магия.</span> Это результат нормальной работы со связкой: оффером, аудиторией, креативом, посадочной и аналитикой. Я системно ищу связки, которые дают заявки дешевле, качественнее и стабильнее.
+                </p>
+                <div class="md:w-1/3 w-full">
+                    <a href="#lead-form" class="btn-premium block w-full px-6 py-4 text-center text-base">
+                        Обсудить проект
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-16 md:py-20 bg-dark-800 relative relative-z border-y border-gold-primary/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Фото -->
+                <div class="lg:col-span-5 relative">
+                    <div class="absolute inset-0 bg-gold-primary/20 blur-[100px] rounded-full"></div>
+                    <div class="relative rounded-2xl overflow-hidden border border-gold-primary/20 aspect-[4/5] max-w-md mx-auto lg:mx-0 shadow-premium">
+                        <!-- Placeholder фото в премиальном стиле -->
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&auto=format&fit=crop" alt="Артур - Специалист по рекламе" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" style="object-position: top center; mix-blend-mode: luminosity;">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-80"></div>
+                    </div>
+                </div>
+
+                <!-- Текст и бейджи -->
+                <div class="lg:col-span-7 flex flex-col justify-center">
+                    <h2 class="text-3xl md:text-4xl font-light mb-2">Меня зовут <span class="text-accent-serif text-4xl md:text-5xl">Артур</span></h2>
+                    <p class="text-gold-light font-medium tracking-wide text-sm uppercase mb-8">Специалист по интернет-рекламе</p>
+                    
+                    <div class="space-y-4 text-text-muted font-light text-lg mb-10">
+                        <p>Я занимаюсь интернет-рекламой более 7 лет. Работал с разными нишами: от классических "белых" проектов до сложных направлений, где важны аккуратная упаковка, сильный оффер и точная работа с аудиторией.</p>
+                        <p>Для меня важно понять, <strong class="text-text-main font-medium">почему человек должен оставить заявку именно вам</strong>, а не просто увидеть объявление и пролистать дальше.</p>
+                    </div>
+
+                    <!-- Бейджи -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="px-4 py-3 border border-gold-muted/20 rounded-xl bg-dark-900/50 flex items-center gap-3">
+                            <i class="fa-solid fa-clock text-gold-dark"></i>
+                            <span class="text-sm font-medium">Опыт 7+ лет</span>
+                        </div>
+                        <div class="px-4 py-3 border border-gold-muted/20 rounded-xl bg-dark-900/50 flex items-center gap-3">
+                            <i class="fa-solid fa-bullseye text-gold-dark"></i>
+                            <span class="text-sm font-medium">Яндекс / Meta / TikTok</span>
+                        </div>
+                        <div class="px-4 py-3 border border-gold-muted/20 rounded-xl bg-dark-900/50 flex items-center gap-3">
+                            <i class="fa-solid fa-briefcase text-gold-dark"></i>
+                            <span class="text-sm font-medium">Разные ниши</span>
+                        </div>
+                        <div class="px-4 py-3 border border-gold-muted/20 rounded-xl bg-dark-900/50 flex items-center gap-3">
+                            <i class="fa-solid fa-chess-knight text-gold-dark"></i>
+                            <span class="text-sm font-medium">Стратегия + Аналитика</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-16 md:py-20 relative relative-z">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-light mb-12 text-center">Подбираю канал под <span class="text-accent-serif text-4xl md:text-5xl">задачу бизнеса</span></h2>
+
+            <!-- Каналы -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                <!-- Яндекс -->
+                <div class="glass-card p-8 group">
+                    <div class="flex justify-between items-start mb-6">
+                        <h3 class="text-2xl font-light text-text-main">Яндекс.Директ</h3>
+                        <span class="px-3 py-1 bg-gold-primary/10 text-gold-primary text-xs rounded-full border border-gold-primary/20">Горячий спрос</span>
+                    </div>
+                    <p class="text-text-muted text-sm mb-4">Для бизнеса, который хочет получать заявки от людей с уже сформированным спросом в РФ.</p>
+                    <ul class="text-sm text-text-muted space-y-2">
+                        <li><span class="text-gold-dark mr-2">•</span> Поиск и РСЯ</li>
+                        <li><span class="text-gold-dark mr-2">•</span> Ретаргетинг</li>
+                        <li><span class="text-gold-dark mr-2">•</span> Аудит текущих кампаний</li>
+                    </ul>
+                </div>
+
+                <!-- Meta -->
+                <div class="glass-card p-8 group">
+                    <div class="flex justify-between items-start mb-6">
+                        <h3 class="text-2xl font-light text-text-main">Meta / Instagram</h3>
+                        <span class="px-3 py-1 bg-gold-primary/10 text-gold-primary text-xs rounded-full border border-gold-primary/20">Визуал и прогрев</span>
+                    </div>
+                    <p class="text-text-muted text-sm mb-4">Для проектов, где важны визуал, упаковка и прогрев аудитории. Идеально для экспертов и визуальных ниш.</p>
+                </div>
+
+                <!-- TikTok -->
+                <div class="glass-card p-8 group">
+                    <div class="flex justify-between items-start mb-6">
+                        <h3 class="text-2xl font-light text-text-main">TikTok Ads</h3>
+                        <span class="px-3 py-1 bg-gold-primary/10 text-gold-primary text-xs rounded-full border border-gold-primary/20">Видео креатив</span>
+                    </div>
+                    <p class="text-text-muted text-sm mb-4">Для задач, где можно быстро зацепить внимание через короткое видео, сильный хук и понятную идею.</p>
+                </div>
+
+                <!-- Telegram/Квизы -->
+                <div class="glass-card p-8 group">
+                    <div class="flex justify-between items-start mb-6">
+                        <h3 class="text-2xl font-light text-text-main">Telegram & Квизы</h3>
+                        <span class="px-3 py-1 bg-gold-primary/10 text-gold-primary text-xs rounded-full border border-gold-primary/20">Быстрые лиды</span>
+                    </div>
+                    <p class="text-text-muted text-sm mb-4">Не всегда нужен большой сайт. Ведём в Telegram-воронку, на квиз или встроенную лид-форму для сбора контактов.</p>
+                </div>
+            </div>
+
+            <!-- Что беру на себя -->
+            <div class="p-10 border border-gold-muted/20 rounded-2xl bg-dark-800/50 backdrop-blur-md">
+                <h3 class="text-2xl font-light mb-8 text-center text-gold-light">Что я беру на себя в работе:</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-12">
+                    <div class="flex items-center gap-4 text-text-main text-sm">
+                        <i class="fa-solid fa-check text-gold-primary"></i> Анализ проекта, ниши и конкурентов
+                    </div>
+                    <div class="flex items-center gap-4 text-text-main text-sm">
+                        <i class="fa-solid fa-check text-gold-primary"></i> Подготовка объявлений и креативов
+                    </div>
+                    <div class="flex items-center gap-4 text-text-main text-sm">
+                        <i class="fa-solid fa-check text-gold-primary"></i> Выбор рекламной стратегии
+                    </div>
+                    <div class="flex items-center gap-4 text-text-main text-sm">
+                        <i class="fa-solid fa-check text-gold-primary"></i> Настройка аналитики и целей
+                    </div>
+                    <div class="flex items-center gap-4 text-text-main text-sm">
+                        <i class="fa-solid fa-check text-gold-primary"></i> Настройка рекламных кампаний
+                    </div>
+                    <div class="flex items-center gap-4 text-text-main text-sm">
+                        <i class="fa-solid fa-check text-gold-primary"></i> Оптимизация рекламы после запуска
+                    </div>
+                    <div class="flex items-center gap-4 text-text-main text-sm">
+                        <i class="fa-solid fa-check text-gold-primary"></i> Работа с посадочной страницей / воронкой
+                    </div>
+                    <div class="flex items-center gap-4 text-text-main text-sm">
+                        <i class="fa-solid fa-check text-gold-primary"></i> Тестирование новых гипотез
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="py-16 md:py-20 bg-dark-800 relative relative-z border-y border-gold-primary/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-light mb-12 text-center">От первого сообщения до запуска — <br><span class="text-gold-gradient font-medium">понятная схема</span></h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Шаг 1 -->
+                <div class="glass-card p-8 relative overflow-hidden group">
+                    <div class="absolute -right-4 -top-4 text-8xl font-serif font-bold text-dark-900 opacity-50 group-hover:text-gold-primary/10 transition-colors duration-500 pointer-events-none">1</div>
+                    <h3 class="text-xl font-medium text-text-main mb-3 relative z-10">Заявка</h3>
+                    <p class="text-text-muted text-sm relative z-10">Пишите контакты, чтобы я мог связаться с вами.</p>
+                </div>
+                <!-- Шаг 2 -->
+                <div class="glass-card p-8 relative overflow-hidden group">
+                    <div class="absolute -right-4 -top-4 text-8xl font-serif font-bold text-dark-900 opacity-50 group-hover:text-gold-primary/10 transition-colors duration-500 pointer-events-none">2</div>
+                    <h3 class="text-xl font-medium text-text-main mb-3 relative z-10">Разбор ситуации</h3>
+                    <p class="text-text-muted text-sm relative z-10">Смотрю нишу, продукт, сайт или текущую рекламу.</p>
+                </div>
+                <!-- Шаг 3 -->
+                <div class="glass-card p-8 relative overflow-hidden group">
+                    <div class="absolute -right-4 -top-4 text-8xl font-serif font-bold text-dark-900 opacity-50 group-hover:text-gold-primary/10 transition-colors duration-500 pointer-events-none">3</div>
+                    <h3 class="text-xl font-medium text-text-main mb-3 relative z-10">Стратегия</h3>
+                    <p class="text-text-muted text-sm relative z-10">Предлагаю рекламную связку и канал для старта.</p>
+                </div>
+                <!-- Шаг 4 -->
+                <div class="glass-card p-8 relative overflow-hidden group">
+                    <div class="absolute -right-4 -top-4 text-8xl font-serif font-bold text-dark-900 opacity-50 group-hover:text-gold-primary/10 transition-colors duration-500 pointer-events-none">4</div>
+                    <h3 class="text-xl font-medium text-text-main mb-3 relative z-10">Подготовка</h3>
+                    <p class="text-text-muted text-sm relative z-10">Собираем оффер, посадочную, креативы и аналитику.</p>
+                </div>
+                <!-- Шаг 5 -->
+                <div class="glass-card p-8 relative overflow-hidden group">
+                    <div class="absolute -right-4 -top-4 text-8xl font-serif font-bold text-dark-900 opacity-50 group-hover:text-gold-primary/10 transition-colors duration-500 pointer-events-none">5</div>
+                    <h3 class="text-xl font-medium text-text-main mb-3 relative z-10">Запуск теста</h3>
+                    <p class="text-text-muted text-sm relative z-10">Проверяем гипотезы на трафике, смотрим первые данные.</p>
+                </div>
+                <!-- Шаг 6 -->
+                <div class="glass-card p-8 relative overflow-hidden group">
+                    <div class="absolute -right-4 -top-4 text-8xl font-serif font-bold text-dark-900 opacity-50 group-hover:text-gold-primary/10 transition-colors duration-500 pointer-events-none">6</div>
+                    <h3 class="text-xl font-medium text-gold-light mb-3 relative z-10">Оптимизация</h3>
+                    <p class="text-text-muted text-sm relative z-10">Отключаем слабое, усиливаем рабочее, улучшаем CPL.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 md:py-20 relative relative-z">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            
+            <!-- Левая колонка: FAQ -->
+            <div>
+                <h2 class="text-3xl font-light mb-8">Частые вопросы</h2>
+                <div class="space-y-4">
+                    <!-- Вопрос 1 -->
+                    <div class="faq-item border-b border-gold-primary/20 pb-4">
+                        <button class="w-full flex justify-between items-center text-left py-2 hover:text-gold-light transition-colors" onclick="toggleFaq(this)">
+                            <span class="text-lg font-medium">С какого канала лучше начать?</span>
+                            <i class="fa-solid fa-plus faq-icon transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content text-text-muted text-sm leading-relaxed">
+                            Если вы работаете на Россию и вашу услугу уже ищут — чаще всего логично начать с Яндекс.Директа. Если продукт нужно красиво показать, объяснить или прогреть аудиторию — можно рассматривать Meta, Instagram или TikTok для подходящих гео.
+                        </div>
+                    </div>
+                    <!-- Вопрос 2 -->
+                    <div class="faq-item border-b border-gold-primary/20 pb-4">
+                        <button class="w-full flex justify-between items-center text-left py-2 hover:text-gold-light transition-colors" onclick="toggleFaq(this)">
+                            <span class="text-lg font-medium">Можно ли запускаться без сайта?</span>
+                            <i class="fa-solid fa-plus faq-icon transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content text-text-muted text-sm leading-relaxed">
+                            Да. Иногда лучше вести человека в Telegram, WhatsApp, квиз или лид-форму. Но если продукт сложный, дорогой или требует доверия, посадочная страница часто помогает лучше раскрыть предложение и повысить конверсию.
+                        </div>
+                    </div>
+                    <!-- Вопрос 3 -->
+                    <div class="faq-item border-b border-gold-primary/20 pb-4">
+                        <button class="w-full flex justify-between items-center text-left py-2 hover:text-gold-light transition-colors" onclick="toggleFaq(this)">
+                            <span class="text-lg font-medium">Вы работаете только с Яндексом?</span>
+                            <i class="fa-solid fa-plus faq-icon transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content text-text-muted text-sm leading-relaxed">
+                            Нет. Яндекс.Директ — один из основных каналов, особенно для России. Но я также работаю с Meta, Instagram, TikTok, Telegram-воронками и другими рекламными связками.
+                        </div>
+                    </div>
+                    <!-- Вопрос 4 -->
+                    <div class="faq-item border-b border-gold-primary/20 pb-4">
+                        <button class="w-full flex justify-between items-center text-left py-2 hover:text-gold-light transition-colors" onclick="toggleFaq(this)">
+                            <span class="text-lg font-medium">Помогаете ли с сайтом и креативами?</span>
+                            <i class="fa-solid fa-plus faq-icon transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content text-text-muted text-sm leading-relaxed">
+                            Да. Я могу помочь со структурой лендинга, оффером, текстами, рекламными креативами и логикой заявки. Даже хорошая реклама плохо работает, если сайт не убеждает оставить контакт.
+                        </div>
+                    </div>
+                    <!-- Вопрос 5 -->
+                    <div class="faq-item border-b border-gold-primary/20 pb-4">
+                        <button class="w-full flex justify-between items-center text-left py-2 hover:text-gold-light transition-colors" onclick="toggleFaq(this)">
+                            <span class="text-lg font-medium">Какой бюджет нужен?</span>
+                            <i class="fa-solid fa-plus faq-icon transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content text-text-muted text-sm leading-relaxed">
+                            Зависит от ниши, географии, конкуренции и цели. На первичном разборе можно прикинуть минимальный тестовый бюджет, при котором есть смысл делать выводы.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Правая колонка: Форма -->
+            <div id="lead-form" class="scroll-mt-28">
+                <div class="glass-card p-8 md:p-10 relative overflow-hidden">
+                    <!-- Блик на фоне карточки -->
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-gold-primary/10 rounded-full blur-[80px] pointer-events-none"></div>
+                    
+                    <h3 class="text-2xl font-light mb-2 relative z-10">Хотите понять, как получать больше заявок?</h3>
+                    <p class="text-text-muted text-sm mb-8 relative z-10">Оставьте заявку — я свяжусь с вами, задам несколько вопросов по проекту и подскажу, с чего лучше начать.</p>
+                    
+                    <div id="form-wrapper" class="relative z-10">
+                        <form onsubmit="submitForm(event)" class="space-y-4">
+                            <div>
+                                <input type="text" placeholder="Имя" required class="form-input">
+                            </div>
+                            <div>
+                                <input type="tel" placeholder="Номер телефона" required class="form-input">
+                            </div>
+                            <div>
+                                <input type="text" placeholder="Telegram для связи" required class="form-input">
+                            </div>
+                            <button type="submit" class="btn-premium w-full py-4 mt-2">
+                                Получить бесплатный разбор
+                            </button>
+                            <p class="text-[11px] text-text-muted/60 text-center mt-4">
+                                Нажимая на кнопку, вы соглашаетесь на обработку персональных данных и подтверждаете, что с вами можно связаться.
+                            </p>
+                        </form>
+                    </div>
+
+                    <!-- Сообщение об успехе -->
+                    <div id="success-message" class="text-center py-10 relative z-10">
+                        <div class="w-16 h-16 rounded-full bg-gold-primary/20 flex items-center justify-center mx-auto mb-6">
+                            <i class="fa-solid fa-check text-gold-primary text-2xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-light text-gold-light mb-4">Заявка отправлена</h4>
+                        <p class="text-text-muted text-sm mb-6">Спасибо. Я получил ваши контакты и свяжусь с вами.</p>
+                        <div class="text-left bg-dark-900/50 p-6 rounded-xl border border-gold-muted/20 text-sm text-text-muted">
+                            <p class="text-text-main mb-2 font-medium">Чтобы разговор был предметным, можете заранее подготовить:</p>
+                            <ul class="space-y-1">
+                                <li>— ссылку на сайт или соцсети;</li>
+                                <li>— город или географию работы;</li>
+                                <li>— продукт или услугу;</li>
+                                <li>— примерный рекламный бюджет;</li>
+                                <li>— что уже пробовали в рекламе.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark-900 border-t border-gold-muted/20 py-12 relative relative-z">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+                <div class="text-2xl font-medium tracking-wide flex items-center mb-2">
+                    АРТУР <span class="text-gold-primary mx-2 text-lg font-light">|</span> <span class="text-sm font-normal text-text-muted tracking-normal">PERFORMANCE MARKETING</span>
+                </div>
+                <p class="text-text-muted text-sm mb-1">Специалист по интернет-рекламе</p>
+                <p class="text-text-muted/60 text-xs">Опыт в рекламе — более 7 лет. Работаю с Яндекс.Директом, Meta, TikTok, Telegram-воронками.</p>
+            </div>
+            
+            <!-- Обновленные контакты (текст) -->
+            <div class="flex flex-col md:items-end gap-2 text-sm text-text-muted">
+                <span class="block">Telegram: https://t.me/ArthurTarget_Man</span>
+                <span class="block">Email: LobanovskiArthur@mail.ru</span>
+                <div class="mt-4 flex gap-4 text-xs text-text-muted/50">
+                    <a href="/policy/" class="hover:text-text-muted transition-colors">Политика конфиденциальности</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Аккордеон FAQ
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            
+            // Закрываем другие (опционально)
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                if(faq !== item) faq.classList.remove('active');
+            });
+
+            // Тоггл текущего
+            item.classList.toggle('active');
+        }
+
+        // Обработка формы
+        function submitForm(e) {
+            e.preventDefault();
+            
+            // Выполняем редирект на страницу спасибо согласно Vercel-структуре
+            window.location.href = "/thanks/";
+        }
+
+        // Эффект появления навигации при скролле
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(7, 7, 7, 0.95)';
+                nav.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+            } else {
+                nav.style.background = 'rgba(7, 7, 7, 0.8)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            const icon = mobileMenuBtn.querySelector('i');
+            
+            function toggleMenu() {
+                const isHidden = mobileMenu.classList.contains('hidden');
+                if (isHidden) {
+                    mobileMenu.classList.remove('hidden');
+                    // Отрисовка для CSS transition
+                    void mobileMenu.offsetWidth;
+                    mobileMenu.classList.remove('opacity-0');
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                    document.body.style.overflow = 'hidden'; // Блокируем скролл фона
+                } else {
+                    mobileMenu.classList.add('opacity-0');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                    document.body.style.overflow = ''; // Возвращаем скролл
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                }
+            }
+
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+
+            // Закрытие меню при клике на любую ссылку
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', toggleMenu);
+            });
+        }
+    </script>
+</body>
+</html>

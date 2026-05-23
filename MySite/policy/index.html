@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Политика конфиденциальности | Артур - Performance Marketing</title>
+    
+    <!-- Подключение шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Иконки FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Настройка Tailwind для "Black Gold" -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#070707',
+                            800: '#0D0D0F',
+                            700: '#141416',
+                            600: '#1B1B1F',
+                        },
+                        gold: {
+                            light: '#E7D2A5',
+                            primary: '#C6A86A',
+                            secondary: '#D8BE8A',
+                            dark: '#A9874F',
+                            muted: '#6E614E',
+                        },
+                        text: {
+                            main: '#F5F3EE',
+                            muted: '#A7A29A',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 40px -10px rgba(198, 168, 106, 0.15)',
+                        'premium': '0 20px 40px -10px rgba(0,0,0,0.8)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #070707;
+            color: #F5F3EE;
+            font-family: 'Manrope', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Общие слои */
+        .relative-z { position: relative; z-index: 10; }
+
+        /* Типографика */
+        .text-accent-serif { font-family: 'Cormorant Garamond', serif; font-style: italic; color: #C6A86A; }
+        
+        .bg-layer {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .bg-gradient-radial {
+            background: radial-gradient(circle at 50% 0%, rgba(198, 168, 106, 0.05) 0%, transparent 60%),
+                        radial-gradient(circle at 20% 100%, rgba(20, 20, 22, 1) 0%, #070707 100%);
+        }
+        
+        .bg-grid {
+            background-size: 35px 35px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);
+            mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);
+        }
+
+        .bg-noise {
+            opacity: 0.03;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+        }
+
+        /* Стеклянная карточка для контента */
+        .glass-card {
+            background: rgba(20, 20, 22, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(198, 168, 106, 0.15);
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 0 20px rgba(198, 168, 106, 0.03);
+        }
+
+        /* Кнопки */
+        .btn-outline {
+            border: 1px solid rgba(198, 168, 106, 0.3);
+            color: #E7D2A5;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            background: rgba(198, 168, 106, 0.1);
+            border-color: #C6A86A;
+        }
+
+        /* Стилизация текста политики */
+        .policy-content h2 {
+            font-size: 1.25rem;
+            color: #E7D2A5;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .policy-content p {
+            margin-bottom: 1rem;
+            color: #A7A29A;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .policy-content ul {
+            list-style-type: none;
+            margin-bottom: 1.5rem;
+            padding-left: 0;
+        }
+
+        .policy-content ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #A7A29A;
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .policy-content ul li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: #C6A86A;
+        }
+
+        .policy-content a {
+            color: #C6A86A;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .policy-content a:hover {
+            color: #E7D2A5;
+            text-decoration: underline;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold-primary selection:text-dark-900">
+
+    <div class="bg-layer bg-gradient-radial"></div>
+    <div class="bg-layer bg-grid"></div>
+    <div class="bg-layer bg-noise"></div>
+
+    <nav class="w-full z-50 relative border-b border-gold-muted/10 bg-dark-900/50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="text-xl font-medium tracking-wide flex items-center">
+                АРТУР <span class="text-gold-primary mx-2 text-lg font-light">|</span> <span class="text-xs md:text-sm font-normal text-text-muted tracking-normal hidden sm:inline">PERFORMANCE MARKETING</span>
+            </div>
+            
+            <a href="/" class="btn-outline px-5 py-2 rounded-lg text-sm flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left text-xs"></i>
+                <span class="hidden sm:inline">Вернуться на сайт</span>
+                <span class="sm:hidden">Назад</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex justify-center py-12 px-6 relative-z">
+        <div class="max-w-4xl w-full">
+            
+            <div class="glass-card p-8 md:p-12 relative overflow-hidden animate-fade-up">
+                <!-- Декоративный блик -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-gold-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
+                
+                <h1 class="text-3xl md:text-4xl font-light mb-2 text-text-main relative z-10">Политика конфиденциальности</h1>
+                <p class="text-xs text-gold-dark mb-10 tracking-widest uppercase font-medium">Редакция от: май 2026 г.</p>
+                
+                <div class="policy-content relative z-10">
+                    <p>Настоящая Политика конфиденциальности (далее — Политика) действует в отношении всей информации, которую Лобановский Артур Андреевич (далее — Оператор) может получить о Пользователе во время использования им веб-сайта и заполнения электронных форм.</p>
+
+                    <h2>1. Общие положения</h2>
+                    <p>1.1. Использование веб-сайта Пользователем означает согласие с настоящей Политикой и условиями обработки персональных данных Пользователя.</p>
+                    <p>1.2. В случае несогласия с условиями Политики Пользователь должен прекратить использование сайта.</p>
+                    <p>1.3. Настоящая Политика применяется только к данному веб-сайту. Оператор не контролирует и не несет ответственность за сайты третьих лиц, на которые Пользователь может перейти по ссылкам, доступным на сайте.</p>
+
+                    <h2>2. Предмет политики конфиденциальности</h2>
+                    <p>2.1. Настоящая Политика устанавливает обязательства Оператора по неразглашению и обеспечению режима защиты конфиденциальности персональных данных, которые Пользователь предоставляет по запросу Оператора при заполнении форм обратной связи.</p>
+                    <p>2.2. Персональные данные, разрешённые к обработке в рамках настоящей Политики, предоставляются Пользователем путём заполнения формы на сайте и включают в себя следующую информацию:</p>
+                    <ul>
+                        <li>Имя Пользователя;</li>
+                        <li>Контактный телефон Пользователя;</li>
+                        <li>Никнейм или контактный идентификатор в мессенджере Telegram;</li>
+                        <li>Адрес электронной почты (e-mail) (при необходимости и предоставлении).</li>
+                    </ul>
+                    <p>2.3. Оператор также собирает статистические данные (IP-адрес, данные файлов cookie, информация о браузере, время доступа), которые используются для аналитики работы сайта и улучшения пользовательского опыта.</p>
+
+                    <h2>3. Цели сбора персональной информации</h2>
+                    <p>3.1. Персональные данные Пользователя Оператор может использовать в целях:</p>
+                    <ul>
+                        <li>Установления с Пользователем обратной связи, включая направление уведомлений, запросов, касающихся оказания услуг performance-маркетинга (разбор рекламы, аудиты, настройка кампаний);</li>
+                        <li>Связи с Пользователем в мессенджере Telegram или по телефону для обсуждения рабочих процессов и брифинга;</li>
+                        <li>Предоставления Пользователю эффективной клиентской и технической поддержки при возникновении проблем, связанных с использованием сайта;</li>
+                        <li>Улучшения качества услуг, удобства их использования, проведения статистических и иных исследований на основе обезличенных данных.</li>
+                    </ul>
+
+                    <h2>4. Способы и сроки обработки персональной информации</h2>
+                    <p>4.1. Обработка персональных данных Пользователя осуществляется без ограничения срока, любым законным способом, в том числе в информационных системах персональных данных с использованием средств автоматизации или без использования таких средств.</p>
+                    <p>4.2. Персональные данные Пользователя ни при каких условиях не передаются третьим лицам, за исключением случаев, прямо предусмотренных действующим законодательством.</p>
+                    <p>4.3. При утрате или разглашении персональных данных Оператор информирует Пользователя об утрате или разглашении персональных данных.</p>
+                    <p>4.4. Оператор принимает необходимые организационные и технические меры для защиты персональной информации Пользователя от неправомерного или случайного доступа, уничтожения, изменения, блокирования, копирования, распространения, а также от иных неправомерных действий третьих лиц.</p>
+
+                    <h2>5. Права и обязанности сторон</h2>
+                    <p><strong>5.1. Пользователь вправе:</strong></p>
+                    <ul>
+                        <li>Принимать свободное решение о предоставлении своих персональных данных, необходимых для использования сайта, и давать согласие на их обработку.</li>
+                        <li>Обновить, дополнить предоставленную информацию о персональных данных в случае изменения данной информации.</li>
+                        <li>Отозвать свое согласие на обработку персональных данных в любой момент, направив Оператору уведомление.</li>
+                    </ul>
+                    <p><strong>5.2. Оператор обязан:</strong></p>
+                    <ul>
+                        <li>Использовать полученную информацию исключительно для целей, указанных в п. 3 настоящей Политики.</li>
+                        <li>Обеспечить хранение конфиденциальной информации в тайне, не разглашать без предварительного письменного разрешения Пользователя.</li>
+                        <li>Осуществить блокирование персональных данных, относящихся к соответствующему Пользователю, с момента обращения Пользователя.</li>
+                    </ul>
+
+                    <h2>6. Дополнительные условия и контакты</h2>
+                    <p>6.1. Оператор вправе вносить изменения в настоящую Политику конфиденциальности без согласия Пользователя. Новая Политика вступает в силу с момента ее размещения на сайте, если иное не предусмотрено новой редакцией Политики.</p>
+                    <p>6.2. Все предложения, вопросы или запросы по поводу настоящей Политики, в том числе отзывы согласия на обработку данных, Пользователь вправе направлять Оператору:</p>
+                    <ul>
+                        <li>Электронная почта: <a href="mailto:LobanovskiArthur@mail.ru">LobanovskiArthur@mail.ru</a></li>
+                        <li>Telegram: <a href="https://t.me/ArthurTarget_Man" target="_blank">https://t.me/ArthurTarget_Man</a></li>
+                    </ul>
+                    <p>6.3. Оператор: Лобановский Артур Андреевич.</p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark-900 border-t border-gold-muted/20 py-8 relative relative-z mt-auto">
+        <div class="max-w-7xl mx-auto px-6 text-center md:flex md:justify-between md:items-center">
+            <div class="text-text-muted text-sm mb-4 md:mb-0">
+                © АРТУР | PERFORMANCE MARKETING. Все права защищены.
+            </div>
+            <div class="flex flex-col md:flex-row gap-2 md:gap-6 text-sm text-text-muted">
+                <span>Telegram: https://t.me/ArthurTarget_Man</span>
+                <span>Email: LobanovskiArthur@mail.ru</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

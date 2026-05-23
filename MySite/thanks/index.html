@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заявка отправлена | Артур - Performance Marketing</title>
+    
+    <!-- Подключение шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Иконки FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Настройка Tailwind для "Black Gold" (идентично главному сайту) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#070707',
+                            800: '#0D0D0F',
+                            700: '#141416',
+                            600: '#1B1B1F',
+                        },
+                        gold: {
+                            light: '#E7D2A5',
+                            primary: '#C6A86A',
+                            secondary: '#D8BE8A',
+                            dark: '#A9874F',
+                            muted: '#6E614E',
+                        },
+                        text: {
+                            main: '#F5F3EE',
+                            muted: '#A7A29A',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 40px -10px rgba(198, 168, 106, 0.15)',
+                        'premium': '0 20px 40px -10px rgba(0,0,0,0.8)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #070707;
+            color: #F5F3EE;
+            font-family: 'Manrope', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Общие слои */
+        .relative-z { position: relative; z-index: 10; }
+
+        /* Типографика */
+        .text-accent-serif { font-family: 'Cormorant Garamond', serif; font-style: italic; color: #C6A86A; }
+        
+        .bg-layer {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .bg-gradient-radial {
+            background: radial-gradient(circle at 50% 50%, rgba(198, 168, 106, 0.05) 0%, transparent 60%),
+                        radial-gradient(circle at 20% 80%, rgba(20, 20, 22, 1) 0%, #070707 100%);
+        }
+        
+        .bg-grid {
+            background-size: 35px 35px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);
+            mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);
+        }
+
+        .bg-noise {
+            opacity: 0.03;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+        }
+
+        /* Стеклянная карточка */
+        .glass-card {
+            background: rgba(20, 20, 22, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(198, 168, 106, 0.15);
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 0 20px rgba(198, 168, 106, 0.03);
+        }
+
+        /* Кнопки */
+        .btn-outline {
+            border: 1px solid rgba(198, 168, 106, 0.3);
+            color: #E7D2A5;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            background: rgba(198, 168, 106, 0.1);
+            border-color: #C6A86A;
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, #A9874F 0%, #D8BE8A 50%, #C6A86A 100%);
+            color: #070707;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+        
+        .btn-premium::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            transition: all 0.7s ease;
+        }
+        
+        .btn-premium:hover {
+            box-shadow: 0 0 25px rgba(198, 168, 106, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-premium:hover::after {
+            left: 200%;
+        }
+
+        /* Анимация иконки успеха */
+        @keyframes scaleIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            60% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .success-icon-wrap {
+            animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold-primary selection:text-dark-900">
+
+    <div class="bg-layer bg-gradient-radial"></div>
+    <div class="bg-layer bg-grid"></div>
+    <div class="bg-layer bg-noise"></div>
+
+    <!-- Минималистичная навигация -->
+    <nav class="w-full z-50 relative border-b border-gold-muted/10 bg-dark-900/50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="text-xl font-medium tracking-wide flex items-center">
+                АРТУР <span class="text-gold-primary mx-2 text-lg font-light">|</span> <span class="text-xs md:text-sm font-normal text-text-muted tracking-normal hidden sm:inline">PERFORMANCE MARKETING</span>
+            </div>
+            
+            <a href="index.html" class="btn-outline px-5 py-2 rounded-lg text-sm flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left text-xs"></i>
+                <span class="hidden sm:inline">Вернуться на сайт</span>
+                <span class="sm:hidden">Назад</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Основной контент страницы Спасибо -->
+    <main class="flex-grow flex items-center justify-center py-12 px-6 relative-z">
+        <div class="max-w-3xl w-full">
+            
+            <div class="glass-card p-8 md:p-14 relative overflow-hidden text-center animate-fade-up">
+                <!-- Декоративный блик -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-gold-primary/10 rounded-full blur-[80px] pointer-events-none"></div>
+                
+                <!-- Иконка -->
+                <div class="success-icon-wrap w-20 h-20 md:w-24 md:h-24 rounded-full bg-dark-900 border border-gold-primary/30 flex items-center justify-center mx-auto mb-8 shadow-gold-glow relative z-10">
+                    <div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gold-primary/10 flex items-center justify-center">
+                        <i class="fa-solid fa-check text-gold-primary text-3xl md:text-4xl"></i>
+                    </div>
+                </div>
+                
+                <h1 class="text-3xl md:text-5xl font-light mb-4 relative z-10">Заявка успешно <span class="text-accent-serif">отправлена</span></h1>
+                
+                <p class="text-text-muted text-lg font-light mb-10 max-w-xl mx-auto relative z-10 animate-fade-up delay-100">
+                    Спасибо за доверие. Я получил ваши контакты и свяжусь с вами в ближайшее время (обычно в течение 2-х часов в рабочее время), чтобы договориться о разборе.
+                </p>
+
+                <!-- Блок "Как подготовиться" -->
+                <div class="text-left bg-dark-900/60 p-6 md:p-8 rounded-2xl border border-gold-muted/20 relative z-10 animate-fade-up delay-200">
+                    <h3 class="text-xl font-medium text-gold-light mb-4 flex items-center gap-3">
+                        <i class="fa-solid fa-clipboard-list text-gold-primary"></i>
+                        Как подготовиться к разговору?
+                    </h3>
+                    <p class="text-text-muted text-sm mb-5 font-light">Чтобы наш диалог был максимально предметным, пожалуйста, подготовьте следующие вводные:</p>
+                    
+                    <ul class="space-y-3 text-sm md:text-base font-light text-text-main">
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold-dark mt-1 text-xs"><i class="fa-solid fa-diamond"></i></span>
+                            <span>Ссылку на ваш текущий сайт или социальные сети.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold-dark mt-1 text-xs"><i class="fa-solid fa-diamond"></i></span>
+                            <span>Описание ключевого продукта (или услуги) и его маржинальность.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold-dark mt-1 text-xs"><i class="fa-solid fa-diamond"></i></span>
+                            <span>Географию работы (города, регионы или страны).</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold-dark mt-1 text-xs"><i class="fa-solid fa-diamond"></i></span>
+                            <span>Информацию о том, что уже пробовали запускать и какие были результаты.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold-dark mt-1 text-xs"><i class="fa-solid fa-diamond"></i></span>
+                            <span>Примерный комфортный бюджет на рекламный тест.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mt-10 animate-fade-up delay-300 relative z-10">
+                    <a href="https://t.me/ArthurTarget_Man" target="_blank" class="btn-premium px-8 py-4 text-base shadow-gold-glow flex items-center justify-center gap-3 w-full sm:w-auto mx-auto max-w-sm">
+                        <i class="fa-brands fa-telegram text-xl"></i>
+                        Мой Telegram
+                    </a>
+                    <p class="text-xs text-text-muted mt-4 opacity-70">
+                        Если вопрос срочный, можете написать мне напрямую.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Минималистичный футер -->
+    <footer class="bg-dark-900 border-t border-gold-muted/20 py-8 relative relative-z mt-auto">
+        <div class="max-w-7xl mx-auto px-6 text-center md:flex md:justify-between md:items-center">
+            <div class="text-text-muted text-sm mb-4 md:mb-0">
+                © АРТУР | PERFORMANCE MARKETING. Все права защищены.
+            </div>
+            <div class="flex flex-col md:flex-row gap-2 md:gap-6 text-sm text-text-muted">
+                <span>Telegram: https://t.me/ArthurTarget_Man</span>
+                <span>Email: LobanovskiArthur@mail.ru</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
