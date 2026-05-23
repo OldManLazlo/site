@@ -325,8 +325,8 @@
             </button>
         </div>
 
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="fixed inset-0 bg-dark-900/98 backdrop-blur-xl z-40 hidden flex-col items-center justify-center gap-8 text-lg transition-opacity duration-300 opacity-0">
+        <!-- Mobile Menu Overlay (Исправлены классы для корректного отображения и отступа) -->
+        <div id="mobile-menu" class="fixed inset-0 bg-dark-900/98 backdrop-blur-xl z-40 hidden flex-col items-center justify-start pt-32 pb-8 overflow-y-auto gap-6 text-lg transition-opacity duration-300 opacity-0">
             <a href="#problem" class="mobile-link text-text-main hover:text-gold-light transition-colors">Проблема</a>
             <a href="#approach" class="mobile-link text-text-main hover:text-gold-light transition-colors">Подход</a>
             <a href="#about" class="mobile-link text-text-main hover:text-gold-light transition-colors">Обо мне</a>
@@ -601,7 +601,7 @@
                     <div class="absolute inset-0 bg-gold-primary/20 blur-[100px] rounded-full"></div>
                     <div class="relative rounded-2xl overflow-hidden border border-gold-primary/20 aspect-[4/5] max-w-md mx-auto lg:mx-0 shadow-premium">
                         <!-- Placeholder фото в премиальном стиле -->
-                       <img src="./images/arthur.jpg" alt="Артур - Специалист по рекламе" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" style="object-position: top center; mix-blend-mode: luminosity;"> alt="Артур - Специалист по рекламе" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" style="object-position: top center; mix-blend-mode: luminosity;">
+                       <img src="./images/arthur.jpg" alt="Артур - Специалист по рекламе" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" style="object-position: top center; mix-blend-mode: luminosity;">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-80"></div>
                     </div>
                 </div>
@@ -942,10 +942,13 @@
         if (mobileMenuBtn && mobileMenu) {
             const icon = mobileMenuBtn.querySelector('i');
             
+            // Исправленная логика переключения: добавляем/убираем класс flex
             function toggleMenu() {
                 const isHidden = mobileMenu.classList.contains('hidden');
                 if (isHidden) {
                     mobileMenu.classList.remove('hidden');
+                    mobileMenu.classList.add('flex'); // <--- ВАЖНО: включаем flex-отображение
+                    
                     // Отрисовка для CSS transition
                     void mobileMenu.offsetWidth;
                     mobileMenu.classList.remove('opacity-0');
@@ -957,7 +960,9 @@
                     icon.classList.remove('fa-xmark');
                     icon.classList.add('fa-bars');
                     document.body.style.overflow = ''; // Возвращаем скролл
+                    
                     setTimeout(() => {
+                        mobileMenu.classList.remove('flex'); // <--- ВАЖНО: убираем flex перед скрытием
                         mobileMenu.classList.add('hidden');
                     }, 300);
                 }
