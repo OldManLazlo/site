@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Название страницы, описание для поиска и иконка сайта -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,follow" />
+    <title>Спасибо за заявку — Крисмас</title>
+    <link rel="icon" href="assets/favicon.svg" />
+    <!-- ОФОРМЛЕНИЕ САЙТА: цвета, шрифты, размеры и мобильная версия -->
+    <style>
+      @font-face {
+        font-family: Manrope;
+        src: url('assets/fonts/manrope.ttf') format('truetype');
+        font-weight: 200 800;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: Lora;
+        src: url('assets/fonts/lora-italic.ttf') format('truetype');
+        font-weight: 400 700;
+        font-style: italic;
+        font-display: swap;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        background: #f6f6f3;
+        color: #252525;
+        font:
+          16px/1.7 Manrope,
+          Arial,
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      a:focus-visible {
+        outline: 2px solid #c32228;
+        outline-offset: 6px;
+      }
+      ::selection {
+        background: #c32228;
+        color: #fff;
+      }
+      .shell {
+        width: min(1200px, calc(100% - 80px));
+        margin-inline: auto;
+      }
+      .header {
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 1px solid #ddd;
+      }
+      .logo img {
+        display: block;
+        width: 145px;
+        height: 103px;
+        object-fit: contain;
+      }
+      .phone {
+        font-size: 17px;
+        font-weight: 600;
+      }
+      .phone span {
+        display: block;
+        font-size: 12px;
+        color: #777;
+        font-weight: 400;
+      }
+      .main {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 60px;
+        align-items: center;
+        padding-block: 80px;
+      }
+      .eyebrow {
+        font-size: 12px;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+        color: #777;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .eyebrow:before {
+        content: '';
+        width: 7px;
+        height: 7px;
+        background: #c32228;
+      }
+      h1 {
+        font-size: clamp(40px, 5.5vw, 76px);
+        line-height: 1.12;
+        letter-spacing: -2.5px;
+        font-weight: 500;
+        margin: 25px 0;
+      }
+      em {
+        font-family: Lora, Georgia, serif;
+        font-weight: 400;
+        color: #b82126;
+      }
+      .description {
+        max-width: 520px;
+        color: #666;
+        margin: 0 0 34px;
+        font-size: 18px;
+      }
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 45px;
+        min-height: 62px;
+        padding: 18px 25px;
+        background: #c32228;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 500;
+        transition: background 0.2s;
+      }
+      .cta:hover {
+        background: #9e191f;
+      }
+      .cta svg {
+        width: 23px;
+        height: 23px;
+      }
+      .note {
+        font-size: 13px;
+        color: #777;
+        margin: 20px 0 0;
+      }
+      .art {
+        position: relative;
+        width: min(100%, 330px);
+        aspect-ratio: 1;
+        margin: auto;
+        display: grid;
+        place-items: center;
+      }
+      .ring {
+        position: absolute;
+        inset: 0;
+        border: 1px solid #c32228;
+        border-radius: 50%;
+      }
+      .ring:nth-child(2) {
+        inset: 45px -15px;
+        border-width: 25px;
+        transform: rotate(-45deg);
+      }
+      .ring:nth-child(3) {
+        inset: 72px;
+        border-color: #d6b9b8;
+      }
+      .art svg {
+        width: 70px;
+        height: 70px;
+        color: #c32228;
+        position: relative;
+      }
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding-block: 26px;
+        border-top: 1px solid #ddd;
+        font-size: 12px;
+        color: #777;
+      }
+      .footer strong {
+        letter-spacing: 1.5px;
+        color: #444;
+      }
+      .copy {
+        animation: appear 0.6s ease-out both;
+      }
+      @keyframes appear {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (max-width: 760px) {
+        .shell {
+          width: calc(100% - 40px);
+        }
+        .header {
+          height: 90px;
+        }
+        .logo img {
+          width: 110px;
+          height: 78px;
+        }
+        .phone {
+          font-size: 13px;
+        }
+        .phone span {
+          font-size: 11px;
+        }
+        .main {
+          grid-template-columns: 1fr;
+          gap: 40px;
+          padding-block: 45px;
+        }
+        .art {
+          width: 155px;
+          order: -1;
+        }
+        .ring:nth-child(2) {
+          inset: 21px -7px;
+          border-width: 12px;
+        }
+        .ring:nth-child(3) {
+          inset: 35px;
+        }
+        .art svg {
+          width: 38px;
+          height: 38px;
+        }
+        h1 {
+          font-size: clamp(37px, 9vw, 55px);
+          letter-spacing: -1.5px;
+          margin: 20px 0;
+        }
+        .description {
+          font-size: 16px;
+          margin-bottom: 28px;
+        }
+        .cta {
+          width: 100%;
+          gap: 20px;
+        }
+        .footer {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 6px;
+        }
+        .eyebrow {
+          font-size: 11px;
+          letter-spacing: 0.8px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *:before,
+        *:after {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- СОДЕРЖИМОЕ СТРАНИЦЫ: здесь можно редактировать тексты -->
+
+    <!-- Шапка: логотип, меню и телефон -->
+    <header class="header shell">
+      <a href="./index.html" class="logo" aria-label="Крисмас — на главную"
+        ><img
+          src="assets/images/logo.jpg"
+          width="145"
+          height="103"
+          alt="Крисмас. Натяжные потолки" /></a
+      ><a class="phone" href="tel:+375336604439"
+        ><span>Если хотите обсудить сейчас</span>+375 33 660-44-39</a
+      >
+    </header>
+    <main class="main shell">
+      <div class="copy">
+        <p class="eyebrow">Крисмас / Заявка отправлена</p>
+        <h1>Спасибо<br />за <em>вашу заявку!</em></h1>
+        <p class="description">
+          Наш менеджер скоро свяжется с вами: уточнит пожелания, ответит на
+          вопросы и поможет рассчитать стоимость потолка для вашего дома.
+        </p>
+        <a class="cta" href="./index.html"
+          ><span>Вернуться на главную</span
+          ><svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            aria-hidden="true"
+          >
+            <path d="M19 12H5m6-6-6 6 6 6" /></svg
+        ></a>
+        <p class="note">Пожалуйста, держите телефон под рукой.</p>
+      </div>
+      <div class="art" aria-hidden="true">
+        <span class="ring"></span><span class="ring"></span
+        ><span class="ring"></span
+        ><svg
+          viewBox="0 0 64 64"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+        >
+          <path d="m16 33 11 11 23-25" />
+        </svg>
+      </div>
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer class="footer shell">
+      <strong>КРИСМАС · НАТЯЖНЫЕ ПОТОЛКИ</strong
+      ><span>Красивый потолок. Разумный бюджет.</span>
+    </footer>
+  </body>
+</html>
