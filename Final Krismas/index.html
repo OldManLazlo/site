@@ -1,0 +1,2944 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Название страницы, описание для поиска и иконка сайта -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Крисмас — натяжные потолки за 15 рублей за м²</title>
+    <meta
+      name="description"
+      content="Натяжные потолки, которые экономят ваш бюджет. Всего 15 рублей за м². Рассчитайте стоимость потолка для вашей квартиры с Крисмас."
+    />
+    <link rel="icon" href="assets/favicon.svg" />
+    <!-- ОФОРМЛЕНИЕ САЙТА: цвета, шрифты, размеры и мобильная версия -->
+    <style>
+      button,
+      input {
+        font: inherit;
+      }
+      button {
+        background: transparent;
+        border: 0;
+        color: inherit;
+      }
+      svg {
+        display: block;
+      }
+      button svg {
+        flex: none;
+      }
+      .phone-input {
+        width: 100%;
+        background: transparent;
+        color: inherit;
+      }
+      .consent input {
+        appearance: auto;
+        accent-color: #c32228;
+      }
+      .faq details {
+        border-bottom: 1px solid #d7d7d2;
+      }
+      .faq summary {
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .faq summary:after {
+        content: '+';
+        color: #c32228;
+        font-size: 22px;
+      }
+      .faq details[open] summary:after {
+        content: '−';
+      }
+      .faq summary::-webkit-details-marker {
+        display: none;
+      }
+      dialog {
+        border: 0;
+        color: #252525;
+        background: #fff;
+        width: min(540px, calc(100% - 32px));
+        margin: auto;
+      }
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+      }
+      dialog[open] {
+        animation: appear 0.2s both;
+      }
+      .lead-dialog .dialog-description {
+        margin: 18px 0 25px;
+      }
+      .privacy-dialog h2 {
+        font-size: 28px;
+        letter-spacing: -0.7px;
+      }
+      .privacy-dialog p {
+        margin-top: 18px;
+      }
+      .privacy-dialog .text-link {
+        margin-top: 20px;
+      }
+
+      @font-face {
+        font-family: Manrope;
+        src: url('assets/fonts/manrope.ttf') format('truetype');
+        font-weight: 200 800;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: Lora;
+        src: url('assets/fonts/lora-italic.ttf') format('truetype');
+        font-weight: 400 700;
+        font-style: italic;
+        font-display: swap;
+      }
+      :root {
+        --background: #fff;
+        --foreground: #252525;
+        --card: #fff;
+        --card-foreground: #252525;
+        --popover: #fff;
+        --popover-foreground: #252525;
+        --primary: #c32228;
+        --primary-foreground: #fff;
+        --secondary: #f5f5f3;
+        --secondary-foreground: #252525;
+        --muted: #f5f5f3;
+        --muted-foreground: #666;
+        --accent: #f6eeee;
+        --accent-foreground: #252525;
+        --destructive: #b21f24;
+        --border: #dcdcd8;
+        --input: #bdbdb7;
+        --ring: #c32228;
+        --radius: 0rem;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 30px;
+      }
+      body {
+        margin: 0;
+        background: #fff;
+        color: #252525;
+        font-family: Manrope, Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      button,
+      a,
+      input {
+        -webkit-tap-highlight-color: transparent;
+      }
+      button,
+      a {
+        touch-action: manipulation;
+      }
+      button {
+        cursor: pointer;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button:focus-visible,
+      a:focus-visible {
+        outline: 2px solid #c32228;
+        outline-offset: 6px;
+      }
+      ::selection {
+        background: #c32228;
+        color: #fff;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+      h1,
+      h2,
+      h3 {
+        font-weight: 500;
+      }
+      em {
+        font-family: Lora, Georgia, serif;
+        font-weight: 400;
+      }
+      h2 {
+        font-size: clamp(36px, 4vw, 62px);
+        line-height: 1.12;
+        letter-spacing: -2.5px;
+      }
+      h3 {
+        letter-spacing: -0.6px;
+      }
+      .shell {
+        width: min(1400px, calc(100% - 96px));
+        margin-inline: auto;
+      }
+      .section {
+        padding-block: 108px;
+      }
+      .eyebrow {
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+      .section-index {
+        font-size: 13px;
+        color: #757571;
+      }
+      .section-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 48px;
+      }
+      .site-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 125px;
+        border-bottom: 1px solid #e5e5e2;
+        gap: 30px;
+      }
+      .brand {
+        width: 166px;
+        flex: none;
+      }
+      .brand img {
+        width: 166px;
+        height: 112px;
+        object-fit: contain;
+      }
+      .site-header nav {
+        display: flex;
+        gap: 30px;
+        font-size: 14px;
+      }
+      .site-header nav a {
+        position: relative;
+      }
+      .site-header nav a:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 0;
+        height: 1px;
+        background: #c32228;
+        transition: width 0.3s;
+      }
+      .site-header nav a:hover:after {
+        width: 100%;
+      }
+      .header-phone {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        column-gap: 20px;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.4;
+      }
+      .header-phone span {
+        grid-column: 1/-1;
+        font-size: 12px;
+        font-weight: 400;
+        color: #666;
+        margin-bottom: 5px;
+      }
+      .header-phone svg {
+        align-self: center;
+        color: #c32228;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1.08fr 1fr;
+        column-gap: 55px;
+        position: relative;
+        padding-top: 52px;
+        padding-bottom: 70px;
+      }
+      .hero-copy {
+        padding-top: 15px;
+        position: relative;
+        z-index: 2;
+      }
+      .hero .eyebrow {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        font-size: 12px;
+        letter-spacing: 1.3px;
+      }
+      .tiny-square {
+        width: 7px;
+        height: 7px;
+        background: #c32228;
+        display: inline-block;
+      }
+      .hero h1 {
+        font-size: clamp(40px, 4.2vw, 64px);
+        line-height: 1.1;
+        letter-spacing: -2.4px;
+        margin: 25px 0 20px;
+        max-width: 660px;
+      }
+      .hero h1 em {
+        color: #b82126;
+      }
+      .hero-price {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin: 22px 0 28px;
+      }
+      .price-intro {
+        font-size: 16px;
+        align-self: flex-start;
+        margin-top: 22px;
+      }
+      .hero-price strong {
+        font-size: clamp(90px, 9vw, 134px);
+        font-weight: 500;
+        line-height: 1;
+        letter-spacing: -9px;
+        color: #c32228;
+      }
+      .price-unit {
+        font-size: 22px;
+        line-height: 1.35;
+        margin-top: 15px;
+      }
+      .cta {
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 35px;
+        height: auto;
+        min-height: 62px;
+        padding: 18px 24px;
+        background: #c32228;
+        color: #fff;
+        border: 1px solid #c32228;
+        border-radius: 0;
+        font:
+          500 15px/1.4 Manrope,
+          Arial,
+          sans-serif;
+        box-shadow: none;
+        transition:
+          background 0.2s,
+          border-color 0.2s;
+      }
+      .cta:hover {
+        background: #9e191f;
+        border-color: #9e191f;
+      }
+      .cta svg {
+        flex: none;
+        transition: transform 0.3s;
+      }
+      .cta:hover svg {
+        transform: translate(3px, -3px);
+      }
+      .cta:disabled {
+        opacity: 0.55;
+        cursor: wait;
+      }
+      .hero-note {
+        font-size: 14px;
+        line-height: 1.7;
+        color: #6c6c66;
+        margin-top: 20px;
+      }
+      .hero-visual {
+        position: relative;
+        min-width: 0;
+      }
+      .hero-image {
+        width: 100%;
+        height: 590px;
+        object-fit: cover;
+        object-position: 53% 35%;
+      }
+      .hero-caption {
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+        margin-top: 13px;
+        font-size: 11px;
+        letter-spacing: 0.3px;
+        color: #686862;
+      }
+      .hero-caption span:last-child {
+        white-space: nowrap;
+      }
+      .orbit {
+        position: relative;
+        width: 130px;
+        height: 130px;
+        transform: rotate(var(--turn, 0deg));
+      }
+      .orbit span {
+        position: absolute;
+        inset: 0;
+        border: 2px solid #c32228;
+        border-radius: 50%;
+      }
+      .orbit span:nth-child(2) {
+        inset: 17px -8px;
+        transform: rotate(-45deg);
+        border-width: 17px;
+      }
+      .orbit span:nth-child(3) {
+        inset: 36px;
+        border-width: 1px;
+      }
+      .hero-orbit {
+        position: absolute;
+        left: -57px;
+        bottom: 55px;
+        width: 110px;
+        height: 110px;
+      }
+      .scroll-cue {
+        display: flex;
+        gap: 14px;
+        font-size: 12px;
+        align-items: center;
+        grid-column: 1/-1;
+        margin-top: 40px;
+        color: #62625c;
+      }
+      .scroll-cue svg {
+        color: #c32228;
+      }
+      .benefits {
+        border-top: 1px solid #ddd;
+      }
+      .benefit-intro {
+        display: grid;
+        grid-template-columns: 1.65fr 1fr;
+        gap: 60px;
+        align-items: end;
+        margin-bottom: 65px;
+      }
+      .benefit-intro > p {
+        max-width: 360px;
+        color: #666;
+        padding-bottom: 4px;
+      }
+      .benefit-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid #d8d8d4;
+      }
+      .benefit {
+        padding: 32px 28px 0 0;
+        position: relative;
+      }
+      .benefit + .benefit {
+        padding-left: 28px;
+        border-left: 1px solid #d8d8d4;
+      }
+      .benefit-symbol {
+        height: 75px;
+        width: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: rotate(var(--turn, 0deg));
+        color: #c32228;
+        margin: 8px 0 28px;
+      }
+      .benefit-symbol svg {
+        width: 55px;
+        height: 55px;
+      }
+      .symbol-1 {
+        border: 1px solid #d8d8d4;
+        border-radius: 50%;
+      }
+      .symbol-2 {
+        border: 1px solid #d8d8d4;
+      }
+      .symbol-3 {
+        border: 1px solid #d8d8d4;
+        border-radius: 50% 50% 0 0;
+      }
+      .benefit-num {
+        position: absolute;
+        top: 39px;
+        right: 22px;
+        font-size: 12px;
+        color: #91918c;
+      }
+      .benefit h3 {
+        font-size: 19px;
+        margin-bottom: 14px;
+        line-height: 1.35;
+      }
+      .benefit p {
+        font-size: 16px;
+        color: #666;
+        line-height: 1.8;
+      }
+      .solutions {
+        background: #f4f4f1;
+        overflow: hidden;
+      }
+      .solutions h2 {
+        position: relative;
+        margin-bottom: 52px;
+      }
+      .heading-mark {
+        font-family: Arial, sans-serif;
+        color: #c32228;
+        position: absolute;
+        left: 55%;
+        top: 0;
+        font-size: 130px;
+        line-height: 1;
+        transform: rotate(var(--turn, 0deg));
+      }
+      .solution-grid {
+        display: grid;
+        grid-template-columns: 1.25fr 1fr 1fr;
+        gap: 28px;
+        align-items: start;
+      }
+      .solution-1 {
+        margin-top: 72px;
+      }
+      .solution-2 {
+        margin-top: 25px;
+      }
+      .solution-photo {
+        position: relative;
+        overflow: hidden;
+      }
+      .solution-photo img {
+        height: 365px;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.7s;
+      }
+      .solution-1 .solution-photo img {
+        height: 300px;
+      }
+      .solution-2 .solution-photo img {
+        height: 330px;
+      }
+      .solution-photo:hover img {
+        transform: scale(1.035);
+      }
+      .photo-number {
+        position: absolute;
+        left: 16px;
+        top: 16px;
+        background: #fff;
+        color: #393935;
+        font-size: 12px;
+        padding: 4px 10px;
+      }
+      .solution-label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-top: 20px;
+        color: #686862;
+      }
+      .solution h3 {
+        font-size: 23px;
+        line-height: 1.3;
+        margin: 12px 0 10px;
+      }
+      .solution p {
+        color: #666;
+        font-size: 16px;
+        max-width: 340px;
+      }
+      .solutions-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 28px;
+        border-top: 1px solid #d7d7d2;
+        margin-top: 60px;
+        padding-top: 30px;
+      }
+      .solutions-bottom p {
+        font-size: 17px;
+        line-height: 1.65;
+      }
+      .solutions-bottom p span {
+        color: #777;
+      }
+      .image-note {
+        font-size: 12px;
+        color: #76766e;
+        margin-top: 28px;
+      }
+      .text-link {
+        display: inline-flex;
+        gap: 14px;
+        align-items: center;
+        font-size: 14px;
+        text-decoration: underline;
+        text-underline-offset: 6px;
+        text-decoration-color: #bdbdb7;
+      }
+      .text-link:hover {
+        color: #b82126;
+      }
+      .text-link svg {
+        color: #b82126;
+        flex: none;
+      }
+      .work-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 75px;
+        align-items: center;
+      }
+      .work-photo {
+        position: relative;
+        overflow: hidden;
+      }
+      .work-photo img {
+        width: 100%;
+        height: 490px;
+        object-fit: cover;
+      }
+      .work-photo > span {
+        position: absolute;
+        left: 18px;
+        bottom: 18px;
+        background: white;
+        padding: 7px 12px;
+        font-size: 12px;
+      }
+      .work-copy > p {
+        margin: 28px 0;
+        color: #686862;
+        max-width: 410px;
+      }
+      .work-copy dl {
+        margin: 28px 0 35px;
+        font-size: 14px;
+      }
+      .work-copy dl > div {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 13px 0;
+        border-bottom: 1px solid #ddd;
+      }
+      .work-copy dt {
+        color: #777;
+      }
+      .work-copy dd {
+        margin: 0;
+        text-align: right;
+      }
+      .contact-section {
+        background: #f6f6f3;
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr;
+        gap: 100px;
+        align-items: start;
+      }
+      .contact-copy h2 {
+        font-size: clamp(35px, 3.65vw, 56px);
+      }
+      .contact-copy > p {
+        color: #666;
+        margin-top: 25px;
+      }
+      .contact-orbit {
+        margin: 45px 0 0 45px;
+        width: 135px;
+        height: 135px;
+      }
+      .form-panel {
+        padding-top: 8px;
+      }
+      .form-kicker {
+        display: block;
+        color: #777;
+        font-size: 12px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 28px;
+      }
+      .lead-form {
+        position: relative;
+      }
+      .lead-form > label {
+        font-size: 14px;
+        display: block;
+        margin-bottom: 12px;
+      }
+      .phone-input {
+        height: 65px;
+        border: 0;
+        border-bottom: 1px solid #a8a8a0;
+        border-radius: 0;
+        padding: 10px 0;
+        font:
+          400 25px Manrope,
+          Arial,
+          sans-serif;
+        box-shadow: none;
+      }
+      .phone-input:focus-visible {
+        box-shadow: 0 2px 0 #c32228;
+        outline: 0;
+        border-color: #c32228;
+      }
+      .phone-input::placeholder {
+        color: #8e8e88;
+      }
+      .consent {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin: 24px 0;
+      }
+      .consent [data-slot='checkbox'] {
+        margin-top: 5px;
+        flex: none;
+        width: 18px;
+        height: 18px;
+        border-radius: 0;
+      }
+      .consent label {
+        font-size: 12px;
+        line-height: 1.7;
+        color: #777;
+      }
+      .consent button {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        background: transparent;
+        border: 0;
+        padding: 0;
+        color: inherit;
+        font: inherit;
+      }
+      .form-submit {
+        width: 100%;
+        font-size: 14px;
+      }
+      .form-hint {
+        font-size: 12px;
+        color: #7e7e76;
+        margin-top: 15px;
+      }
+      .honey {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+      }
+      .form-error {
+        font-size: 14px;
+        color: #b21f24;
+        margin: 12px 0;
+      }
+      .form-success {
+        padding: 35px 0;
+      }
+      .success-icon {
+        display: grid;
+        place-content: center;
+        width: 60px;
+        height: 60px;
+        border: 1px solid #c32228;
+        color: #c32228;
+        border-radius: 50%;
+        margin-bottom: 22px;
+      }
+      .form-success h3 {
+        font-size: 30px;
+      }
+      .form-success p {
+        margin-top: 15px;
+        color: #666;
+      }
+      .faq-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 90px;
+        margin-top: 85px;
+        padding-top: 55px;
+        border-top: 1px solid #d7d7d2;
+      }
+      .faq-grid > h3 {
+        font-size: 35px;
+        line-height: 1.2;
+      }
+      .faq [data-slot='accordion-trigger'] {
+        font-size: 16px;
+        line-height: 1.5;
+        border-radius: 0;
+        padding: 22px 0;
+        letter-spacing: 0;
+      }
+      .faq [data-slot='accordion-content'] > div {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #666;
+        padding-bottom: 24px;
+      }
+      .site-footer {
+        padding-block: 55px 30px;
+      }
+      .footer-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 25px;
+        padding-bottom: 35px;
+        border-bottom: 1px solid #ddd;
+      }
+      .footer-brand {
+        font-size: 37px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        line-height: 1.3;
+      }
+      .footer-brand > span {
+        display: block;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 2px;
+        color: #777;
+        margin-top: 5px;
+      }
+      .footer-phone {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-size: 25px;
+      }
+      .footer-phone svg {
+        color: #c32228;
+      }
+      .footer-bottom {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 25px;
+        padding-top: 25px;
+        font-size: 12px;
+        color: #777;
+      }
+      .footer-bottom button {
+        text-align: left;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .lead-dialog {
+        padding: 48px;
+        border-radius: 0;
+        max-height: 90dvh;
+        overflow-y: auto;
+        gap: 18px;
+      }
+      .dialog-title {
+        font-size: 37px;
+        line-height: 1.15;
+        font-weight: 500;
+        letter-spacing: -1px;
+        margin-right: 20px;
+      }
+      .dialog-description {
+        font-size: 16px;
+        line-height: 1.7;
+        margin-bottom: 12px;
+      }
+      .dialog-x {
+        position: absolute;
+        right: 18px;
+        top: 18px;
+        padding: 3px;
+        background: transparent;
+        color: #555;
+        border: 0;
+      }
+      .privacy-dialog {
+        border-radius: 0;
+        padding: 40px;
+        max-height: 90dvh;
+        overflow-y: auto;
+      }
+      .privacy-dialog p {
+        font-size: 16px;
+        line-height: 1.75;
+        color: #666;
+      }
+      .skip-link {
+        position: fixed;
+        top: -100px;
+        left: 20px;
+        z-index: 100;
+        background: #fff;
+        padding: 15px;
+      }
+      .skip-link:focus {
+        top: 15px;
+      }
+      .reveal {
+        transition:
+          opacity 0.8s,
+          translate 0.8s;
+      }
+      .reveal.in-view {
+        animation: appear 0.8s both;
+      }
+      @keyframes appear {
+        from {
+          opacity: 0;
+          translate: 0 24px;
+        }
+        to {
+          opacity: 1;
+          translate: 0 0;
+        }
+      }
+      @media (min-width: 1600px) {
+        .hero h1 {
+          font-size: 70px;
+        }
+        .hero-image {
+          height: 655px;
+        }
+        .hero {
+          column-gap: 70px;
+        }
+      }
+      @media (max-width: 1100px) {
+        .shell {
+          width: calc(100% - 60px);
+        }
+        .site-header nav {
+          gap: 18px;
+          font-size: 14px;
+        }
+        .hero {
+          gap: 30px;
+        }
+        .hero h1 {
+          font-size: 46px;
+          letter-spacing: -2px;
+        }
+        .hero-image {
+          height: 565px;
+        }
+        .hero-caption span:last-child {
+          display: none;
+        }
+        .hero-price strong {
+          font-size: 100px;
+        }
+        .benefit-intro {
+          gap: 40px;
+        }
+        .benefit h3 {
+          font-size: 17px;
+        }
+        .benefit {
+          padding-right: 18px;
+        }
+        .benefit + .benefit {
+          padding-left: 18px;
+        }
+        .solution-grid {
+          gap: 20px;
+        }
+        .solution-photo img {
+          height: 300px;
+        }
+        .solution-1 .solution-photo img {
+          height: 255px;
+        }
+        .solution-2 .solution-photo img {
+          height: 280px;
+        }
+        .work-grid {
+          gap: 45px;
+        }
+        .contact-grid {
+          gap: 60px;
+        }
+      }
+      @media (max-width: 760px) {
+        .shell {
+          width: calc(100% - 40px);
+        }
+        .section {
+          padding-block: 64px;
+        }
+        .site-header {
+          height: 90px;
+          gap: 15px;
+        }
+        .brand,
+        .brand img {
+          width: 115px;
+          height: 80px;
+        }
+        .site-header nav {
+          display: none;
+        }
+        .header-phone {
+          font-size: 14px;
+          column-gap: 9px;
+        }
+        .header-phone span {
+          font-size: 12px;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+          padding-top: 27px;
+          padding-bottom: 35px;
+          gap: 30px;
+        }
+        .hero-copy {
+          padding-top: 0;
+        }
+        .hero .eyebrow {
+          font-size: 12px;
+          letter-spacing: 0.7px;
+        }
+        .hero h1 {
+          font-size: clamp(35px, 7.9vw, 58px);
+          line-height: 1.1;
+          letter-spacing: -1.5px;
+          margin-top: 22px;
+          max-width: 600px;
+        }
+        .hero h1 br {
+          display: none;
+        }
+        .hero-price {
+          margin: 23px 0;
+          gap: 18px;
+        }
+        .price-intro {
+          font-size: 14px;
+          margin-top: 17px;
+        }
+        .hero-price strong {
+          font-size: 91px;
+          letter-spacing: -6px;
+        }
+        .price-unit {
+          font-size: 18px;
+          margin-top: 8px;
+        }
+        .cta {
+          min-height: 59px;
+          padding: 17px 22px;
+          font-size: 14px;
+        }
+        .hero-note {
+          font-size: 14px;
+          margin-top: 15px;
+        }
+        .hero-note br {
+          display: none;
+        }
+        .hero-visual {
+          margin-top: 5px;
+        }
+        .hero-image {
+          height: 390px;
+          object-position: center 30%;
+        }
+        .hero-orbit {
+          width: 78px;
+          height: 78px;
+          left: auto;
+          right: -10px;
+          bottom: 60px;
+        }
+        .hero-orbit span:nth-child(2) {
+          border-width: 11px;
+        }
+        .hero-orbit span:nth-child(3) {
+          inset: 25px;
+        }
+        .hero-caption {
+          font-size: 12px;
+        }
+        .scroll-cue {
+          margin-top: 0;
+          font-size: 12px;
+        }
+        .section-top {
+          margin-bottom: 30px;
+          gap: 12px;
+        }
+        .section-top .eyebrow {
+          font-size: 12px;
+          letter-spacing: 0.3px;
+        }
+        .section-index {
+          display: none;
+        }
+        h2 {
+          font-size: clamp(34px, 7.2vw, 50px);
+          letter-spacing: -1.4px;
+        }
+        .benefit-intro {
+          grid-template-columns: 1fr;
+          gap: 25px;
+          margin-bottom: 35px;
+        }
+        .benefit-intro > p {
+          font-size: 16px;
+          max-width: 390px;
+        }
+        .benefit-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .benefit,
+        .benefit + .benefit {
+          padding: 23px 20px 25px 0;
+          border-left: 0;
+          border-bottom: 1px solid #ddd;
+        }
+        .benefit:nth-child(even) {
+          padding-left: 20px;
+          border-left: 1px solid #ddd;
+        }
+        .benefit-symbol {
+          width: 55px;
+          height: 55px;
+          margin: 4px 0 22px;
+        }
+        .benefit-symbol svg {
+          width: 42px;
+          height: 42px;
+        }
+        .benefit-num {
+          right: 15px;
+          top: 25px;
+          font-size: 12px;
+        }
+        .benefit h3 {
+          font-size: 17px;
+        }
+        .benefit p {
+          font-size: 14px;
+          line-height: 1.8;
+        }
+        .solutions h2 {
+          margin-bottom: 34px;
+        }
+        .heading-mark {
+          font-size: 85px;
+          left: auto;
+          right: 10px;
+          top: 10px;
+        }
+        .solution-grid {
+          grid-template-columns: 1fr;
+          gap: 34px;
+        }
+        .solution-1,
+        .solution-2 {
+          margin-top: 0;
+        }
+        .solution-photo img,
+        .solution-1 .solution-photo img,
+        .solution-2 .solution-photo img {
+          height: auto;
+          aspect-ratio: 1.25;
+          object-fit: cover;
+        }
+        .solution-1 {
+          width: 86%;
+          justify-self: end;
+        }
+        .solution-2 {
+          width: 92%;
+        }
+        .solution-label {
+          margin-top: 14px;
+          font-size: 12px;
+        }
+        .solution h3 {
+          font-size: 24px;
+          margin: 8px 0;
+        }
+        .solution p {
+          font-size: 16px;
+        }
+        .solutions-bottom {
+          flex-direction: column;
+          align-items: stretch;
+          margin-top: 35px;
+          padding-top: 25px;
+          gap: 22px;
+        }
+        .solutions-bottom p {
+          font-size: 16px;
+        }
+        .image-note {
+          font-size: 12px;
+        }
+        .work-grid {
+          grid-template-columns: 1fr;
+          gap: 35px;
+        }
+        .work-photo img {
+          height: 350px;
+        }
+        .work-copy > p {
+          font-size: 16px;
+          margin: 20px 0;
+        }
+        .work-copy dl {
+          font-size: 14px;
+        }
+        .section-top .text-link {
+          font-size: 12px;
+          gap: 6px;
+        }
+        .work-copy .text-link {
+          font-size: 14px;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 35px;
+        }
+        .contact-copy h2 {
+          font-size: 37px;
+          letter-spacing: -1.4px;
+        }
+        .contact-copy > p {
+          font-size: 16px;
+          max-width: 80%;
+          margin-top: 20px;
+        }
+        .contact-copy > p br {
+          display: none;
+        }
+        .contact-orbit {
+          position: absolute;
+          width: 70px;
+          height: 70px;
+          right: 0;
+          bottom: -10px;
+          margin: 0;
+          opacity: 0.75;
+        }
+        .contact-orbit span:nth-child(2) {
+          border-width: 8px;
+        }
+        .contact-orbit span:nth-child(3) {
+          inset: 23px;
+        }
+        .contact-copy {
+          position: relative;
+        }
+        .form-kicker {
+          display: none;
+        }
+        .form-panel {
+          padding-top: 0;
+        }
+        .phone-input {
+          font-size: 24px;
+          height: 62px;
+        }
+        .faq-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          margin-top: 55px;
+          padding-top: 40px;
+        }
+        .faq-grid > h3 {
+          font-size: 30px;
+        }
+        .faq-grid > h3 br {
+          display: none;
+        }
+        .faq [data-slot='accordion-trigger'] {
+          font-size: 16px;
+          padding: 20px 0;
+        }
+        .faq [data-slot='accordion-content'] > div {
+          font-size: 16px;
+        }
+        .site-footer {
+          padding-block: 35px 25px;
+        }
+        .footer-top {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 25px;
+          padding-bottom: 25px;
+        }
+        .footer-brand {
+          font-size: 31px;
+        }
+        .footer-phone {
+          font-size: 21px;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 18px;
+          font-size: 12px;
+        }
+        .lead-dialog {
+          padding: 42px 25px 30px;
+        }
+        .dialog-title {
+          font-size: 31px;
+        }
+        .dialog-description {
+          font-size: 16px;
+        }
+        .privacy-dialog {
+          padding: 40px 24px 28px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *:before,
+        *:after {
+          animation: none !important;
+          transition: none !important;
+        }
+        .scroll-art {
+          transform: none !important;
+        }
+      }
+      @media (max-width: 760px) {
+        .cta {
+          white-space: normal;
+          gap: 16px;
+          text-align: left;
+        }
+        .benefit p {
+          font-size: 16px;
+        }
+        .benefit-grid {
+          column-gap: 0;
+        }
+      }
+      @media (max-width: 390px) {
+        .brand,
+        .brand img {
+          width: 90px;
+          height: 75px;
+        }
+        .header-phone {
+          font-size: 12px;
+          column-gap: 5px;
+        }
+        .header-phone span {
+          font-size: 11px;
+        }
+        .site-header {
+          gap: 8px;
+        }
+        .hero h1 {
+          font-size: 35px;
+        }
+        .benefit,
+        .benefit + .benefit {
+          padding-right: 12px;
+        }
+        .benefit:nth-child(even) {
+          padding-left: 12px;
+        }
+      }
+      .consent p {
+        font-size: 12px;
+        line-height: 1.7;
+        color: #777;
+      }
+      .hero-perks {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 25px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px 18px;
+        max-width: 510px;
+      }
+      .hero-perks li {
+        font-size: 12px;
+        line-height: 1.6;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .hero-perks li:before {
+        content: '✓';
+        color: #c32228;
+        font-size: 14px;
+      }
+      .hero-note {
+        max-width: 430px;
+      }
+      .hero-image {
+        height: 650px;
+      }
+      .site-header nav {
+        gap: 22px;
+      }
+      .inline-link {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        color: #8f1a20;
+      }
+      .projects-intro {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 45px;
+        margin-bottom: 42px;
+      }
+      .projects-intro > p {
+        max-width: 390px;
+        color: #666;
+      }
+      .project-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 38px 28px;
+      }
+      .project-photo {
+        width: 100%;
+        display: block;
+        position: relative;
+        padding: 0;
+        overflow: hidden;
+        background: #f4f4f1;
+        text-align: left;
+      }
+      .project-photo img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+      .project-photo:hover img {
+        transform: scale(1.035);
+      }
+      .project-photo > span {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+        background: #fff;
+        width: 36px;
+        height: 36px;
+        display: grid;
+        place-items: center;
+        color: #c32228;
+        font-size: 23px;
+      }
+      .project-meta {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin: 17px 0 8px;
+        font-size: 12px;
+        color: #666;
+      }
+      .project-meta span:last-child {
+        color: #8f1a20;
+      }
+      .project-card h3 {
+        font-size: 23px;
+        line-height: 1.35;
+        margin-bottom: 7px;
+      }
+      .project-card > p {
+        font-size: 15px;
+        color: #666;
+      }
+      .reviews-section {
+        padding-top: 65px;
+        margin-top: 65px;
+        border-top: 1px solid #ddd;
+      }
+      .reviews-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 35px;
+        margin-bottom: 35px;
+      }
+      .reviews-heading h2 {
+        font-size: clamp(34px, 3.5vw, 50px);
+      }
+      .reviews-heading p {
+        font-size: 14px;
+        color: #666;
+      }
+      .review-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .review-card {
+        margin: 0;
+        padding: 25px;
+        background: #f6f6f3;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      .quote-mark {
+        font-family: Lora, Georgia, serif;
+        color: #c32228;
+        font-size: 58px;
+        line-height: 0.8;
+      }
+      .review-card blockquote {
+        margin: 18px 0 24px;
+        font-size: 18px;
+        line-height: 1.55;
+      }
+      .review-card figcaption {
+        font-size: 13px;
+        color: #666;
+        margin-top: auto;
+        padding-top: 20px;
+        border-top: 1px solid #ddd;
+      }
+      .review-source {
+        margin-top: 22px;
+        font-size: 12px;
+      }
+      .order-steps {
+        list-style: none;
+        padding: 0 0 40px;
+        margin: 0 0 55px;
+        border-bottom: 1px solid #d7d7d2;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 35px;
+      }
+      .order-steps li {
+        display: flex;
+        align-items: start;
+        gap: 16px;
+      }
+      .order-steps li > span {
+        color: #c32228;
+        font-size: 13px;
+        padding-top: 4px;
+        flex: none;
+      }
+      .order-steps h3 {
+        font-size: 18px;
+        line-height: 1.5;
+        margin-bottom: 8px;
+      }
+      .order-steps p {
+        font-size: 14px;
+        color: #666;
+      }
+      .contact-details {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr 1fr;
+        gap: 35px;
+        padding-top: 35px;
+        font-size: 14px;
+      }
+      .contact-details > div > span {
+        display: block;
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 10px;
+      }
+      .contact-details > div > p {
+        margin: 8px 0;
+      }
+      .contact-details .second-label {
+        margin-top: 18px;
+      }
+      .photo-dialog {
+        width: min(1100px, calc(100% - 28px));
+        max-height: 92dvh;
+        padding: 50px 20px 20px;
+        overflow: auto;
+      }
+      .photo-dialog img {
+        width: 100%;
+        height: auto;
+        max-height: 73dvh;
+        object-fit: contain;
+      }
+      .photo-dialog p {
+        font-size: 13px;
+        margin-top: 15px;
+        color: #555;
+      }
+      .photo-dialog .dialog-x {
+        font-size: 22px;
+        line-height: 1;
+        min-width: 30px;
+        min-height: 30px;
+      }
+      .phone-input {
+        scroll-margin-top: 35px;
+      }
+      .phone-input[aria-invalid='true'] {
+        border-color: #b21f24;
+      }
+      .faq summary {
+        align-items: center;
+      }
+      .faq summary:after {
+        flex: none;
+      }
+      .benefit p .inline-link {
+        font-size: 13px;
+        white-space: nowrap;
+      }
+      .footer-bottom {
+        margin-top: 25px;
+        border-top: 1px solid #ddd;
+      }
+      dialog {
+        overscroll-behavior: contain;
+      }
+      body:has(dialog[open]) {
+        overflow: hidden;
+      }
+      @media (min-width: 1600px) {
+        .hero-image {
+          height: 700px;
+        }
+      }
+      @media (max-width: 1100px) {
+        .site-header nav {
+          gap: 14px;
+          font-size: 13px;
+        }
+        .hero-image {
+          height: 650px;
+        }
+        .project-photo img {
+          height: 275px;
+        }
+        .contact-grid {
+          gap: 40px;
+        }
+        .review-card {
+          padding: 20px;
+        }
+        .contact-details {
+          gap: 25px;
+        }
+        .order-steps {
+          gap: 24px;
+        }
+      }
+      @media (max-width: 760px) {
+        .hero-image {
+          height: 390px;
+        }
+        .hero-perks {
+          margin-bottom: 23px;
+          gap: 7px 16px;
+        }
+        .hero-perks li {
+          font-size: 12px;
+        }
+        .hero h1 {
+          font-size: clamp(35px, 7.9vw, 58px);
+        }
+        .hero-price {
+          margin: 18px 0;
+        }
+        .hero-note br {
+          display: none;
+        }
+        .projects-intro {
+          display: block;
+          margin-bottom: 28px;
+        }
+        .projects-intro > p {
+          margin-top: 20px;
+          font-size: 16px;
+        }
+        .project-grid {
+          gap: 30px;
+          grid-template-columns: 1fr;
+        }
+        .project-photo img {
+          height: auto;
+          aspect-ratio: 1.3;
+        }
+        .project-meta {
+          font-size: 12px;
+          margin-top: 13px;
+        }
+        .project-card h3 {
+          font-size: 22px;
+        }
+        .project-card > p {
+          font-size: 15px;
+        }
+        .reviews-section {
+          margin-top: 40px;
+          padding-top: 40px;
+        }
+        .reviews-heading {
+          display: block;
+          margin-bottom: 25px;
+        }
+        .reviews-heading h2 {
+          font-size: 35px;
+        }
+        .reviews-heading p {
+          margin-top: 18px;
+          font-size: 14px;
+        }
+        .reviews-heading p br {
+          display: none;
+        }
+        .review-grid {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        .review-card {
+          padding: 22px;
+        }
+        .review-card blockquote {
+          margin: 12px 0 18px;
+          font-size: 17px;
+        }
+        .quote-mark {
+          font-size: 45px;
+        }
+        .review-card figcaption {
+          padding-top: 13px;
+        }
+        .review-source {
+          line-height: 1.8;
+        }
+        .order-steps {
+          grid-template-columns: 1fr;
+          gap: 25px;
+          padding-bottom: 30px;
+          margin-bottom: 35px;
+        }
+        .order-steps p {
+          font-size: 15px;
+        }
+        .order-steps h3 {
+          font-size: 19px;
+        }
+        .order-steps li > span {
+          min-width: 24px;
+        }
+        .contact-details {
+          grid-template-columns: 1fr;
+          gap: 25px;
+          padding-top: 28px;
+        }
+        .contact-details > div > span {
+          margin-bottom: 7px;
+        }
+        .contact-orbit {
+          display: none;
+        }
+        .contact-copy > p {
+          max-width: 100%;
+        }
+        .contact-copy h2 {
+          font-size: clamp(31px, 8.6vw, 42px);
+        }
+        .footer-bottom {
+          margin-top: 25px;
+        }
+        .photo-dialog {
+          padding: 45px 12px 15px;
+        }
+        .hero .cta {
+          width: 100%;
+        }
+      }
+      @media (max-width: 390px) {
+        .hero-perks {
+          display: grid;
+          gap: 5px;
+        }
+        .project-meta {
+          font-size: 11px;
+        }
+        .reviews-heading h2 {
+          font-size: 32px;
+        }
+      }
+      @media (max-width: 760px) {
+        .hero-copy {
+          display: flex;
+          flex-direction: column;
+        }
+        .hero-copy > .hero-perks {
+          order: 1;
+          margin: 16px 0 0;
+        }
+        .hero-copy > .hero-note {
+          order: 2;
+          margin-top: 12px;
+        }
+        .hero-copy > .cta {
+          flex: none;
+        }
+        .hero h1 {
+          margin-bottom: 16px;
+        }
+        .hero-price {
+          margin: 14px 0 20px;
+        }
+      }
+    </style>
+    <!-- Company facts and project captions: krismas.by; reviews: franshiza.krismas.by. Checked 2026-09-18. -->
+  </head>
+  <body>
+    <!-- СОДЕРЖИМОЕ СТРАНИЦЫ: здесь можно редактировать тексты -->
+    <div>
+      <a class="skip-link" href="#main">Перейти к содержимому</a>
+      <!-- Шапка: логотип, меню и телефон -->
+      <header class="site-header shell">
+        <a href="#" class="brand" aria-label="Крисмас — на главную"
+          ><img
+            src="assets/images/logo.jpg"
+            width="170"
+            height="120"
+            alt="Крисмас. Натяжные потолки"
+        /></a>
+        <nav aria-label="Основная навигация">
+          <a href="#benefits">Преимущества</a><a href="#solutions">Решения</a
+          ><a href="#works">Наши работы</a><a href="#reviews">Отзывы</a>
+        </nav>
+        <a class="header-phone" href="tel:+375336604439"
+          ><span>Обсудим ваш потолок</span>+375 33 660-44-39<svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="19"
+            height="19"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-arrow-up-right"
+            aria-hidden="true"
+          >
+            <path d="M7 7h10v10"></path>
+            <path d="M7 17 17 7"></path></svg
+        ></a>
+      </header>
+      <main id="main">
+        <!-- Главный экран: предложение, цена и кнопка расчёта -->
+        <section class="hero shell" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow">
+              <span class="tiny-square"></span>Натяжные потолки в Беларуси
+            </p>
+            <h1 id="hero-title">
+              Натяжные потолки,<br />которые <em>экономят</em> ваш бюджет
+            </h1>
+            <div class="hero-price">
+              <span class="price-intro">Всего</span><strong>15</strong
+              ><span class="price-unit">рублей<br />за м²</span>
+            </div>
+            <ul class="hero-perks" aria-label="Преимущества заказа">
+              <li>Бесплатный замер</li>
+              <li>Рассрочка до 6 месяцев</li>
+              <li>Карниз или светильник в подарок</li>
+            </ul>
+            <button class="cta" data-open="hero">
+              Рассчитать стоимость<svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-arrow-up-right"
+                aria-hidden="true"
+              >
+                <path d="M7 7h10v10"></path>
+                <path d="M7 17 17 7"></path>
+              </svg>
+            </button>
+            <p class="hero-note">
+              Оставьте номер — поможем выбрать потолок<br />и рассчитаем
+              стоимость для вашей квартиры.
+            </p>
+          </div>
+          <div class="hero-visual">
+            <img
+              class="hero-image"
+              src="assets/images/living-room.webp"
+              width="1536"
+              height="1024"
+              fetchpriority="high"
+              alt="Светлая гостиная с ровным матовым натяжным потолком"
+            />
+            <div class="hero-caption">
+              <span>Красиво. Продуманно. По вашему бюджету.</span
+              ><span>01 / КРИСМАС</span>
+            </div>
+            <div aria-hidden="true" class="orbit hero-orbit scroll-art">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+          <a class="scroll-cue" href="#benefits"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-down"
+              aria-hidden="true"
+            >
+              <path d="M12 5v14"></path>
+              <path d="m19 12-7 7-7-7"></path></svg
+            ><span>Больше о вашем будущем потолке</span></a
+          >
+        </section>
+        <!-- Преимущества компании -->
+        <section class="benefits shell section" id="benefits">
+          <div class="section-top">
+            <span class="eyebrow">01 / С заботой о главном</span
+            ><span class="section-index"
+              >Своё производство · Работаем с 2012 года</span
+            >
+          </div>
+          <div class="benefit-intro">
+            <h2 class="reveal">
+              Красивый результат.<br /><em>Спокойный ремонт.</em>
+            </h2>
+            <p class="reveal">
+              Помогаем с выбором, оформляем договор и остаёмся на связи после
+              установки.
+            </p>
+          </div>
+          <div class="benefit-grid">
+            <article class="benefit reveal">
+              <div class="benefit-symbol symbol-0 scroll-art">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-layers"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"
+                  ></path>
+                  <path
+                    d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"
+                  ></path>
+                  <path
+                    d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"
+                  ></path>
+                </svg>
+              </div>
+              <span class="benefit-num">01</span>
+              <h3>Своё производство</h3>
+              <p>
+                Изготавливаем полотно под вашу комнату на собственном
+                оборудовании ZEMAT.
+              </p>
+            </article>
+            <article class="benefit reveal">
+              <div class="benefit-symbol symbol-1 scroll-art">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-shield-check"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                  ></path>
+                  <path d="m9 12 2 2 4-4"></path>
+                </svg>
+              </div>
+              <span class="benefit-num">02</span>
+              <h3>Проверенные материалы</h3>
+              <p>
+                Используем сертифицированные полотна. Поможем выбрать фактуру и
+                освещение.
+                <a
+                  class="inline-link"
+                  href="https://krismas.by/sertifikaty"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Сертификаты</a
+                >
+              </p>
+            </article>
+            <article class="benefit reveal">
+              <div class="benefit-symbol symbol-2 scroll-art">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-file-check-corner"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"
+                  ></path>
+                  <path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
+                  <path d="m14 20 2 2 4-4"></path>
+                </svg>
+              </div>
+              <span class="benefit-num">03</span>
+              <h3>Официальный договор</h3>
+              <p>
+                Согласовываем решение и стоимость до начала работ. Все
+                договорённости фиксируем в договоре.
+              </p>
+            </article>
+            <article class="benefit reveal">
+              <div class="benefit-symbol symbol-3 scroll-art">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-calendar-days"
+                  aria-hidden="true"
+                >
+                  <path d="M8 2v3"></path>
+                  <path d="M16 2v3"></path>
+                  <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                  <path d="M3 9h18"></path>
+                  <path d="M8 13h.01"></path>
+                  <path d="M12 13h.01"></path>
+                  <path d="M16 13h.01"></path>
+                  <path d="M8 17h.01"></path>
+                  <path d="M12 17h.01"></path>
+                  <path d="M16 17h.01"></path>
+                </svg>
+              </div>
+              <span class="benefit-num">04</span>
+              <h3>Гарантия и обслуживание</h3>
+              <p>
+                Помогаем и после монтажа. Условия гарантии для выбранного
+                потолка указываем в договоре.
+              </p>
+            </article>
+          </div>
+        </section>
+        <!-- Варианты потолков -->
+        <section class="solutions section" id="solutions">
+          <div class="shell">
+            <div class="section-top">
+              <span class="eyebrow">02 / Пространство для ваших идей</span
+              ><span class="section-index">Выберите своё настроение</span>
+            </div>
+            <h2 class="reveal">
+              Ваш дом.<br /><em>Ваш потолок.</em
+              ><span class="heading-mark scroll-art" aria-hidden="true">✳</span>
+            </h2>
+            <div class="solution-grid">
+              <article class="solution solution-0 reveal">
+                <div class="solution-photo">
+                  <img
+                    src="assets/images/living-room.webp"
+                    width="1536"
+                    height="1024"
+                    loading="lazy"
+                    alt="Матовый потолок в светлом современном интерьере"
+                  /><span class="photo-number">01</span>
+                </div>
+                <div class="solution-label"><span>Матовый потолок</span></div>
+                <h3>Чистая классика</h3>
+                <p>
+                  Ровная белая поверхность, которая подходит к любому интерьеру.
+                </p>
+              </article>
+              <article class="solution solution-1 reveal">
+                <div class="solution-photo">
+                  <img
+                    src="assets/images/bedroom.webp"
+                    width="1536"
+                    height="1024"
+                    loading="lazy"
+                    alt="Скрытый карниз в светлом современном интерьере"
+                  /><span class="photo-number">02</span>
+                </div>
+                <div class="solution-label"><span>Скрытый карниз</span></div>
+                <h3>Лёгкость в деталях</h3>
+                <p>
+                  Шторы словно выходят из потолка — крепления остаются
+                  незаметными.
+                </p>
+              </article>
+              <article class="solution solution-2 reveal">
+                <div class="solution-photo">
+                  <img
+                    src="assets/images/kitchen.webp"
+                    width="1536"
+                    height="1024"
+                    loading="lazy"
+                    alt="Современное освещение в светлом современном интерьере"
+                  /><span class="photo-number">03</span>
+                </div>
+                <div class="solution-label">
+                  <span>Современное освещение</span>
+                </div>
+                <h3>Ваш сценарий света</h3>
+                <p>
+                  Треки, световые линии или точечные светильники под ваши
+                  задачи.
+                </p>
+              </article>
+            </div>
+            <div class="solutions-bottom">
+              <p>
+                Пока не знаете, что выбрать?<br /><span
+                  >Поможем найти ваше решение.</span
+                >
+              </p>
+              <button class="cta" data-open="solutions">
+                Узнать цену для моей квартиры<svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-arrow-up-right"
+                  aria-hidden="true"
+                >
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
+              </button>
+            </div>
+            <p class="image-note">
+              Изображения интерьеров — визуализации решений.
+            </p>
+          </div>
+        </section>
+        <!-- Реальные работы, отзывы и ответы на вопросы -->
+        <section class="works shell section" id="works">
+          <div class="section-top">
+            <span class="eyebrow">03 / Сделано «Крисмас»</span
+            ><span class="section-index">Потолки в настоящих квартирах</span>
+          </div>
+          <div class="projects-intro">
+            <h2 class="reveal">Результат,<br />который <em>видно.</em></h2>
+            <p>
+              От лаконичной кухни до потолка со световыми линиями. Посмотрите,
+              как наши решения выглядят после монтажа.
+            </p>
+          </div>
+          <div class="project-grid">
+            <article class="project-card reveal">
+              <button
+                type="button"
+                class="project-photo"
+                data-image-view
+                aria-label="Увеличить фото: Кухня с теневым профилем"
+              >
+                <img
+                  src="assets/images/project-kitchen.webp"
+                  width="1000"
+                  height="750"
+                  loading="lazy"
+                  decoding="async"
+                  alt="Кухня с теневым профилем. Реальная работа Крисмас, Лида · 12 м²"
+                /><span aria-hidden="true">↗</span>
+              </button>
+              <div class="project-meta">
+                <span>Лида · 12 м²</span><span>Реальная работа</span>
+              </div>
+              <h3>Кухня с теневым профилем</h3>
+              <p>Матовый потолок и точечный свет.</p>
+            </article>
+            <article class="project-card reveal">
+              <button
+                type="button"
+                class="project-photo"
+                data-image-view
+                aria-label="Увеличить фото: Светлая прихожая"
+              >
+                <img
+                  src="assets/images/project-hall.webp"
+                  width="1000"
+                  height="750"
+                  loading="lazy"
+                  decoding="async"
+                  alt="Светлая прихожая. Реальная работа Крисмас, Гродно · 13 м²"
+                /><span aria-hidden="true">↗</span>
+              </button>
+              <div class="project-meta">
+                <span>Гродно · 13 м²</span><span>Реальная работа</span>
+              </div>
+              <h3>Светлая прихожая</h3>
+              <p>Сатиновое полотно и споты.</p>
+            </article>
+            <article class="project-card reveal">
+              <button
+                type="button"
+                class="project-photo"
+                data-image-view
+                aria-label="Увеличить фото: Студия со спот-нишей"
+              >
+                <img
+                  src="assets/images/project-studio.jpg"
+                  width="1000"
+                  height="750"
+                  loading="lazy"
+                  decoding="async"
+                  alt="Студия со спот-нишей. Реальная работа Крисмас, Минск · 15 м²"
+                /><span aria-hidden="true">↗</span>
+              </button>
+              <div class="project-meta">
+                <span>Минск · 15 м²</span><span>Реальная работа</span>
+              </div>
+              <h3>Студия со спот-нишей</h3>
+              <p>Матовый потолок и встроенное освещение.</p>
+            </article>
+            <article class="project-card reveal">
+              <button
+                type="button"
+                class="project-photo"
+                data-image-view
+                aria-label="Увеличить фото: Световые линии в детской"
+              >
+                <img
+                  src="assets/images/project-kids.webp"
+                  width="1000"
+                  height="750"
+                  loading="lazy"
+                  decoding="async"
+                  alt="Световые линии в детской. Реальная работа Крисмас, Лида · 14 м²"
+                /><span aria-hidden="true">↗</span>
+              </button>
+              <div class="project-meta">
+                <span>Лида · 14 м²</span><span>Реальная работа</span>
+              </div>
+              <h3>Световые линии в детской</h3>
+              <p>Скрытый карниз с подсветкой.</p>
+            </article>
+          </div>
+          <div class="reviews-section" id="reviews">
+            <div class="reviews-heading">
+              <h2>За работу<br /><em>говорят клиенты.</em></h2>
+              <p>
+                Короткие выдержки из отзывов,<br />опубликованных на сайте
+                компании.
+              </p>
+            </div>
+            <div class="review-grid">
+              <figure class="review-card reveal">
+                <span class="quote-mark" aria-hidden="true">“</span>
+                <blockquote>
+                  Мастера приехали без опозданий, с пылесосом
+                </blockquote>
+                <figcaption>Татьяна Политевич</figcaption>
+              </figure>
+              <figure class="review-card reveal">
+                <span class="quote-mark" aria-hidden="true">“</span>
+                <blockquote>
+                  После монтажа было чисто. Работа впечатлила и порадовала.
+                </blockquote>
+                <figcaption>Юлия Лисичкина</figcaption>
+              </figure>
+              <figure class="review-card reveal">
+                <span class="quote-mark" aria-hidden="true">“</span>
+                <blockquote>
+                  Следующий потолок однозначно буду делать с компанией
+                  &quot;Крисмас&quot;.
+                </blockquote>
+                <figcaption>Виктор Добриян</figcaption>
+              </figure>
+            </div>
+            <a
+              class="text-link review-source"
+              href="https://franshiza.krismas.by/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Читать отзывы полностью на сайте «Крисмас» ↗</a
+            >
+          </div>
+        </section>
+        <!-- Форма заявки и контакты -->
+        <section class="contact-section section" id="contact">
+          <div class="shell">
+            <div class="section-top">
+              <span class="eyebrow">04 / Давайте начнём</span
+              ><span class="section-index">Ваш новый потолок — ближе</span>
+            </div>
+            <ol class="order-steps">
+              <li>
+                <span>01</span>
+                <div>
+                  <h3>Обсудим вашу задачу</h3>
+                  <p>Уточним помещение, пожелания и удобное время замера.</p>
+                </div>
+              </li>
+              <li>
+                <span>02</span>
+                <div>
+                  <h3>Подберём и рассчитаем</h3>
+                  <p>На замере согласуем полотно, освещение и стоимость.</p>
+                </div>
+              </li>
+              <li>
+                <span>03</span>
+                <div>
+                  <h3>Установим потолок</h3>
+                  <p>Оформим договор и выберем подходящий день монтажа.</p>
+                </div>
+              </li>
+            </ol>
+            <div class="contact-grid">
+              <div class="contact-copy reveal">
+                <h2>Красивый потолок.<br /><em>Разумный бюджет.</em></h2>
+                <p>
+                  Оставьте номер — обсудим пожелания,<br />рассчитаем стоимость
+                  и согласуем бесплатный замер.
+                </p>
+                <div aria-hidden="true" class="orbit contact-orbit scroll-art">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+              <div class="form-panel reveal">
+                <span class="form-kicker">Начните с расчёта</span>
+                <form class="lead-form" data-source="footer" novalidate="">
+                  <label for="phone-footer">Ваш номер телефона</label
+                  ><input
+                    id="phone-footer"
+                    class="phone-input"
+                    type="tel"
+                    inputmode="tel"
+                    autocomplete="tel"
+                    placeholder="+375 (__) ___-__-__"
+                    required=""
+                    maxlength="24"
+                    aria-invalid="false"
+                    name="phone"
+                    value=""
+                  />
+                  <div class="honey" aria-hidden="true">
+                    <label
+                      >Ваш сайт<input
+                        tabindex="-1"
+                        autocomplete="off"
+                        name="website"
+                    /></label>
+                  </div>
+                  <div class="consent">
+                    <p>
+                      Нажимая «Получить расчёт стоимости», вы соглашаетесь на
+                      <button type="button" data-privacy="">
+                        обработку персональных данных
+                      </button>
+                      для связи по вашей заявке.
+                    </p>
+                  </div>
+                  <button class="cta form-submit" type="submit">
+                    Получить расчёт стоимости<svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="23"
+                      height="23"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-arrow-up-right"
+                      aria-hidden="true"
+                    >
+                      <path d="M7 7h10v10"></path>
+                      <path d="M7 17 17 7"></path>
+                    </svg>
+                  </button>
+                  <p class="form-hint">
+                    Позвоним в рабочее время. Заявка не обязывает к заказу.
+                  </p>
+                </form>
+              </div>
+            </div>
+            <div class="faq-grid">
+              <h3>Остались <br /><em>вопросы?</em></h3>
+              <div class="faq">
+                <details name="questions">
+                  <summary data-slot="accordion-trigger">
+                    Замер действительно бесплатный?
+                  </summary>
+                  <div data-slot="accordion-content">
+                    <div>
+                      Да, вызов замерщика бесплатный. Во время звонка уточним
+                      ваш адрес и согласуем удобное время выезда.
+                    </div>
+                  </div>
+                </details>
+                <details name="questions">
+                  <summary data-slot="accordion-trigger">
+                    Можно ли оплатить потолок в рассрочку?
+                  </summary>
+                  <div data-slot="accordion-content">
+                    <div>
+                      Да, у «Крисмас» есть собственная рассрочка до 6 месяцев,
+                      без похода в банк и процентов. Размер первого платежа и
+                      график оплаты согласуем до заключения договора.
+                    </div>
+                  </div>
+                </details>
+                <details name="questions">
+                  <summary data-slot="accordion-trigger">
+                    Как получить подарок?
+                  </summary>
+                  <div data-slot="accordion-content">
+                    <div>
+                      При заказе можно выбрать потолочный карниз или светильник.
+                      Подарки по акции действуют при заказе от 12 м² и не
+                      суммируются с другими акциями. Доступные варианты и
+                      условия уточним при расчёте.
+                    </div>
+                  </div>
+                </details>
+                <details name="questions">
+                  <summary data-slot="accordion-trigger">
+                    Когда установят потолок и сколько длится монтаж?
+                  </summary>
+                  <div data-slot="accordion-content">
+                    <div>
+                      Дату согласуем после замера и выбора решения. Обычно
+                      монтаж занимает несколько часов; точная продолжительность
+                      зависит от площади, освещения и сложности конструкции.
+                    </div>
+                  </div>
+                </details>
+                <details name="questions">
+                  <summary data-slot="accordion-trigger">
+                    Нужно ли выносить мебель?
+                  </summary>
+                  <div data-slot="accordion-content">
+                    <div>
+                      Заранее освободите доступ к стенам. На замере специалист
+                      подскажет, какую мебель нужно передвинуть, какие вещи
+                      убрать и что укрыть именно в вашей комнате.
+                    </div>
+                  </div>
+                </details>
+                <details name="questions">
+                  <summary data-slot="accordion-trigger">
+                    Какая гарантия и куда обращаться после установки?
+                  </summary>
+                  <div data-slot="accordion-content">
+                    <div>
+                      Гарантийные условия зависят от выбранных материалов и
+                      работ и фиксируются в договоре. По вопросам обслуживания
+                      звоните +375 33 660-44-39 — поможем разобраться и
+                      согласуем дальнейшие действия.
+                    </div>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <!-- Подвал сайта -->
+      <footer class="site-footer shell">
+        <div class="footer-top">
+          <a class="footer-brand" href="#"
+            >КРИСМАС<span>НАТЯЖНЫЕ ПОТОЛКИ</span></a
+          ><a class="footer-phone" href="tel:+375336604439"
+            >+375 33 660-44-39<svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-up-right"
+              aria-hidden="true"
+            >
+              <path d="M7 7h10v10"></path>
+              <path d="M7 17 17 7"></path></svg
+          ></a>
+        </div>
+        <div class="contact-details">
+          <div>
+            <span>Связаться с нами</span
+            ><a href="mailto:info@krismas.by">info@krismas.by</a>
+            <p>Пн–Пт: 8:30–20:30<br />Сб–Вс: 10:00–18:00</p>
+          </div>
+          <div>
+            <span>Представительство в Минске</span>
+            <p>Минск, пер. Домашевский, 9</p>
+            <span class="second-label">Главный офис</span>
+            <p>Лида, ул. Фурманова, 27</p>
+          </div>
+          <div>
+            <span>Работаем официально</span>
+            <p>ЧУП «СтоКвадратовПлюс»<br />УНП 591361425</p>
+            <a
+              class="inline-link"
+              href="https://krismas.by/kontakty"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Все контакты компании ↗</a
+            >
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            Минская, Гродненская и Брестская области.<br />Другие города — по
+            договорённости.
+          </p>
+          <button data-privacy="">Обработка персональных данных</button
+          ><span>© Крисмас, 2026</span>
+        </div>
+      </footer>
+      <!-- Всплывающая форма заявки -->
+      <dialog class="lead-dialog" id="lead-dialog" aria-labelledby="lead-title">
+        <button
+          class="dialog-x"
+          aria-label="Закрыть"
+          type="button"
+          data-close=""
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-x"
+            aria-hidden="true"
+          >
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+        </button>
+        <h2 class="dialog-title" id="lead-title">Начнём с <em>расчёта.</em></h2>
+        <p class="dialog-description">
+          Уточним пожелания, рассчитаем стоимость и подберём удобное время
+          бесплатного замера.
+        </p>
+        <form class="lead-form" data-source="hero" novalidate="">
+          <label for="phone-modal">Ваш номер телефона</label
+          ><input
+            id="phone-modal"
+            class="phone-input"
+            type="tel"
+            inputmode="tel"
+            autocomplete="tel"
+            placeholder="+375 (__) ___-__-__"
+            required=""
+            maxlength="24"
+            aria-invalid="false"
+            name="phone"
+            value=""
+          />
+          <div class="honey" aria-hidden="true">
+            <label
+              >Ваш сайт<input tabindex="-1" autocomplete="off" name="website"
+            /></label>
+          </div>
+          <div class="consent">
+            <p>
+              Нажимая «Получить расчёт стоимости», вы соглашаетесь на
+              <button type="button" data-privacy="">
+                обработку персональных данных
+              </button>
+              для связи по вашей заявке.
+            </p>
+          </div>
+          <button class="cta form-submit" type="submit">
+            Получить расчёт стоимости<svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="23"
+              height="23"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-up-right"
+              aria-hidden="true"
+            >
+              <path d="M7 7h10v10"></path>
+              <path d="M7 17 17 7"></path>
+            </svg>
+          </button>
+          <p class="form-hint">
+            Позвоним в рабочее время. Заявка не обязывает к заказу.
+          </p>
+        </form>
+      </dialog>
+      <!-- Информация об обработке персональных данных -->
+      <dialog
+        class="privacy-dialog"
+        id="privacy-dialog"
+        aria-labelledby="privacy-title"
+      >
+        <button
+          class="dialog-x"
+          aria-label="Закрыть"
+          type="button"
+          data-close=""
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-x"
+            aria-hidden="true"
+          >
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+        </button>
+        <h2 id="privacy-title">Обработка данных заявки</h2>
+        <p>Как используется ваш номер телефона</p>
+        <p>
+          Номер телефона используется ЧУП «СтоКвадратовПлюс» (бренд «Крисмас»),
+          чтобы связаться с вами, уточнить пожелания и подготовить расчёт.
+          Вместе с заявкой сохраняются дата обращения и рекламные метки перехода
+          для оценки источника заявки.
+        </p>
+        <p>
+          Согласие относится к обработке обращения и не означает подписку на
+          рекламную рассылку. По вопросам обработки и удаления заявки свяжитесь
+          с компанией по телефону
+          <a href="tel:+375336604439">+375 33 660-44-39</a>.
+        </p>
+        <a
+          class="text-link"
+          href="https://krismas.by/kontakty"
+          target="_blank"
+          rel="noreferrer"
+          >Контакты компании<svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-arrow-up-right"
+            aria-hidden="true"
+          >
+            <path d="M7 7h10v10"></path>
+            <path d="M7 17 17 7"></path></svg
+        ></a>
+        <p>
+          <a
+            class="inline-link"
+            href="https://krismas.by/wp-content/uploads/2025/12/Politika-na-sajt-.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Полная политика обработки персональных данных (PDF)</a
+          >
+        </p>
+      </dialog>
+    </div>
+    <!-- Просмотр фотографии в увеличенном виде -->
+    <dialog
+      id="photo-dialog"
+      class="photo-dialog"
+      aria-label="Фотография выполненной работы"
+    >
+      <button
+        type="button"
+        class="dialog-x"
+        data-close
+        aria-label="Закрыть фотографию"
+      >
+        ✕</button
+      ><img alt="" />
+      <p></p>
+    </dialog>
+    <!-- ЛОГИКА САЙТА. Адрес вебхука задаётся ниже в FORM_ENDPOINT. -->
+    <script>
+      /* НАСТРОЙКА ОТПРАВКИ ЗАЯВОК
+   Укажите HTTPS-адрес обработчика, разрешающего запросы с вашего домена.
+   Обработчик принимает JSON {id,phone,consent,source,utm,website}.
+   Успешный ответ: HTTP 200 и JSON {"ok":true}.
+   Пока адрес пуст, после проверки номера сразу открывается thank-you.html.
+   В этом режиме номер никуда не отправляется. Укажите FORM_ENDPOINT для отправки.
+   Не размещайте здесь пароли и секретные ключи CRM или Telegram.
+*/
+      const FORM_ENDPOINT = '';
+      // Разместите ранее подготовленную thank-you.html рядом с этим index.html.
+      const leadDialog = document.getElementById('lead-dialog');
+      const privacyDialog = document.getElementById('privacy-dialog');
+      document.querySelectorAll('[data-open]').forEach((button) =>
+        button.addEventListener('click', () => {
+          leadDialog
+            .querySelector('form')
+            ?.setAttribute('data-source', button.dataset.open);
+          leadDialog.showModal();
+        }),
+      );
+      document
+        .querySelectorAll('[data-privacy]')
+        .forEach((button) =>
+          button.addEventListener('click', () => privacyDialog.showModal()),
+        );
+      document
+        .querySelectorAll('[data-close]')
+        .forEach((button) =>
+          button.addEventListener('click', () =>
+            button.closest('dialog').close(),
+          ),
+        );
+      document.querySelectorAll('dialog').forEach((dialog) =>
+        dialog.addEventListener('click', (event) => {
+          if (event.target !== dialog) return;
+          const r = dialog.getBoundingClientRect();
+          if (
+            event.clientX < r.left ||
+            event.clientX > r.right ||
+            event.clientY < r.top ||
+            event.clientY > r.bottom
+          )
+            dialog.close();
+        }),
+      );
+
+      const photoDialog = document.getElementById('photo-dialog');
+      document.querySelectorAll('[data-image-view]').forEach((button) =>
+        button.addEventListener('click', () => {
+          const source = button.querySelector('img');
+          const picture = photoDialog.querySelector('img');
+          picture.src = source.src;
+          picture.alt = source.alt;
+          photoDialog.querySelector('p').textContent = source.alt;
+          photoDialog.showModal();
+        }),
+      );
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) =>
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+              }
+            }),
+          { threshold: 0.12 },
+        );
+        document
+          .querySelectorAll('.reveal')
+          .forEach((el) => observer.observe(el));
+      }
+      let frame = 0;
+      function update() {
+        frame = 0;
+        if (reduced.matches) return;
+        document.querySelectorAll('.scroll-art').forEach((el) => {
+          const r = el.getBoundingClientRect();
+          if (r.bottom > -150 && r.top < innerHeight + 150)
+            el.style.setProperty(
+              '--turn',
+              (innerHeight / 2 - r.top) * 0.075 + 'deg',
+            );
+        });
+      }
+      addEventListener(
+        'scroll',
+        () => {
+          if (!frame) frame = requestAnimationFrame(update);
+        },
+        { passive: true },
+      );
+      update();
+      document.querySelectorAll('.lead-form').forEach((form) => {
+        const error = document.createElement('p');
+        error.className = 'form-error';
+        error.setAttribute('role', 'alert');
+        error.id = 'error-' + form.dataset.source;
+        error.hidden = true;
+        const button = form.querySelector('[type=submit]');
+        form.insertBefore(error, button);
+        const input = form.querySelector('[name=phone]');
+        input.setAttribute('aria-describedby', error.id);
+        const fail = (message) => {
+          error.textContent = message;
+          error.hidden = false;
+        };
+        input.addEventListener('input', () => {
+          error.hidden = true;
+          input.removeAttribute('aria-invalid');
+          requestId = '';
+        });
+        let requestId = '';
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          if (button.disabled) return;
+          let digits = input.value.replace(/\D/g, '');
+          if (digits.length === 11 && digits.startsWith('80'))
+            digits = '375' + digits.slice(2);
+          else if (digits.length === 9) digits = '375' + digits;
+          if (!/^375(?:25|29|33|44)\d{7}$/.test(digits)) {
+            fail('Введите номер в формате +375 (29) 123-45-67.');
+            input.setAttribute('aria-invalid', 'true');
+            input.focus();
+            return;
+          }
+          // Без вебхука: проверяем номер и сразу открываем страницу «Спасибо».
+          // Чтобы включить передачу заявки, укажите адрес в FORM_ENDPOINT выше.
+          if (!FORM_ENDPOINT) {
+            error.hidden = true;
+            button.disabled = true;
+            window.location.assign('./thank-you.html');
+            return;
+          }
+          error.hidden = true;
+          button.disabled = true;
+          const original = button.innerHTML;
+          button.textContent = 'Отправляем…';
+          const controller = new AbortController();
+          const timeout = setTimeout(() => controller.abort(), 15000);
+          try {
+            if (!requestId) requestId = crypto.randomUUID();
+            const params = new URLSearchParams(location.search);
+            const utm = Object.fromEntries(
+              [
+                'utm_source',
+                'utm_medium',
+                'utm_campaign',
+                'utm_content',
+                'utm_term',
+                'gclid',
+                'yclid',
+              ].map((k) => [k, (params.get(k) || '').slice(0, 250)]),
+            );
+            const response = await fetch(FORM_ENDPOINT, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                id: requestId,
+                phone: '+' + digits,
+                consent: true,
+                source: form.dataset.source,
+                utm,
+                website: form.querySelector('[name=website]').value,
+              }),
+              signal: controller.signal,
+            });
+            const result = await response.json();
+            if (!response.ok || result.ok !== true)
+              throw new Error('not-accepted');
+            (window.dataLayer ??= []).push({
+              event: 'lead_success',
+              form_location: form.dataset.source,
+            });
+            window.location.assign('./thank-you.html');
+          } catch {
+            fail(
+              'Не удалось подтвердить отправку. Попробуйте ещё раз или позвоните: +375 33 660-44-39.',
+            );
+            button.disabled = false;
+            button.innerHTML = original;
+          } finally {
+            clearTimeout(timeout);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
