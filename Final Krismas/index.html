@@ -1835,6 +1835,66 @@
           margin: 14px 0 20px;
         }
       }
+
+      /* Размеры первого экрана, четыре строки заголовка на телефонах
+         и векторная звёздочка с одинаковым отображением на iOS и Android. */
+      .price-intro {
+        font-size: 18px;
+      }
+      .hero-price strong {
+        font-size: clamp(99px, 9.9vw, 147.4px);
+      }
+      .price-unit {
+        font-size: 24px;
+      }
+      .hero-perks li {
+        font-size: 14.2px;
+      }
+      .hero-note {
+        font-size: 14px;
+      }
+      .hero-note-line {
+        display: block;
+      }
+      .heading-mark svg {
+        display: block;
+        width: 1em;
+        height: 1em;
+      }
+      @media (min-width: 761px) and (max-width: 1100px) {
+        .hero-price strong {
+          font-size: 110px;
+        }
+      }
+      @media (max-width: 760px) {
+        .hero h1 {
+          font-size: min(clamp(39.235px, 8.8559vw, 65.018px), calc((100vw - 40px) * 0.11875));
+          font-weight: 400;
+        }
+        .hero-title-line {
+          display: block;
+          white-space: nowrap;
+        }
+        .hero-note {
+          font-size: min(14px, calc((100vw - 40px) / 24));
+          max-width: none;
+        }
+        .hero-note-line {
+          white-space: nowrap;
+        }
+        .price-intro {
+          font-size: 16px;
+        }
+        .hero-price strong {
+          font-size: 100px;
+        }
+        .price-unit {
+          font-size: 20px;
+        }
+        .solution-1 {
+          justify-self: start;
+        }
+      }
     </style>
     <!-- Company facts and project captions: krismas.by; reviews: franshiza.krismas.by. Checked 2026-09-18. -->
   </head>
@@ -1881,7 +1941,10 @@
               <span class="tiny-square"></span>Натяжные потолки в Беларуси
             </p>
             <h1 id="hero-title">
-              Натяжные потолки,<br />которые <em>экономят</em> ваш бюджет
+              <span class="hero-title-line">Натяжные</span>
+              <span class="hero-title-line">потолки,<br /> которые</span>
+              <span class="hero-title-line"><em>экономят</em> ваш</span>
+              <span class="hero-title-line">бюджет</span>
             </h1>
             <div class="hero-price">
               <span class="price-intro">Всего</span><strong>15</strong
@@ -1911,8 +1974,8 @@
               </svg>
             </button>
             <p class="hero-note">
-              Оставьте номер — поможем выбрать потолок<br />и рассчитаем
-              стоимость для вашей квартиры.
+              <span class="hero-note-line">Оставьте номер — поможем выбрать потолок</span>
+              <span class="hero-note-line">и рассчитаем стоимость для вашей квартиры.</span>
             </p>
           </div>
           <div class="hero-visual">
@@ -2111,7 +2174,11 @@
             </div>
             <h2 class="reveal">
               Ваш дом.<br /><em>Ваш потолок.</em
-              ><span class="heading-mark scroll-art" aria-hidden="true">✳</span>
+              ><span class="heading-mark scroll-art" aria-hidden="true">
+                <svg viewBox="0 0 100 100" width="100" height="100" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                  <path d="M50 5V95M5 50H95M18 18L82 82M18 82L82 18" stroke="currentColor" stroke-width="5" />
+                </svg>
+              </span>
             </h2>
             <div class="solution-grid">
               <article class="solution solution-0 reveal">
@@ -2942,3 +3009,4 @@
     </script>
   </body>
 </html>
+
