@@ -2,14 +2,19 @@
 <html lang="ru">
   <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5ST3PCQ5N"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-N5ST3PCQ5N"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
 
-  gtag('config', 'G-N5ST3PCQ5N');
-</script>
+      gtag('config', 'G-N5ST3PCQ5N');
+    </script>
     <!-- Название страницы, описание для поиска и иконка сайта -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -1877,7 +1882,10 @@
       }
       @media (max-width: 760px) {
         .hero h1 {
-          font-size: min(clamp(39.235px, 8.8559vw, 65.018px), calc((100vw - 40px) * 0.11875));
+          font-size: min(
+            clamp(39.235px, 8.8559vw, 65.018px),
+            calc((100vw - 40px) * 0.11875)
+          );
           font-weight: 400;
         }
         .hero-title-line {
@@ -1902,6 +1910,204 @@
         }
         .solution-1 {
           justify-self: start;
+        }
+      }
+      /* Имя в формах и короткий опрос для средней кнопки. */
+      .lead-form .name-input {
+        margin-bottom: 22px;
+      }
+      .quiz-dialog {
+        width: min(620px, calc(100% - 32px));
+        max-height: 90vh;
+        max-height: 90dvh;
+        padding: 40px;
+        overflow-y: auto;
+      }
+      .quiz-dialog [hidden] {
+        display: none !important;
+      }
+      .quiz-progress-label {
+        color: #777;
+        font-size: 12px;
+        margin-right: 35px;
+      }
+      .quiz-progress {
+        height: 3px;
+        background: #e9e9e4;
+        margin: 15px 0 26px;
+      }
+      .quiz-progress-fill {
+        display: block;
+        height: 100%;
+        width: 25%;
+        background: #c32228;
+        transition: width 0.2s;
+      }
+      .quiz-dialog h2 {
+        font-size: 30px;
+        line-height: 1.2;
+        letter-spacing: -0.8px;
+        margin-bottom: 12px;
+      }
+      .quiz-dialog h2:focus {
+        outline: none;
+      }
+      .quiz-description {
+        font-size: 14px;
+        color: #6c6c66;
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+      .quiz-area-label {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+      .quiz-area-wrap {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border-bottom: 1px solid #a8a8a0;
+      }
+      .quiz-area-wrap:focus-within {
+        border-color: #c32228;
+        box-shadow: 0 1px 0 #c32228;
+      }
+      .quiz-area-input {
+        width: 100%;
+        min-width: 0;
+        height: 62px;
+        padding: 8px 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        color: #252525;
+        font-size: 26px;
+        outline: none;
+      }
+      .quiz-area-input:disabled {
+        opacity: 0.45;
+      }
+      .quiz-area-wrap > span {
+        flex: none;
+        color: #777;
+        font-size: 20px;
+      }
+      .quiz-unknown {
+        border: 1px solid #d7d7d2;
+        margin-top: 18px;
+        padding: 11px 16px;
+        font-size: 14px;
+        min-height: 44px;
+      }
+      .quiz-unknown[aria-pressed='true'] {
+        border-color: #c32228;
+        background: #fff5f5;
+        color: #a51c22;
+      }
+      .quiz-choices {
+        display: grid;
+        gap: 9px;
+      }
+      .quiz-choice {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        border: 1px solid #d7d7d2;
+        cursor: pointer;
+        min-height: 49px;
+        background: #fff;
+      }
+      .quiz-choice:has(input:checked) {
+        border-color: #c32228;
+        background: #fff5f5;
+      }
+      .quiz-choice:focus-within {
+        outline: 2px solid #c32228;
+        outline-offset: 2px;
+      }
+      .quiz-choice input {
+        flex: none;
+        width: 18px;
+        height: 18px;
+        margin: 0;
+        accent-color: #c32228;
+      }
+      .quiz-choice span {
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      .quiz-choice small {
+        display: block;
+        color: #777;
+        font-size: 12px;
+        margin-top: 3px;
+      }
+      .quiz-error {
+        color: #b21f24;
+        font-size: 13px;
+        margin-top: 15px;
+      }
+      .quiz-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 25px;
+      }
+      .quiz-back {
+        min-height: 44px;
+        font-size: 14px;
+        padding: 8px 0;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+      .quiz-nav .cta {
+        margin-left: auto;
+        min-height: 50px;
+        font-size: 14px;
+      }
+      .quiz-dialog .lead-form > label {
+        margin-bottom: 4px;
+      }
+      .quiz-dialog .phone-input {
+        font-size: 22px;
+        height: 54px;
+      }
+      .quiz-dialog .form-submit {
+        width: 100%;
+        justify-content: center;
+      }
+      @media (max-width: 760px) {
+        .quiz-dialog {
+          padding: 30px 22px 24px;
+        }
+        .quiz-dialog h2 {
+          font-size: 26px;
+          letter-spacing: -0.6px;
+        }
+        .quiz-dialog .dialog-x {
+          top: 12px;
+          right: 12px;
+        }
+        .quiz-progress {
+          margin-bottom: 22px;
+        }
+        .quiz-choice {
+          padding: 11px 12px;
+        }
+        .quiz-nav {
+          gap: 12px;
+        }
+        .quiz-nav .cta {
+          padding: 14px 17px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .quiz-progress-fill {
+          transition: none;
         }
       }
     </style>
@@ -1951,7 +2157,10 @@
             </p>
             <h1 id="hero-title">
               <span class="hero-title-line">Натяжные</span>
-              <span class="hero-title-line">потолки,<br /> которые</span>
+              <span class="hero-title-line"
+                >потолки,<br />
+                которые</span
+              >
               <span class="hero-title-line"><em>экономят</em> ваш</span>
               <span class="hero-title-line">бюджет</span>
             </h1>
@@ -1983,8 +2192,12 @@
               </svg>
             </button>
             <p class="hero-note">
-              <span class="hero-note-line">Оставьте номер — поможем выбрать потолок</span>
-              <span class="hero-note-line">и рассчитаем стоимость для вашей квартиры.</span>
+              <span class="hero-note-line"
+                >Оставьте номер — поможем выбрать потолок</span
+              >
+              <span class="hero-note-line"
+                >и рассчитаем стоимость для вашей квартиры.</span
+              >
             </p>
           </div>
           <div class="hero-visual">
@@ -2184,8 +2397,19 @@
             <h2 class="reveal">
               Ваш дом.<br /><em>Ваш потолок.</em
               ><span class="heading-mark scroll-art" aria-hidden="true">
-                <svg viewBox="0 0 100 100" width="100" height="100" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
-                  <path d="M50 5V95M5 50H95M18 18L82 82M18 82L82 18" stroke="currentColor" stroke-width="5" />
+                <svg
+                  viewBox="0 0 100 100"
+                  width="100"
+                  height="100"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  focusable="false"
+                >
+                  <path
+                    d="M50 5V95M5 50H95M18 18L82 82M18 82L82 18"
+                    stroke="currentColor"
+                    stroke-width="5"
+                  />
                 </svg>
               </span>
             </h2>
@@ -2245,11 +2469,16 @@
             </div>
             <div class="solutions-bottom">
               <p>
-                Пока не знаете, что выбрать?<br /><span
-                  >Поможем найти ваше решение.</span
+                Ответьте на 3 вопроса —<br /><span
+                  >подготовим расчёт стоимости потолка для вашей квартиры.</span
                 >
               </p>
-              <button class="cta" data-open="solutions">
+              <button
+                class="cta"
+                data-quiz-open
+                aria-haspopup="dialog"
+                aria-controls="quiz-dialog"
+              >
                 Узнать цену для моей квартиры<svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -2461,6 +2690,17 @@
               <div class="form-panel reveal">
                 <span class="form-kicker">Начните с расчёта</span>
                 <form class="lead-form" data-source="footer" novalidate="">
+                  <label for="name-footer">Ваше имя</label>
+                  <input
+                    id="name-footer"
+                    class="phone-input name-input"
+                    type="text"
+                    name="name"
+                    autocomplete="given-name"
+                    placeholder="Как к вам обращаться?"
+                    maxlength="80"
+                    required
+                  />
                   <label for="phone-footer">Ваш номер телефона</label
                   ><input
                     id="phone-footer"
@@ -2684,6 +2924,17 @@
           бесплатного замера.
         </p>
         <form class="lead-form" data-source="hero" novalidate="">
+          <label for="name-modal">Ваше имя</label>
+          <input
+            id="name-modal"
+            class="phone-input name-input"
+            type="text"
+            name="name"
+            autocomplete="given-name"
+            placeholder="Как к вам обращаться?"
+            maxlength="80"
+            required
+          />
           <label for="phone-modal">Ваш номер телефона</label
           ><input
             id="phone-modal"
@@ -2765,12 +3016,13 @@
           </svg>
         </button>
         <h2 id="privacy-title">Обработка данных заявки</h2>
-        <p>Как используется ваш номер телефона</p>
+        <p>Как используются данные заявки</p>
         <p>
-          Номер телефона используется ЧУП «СтоКвадратовПлюс» (бренд «Крисмас»),
-          чтобы связаться с вами, уточнить пожелания и подготовить расчёт.
-          Вместе с заявкой сохраняются дата обращения и рекламные метки перехода
-          для оценки источника заявки.
+          Имя, номер телефона и ответы на вопросы, если вы проходили опрос,
+          используются ЧУП «СтоКвадратовПлюс» (бренд «Крисмас»), чтобы связаться
+          с вами, уточнить пожелания и подготовить расчёт. Вместе с заявкой
+          сохраняются дата обращения и рекламные метки перехода для оценки
+          источника заявки.
         </p>
         <p>
           Согласие относится к обработке обращения и не означает подписку на
@@ -2826,14 +3078,235 @@
       ><img alt="" />
       <p></p>
     </dialog>
+    <!-- Мини-опрос: площадь, потолок, освещение, затем имя и телефон. -->
+    <dialog
+      class="quiz-dialog"
+      id="quiz-dialog"
+      aria-labelledby="quiz-title"
+      aria-describedby="quiz-description"
+    >
+      <button
+        class="dialog-x"
+        type="button"
+        data-close
+        aria-label="Закрыть опрос"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <path d="M18 6 6 18M6 6l12 12" />
+        </svg>
+      </button>
+      <p
+        class="quiz-progress-label"
+        id="quiz-progress-label"
+        aria-live="polite"
+      >
+        Вопрос 1 из 3
+      </p>
+      <div
+        class="quiz-progress"
+        role="progressbar"
+        aria-label="Этап расчёта"
+        aria-valuemin="0"
+        aria-valuemax="4"
+        aria-valuenow="1"
+        aria-valuetext="Вопрос 1 из 3"
+      >
+        <span class="quiz-progress-fill"></span>
+      </div>
+      <h2 id="quiz-title" tabindex="-1">Какая примерная площадь потолка?</h2>
+      <p class="quiz-description" id="quiz-description">
+        Если планируете потолки в нескольких комнатах, укажите их общую площадь.
+      </p>
+      <div data-quiz-step="0">
+        <label class="quiz-area-label" for="quiz-area">Площадь потолка</label>
+        <div class="quiz-area-wrap">
+          <input
+            class="quiz-area-input"
+            id="quiz-area"
+            type="text"
+            inputmode="decimal"
+            autocomplete="off"
+            placeholder="Например, 20"
+            maxlength="12"
+            aria-describedby="quiz-description quiz-error"
+          />
+          <span aria-hidden="true">м²</span>
+        </div>
+        <button
+          class="quiz-unknown"
+          id="quiz-area-unknown"
+          type="button"
+          aria-pressed="false"
+        >
+          Пока не знаю
+        </button>
+      </div>
+      <div data-quiz-step="1" hidden>
+        <div
+          class="quiz-choices"
+          role="radiogroup"
+          aria-labelledby="quiz-title"
+          aria-describedby="quiz-error"
+        >
+          <label class="quiz-choice"
+            ><input
+              type="radio"
+              name="ceiling-type"
+              value="Классический ровный"
+            /><span>Классический ровный</span></label
+          >
+          <label class="quiz-choice"
+            ><input type="radio" name="ceiling-type" value="Парящий" /><span
+              >Парящий<small>С подсветкой по периметру</small></span
+            ></label
+          >
+          <label class="quiz-choice"
+            ><input
+              type="radio"
+              name="ceiling-type"
+              value="Двухуровневый"
+            /><span>Двухуровневый</span></label
+          >
+          <label class="quiz-choice"
+            ><input type="radio" name="ceiling-type" value="Другой" /><span
+              >Другой<small>Например, с фотопечатью</small></span
+            ></label
+          >
+          <label class="quiz-choice"
+            ><input
+              type="radio"
+              name="ceiling-type"
+              value="Пока не определился — нужен совет"
+            /><span>Пока не определился — нужен совет</span></label
+          >
+        </div>
+      </div>
+      <div data-quiz-step="2" hidden>
+        <div
+          class="quiz-choices"
+          role="group"
+          aria-labelledby="quiz-title"
+          aria-describedby="quiz-error"
+        >
+          <label class="quiz-choice"
+            ><input
+              type="checkbox"
+              name="lighting"
+              value="Точечные светильники"
+            /><span>Точечные светильники</span></label
+          >
+          <label class="quiz-choice"
+            ><input
+              type="checkbox"
+              name="lighting"
+              value="Трековое освещение"
+            /><span>Трековое освещение</span></label
+          >
+          <label class="quiz-choice"
+            ><input type="checkbox" name="lighting" value="Люстра" /><span
+              >Люстра</span
+            ></label
+          >
+          <label class="quiz-choice"
+            ><input
+              type="checkbox"
+              name="lighting"
+              value="Световые линии"
+            /><span>Световые линии</span></label
+          >
+          <label class="quiz-choice"
+            ><input
+              type="checkbox"
+              name="lighting"
+              value="Подсветка по периметру"
+            /><span>Подсветка по периметру</span></label
+          >
+          <label class="quiz-choice"
+            ><input
+              type="checkbox"
+              name="lighting"
+              value="Пока не знаю — помогите выбрать"
+              data-exclusive
+            /><span>Пока не знаю — помогите выбрать</span></label
+          >
+        </div>
+      </div>
+      <div data-quiz-step="3" hidden>
+        <form
+          class="lead-form"
+          id="quiz-form"
+          data-source="solutions"
+          novalidate
+        >
+          <label for="name-quiz">Ваше имя</label>
+          <input
+            id="name-quiz"
+            class="phone-input name-input"
+            type="text"
+            name="name"
+            autocomplete="given-name"
+            placeholder="Как к вам обращаться?"
+            maxlength="80"
+            required
+          />
+          <label for="phone-quiz">Ваш номер телефона</label>
+          <input
+            id="phone-quiz"
+            class="phone-input"
+            type="tel"
+            name="phone"
+            inputmode="tel"
+            autocomplete="tel"
+            placeholder="+375 (__) ___-__-__"
+            maxlength="24"
+            required
+          />
+          <div class="honey" aria-hidden="true">
+            <label
+              >Ваш сайт<input name="website" tabindex="-1" autocomplete="off"
+            /></label>
+          </div>
+          <div class="consent">
+            <p>
+              Нажимая «Получить расчёт», вы соглашаетесь на
+              <button type="button" data-privacy>
+                обработку персональных данных
+              </button>
+              для связи по вашей заявке.
+            </p>
+          </div>
+          <button class="cta form-submit" type="submit">Получить расчёт</button>
+          <p class="form-hint">
+            Позвоним в рабочее время. Заявка не обязывает к заказу.
+          </p>
+        </form>
+      </div>
+      <p class="quiz-error" id="quiz-error" role="alert" hidden></p>
+      <div class="quiz-nav">
+        <button class="quiz-back" id="quiz-back" type="button" hidden>
+          Назад
+        </button>
+        <button class="cta" id="quiz-next" type="button">Далее</button>
+      </div>
+    </dialog>
     <!-- ЛОГИКА САЙТА. Адрес вебхука задаётся ниже в FORM_ENDPOINT. -->
     <script>
       /* НАСТРОЙКА ОТПРАВКИ ЗАЯВОК
    Укажите HTTPS-адрес обработчика, разрешающего запросы с вашего домена.
-   Обработчик принимает JSON {id,phone,consent,source,utm,website}.
+   Обработчик принимает JSON {id,name,phone,consent,source,utm,website,quiz?}.
+   Для опроса quiz содержит {area_m2,area_unknown,ceiling_type,lighting}.
    Успешный ответ: HTTP 200 и JSON {"ok":true}.
-   Пока адрес пуст, после проверки номера сразу открывается thank-you.html.
-   В этом режиме номер никуда не отправляется. Укажите FORM_ENDPOINT для отправки.
+   Пока адрес пуст, после проверки имени и номера открывается thank-you.html.
+   В этом режиме данные никуда не отправляются. Укажите FORM_ENDPOINT для отправки.
    Не размещайте здесь пароли и секретные ключи CRM или Telegram.
 */
       const FORM_ENDPOINT = '';
@@ -2922,6 +3395,168 @@
         { passive: true },
       );
       update();
+      // Мини-опрос средней кнопки. Ответы сохраняются при возврате и закрытии окна.
+      const quizDialog = document.getElementById('quiz-dialog');
+      const quizForm = document.getElementById('quiz-form');
+      const quizArea = document.getElementById('quiz-area');
+      const quizUnknown = document.getElementById('quiz-area-unknown');
+      const quizError = document.getElementById('quiz-error');
+      const quizNext = document.getElementById('quiz-next');
+      const quizBack = document.getElementById('quiz-back');
+      const quizTitles = [
+        'Какая примерная площадь потолка?',
+        'Какой потолок вы хотите?',
+        'Какое освещение планируете?',
+        'Получите расчёт стоимости',
+      ];
+      const quizDescriptions = [
+        'Если планируете потолки в нескольких комнатах, укажите их общую площадь.',
+        'Выберите один вариант. Детали можно будет обсудить со специалистом.',
+        'Можно выбрать несколько вариантов, например люстру и точечные светильники.',
+        'Оставьте имя и номер — обсудим ваши пожелания и рассчитаем стоимость.',
+      ];
+      let quizStep = 0;
+      function clearQuizError() {
+        quizError.hidden = true;
+        quizArea.removeAttribute('aria-invalid');
+      }
+      function showQuizStep(step, focus = true) {
+        quizStep = step;
+        clearQuizError();
+        quizDialog
+          .querySelectorAll('[data-quiz-step]')
+          .forEach((panel, index) => {
+            panel.hidden = index !== step;
+          });
+        const title = document.getElementById('quiz-title');
+        title.textContent = quizTitles[step];
+        document.getElementById('quiz-description').textContent =
+          quizDescriptions[step];
+        const label =
+          step < 3
+            ? `Вопрос ${step + 1} из 3`
+            : 'Последний шаг — ваши контакты';
+        document.getElementById('quiz-progress-label').textContent = label;
+        const progress = quizDialog.querySelector('.quiz-progress');
+        progress.setAttribute('aria-valuenow', String(step + 1));
+        progress.setAttribute('aria-valuetext', label);
+        quizDialog.querySelector('.quiz-progress-fill').style.width =
+          `${(step + 1) * 25}%`;
+        quizBack.hidden = step === 0;
+        quizNext.hidden = step === 3;
+        quizNext.textContent = step === 2 ? 'Перейти к расчёту' : 'Далее';
+        quizDialog.scrollTop = 0;
+        if (focus) title.focus({ preventScroll: true });
+      }
+      function readQuizArea() {
+        const value = quizArea.value.trim().replace(',', '.');
+        return /^\d+(?:\.\d{1,2})?$/.test(value) ? Number(value) : NaN;
+      }
+      function quizStepError(step) {
+        if (
+          step === 0 &&
+          quizUnknown.getAttribute('aria-pressed') !== 'true' &&
+          !(Number.isFinite(readQuizArea()) && readQuizArea() > 0)
+        ) {
+          return 'Укажите площадь больше нуля, например 20 или 20,5, либо выберите «Пока не знаю».';
+        }
+        if (
+          step === 1 &&
+          !quizDialog.querySelector('[name="ceiling-type"]:checked')
+        ) {
+          return 'Выберите вариант потолка или «Пока не определился — нужен совет».';
+        }
+        if (
+          step === 2 &&
+          !quizDialog.querySelector('[name="lighting"]:checked')
+        ) {
+          return 'Выберите освещение или «Пока не знаю — помогите выбрать».';
+        }
+        return '';
+      }
+      function displayQuizError(step, message) {
+        quizError.textContent = message;
+        quizError.hidden = false;
+        if (step === 0) {
+          quizArea.setAttribute('aria-invalid', 'true');
+          quizArea.focus();
+        }
+      }
+      function nextQuizStep() {
+        if (quizStep >= 3) return;
+        const message = quizStepError(quizStep);
+        if (message) displayQuizError(quizStep, message);
+        else showQuizStep(quizStep + 1);
+      }
+      function getQuizAnswers() {
+        const unknown = quizUnknown.getAttribute('aria-pressed') === 'true';
+        return {
+          area_m2: unknown ? null : readQuizArea(),
+          area_unknown: unknown,
+          ceiling_type:
+            quizDialog.querySelector('[name="ceiling-type"]:checked')?.value ||
+            '',
+          lighting: [
+            ...quizDialog.querySelectorAll('[name="lighting"]:checked'),
+          ].map((input) => input.value),
+        };
+      }
+      document.querySelectorAll('[data-quiz-open]').forEach((button) => {
+        button.addEventListener('click', () => {
+          quizDialog.showModal();
+          showQuizStep(quizStep);
+        });
+      });
+      quizNext.addEventListener('click', nextQuizStep);
+      quizBack.addEventListener('click', () =>
+        showQuizStep(Math.max(0, quizStep - 1)),
+      );
+      quizArea.addEventListener('input', clearQuizError);
+      quizArea.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          nextQuizStep();
+        }
+      });
+      quizUnknown.addEventListener('click', () => {
+        const unknown = quizUnknown.getAttribute('aria-pressed') !== 'true';
+        quizUnknown.setAttribute('aria-pressed', String(unknown));
+        quizArea.disabled = unknown;
+        clearQuizError();
+      });
+      quizDialog.querySelectorAll('[name="ceiling-type"]').forEach((input) => {
+        input.addEventListener('change', clearQuizError);
+      });
+      quizDialog.querySelectorAll('[name="lighting"]').forEach((input) => {
+        input.addEventListener('change', () => {
+          if (input.checked) {
+            quizDialog
+              .querySelectorAll('[name="lighting"]')
+              .forEach((other) => {
+                if (
+                  other !== input &&
+                  (input.hasAttribute('data-exclusive') ||
+                    other.hasAttribute('data-exclusive'))
+                ) {
+                  other.checked = false;
+                }
+              });
+          }
+          clearQuizError();
+        });
+      });
+      // При изменении ответов следующая попытка отправки получает новый ID.
+      quizDialog.addEventListener('input', (event) => {
+        if (!quizForm.contains(event.target))
+          quizForm.dispatchEvent(new Event('input'));
+      });
+      quizDialog.addEventListener('change', (event) => {
+        if (!quizForm.contains(event.target))
+          quizForm.dispatchEvent(new Event('input'));
+      });
+      quizUnknown.addEventListener('click', () =>
+        quizForm.dispatchEvent(new Event('input')),
+      );
       document.querySelectorAll('.lead-form').forEach((form) => {
         const error = document.createElement('p');
         error.className = 'form-error';
@@ -2931,20 +3566,40 @@
         const button = form.querySelector('[type=submit]');
         form.insertBefore(error, button);
         const input = form.querySelector('[name=phone]');
+        const nameInput = form.querySelector('[name=name]');
         input.setAttribute('aria-describedby', error.id);
+        nameInput.setAttribute('aria-describedby', error.id);
         const fail = (message) => {
           error.textContent = message;
           error.hidden = false;
         };
-        input.addEventListener('input', () => {
+        form.addEventListener('input', () => {
           error.hidden = true;
           input.removeAttribute('aria-invalid');
+          nameInput.removeAttribute('aria-invalid');
           requestId = '';
         });
         let requestId = '';
         form.addEventListener('submit', async (event) => {
           event.preventDefault();
           if (button.disabled) return;
+          if (form === quizForm) {
+            for (let step = 0; step < 3; step++) {
+              const message = quizStepError(step);
+              if (message) {
+                showQuizStep(step);
+                displayQuizError(step, message);
+                return;
+              }
+            }
+          }
+          const name = nameInput.value.trim().replace(/\s+/g, ' ');
+          if (!name || name.length > 80 || !/\p{L}/u.test(name)) {
+            fail('Укажите, пожалуйста, ваше имя.');
+            nameInput.setAttribute('aria-invalid', 'true');
+            nameInput.focus();
+            return;
+          }
           let digits = input.value.replace(/\D/g, '');
           if (digits.length === 11 && digits.startsWith('80'))
             digits = '375' + digits.slice(2);
@@ -2955,7 +3610,7 @@
             input.focus();
             return;
           }
-          // Без вебхука: проверяем номер и сразу открываем страницу «Спасибо».
+          // Без вебхука: проверяем имя и номер и сразу открываем страницу «Спасибо».
           // Чтобы включить передачу заявки, укажите адрес в FORM_ENDPOINT выше.
           if (!FORM_ENDPOINT) {
             error.hidden = true;
@@ -2988,6 +3643,8 @@
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 id: requestId,
+                name,
+                ...(form === quizForm ? { quiz: getQuizAnswers() } : {}),
                 phone: '+' + digits,
                 consent: true,
                 source: form.dataset.source,
